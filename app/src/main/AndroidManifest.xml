@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid">
         <activity
+            android:name=".JoinOttActivity"
+            android:exported="false" />
+        <activity
             android:name=".JoinNicknameActivity"
             android:exported="false" />
         <activity
