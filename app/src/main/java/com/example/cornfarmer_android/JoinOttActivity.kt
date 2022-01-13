@@ -8,6 +8,6 @@ class JoinOttActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_ott)
-        
+
     }
 }
