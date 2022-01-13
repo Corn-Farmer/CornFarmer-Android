@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid">
         <activity
+            android:name=".JoinNicknameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
@@ -23,7 +29,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
