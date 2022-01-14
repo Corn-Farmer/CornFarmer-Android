@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_bottomside_round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_leftside_rightside_round_white.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_topside_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/cancel_button_round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/kakao_login_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/naver_login_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/nickname_edittext_custom.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/none_login_round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ott_button_left_bottom_round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ott_button_right_bottom_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/profile_image_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/profile_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/round_image_shadow.xml" value="0.28229166666666666" />
@@ -24,6 +31,8 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_main.xml" value="0.24048913043478262" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_splash.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/image_select_custom_dialog.xml" value="0.264" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/ott_select_custom.xml" value="0.24048913043478262" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.24048913043478262" />
       </map>
     </option>
   </component>
