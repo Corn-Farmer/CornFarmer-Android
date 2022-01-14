@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
+
         <ImageView
             android:id="@+id/splash_logo_iv"
             android:layout_width="300dp"
