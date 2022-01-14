@@ -13,7 +13,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/nickname_back_iv"
+=======
+            android:id="@+id/profile_back_iv"
+>>>>>>> 097e8b90668c05504cb0c343b7a9a7028838faf0
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
@@ -35,7 +39,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/nickname_finish_tv"
+=======
+            android:id="@+id/profile_finish_tv"
+>>>>>>> 097e8b90668c05504cb0c343b7a9a7028838faf0
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
