@@ -1,86 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".LoginActivity">
 
 
-    <LinearLayout
+
+
+    <ImageView
+        android:id="@+id/login_logo_iv"
+        android:layout_width="143dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="105dp"
+        android:src="@drawable/cornfarmer_logo"
+        app:layout_constraintBottom_toTopOf="@+id/login_none_login_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/login_none_login_bt"
+        android:layout_width="248dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/login_none_login"
+        android:fontFamily="@font/robotobold"
+        android:gravity="end|center"
+        android:paddingEnd="40dp"
+        android:text="로그인 없이 둘러보기"
+        android:textColor="#515151"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_line_vi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_logo_iv" />
+
+    <View
+        android:id="@+id/login_line_vi"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#999999" />
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/login_line"
+        app:layout_constraintBottom_toTopOf="@id/login_kakao_login_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_none_login_bt" />
 
+    <Button
+        android:id="@+id/login_kakao_login_bt"
+        android:layout_width="248dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/login_kakao_login"
+        android:fontFamily="@font/robotobold"
+        android:gravity="end|center"
+        android:paddingStart="85dp"
+        android:paddingEnd="40dp"
+        android:text="카카오 로그인"
+        android:textColor="#515151"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/login_naver_login_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_line_vi" />
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
+    <Button
+        android:id="@+id/login_naver_login_bt"
+        android:layout_width="248dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="157dp"
+        android:background="@drawable/login_naver_login"
+        android:gravity="end|center"
+        android:paddingStart="85dp"
+        android:paddingEnd="40dp"
+        android:text="네이버 로그인"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_kakao_login_bt" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/splash_logo_iv"-->
-<!--            android:layout_width="143dp"-->
-<!--            android:layout_height="59dp"-->
-<!--            android:src="@drawable/cornfarmer_logo" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="66dp"-->
-<!--            android:layout_height="43dp"-->
-<!--            android:layout_alignTop="@+id/splash_logo_iv"-->
-<!--            android:src="@drawable/cornfarmer_character" />-->
-
-<!--    </RelativeLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/login_none_login_bt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="70dp"-->
-<!--            android:layout_marginEnd="70dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:background="@drawable/none_login_round"-->
-<!--            android:gravity="right|center_vertical"-->
-<!--            android:paddingEnd="50dp"-->
-<!--            android:text="로그인 없이 둘러보기"-->
-<!--            android:textStyle="bold" />-->
-
-
-<!--        <Button-->
-<!--            android:id="@+id/login_kakao_login_bt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="70dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginEnd="70dp"-->
-<!--            android:background="@drawable/kakao_login_round"-->
-<!--            android:gravity="right|center_vertical"-->
-<!--            android:paddingEnd="50dp"-->
-<!--            android:text="카카오 로그인"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/login_naver_login_bt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="70dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginEnd="70dp"-->
-<!--            android:background="@drawable/naver_login_round"-->
-<!--            android:gravity="right|center_vertical"-->
-<!--            android:paddingEnd="50dp"-->
-<!--            android:text="네이버 로그인"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold" />-->
-
-<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

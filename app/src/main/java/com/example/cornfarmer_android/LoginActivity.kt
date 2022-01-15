@@ -16,10 +16,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginKakaoLoginBt.setOnClickListener {
-            val intent = Intent(this, JoinProfileActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.loginKakaoLoginBt.setOnClickListener {
+//            val intent = Intent(this, JoinProfileActivity::class.java)
+//            startActivity(intent)
+//        }
 
 
 
