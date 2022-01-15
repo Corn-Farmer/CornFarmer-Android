@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/detail_previous_btn1_iv"
+                android:layout_width="7dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="38dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back_btn1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/detail_previous_btn2_iv"
+                android:layout_width="7dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="38dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_back_btn2"
+                app:layout_constraintStart_toEndOf="@id/detail_previous_btn1_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/detail_search_btn_iv"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_search"
+                app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/detail_heart_btn_iv"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintEnd_toStartOf="@id/detail_news_btn_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/detail_news_btn_iv"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/ic_bell_off"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/detail_movie_image_iv"
+                android:layout_width="420dp"
+                android:layout_height="360dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="49dp"
+                android:src="@drawable/img_example_movie_detail1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv" />
+
+            <ImageView
+                android:id="@+id/detail_movie_logo_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/logo_movie_example1"
+                app:layout_constraintStart_toStartOf="@id/detail_movie_image_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_movie_image_iv" />
+
+            <ImageView
+                android:id="@+id/detail_movie_heart_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="60dp"
+                android:src="@drawable/ic_heart_white"
+                app:layout_constraintEnd_toEndOf="@id/detail_movie_image_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_movie_image_iv" />
+
+            <ImageView
+                android:id="@+id/detail_heart_image_iv"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="17dp"
+                android:src="@drawable/ic_heart_on"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_image_iv" />
+
+            <TextView
+                android:id="@+id/detail_number_of_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="1,004명이 찜했어요"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@id/detail_heart_image_iv"
+                app:layout_constraintStart_toEndOf="@id/detail_heart_image_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_heart_image_iv" />
+
+            <TextView
+                android:id="@+id/detail_movie_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="올라프가 전해요"
+                android:textColor="#1E005D"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/detail_heart_image_iv"
+                app:layout_constraintTop_toBottomOf="@id/detail_heart_image_iv" />
+
+            <TextView
+                android:id="@+id/detail_movie_release_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="2dp"
+                android:text="(2021 개봉)"
+                android:textColor="#7D7D7D"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@id/detail_movie_title_tv"
+                app:layout_constraintStart_toEndOf="@id/detail_movie_title_tv" />
+
+            <TextView
+                android:id="@+id/detail_movie_genre_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="6dp"
+                android:text="애니메이션, 가족, 판타지, 코미디"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_title_tv" />
+
+            <ImageView
+                android:id="@+id/detail_ott_image_iv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_disney_plus"
+                app:layout_constraintStart_toStartOf="@id/detail_movie_genre_tv"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv"/>
+
+            <ImageView
+                android:id="@+id/detail_horizontal_line_iv"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/horizontal_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv" />
+
+            <TextView
+                android:id="@+id/detail_movie_story_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="34dp"
+                android:text="“올라프는 눈사람에서 쇼맨으로 변신해 자신이 좋아하는\n월트 디즈니 애니메니션 스튜디오의 이야기 5편을\n 독특한 방법으로 이야기해 준다.\n\n 카리스마가 넘치고 다재다능한 올라프는 인어공주, 지니, 라이온킹과 같은 상징적인 역할들을 맡아, 이 사랑스러운 이야기를 유쾌하게 축약한 버전으로 아렌델을 즐겁게 해준다.”"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_horizontal_line_iv" />
+
+            <TextView
+                android:id="@+id/detail_comment_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="후기"
+                android:textColor="#1E005D"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+
+            <ImageView
+                android:id="@+id/detail_yellow_circle_iv"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_yellow_cicle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/small_horizontal"
+                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/small_vertical"
+                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"/>
+
+            <ImageView
+                android:id="@+id/detail_comment_border1_iv"
+                android:layout_width="400dp"
+                android:layout_height="110dp"
+                android:src="@drawable/comment_border"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_title_tv"
+                android:layout_marginTop="60dp"/>
+
+            <ImageView
+                android:id="@+id/detail_comment_user_profile1_iv"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/img_yellow_cicle_empty"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_border1_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border1_iv"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/detail_comment_user_nickname1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="슈퍼소닉"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile1_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border1_iv"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/detail_comment_text1_tv"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname1_tv"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname1_tv"
+                android:layout_marginTop="6dp" />
+
+            <ImageView
+                android:id="@+id/detail_comment_border2_iv"
+                android:layout_width="400dp"
+                android:layout_height="110dp"
+                android:src="@drawable/comment_border"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_border1_iv"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:id="@+id/detail_comment_user_profile2_iv"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/img_yellow_cicle_empty"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_border2_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border2_iv"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/detail_comment_user_nickname2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보라보라돌이"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile2_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border2_iv"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/detail_comment_text2_tv"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="겨울왕국2에서 올라프가 전작 요약해준것처럼 다른 디즈니 작품들을 3분요약 해주는..."
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname2_tv"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname2_tv"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/detail_comment_move_btn_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                android:textSize="11sp"
+                android:textColor="#C4C4C4"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_text2_tv"
+                app:layout_constraintEnd_toEndOf="@+id/detail_comment_border2_iv"
+                android:layout_marginEnd="40dp"/>
+
+            <ImageView
+                android:id="@+id/detail_comment_border3_iv"
+                android:layout_width="400dp"
+                android:layout_height="110dp"
+                android:src="@drawable/comment_border"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_border2_iv"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:id="@+id/detail_comment_user_profile3_iv"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/img_yellow_cicle_empty"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_border3_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border3_iv"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/detail_comment_user_nickname3_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="엘리"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile3_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_comment_border3_iv"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/detail_comment_text3_tv"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="너무 너무 재미가 있어요"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname3_tv"
+                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname3_tv"
+                android:layout_marginTop="6dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
