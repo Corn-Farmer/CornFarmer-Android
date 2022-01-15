@@ -33,19 +33,35 @@
         app:layout_constraintStart_toEndOf="@+id/profile_back_iv"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <LinearLayout
         android:id="@+id/profile_finish_iv"
         android:layout_width="32dp"
-        android:layout_height="20dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="76dp"
-        android:src="@drawable/profile_finish"
         app:layout_constraintBottom_toTopOf="@+id/profile_image_rl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profile_profile_iv"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="20dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:src="@drawable/profile_finish"
+            />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:src="@drawable/profile_next"
+            />
+
+    </LinearLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/profile_image_rl"
