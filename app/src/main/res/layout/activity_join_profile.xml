@@ -73,7 +73,7 @@
             android:layout_marginStart="134dp"
             android:layout_marginEnd="34dp"
             android:layout_marginTop="154dp"
-            android:src="@drawable/img" />
+            android:src="@drawable/profile_image_plus" />
 
     </RelativeLayout>
 
