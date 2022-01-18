@@ -7,7 +7,7 @@
     tools:context=".JoinOttActivity">
 
     <ImageView
-        android:id="@+id/profile_back_iv"
+        android:id="@+id/ott_back_iv"
         android:layout_width="16dp"
         android:layout_height="14dp"
         android:layout_marginStart="29dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/profile_finish_iv"
+        android:id="@+id/ott_finish_ll"
         android:layout_width="63dp"
         android:layout_height="20dp"
         android:layout_marginTop="48dp"
@@ -50,18 +50,18 @@
         android:layout_width="255dp"
         android:layout_height="26dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="81dp"
         android:src="@drawable/ott_explain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_back_iv" />
+        app:layout_constraintTop_toBottomOf="@id/ott_finish_ll" />
 
 
     <GridLayout
         android:layout_width="311dp"
         android:layout_height="311dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="10dp"
         android:columnCount="3"
         android:orientation="horizontal"
         android:rowCount="3"
