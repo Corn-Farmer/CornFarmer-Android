@@ -26,17 +26,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/ott_jump_iv"
             android:layout_width="63dp"
             android:layout_height="20dp"
             android:src="@drawable/ott_jump" />
 
         <ImageView
+            android:id="@+id/ott_finish_no_color_iv"
             android:layout_width="63dp"
             android:layout_height="20dp"
             android:src="@drawable/ott_select_finish_no_color"
             android:visibility="gone" />
 
         <ImageView
+            android:id="@+id/ott_finish_color_iv"
             android:layout_width="63dp"
             android:layout_height="20dp"
             android:src="@drawable/ott_select_finish"
@@ -74,12 +77,14 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_no_use_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ott_no_use" />
 
             <ImageView
+                android:id="@+id/ott_no_use_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginEnd="16dp"
@@ -91,12 +96,14 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_netflix_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ott_netflix" />
 
             <ImageView
+                android:id="@+id/ott_netflix_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginEnd="16dp"
@@ -108,11 +115,13 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_whatcha_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:src="@drawable/ott_whatcha" />
 
             <ImageView
+                android:id="@+id/ott_whatcha_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:src="@drawable/ott_whatcha_select"
@@ -123,6 +132,7 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_disney_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -130,6 +140,7 @@
                 android:src="@drawable/ott_disney" />
 
             <ImageView
+                android:id="@+id/ott_disney_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -142,6 +153,7 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_wavve_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -149,6 +161,7 @@
                 android:src="@drawable/ott_wavve" />
 
             <ImageView
+                android:id="@+id/ott_wavve_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -162,12 +175,14 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_tving_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ott_tving" />
 
             <ImageView
+                android:id="@+id/ott_tving_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -179,6 +194,7 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_coupang_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -186,6 +202,7 @@
                 android:src="@drawable/ott_coupang" />
 
             <ImageView
+                android:id="@+id/ott_coupang_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -198,6 +215,7 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_prime_video_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -205,6 +223,7 @@
                 android:src="@drawable/ott_prime_video" />
 
             <ImageView
+                android:id="@+id/ott_prime_video_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
@@ -217,12 +236,14 @@
         <LinearLayout>
 
             <ImageView
+                android:id="@+id/ott_apple_tv_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/ott_apple_tv" />
 
             <ImageView
+                android:id="@+id/ott_apple_tv_select_iv"
                 android:layout_width="93dp"
                 android:layout_height="93dp"
                 android:layout_marginTop="16dp"
