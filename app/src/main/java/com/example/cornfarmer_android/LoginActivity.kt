@@ -16,7 +16,17 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.loginNoneLoginBt.setOnClickListener {
+            val intent = Intent(this, JoinProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.loginKakaoLoginBt.setOnClickListener {
+            val intent = Intent(this, JoinProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.loginNaverLoginBt.setOnClickListener {
             val intent = Intent(this, JoinProfileActivity::class.java)
             startActivity(intent)
         }
