@@ -8,8 +8,7 @@
 
         <!-- Dim 처리 -->
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
-        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimAmount">0</item>
 
         <item name="android:windowIsFloating">true</item>
 

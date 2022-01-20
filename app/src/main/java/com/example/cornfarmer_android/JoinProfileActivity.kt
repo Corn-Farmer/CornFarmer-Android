@@ -40,17 +40,16 @@ class JoinProfileActivity : AppCompatActivity() {
 
 
         alertDialog.findViewById<Button>(R.id.select_camera_bt)?.setOnClickListener {
-
         }
 
         alertDialog.findViewById<Button>(R.id.select_album_bt)?.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
         }
-//
-//        alertDialog.findViewById<Button>(R.id.select_cancel_bt)?.setOnClickListener {
-//
-//        }
+
+        alertDialog.findViewById<ImageView>(R.id.select_cancel_bt)?.setOnClickListener {
+            alertDialog.dismiss()
+        }
 
 
 
