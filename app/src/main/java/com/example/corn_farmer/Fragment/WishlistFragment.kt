@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.cornfarmer_android.databinding.FragmentWishlistBinding
+import com.example.corn_farmer.R
+import com.example.corn_farmer.databinding.FragmentWishlistBinding
 
 class WishlistFragment: Fragment() {
     lateinit var binding : FragmentWishlistBinding

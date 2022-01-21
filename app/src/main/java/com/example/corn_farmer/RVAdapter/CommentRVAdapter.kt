@@ -3,7 +3,7 @@ package com.example.cornfarmer_android
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cornfarmer_android.databinding.ItemCommentBinding
+import com.example.corn_farmer.databinding.ItemCommentBinding
 
 class CommentRVAdapter(private val commentList : ArrayList<comment>) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
 

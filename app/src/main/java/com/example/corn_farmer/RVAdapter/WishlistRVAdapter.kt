@@ -3,7 +3,7 @@ package com.example.cornfarmer_android
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cornfarmer_android.databinding.ItemWishmovieBinding
+import com.example.corn_farmer.databinding.ItemWishmovieBinding
 
 class WishlistRVAdapter(private val wishList : ArrayList<wishMovie>) : RecyclerView.Adapter<WishlistRVAdapter.ViewHolder>() {
 

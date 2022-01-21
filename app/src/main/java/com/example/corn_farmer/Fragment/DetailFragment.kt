@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cornfarmer_android.databinding.FragmentDetailBinding
+import com.example.corn_farmer.databinding.FragmentDetailBinding
 
 class DetailFragment: Fragment() {
     lateinit var binding : FragmentDetailBinding

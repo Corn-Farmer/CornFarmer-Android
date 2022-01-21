@@ -3,7 +3,7 @@ package com.example.cornfarmer_android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cornfarmer_android.databinding.ActivityLoginBinding
+import com.example.corn_farmer.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
