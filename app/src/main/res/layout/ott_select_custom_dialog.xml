@@ -5,27 +5,26 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="141dp"
         android:gravity="center"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
         android:orientation="vertical">
 
 
         <Button
-            android:id="@+id/select_camera_bt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-
-            android:layout_marginEnd="15dp"
+            android:layout_width="308dp"
+            android:layout_height="91dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#000000"
             android:background="@drawable/button_leftside_rightside_round_white"
             android:text="더 많은 정보를 입력하면\n 추천에 도움이 될거에요!" />
 
 
 
             <View
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#FFD400"
@@ -37,20 +36,22 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/select_camera_bt"
-                android:layout_marginStart="15dp"
+                android:id="@+id/select_next_time_bt"
+                android:layout_width="153dp"
+                android:textSize="17sp"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="#7D7D7D"
+                android:layout_height="50dp"
                 android:background="@drawable/ott_button_left_bottom_round"
-                android:text="다음에 할게요"/>
+                android:text="다음에 할게요."/>
 
             <Button
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/select_camera_bt"
-                android:layout_marginEnd="15dp"
+                android:id="@+id/select_ok_bt"
+                android:textSize="17sp"
+                android:textColor="#31009A"
+                android:fontFamily="@font/robotoregular"
+                android:layout_width="155dp"
+                android:layout_height="50dp"
                 android:background="@drawable/ott_button_right_bottom_round"
                 android:text="확인"/>
 

@@ -37,7 +37,7 @@ class JoinProfileActivity : AppCompatActivity() {
 
     private fun showDialog(){
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.image_select_custom_dialog, null)
-        val mBuilder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        val mBuilder = AlertDialog.Builder(this, R.style.SelectAlertDialog)
             .setView(mDialogView)
 
         val alertDialog = mBuilder.show()

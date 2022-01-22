@@ -20,7 +20,7 @@ class JoinNicknameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.nicknameFinishColorIv.setOnClickListener {
-            val intent = Intent(this, JoinOttActivity::class.java)
+            val intent = Intent(this, SplashJoinActivity::class.java)
             startActivity(intent)
         }
 
@@ -37,7 +37,7 @@ class JoinNicknameActivity : AppCompatActivity() {
                 if(binding.nicknameNicknameEt.length() == 0){
                     binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
-                }else{
+                }else if(binding.nicknameNicknameEt.length() > 2){
                     binding.nicknameFinishIv.visibility = View.GONE
                     binding.nicknameFinishColorIv.visibility = View.VISIBLE
                 }
