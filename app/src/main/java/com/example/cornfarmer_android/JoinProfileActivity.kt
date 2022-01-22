@@ -14,7 +14,7 @@ import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 
 class JoinProfileActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityJoinProfileBinding
+    private lateinit var binding: ActivityJoinProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

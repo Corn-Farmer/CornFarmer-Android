@@ -11,7 +11,7 @@ import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 
 class JoinNicknameActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityJoinNicknameBinding
+    private lateinit var binding: ActivityJoinNicknameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

@@ -8,7 +8,7 @@ import com.example.cornfarmer_android.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
 
 
-    lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
