@@ -98,6 +98,7 @@
     <ImageView
         android:id="@+id/nickname_using_nickname_iv"
         android:layout_width="154dp"
+        android:visibility="invisible"
         android:layout_height="15dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"

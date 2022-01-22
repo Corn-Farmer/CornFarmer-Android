@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +24,11 @@ class JoinProfileActivity : AppCompatActivity() {
 
         binding.profileImagePlusIv.setOnClickListener{
             showDialog()
+        }
+
+        binding.profileNextIv.setOnClickListener {
+            val intent = Intent(this, JoinNicknameActivity::class.java)
+            startActivity(intent)
         }
 
 
@@ -45,6 +51,8 @@ class JoinProfileActivity : AppCompatActivity() {
         alertDialog.findViewById<Button>(R.id.select_album_bt)?.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
+            binding.profileFinishIv.visibility = View.GONE
+            binding.profileNextIv.visibility = View.VISIBLE
         }
 
         alertDialog.findViewById<ImageView>(R.id.select_cancel_bt)?.setOnClickListener {
