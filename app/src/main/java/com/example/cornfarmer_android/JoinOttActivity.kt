@@ -40,6 +40,15 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
+        binding.ottBackIv.setOnClickListener {
+            finish()
+        }
+
+        bindOtt()
+
+    }
+
+    private fun bindOtt(){
         binding.ottNoUseIv.setOnClickListener(this)
         binding.ottNoUseSelectIv.setOnClickListener(this)
         binding.ottNetflixIv.setOnClickListener(this)
@@ -58,7 +67,6 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
         binding.ottPrimeVideoSelectIv.setOnClickListener(this)
         binding.ottAppleTvIv.setOnClickListener(this)
         binding.ottAppleTvSelectIv.setOnClickListener(this)
-
 
 
     }
@@ -178,6 +186,8 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottAppleTvSelectIv.visibility = View.GONE
             }
         }
+
+        binding.ottJumpIv.visibility = View.GONE
 
         if(ottNum == 0){
             binding.ottFinishColorIv.visibility = View.GONE

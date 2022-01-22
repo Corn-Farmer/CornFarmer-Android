@@ -31,6 +31,10 @@ class JoinProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.profileBackIv.setOnClickListener {
+            finish()
+        }
+
 
 
     }

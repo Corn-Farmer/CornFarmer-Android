@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/genre_finish_iv"
+        android:id="@+id/genre_finish_ll"
         android:layout_width="32dp"
         android:layout_height="20dp"
         android:layout_marginTop="48dp"
@@ -26,12 +26,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/genre_finish_iv"
             android:layout_width="32dp"
             android:layout_height="20dp"
             android:src="@drawable/genre_finish" />
 
 
         <ImageView
+            android:id="@+id/genre_finish_color_iv"
             android:layout_width="32dp"
             android:layout_height="20dp"
             android:src="@drawable/genre_finish_color"
@@ -42,7 +44,7 @@
     <ImageView
         android:layout_width="268dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genre_finish_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_finish_ll"
         android:layout_marginTop="72dp"
         android:layout_marginStart="24dp"
         android:src="@drawable/gerne_explain"
