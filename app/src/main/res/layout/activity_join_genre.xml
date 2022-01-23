@@ -6,49 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".JoinGenreActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/genre_cl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/genre_back_iv"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="47dp"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/genre_finish_ll"
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="41dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/genre_back_iv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/genre_finish_iv"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:src="@drawable/genre_finish" />
 
 
-        <TextView
-            android:id="@+id/genre_finish_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="완료"
-            android:textColor="#000080"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/genre_finish_color_iv"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:src="@drawable/genre_finish_color"
+            android:visibility="gone" />
 
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/genre_explain_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="70dp"
-        android:text="선호하는 장르를 선택해주세요!"
-        android:textColor="#000080"
-        android:textSize="25sp"
-        android:textStyle="bold"
+    <ImageView
+        android:layout_width="268dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genre_cl" />
+        app:layout_constraintTop_toBottomOf="@id/genre_finish_ll"
+        android:layout_marginTop="72dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/gerne_explain"
+        android:layout_height="26dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

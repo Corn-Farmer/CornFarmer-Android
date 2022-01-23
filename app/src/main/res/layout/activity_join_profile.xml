@@ -6,77 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".JoinProfileActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/profile_back_iv"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="47dp"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profile_profile_iv"
+        android:layout_width="67dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="146dp"
+        android:src="@drawable/profile_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/profile_finish_ll"
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/profile_back_iv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/profile_finish_iv"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:src="@drawable/profile_finish" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="프로필"
-            android:textColor="#000080"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/profile_next_iv"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:src="@drawable/profile_next"
+            android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/profile_finish_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="완료"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/profile_image_rl"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:layout_height="wrap_content">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image_civ"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/round_image_shadow"
-            />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_profile_iv">
 
         <ImageView
-            android:id="@+id/profile_plus_iv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignEnd="@+id/profile_image_civ"
-            android:layout_alignBottom="@+id/profile_image_civ"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/ic_baseline_add_circle_24" />
+            android:id="@+id/profile_image_iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/profile_image" />
 
+        <ImageView
+            android:id="@+id/profile_image_plus_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="134dp"
+            android:layout_marginTop="154dp"
+            android:layout_marginEnd="34dp"
+            android:src="@drawable/profile_image_plus" />
 
     </RelativeLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
