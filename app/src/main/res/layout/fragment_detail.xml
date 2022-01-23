@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="872dp"
+        android:layout_height="1005dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -166,7 +167,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_disney_plus"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_genre_tv"
-                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv" />
 
             <ImageView
                 android:id="@+id/detail_horizontal_line_iv"
@@ -220,165 +221,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/small_horizontal"
-                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv"
                 app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"
                 app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"/>
+                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/small_vertical"
-                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv"
                 app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"
                 app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"/>
+                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv" />
 
-            <ImageView
-                android:id="@+id/detail_comment_border1_iv"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_comment_RV"
                 android:layout_width="400dp"
-                android:layout_height="110dp"
-                android:src="@drawable/comment_border"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_comment_title_tv"
-                android:layout_marginTop="60dp"/>
-
-            <ImageView
-                android:id="@+id/detail_comment_user_profile1_iv"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/img_yellow_cicle_empty"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_border1_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border1_iv"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/detail_comment_user_nickname1_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="슈퍼소닉"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile1_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border1_iv"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="8dp"/>
-
-            <TextView
-                android:id="@+id/detail_comment_text1_tv"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!"
-                android:textColor="#515151"
-                android:textSize="11sp"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname1_tv"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname1_tv"
-                android:layout_marginTop="6dp" />
-
-            <ImageView
-                android:id="@+id/detail_comment_border2_iv"
-                android:layout_width="400dp"
-                android:layout_height="110dp"
-                android:src="@drawable/comment_border"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_border1_iv"
-                android:layout_marginTop="16dp"/>
-
-            <ImageView
-                android:id="@+id/detail_comment_user_profile2_iv"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/img_yellow_cicle_empty"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_border2_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border2_iv"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/detail_comment_user_nickname2_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="보라보라돌이"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile2_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border2_iv"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="8dp"/>
-
-            <TextView
-                android:id="@+id/detail_comment_text2_tv"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="겨울왕국2에서 올라프가 전작 요약해준것처럼 다른 디즈니 작품들을 3분요약 해주는..."
-                android:textColor="#515151"
-                android:textSize="11sp"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname2_tv"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname2_tv"
-                android:layout_marginTop="6dp" />
-
-            <TextView
-                android:id="@+id/detail_comment_move_btn_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="더보기"
-                android:textSize="11sp"
-                android:textColor="#C4C4C4"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_text2_tv"
-                app:layout_constraintEnd_toEndOf="@+id/detail_comment_border2_iv"
-                android:layout_marginEnd="40dp"/>
-
-            <ImageView
-                android:id="@+id/detail_comment_border3_iv"
-                android:layout_width="400dp"
-                android:layout_height="110dp"
-                android:src="@drawable/comment_border"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_border2_iv"
-                android:layout_marginTop="16dp"/>
-
-            <ImageView
-                android:id="@+id/detail_comment_user_profile3_iv"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/img_yellow_cicle_empty"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_border3_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border3_iv"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/detail_comment_user_nickname3_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="엘리"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile3_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_comment_border3_iv"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="8dp"/>
-
-            <TextView
-                android:id="@+id/detail_comment_text3_tv"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="너무 너무 재미가 있어요"
-                android:textColor="#515151"
-                android:textSize="11sp"
-                app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname3_tv"
-                app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname3_tv"
-                android:layout_marginTop="6dp" />
+                tools:listitem="@layout/item_comment" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
