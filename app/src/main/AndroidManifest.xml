@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cornfarmer_android">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.example.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,11 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid">
 
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.cornfarmer_android.FileProvider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
@@ -26,9 +30,6 @@
 
         <activity
             android:name=".SplashJoinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".JoinSplash"
             android:exported="false" />
         <activity
             android:name=".JoinGenreActivity"
@@ -54,8 +55,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.example.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9"/>
+
+            </intent-filter>
+
+        </activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.corn_farmer.MainActivity"
             android:exported="true" />
     </application>
 
