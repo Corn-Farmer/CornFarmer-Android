@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.set
+import com.example.KLoginService
+import com.example.KakaoResponse
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.min
 
 class JoinProfileActivity : AppCompatActivity() {
@@ -43,11 +51,38 @@ class JoinProfileActivity : AppCompatActivity() {
 
     private var photoUri: Uri? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityJoinProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("http://3.34.223.58:9000")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        val kloginService = retrofit.create(KLoginService::class.java)
+//
+//        kloginService.klogin(token!!).enqueue(object : Callback<KakaoResponse> {
+//            override fun onResponse(
+//                call: Call<KakaoResponse>,
+//                response: Response<KakaoResponse>
+//            ) {
+//                Log.d("LEE", response.toString())
+//            }
+//            override fun onFailure(call: Call<KakaoResponse>, t: Throwable) {
+//                Log.d("LEE", t.message.toString())
+//
+//            }
+//
+//        })
+
+
 
         checkPermissions(PERMISSIONS, PERMISSIONS_REQUEST)
 
