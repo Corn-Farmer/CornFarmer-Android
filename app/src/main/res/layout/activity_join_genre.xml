@@ -42,12 +42,187 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/genre_detail_iv"
         android:layout_width="268dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genre_finish_ll"
-        android:layout_marginTop="72dp"
+        android:layout_height="26dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="72dp"
         android:src="@drawable/gerne_explain"
-        android:layout_height="26dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_finish_ll" />
+
+
+    <ImageView
+        android:id="@+id/genre_detail_iv2"
+        android:layout_width="146dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/genre_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_detail_iv" />
+
+    <ImageView
+        android:id="@+id/genre_dacu_iv"
+        android:layout_width="127dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/genre_dacy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_detail_iv2" />
+
+    <ImageView
+        android:id="@+id/genre_anime_iv"
+        android:layout_width="127dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/genre_anime"
+        app:layout_constraintStart_toEndOf="@id/genre_dacu_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_detail_iv2" />
+
+    <ImageView
+        android:id="@+id/genre_fantasy_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_fantasy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_dacu_iv" />
+
+    <ImageView
+        android:id="@+id/genre_thrill_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/gerne_thrill"
+        app:layout_constraintStart_toEndOf="@id/genre_fantasy_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_dacu_iv" />
+
+
+    <ImageView
+        android:id="@+id/genre_sport_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_sprots"
+        app:layout_constraintStart_toEndOf="@id/genre_thrill_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_dacu_iv" />
+
+    <ImageView
+        android:id="@+id/genre_romance_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/gerne_romance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_fantasy_iv" />
+
+    <ImageView
+        android:id="@+id/genre_drama_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_drama"
+        app:layout_constraintStart_toEndOf="@id/genre_fantasy_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_fantasy_iv" />
+
+
+    <ImageView
+        android:id="@+id/genre_comedy_iv"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_comedy"
+        app:layout_constraintStart_toEndOf="@id/genre_thrill_iv"
+        app:layout_constraintTop_toBottomOf="@id/genre_fantasy_iv" />
+
+    <ImageView
+        android:id="@+id/genre_family_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_family"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genre_romance_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_music_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_music"
+        app:layout_constraintStart_toEndOf="@+id/genre_family_iv"
+        app:layout_constraintTop_toBottomOf="@+id/genre_romance_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_sf_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_sf"
+        app:layout_constraintStart_toEndOf="@+id/genre_music_iv"
+        app:layout_constraintTop_toBottomOf="@+id/genre_romance_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_action_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_action"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genre_family_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_history_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_history"
+        app:layout_constraintStart_toEndOf="@+id/genre_family_iv"
+        app:layout_constraintTop_toBottomOf="@+id/genre_family_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_horor_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_horor"
+        app:layout_constraintStart_toEndOf="@+id/genre_music_iv"
+        app:layout_constraintTop_toBottomOf="@+id/genre_family_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_crime_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_crime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genre_action_iv"/>
+
+    <ImageView
+        android:id="@+id/genre_war_iv"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/genre_war"
+        app:layout_constraintStart_toEndOf="@+id/genre_crime_iv"
+        app:layout_constraintTop_toBottomOf="@+id/genre_action_iv"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
