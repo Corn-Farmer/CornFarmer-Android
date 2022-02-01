@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.Item.Ott
+import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.RVAdapter.OttRVAdapter
+import com.example.cornfarmer_android.DetailFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentHomeBinding
 
@@ -31,7 +33,13 @@ class HomeFragment : Fragment() {
         val ottRVAdapter = OttRVAdapter(ottDatas)
         binding.homeOttItemRecyclerview.adapter = ottRVAdapter
         binding.homeOttItemRecyclerview.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-
+        ottRVAdapter.setMyItemClickListener(object : OttRVAdapter.MyItemClickListener {
+            override fun onItemClick(ott: Ott, position: Int) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, DetailFragment(position+15))
+                    .commitAllowingStateLoss()
+            }
+        })
             return binding.root
     }
 }

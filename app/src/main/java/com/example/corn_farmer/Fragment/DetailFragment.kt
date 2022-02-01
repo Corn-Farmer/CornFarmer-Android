@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.corn_farmer.Fragment.RecommendFragment
 import com.example.corn_farmer.Item.getMovieDetailAPI
 import com.example.corn_farmer.Item.getReviewList
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.RVAdapter.OttserviceRVAdapter
 import com.example.corn_farmer.detailMovieService
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 import retrofit2.*
@@ -69,18 +71,28 @@ class DetailFragment(val movieIdx: Int): Fragment() {
                     // 영화 정보
                     val movieInfo = response.body()!!.result
                     binding.detailMovieTitleTv.text = movieInfo?.movieName
-                    binding.detailMovieReleaseTv.text = movieInfo?.releaseYear.toString()
+                    binding.detailMovieReleaseTv.text = "(${movieInfo?.releaseYear.toString()}년 개봉)"
                     binding.detailMovieGenreTv.text = movieInfo?.movieGenreList?.joinToString(separator = ",")
                     binding.detailMovieStoryTv.text = movieInfo?.synopsis
                     binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
                     Glide.with(context!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
 
+                    // ott 정보 리사이클러뷰
+                    val ottList = movieInfo.ottList
+
+                    val OttserviceRvAdapter = OttserviceRVAdapter(ottList)
+                    binding.detailOttServiceRv.adapter = OttserviceRvAdapter
+                    binding.detailOttServiceRv.layoutManager = LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                    )
 
                     // 댓글 리사이클러뷰
                     val reviewInfo = movieInfo.reviewList
 
-                    val RVadapter = CommentRVAdapter(reviewInfo)
-                    binding.detailCommentRV.adapter = RVadapter
+                    val ReviewRVadapter = CommentRVAdapter(reviewInfo)
+                    binding.detailCommentRV.adapter = ReviewRVadapter
                     binding.detailCommentRV.layoutManager = LinearLayoutManager(
                         context,
                         LinearLayoutManager.VERTICAL,

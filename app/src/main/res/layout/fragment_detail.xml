@@ -148,26 +148,40 @@
                 app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_title_tv" />
 
-            <ImageView
-                android:id="@+id/detail_ott_image_iv"
-                android:layout_width="50dp"
+<!--            <ImageView-->
+<!--                android:id="@+id/detail_ott_image_iv"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="-10dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/ic_disney_plus"-->
+<!--                app:layout_constraintStart_toStartOf="@id/detail_movie_genre_tv"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_ott_service_rv"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_marginStart="-10dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_disney_plus"
-                app:layout_constraintStart_toStartOf="@id/detail_movie_genre_tv"
-                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/detail_horizontal_line_iv"
+                tools:listitem="@layout/item_ott_service"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="34dp"/>
 
             <ImageView
                 android:id="@+id/detail_horizontal_line_iv"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/horizontal_line"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_ott_service_rv" />
 
             <TextView
                 android:id="@+id/detail_movie_story_tv"

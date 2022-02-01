@@ -39,7 +39,7 @@ class RecommendFragment : Fragment() {
         ottRVAdapter.setMyItemClickListener(object : OttRVAdapter.MyItemClickListener {
             override fun onItemClick(ott: Ott, position: Int) {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(position))
+                    .replace(R.id.main_frame, DetailFragment(position+15))
                     .commitAllowingStateLoss()
             }
         })
