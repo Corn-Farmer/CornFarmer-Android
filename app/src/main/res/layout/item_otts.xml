@@ -80,4 +80,13 @@
         android:textColor="#FFFFFF"
         />
 
+    <TextView
+        android:id="@+id/item_ott_movieIdx_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
