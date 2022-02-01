@@ -4,10 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import com.example.cornfarmer_android.databinding.ActivityJoinNicknameBinding
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
+import java.util.regex.Pattern
 
 class JoinNicknameActivity : AppCompatActivity() {
 
@@ -18,6 +21,7 @@ class JoinNicknameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinNicknameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.nicknameFinishColorIv.setOnClickListener {
             val intent = Intent(this, SplashJoinActivity::class.java)
@@ -51,4 +55,8 @@ class JoinNicknameActivity : AppCompatActivity() {
         })
 
     }
+
+
+
+
 }
