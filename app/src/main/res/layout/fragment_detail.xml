@@ -6,38 +6,27 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
-        android:layout_width="872dp"
-        android:layout_height="1005dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/detail_previous_btn1_iv"
-                android:layout_width="7dp"
-                android:layout_height="14dp"
+                android:id="@+id/detail_previous_btn_iv"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="38dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_back_btn1"
+                android:src="@drawable/back"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/detail_previous_btn2_iv"
-                android:layout_width="7dp"
-                android:layout_height="14dp"
-                android:layout_marginTop="38dp"
-                android:scaleType="center"
-                android:src="@drawable/ic_back_btn2"
-                app:layout_constraintStart_toEndOf="@id/detail_previous_btn1_iv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -81,15 +70,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv" />
 
-            <ImageView
-                android:id="@+id/detail_movie_logo_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/logo_movie_example1"
-                app:layout_constraintStart_toStartOf="@id/detail_movie_image_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_movie_image_iv" />
+<!--            <ImageView-->
+<!--                android:id="@+id/detail_movie_logo_iv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:src="@drawable/logo_movie_example1"-->
+<!--                app:layout_constraintStart_toStartOf="@id/detail_movie_image_iv"-->
+<!--                app:layout_constraintTop_toTopOf="@id/detail_movie_image_iv" />-->
 
             <ImageView
                 android:id="@+id/detail_movie_heart_iv"
@@ -207,7 +196,7 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
 
             <ImageView
-                android:id="@+id/detail_yellow_circle_iv"
+                android:id="@+id/detail_plus_comment_iv"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="25dp"
@@ -221,19 +210,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/small_horizontal"
-                app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv" />
+                app:layout_constraintBottom_toBottomOf="@id/detail_plus_comment_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_plus_comment_iv"
+                app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/small_vertical"
-                app:layout_constraintBottom_toBottomOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintEnd_toEndOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintStart_toStartOf="@id/detail_yellow_circle_iv"
-                app:layout_constraintTop_toTopOf="@id/detail_yellow_circle_iv" />
+                app:layout_constraintBottom_toBottomOf="@id/detail_plus_comment_iv"
+                app:layout_constraintEnd_toEndOf="@id/detail_plus_comment_iv"
+                app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
+                app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_comment_RV"

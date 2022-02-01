@@ -9,6 +9,16 @@ import com.example.cornfarmer_android.databinding.ItemOttsBinding
 
 class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<OttRVAdapter.Viewholder>(){
 
+    interface MyItemClickListener{
+        fun onItemClick(ott: Ott, position: Int)
+    }
+
+    private lateinit var myItemClickListener: MyItemClickListener
+
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
+        myItemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         val binding : ItemOttsBinding = ItemOttsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
 
@@ -17,6 +27,10 @@ class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bind(ottList[position])
+        holder.itemView.setOnClickListener {
+            myItemClickListener.onItemClick(ottList[position], position)
+            holder.bind(ottList[position])
+        }
     }
 
     override fun getItemCount(): Int {

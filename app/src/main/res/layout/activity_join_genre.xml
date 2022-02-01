@@ -29,7 +29,8 @@
             android:id="@+id/genre_finish_iv"
             android:layout_width="32dp"
             android:layout_height="20dp"
-            android:src="@drawable/genre_finish" />
+            android:src="@drawable/genre_finish"
+            android:visibility="visible"/>
 
 
         <ImageView
