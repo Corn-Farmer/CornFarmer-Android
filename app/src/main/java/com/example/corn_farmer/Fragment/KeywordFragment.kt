@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.Item.Keyword
+import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.RVAdapter.KeywordRVAdapter
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment() {
@@ -43,6 +45,14 @@ class KeywordFragment : Fragment() {
 
 
         })
+
+        binding.keywordCompleteBtnIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, RecommendFragment())
+                .commitAllowingStateLoss()
+        }
+
+
 
         return binding.root
     }
