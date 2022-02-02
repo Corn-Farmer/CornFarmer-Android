@@ -122,7 +122,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
 
             Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
 
-            val sharedPreferences = getSharedPreferences("gallerypic", MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("gallerypic", byteArray.toString())
             editor.commit()
@@ -139,7 +139,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
 
             Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
 
-            val sharedPreferences = getSharedPreferences("camerapic", MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("camerapic", byteArray.toString())
             editor.commit()
