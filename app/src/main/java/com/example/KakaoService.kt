@@ -11,6 +11,7 @@ import retrofit2.http.Query
 class KakaoService {
 
     private lateinit var kakaoView: KakaoView
+    var list: String
 
     fun setKakaoView(kakaoView: KakaoView){
         this.kakaoView = kakaoView
