@@ -4,9 +4,11 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Path
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,12 +18,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.KakaoService
 import com.example.KakaoView
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+import java.util.*
 import kotlin.math.min
 
 class JoinProfileActivity : AppCompatActivity(), KakaoView {
@@ -99,6 +105,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -108,11 +115,34 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
+
+            var outputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            var byteArray = outputStream.toByteArray()
+
+            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+
+            val sharedPreferences = getSharedPreferences("gallerypic", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("gallerypic", byteArray.toString())
+            editor.commit()
+
         } else if (resultCode == RESULT_OK && requestCode == 100) {
             binding.profileFinishIv.visibility = View.GONE
             binding.profileNextIv.visibility = View.VISIBLE
             val imageBitmap = data?.extras?.get("data") as Bitmap
             binding.profileImageIv.setImageBitmap(imageBitmap.cropCircularArea(10))
+
+            var outputStream = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            var byteArray = outputStream.toByteArray()
+
+            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+
+            val sharedPreferences = getSharedPreferences("camerapic", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("camerapic", byteArray.toString())
+            editor.commit()
         }
 
     }
@@ -203,12 +233,14 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
         kakaoService.setKakaoView(this)
 
         kakaoService.kLogin(accessToken)
+
     }
 
     override fun onKakaoLoginLoading() {
     }
 
     override fun onKakaoLoginSuccess() {
+
     }
 
     override fun onKakaoLoginFailure(code: Int, message: String) {

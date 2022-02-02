@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("kakaotoken", token.accessToken)
                 editor.commit()
 
-                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, JoinProfileActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()

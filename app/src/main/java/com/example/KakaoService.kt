@@ -22,6 +22,7 @@ class KakaoService {
         kakaoView.onKakaoLoginLoading()
 
         kakaoService.kLogin(accessToken).enqueue(object : Callback<KakaoResponse>{
+
             override fun onResponse(call: Call<KakaoResponse>, response: Response<KakaoResponse>) {
                 Log.d("KakaoLogin/RESPONSE", response.toString())
 
@@ -29,12 +30,15 @@ class KakaoService {
 
                 Log.d("KakaoLogin/API-RESPONSE", resp.toString())
 
+
             }
 
             override fun onFailure(call: Call<KakaoResponse>, t: Throwable) {
                 Log.d("KakaoLogin/API-ERROR", t.toString())
 
                 kakaoView.onKakaoLoginFailure(400, "네트워크 오류가 발생했습니다.")
+
+
             }
 
         })
