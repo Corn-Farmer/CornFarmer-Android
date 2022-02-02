@@ -5,24 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.KLoginService
-import com.example.KakaoResponse
+import com.example.KakaoService
+import com.example.KakaoView
 import com.example.cornfarmer_android.databinding.ActivityLoginBinding
+import com.google.gson.Gson
 import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
-import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityLoginBinding
+    private var gson: Gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -77,7 +73,12 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             } else if (token != null) {
-                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+
+                val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("kakaotoken", token.accessToken)
+                editor.commit()
+
                 val intent = Intent(this, JoinProfileActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
@@ -98,9 +99,6 @@ class LoginActivity : AppCompatActivity() {
                 LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
 
-
-
-
         }
 
         binding.loginNaverLoginBt.setOnClickListener {
@@ -109,5 +107,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+
     }
+
+
+
+
+
+
 }

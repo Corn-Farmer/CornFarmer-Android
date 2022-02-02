@@ -23,7 +23,9 @@ class JoinNicknameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         binding.nicknameFinishColorIv.setOnClickListener {
+            signUp()
             val intent = Intent(this, SplashJoinActivity::class.java)
             startActivity(intent)
         }
@@ -53,6 +55,36 @@ class JoinNicknameActivity : AppCompatActivity() {
             }
 
         })
+
+    }
+
+    private fun signUp(){
+
+        if (binding.loginBirthdayEt.text.toString().isEmpty()
+            || binding.loginBirthdayMonthEt.text.toString().isEmpty()
+            || binding.loginBirthdayDayEt.text.toString().isEmpty()){
+            Toast.makeText(this, "생녈월일 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        if(binding.nicknameSexEt.text.toString().isEmpty()){
+            Toast.makeText(this, "성별 형식이 잘못되었습니다", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        if (binding.nicknameNicknameEt.text.toString().isEmpty()){
+            Toast.makeText(this, "닉네임 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
+        editor.putString("sex", binding.nicknameSexEt.text.toString())
+        editor.putString("birthday", binding.loginBirthdayEt.text.toString() +
+                binding.loginBirthdayMonthEt.text.toString() +
+                binding.loginBirthdayDayEt.text.toString())
+        editor.commit()
 
     }
 

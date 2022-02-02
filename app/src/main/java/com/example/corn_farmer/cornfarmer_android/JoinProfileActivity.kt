@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Path
 import android.net.Uri
@@ -11,28 +12,25 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.set
-import com.example.KLoginService
-import com.example.KakaoResponse
+import com.example.KakaoService
+import com.example.KakaoView
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+import java.util.*
 import kotlin.math.min
 
-class JoinProfileActivity : AppCompatActivity() {
+class JoinProfileActivity : AppCompatActivity(), KakaoView {
 
     private lateinit var binding: ActivityJoinProfileBinding
 
@@ -52,37 +50,11 @@ class JoinProfileActivity : AppCompatActivity() {
     private var photoUri: Uri? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityJoinProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("http://3.34.223.58:9000")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        val kloginService = retrofit.create(KLoginService::class.java)
-//
-//        kloginService.klogin(token!!).enqueue(object : Callback<KakaoResponse> {
-//            override fun onResponse(
-//                call: Call<KakaoResponse>,
-//                response: Response<KakaoResponse>
-//            ) {
-//                Log.d("LEE", response.toString())
-//            }
-//            override fun onFailure(call: Call<KakaoResponse>, t: Throwable) {
-//                Log.d("LEE", t.message.toString())
-//
-//            }
-//
-//        })
-
-
 
         checkPermissions(PERMISSIONS, PERMISSIONS_REQUEST)
 
@@ -98,6 +70,8 @@ class JoinProfileActivity : AppCompatActivity() {
         binding.profileBackIv.setOnClickListener {
             finish()
         }
+
+
 
     }
 
@@ -131,6 +105,7 @@ class JoinProfileActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -140,16 +115,39 @@ class JoinProfileActivity : AppCompatActivity() {
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
+
+            var outputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            var byteArray = outputStream.toByteArray()
+
+            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("gallerypic", byteArray.toString())
+            editor.commit()
+
         } else if (resultCode == RESULT_OK && requestCode == 100) {
             binding.profileFinishIv.visibility = View.GONE
             binding.profileNextIv.visibility = View.VISIBLE
             val imageBitmap = data?.extras?.get("data") as Bitmap
             binding.profileImageIv.setImageBitmap(imageBitmap.cropCircularArea(10))
+
+            var outputStream = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            var byteArray = outputStream.toByteArray()
+
+            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("camerapic", byteArray.toString())
+            editor.commit()
         }
 
     }
 
-    private fun Bitmap.cropCircularArea(heightY: Int):Bitmap?{
+    private fun Bitmap.cropCircularArea(heightY: Int): Bitmap? {
         val bitmap = Bitmap.createBitmap(
             width, // width in pixels
             height, // height in pixels
@@ -160,11 +158,11 @@ class JoinProfileActivity : AppCompatActivity() {
 
         // create a circular path
         val path = Path()
-        val radius = min(width/2f,height/2f)
+        val radius = min(width / 2f, height / 2f)
         path.apply {
             addCircle(
-                width/2f,
-                height/2f,
+                width / 2f,
+                height / 2f,
                 radius,
                 Path.Direction.CCW
             )
@@ -172,11 +170,11 @@ class JoinProfileActivity : AppCompatActivity() {
 
         // draw circular bitmap on canvas
         canvas.clipPath(path)
-        canvas.drawBitmap(this,0f,0f,null)
+        canvas.drawBitmap(this, 0f, 0f, null)
 
-        val diameter = (radius*2).toInt()
-        val x = (width - diameter)/2
-        val y = (height - diameter)/2
+        val diameter = (radius * 2).toInt()
+        val x = (width - diameter) / 2
+        val y = (height - diameter) / 2
 
         // return cropped circular bitmap
         return Bitmap.createBitmap(
@@ -184,20 +182,24 @@ class JoinProfileActivity : AppCompatActivity() {
             x, // x coordinate of the first pixel in source
             y, // y coordinate of the first pixel in source
             diameter, // width
-            diameter+heightY // height
+            diameter + heightY // height
         )
     }
 
     private fun checkPermissions(permissions: Array<String>, permissionsRequest: Int): Boolean {
-        val permissionList : MutableList<String> = mutableListOf()
-        for(permission in permissions){
+        val permissionList: MutableList<String> = mutableListOf()
+        for (permission in permissions) {
             val result = ContextCompat.checkSelfPermission(this, permission)
-            if(result != PackageManager.PERMISSION_GRANTED){
+            if (result != PackageManager.PERMISSION_GRANTED) {
                 permissionList.add(permission)
             }
         }
-        if(permissionList.isNotEmpty()){
-            ActivityCompat.requestPermissions(this, permissionList.toTypedArray(), PERMISSIONS_REQUEST)
+        if (permissionList.isNotEmpty()) {
+            ActivityCompat.requestPermissions(
+                this,
+                permissionList.toTypedArray(),
+                PERMISSIONS_REQUEST
+            )
             return false
         }
         return true
@@ -209,12 +211,39 @@ class JoinProfileActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        for(result in grantResults){
-            if(result != PackageManager.PERMISSION_GRANTED){
+        for (result in grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "권한 승인 부탁드립니다.", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
+
+        kLogin(kakaotoken.toString())
+    }
+
+    private fun kLogin(accessToken: String) {
+        val kakaoService = KakaoService()
+        kakaoService.setKakaoView(this)
+
+        kakaoService.kLogin(accessToken)
+
+    }
+
+    override fun onKakaoLoginLoading() {
+    }
+
+    override fun onKakaoLoginSuccess() {
+
+    }
+
+    override fun onKakaoLoginFailure(code: Int, message: String) {
     }
 
 }
