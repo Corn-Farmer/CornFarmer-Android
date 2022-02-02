@@ -52,7 +52,6 @@ class DetailFragment(val movieIdx: Int): Fragment(),DetailFragmentView {
                 .commitAllowingStateLoss()
         }
 
-        // http 통신, 영화 정보 가져와서 채워넣기, 댓글 리사이클러뷰
     }
 
 

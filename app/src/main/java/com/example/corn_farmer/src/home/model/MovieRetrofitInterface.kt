@@ -9,6 +9,5 @@ interface MovieRetrofitInterface {
     @GET("/movies/today")
     fun getMovieList(): Call<MovieResponse>
 
-    @GET("movies/keywords")
-    fun getKeywordList(): Call<KeywordResponse>
+
 }
