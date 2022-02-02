@@ -1,4 +1,4 @@
-package com.example.corn_farmer.Fragment
+package com.example.corn_farmer.src.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
