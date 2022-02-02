@@ -45,11 +45,11 @@ class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<
             binding.itemOttTitle.text = ott.title
             binding.itemOttGenre.text = ott.genre
             if(!ott.like){
-                binding.itemOttLikeImgIv.visibility = View.VISIBLE
+                binding.itemOttLikeIv.visibility = View.VISIBLE
                 binding.itemOttLikeFillImgIv.visibility = View.INVISIBLE
             }
             else{
-                binding.itemOttLikeImgIv.visibility = View.INVISIBLE
+                binding.itemOttLikeIv.visibility = View.INVISIBLE
                 binding.itemOttLikeFillImgIv.visibility = View.VISIBLE
             }
             binding.itemOttLikeCountTv.text = ott.likecount.toString()

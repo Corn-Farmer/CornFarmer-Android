@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/search_back_iv"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/back"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/search_search_iv"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/search"
+        app:layout_constraintEnd_toStartOf="@id/search_like_iv"
+        app:layout_constraintBottom_toBottomOf="@id/search_like_iv"
+        android:layout_marginEnd="12dp"
+        />
+    <ImageView
+        android:id="@+id/search_like_iv"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/heartgray"
+        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
+        app:layout_constraintEnd_toStartOf="@id/search_bell_iv"
+        android:layout_marginEnd="12dp"
+        />
+    <ImageView
+        android:id="@+id/search_bell_iv"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:src="@drawable/bell"
+        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="28dp"
+        />
+    <TextView
+        android:id="@+id/search_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지금 바로 궁금한 작품을 찾아보세요!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_back_iv"
+        android:layout_marginTop="40dp"
+        />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/search_search_input_et"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_text_tv"
+        android:background="@drawable/searchbackground"
+        android:layout_marginTop="40dp"
+        />
+    <ImageView
+        android:id="@+id/search_search_button_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/searchblue"
+        app:layout_constraintTop_toBottomOf="@id/search_search_input_et"
+        app:layout_constraintStart_toStartOf="@id/search_search_input_et"
+        android:layout_marginStart="40dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
