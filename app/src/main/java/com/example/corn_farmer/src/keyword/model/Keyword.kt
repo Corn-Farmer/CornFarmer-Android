@@ -1,4 +1,4 @@
-package com.example.corn_farmer.Item
+package com.example.corn_farmer.src.keyword.model
 
 data class Keyword(
     var keyword : String? = "",

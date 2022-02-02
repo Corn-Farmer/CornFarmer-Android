@@ -1,4 +1,5 @@
-package com.example.corn_farmer.Item
+package com.example.corn_farmer.src.detail.model
+
 
 data class getMovieDetailAPI(
     var isSuccess : Boolean,

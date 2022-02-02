@@ -1,4 +1,4 @@
-package com.example.corn_farmer.Item
+package com.example.corn_farmer.src.recommend.model
 
 data class Ott(
     var title : String? = "",

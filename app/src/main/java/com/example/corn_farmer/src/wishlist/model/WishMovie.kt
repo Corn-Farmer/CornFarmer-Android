@@ -1,4 +1,4 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.wishlist.model
 
 data class wishMovie(
     var movie_image : Int,

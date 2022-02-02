@@ -1,13 +1,14 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.wishlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.corn_farmer.src.wishlist.model.wishMovie
 import com.example.cornfarmer_android.databinding.ItemWishmovieBinding
 
 class WishlistRVAdapter(private val wishList : ArrayList<wishMovie>) : RecyclerView.Adapter<WishlistRVAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : WishlistRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val binding : ItemWishmovieBinding = ItemWishmovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }

@@ -18,7 +18,6 @@ class HomeService(var view : HomeFragmentView) {
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 view.onGetMovieListFailure(t.message?:"통신 오류")
             }
-
         })
 
 

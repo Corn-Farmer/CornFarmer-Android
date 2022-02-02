@@ -3,6 +3,7 @@ package com.example.corn_farmer.config
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
+import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,8 +18,6 @@ class Application : Application() {
         lateinit var sRetrofit: Retrofit
         // JWT Token Header 키 값
         val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
-
-
     }
 
     override fun onCreate() {
@@ -29,6 +28,7 @@ class Application : Application() {
         initRetrofitInstance()
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
 
+        KakaoSdk.init(this, "e355d004b5a2901c09d0626d9f643ad9")
 
     }
     private fun initRetrofitInstance(){
@@ -48,3 +48,4 @@ class Application : Application() {
             .build()
     }
 }
+

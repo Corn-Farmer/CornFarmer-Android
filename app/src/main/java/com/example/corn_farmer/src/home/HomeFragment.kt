@@ -25,6 +25,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         var service = HomeService(this)
         service.tryGetMovieList()
 
+
         return binding.root
     }
 

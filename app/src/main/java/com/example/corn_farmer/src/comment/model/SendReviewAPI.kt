@@ -1,4 +1,4 @@
-package com.example.corn_farmer.Item
+package com.example.corn_farmer.src.comment.model
 
 data class sendReviewAPI(
     var movieIdx: Int,

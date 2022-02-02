@@ -1,4 +1,4 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.wishlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentWishlistBinding
+import com.example.corn_farmer.src.wishlist.model.wishMovie
 
 class WishlistFragment: Fragment() {
     lateinit var binding : FragmentWishlistBinding

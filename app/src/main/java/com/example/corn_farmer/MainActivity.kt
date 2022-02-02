@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.profile.ProfileFragment
-import com.example.corn_farmer.Retrofit.RetrofitBuilder
 import com.example.corn_farmer.src.keyword.model.KeywordDto
 import com.example.corn_farmer.src.keyword.model.KeywordResponse
 import com.example.corn_farmer.src.home.model.MovieDto
@@ -38,23 +37,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         ) //전체화면
 
-        //키워드 API 받아오기
-        RetrofitBuilder.api
-            .getKeywordList()
-            .enqueue(object : Callback<KeywordResponse> {
-                override fun onResponse(call: Call<KeywordResponse>, response: Response<KeywordResponse>) {
-                    val keywordResponse = response.body()
-                    val list: List<KeywordDto> = keywordResponse!!.result!!
-                    Log.d("My", "$list")
-                }
 
-                override fun onFailure(call: Call<KeywordResponse>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-                    Log.d("Fail", "Fail")
-                }
-
-
-            })
     } //onCreate
 
 
@@ -68,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             callFragment(HomeFragment())
         }
         binding.mainProfileIv.setOnClickListener {
-            callFragment(SearchFragment())
+            callFragment(ProfileFragment())
         }
     }
 

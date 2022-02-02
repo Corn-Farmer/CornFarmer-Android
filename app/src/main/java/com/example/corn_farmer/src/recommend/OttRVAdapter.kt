@@ -1,10 +1,10 @@
-package com.example.corn_farmer.RVAdapter
+package com.example.corn_farmer.src.recommend
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.corn_farmer.Item.Ott
+import com.example.corn_farmer.src.recommend.model.Ott
 import com.example.cornfarmer_android.databinding.ItemOttsBinding
 
 class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<OttRVAdapter.Viewholder>(){
