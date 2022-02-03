@@ -12,11 +12,10 @@ class KakaoService(var kakaoView: KakaoView, var accessToken: String) {
     fun tryGetUserInfo(){
         val retrofitInterface = Application.sRetrofit.create(KakaoRetrofitInterface::class.java)
         retrofitInterface.getUserInfo(accessToken).enqueue(object : Callback<KakaoResponse>{
+
             override fun onResponse(call: Call<KakaoResponse>, response: Response<KakaoResponse>) {
 
                 kakaoView.onKakaoLoginSuccess(response.body() as KakaoResponse)
-
-
 
             }
 

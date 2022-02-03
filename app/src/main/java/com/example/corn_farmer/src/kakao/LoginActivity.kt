@@ -27,12 +27,6 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
-        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
-        val kakaoService = KakaoService(this, kakaotoken.toString())
-        kakaoService.tryGetUserInfo()
-
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
 
             if (error != null) {
@@ -84,6 +78,10 @@ class LoginActivity : AppCompatActivity(), KakaoView {
                 editor.putString("kakaotoken", token.accessToken)
                 editor.commit()
 
+                val intent = Intent(this, JoinProfileActivity()::class.java)
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
+
 
             }
         }
@@ -115,12 +113,8 @@ class LoginActivity : AppCompatActivity(), KakaoView {
     override fun onKakaoLoginSuccess(response: KakaoResponse) {
         Log.d("Kakao", response.toString())
 
-        if(response.result!!.isNew){
+        if (response.isSuccess && !(response.result!!.isNew)) {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-            finish()
-        }else {
-            val intent = Intent(this, JoinProfileActivity()::class.java)
             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
             finish()
         }
@@ -132,6 +126,15 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         Log.d("Kakao", message)
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
+        val kakaoService = KakaoService(this, kakaotoken.toString())
+        kakaoService.tryGetUserInfo()
     }
 
 
