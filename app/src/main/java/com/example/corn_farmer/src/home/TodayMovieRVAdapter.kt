@@ -13,6 +13,16 @@ import com.example.cornfarmer_android.databinding.ItemOttsBinding
 
 class TodayMovieRVAdapter(private val movieList : List<MovieDto>) : RecyclerView.Adapter<TodayMovieRVAdapter.Viewholder>() {
 
+    interface MyItemClickListener{
+        fun onItemClick(MovieDto: MovieDto, position: Int)
+    }
+
+    private lateinit var myItemClickListener: MyItemClickListener
+
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
+        myItemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         val binding : ItemOttsBinding = ItemOttsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         Log.d("test","test")
@@ -21,6 +31,9 @@ class TodayMovieRVAdapter(private val movieList : List<MovieDto>) : RecyclerView
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bind(movieList[position])
+        holder.itemView.setOnClickListener {
+            myItemClickListener.onItemClick(movieList[position], position)
+        }
     }
 
     override fun getItemCount(): Int = movieList.size

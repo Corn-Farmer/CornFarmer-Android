@@ -7,7 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailService(var view : DetailFragmentView,var movieIdx : Int,var sort : Int) {
+class DetailService(var view : DetailFragmentView, var movieIdx : Int,var sort : Int) {
     fun tryGetMovieInfo(){
         val retrofitInterface = Application.sRetrofit.create(DetailRetrofitInterface::class.java)
         retrofitInterface.getMovieInfo(movieIdx,sort).enqueue(object : Callback<getMovieDetailAPI> {
@@ -19,7 +19,5 @@ class DetailService(var view : DetailFragmentView,var movieIdx : Int,var sort : 
                 view.onGetDetailFailure(t.message?:"통신 오류")
             }
         })
-
-
     }
 }

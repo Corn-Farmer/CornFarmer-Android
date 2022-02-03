@@ -11,6 +11,9 @@ import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.home.model.MovieDto
 import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.detail.DetailFragment
+import com.example.corn_farmer.src.home.model.MovieDto
+import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentHomeBinding
 
@@ -43,9 +46,15 @@ class HomeFragment : Fragment(), HomeFragmentView {
         Log.d("HomeFragment", "$list")
 
         val todayMovieRVAdapter = TodayMovieRVAdapter(list)
-        binding.homeOttItemRecyclerview.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.homeOttItemRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.homeOttItemRecyclerview.adapter = todayMovieRVAdapter
+        todayMovieRVAdapter.setMyItemClickListener(object : TodayMovieRVAdapter.MyItemClickListener {
+            override fun onItemClick(MovieDto: MovieDto, position: Int) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, DetailFragment(MovieDto.movieIdx!!, -1))
+                    .commitAllowingStateLoss()
+            }
+        })
     }
 
     override fun onGetMovieListFailure(message: String) {

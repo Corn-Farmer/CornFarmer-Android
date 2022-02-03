@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.corn_farmer.src.recommend.model.Ott
+import com.bumptech.glide.Glide
+import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.cornfarmer_android.databinding.ItemOttsBinding
 
-class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<OttRVAdapter.Viewholder>(){
+class OttRVAdapter(private val movieInfoList : ArrayList<movieInfo>) : RecyclerView.Adapter<OttRVAdapter.Viewholder>(){
 
     interface MyItemClickListener{
-        fun onItemClick(ott: Ott, position: Int)
+        fun onItemClick(movieInfo: movieInfo, position: Int)
     }
 
     private lateinit var myItemClickListener: MyItemClickListener
@@ -26,25 +27,25 @@ class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
-        holder.bind(ottList[position])
+        holder.bind(movieInfoList[position])
         holder.itemView.setOnClickListener {
-            myItemClickListener.onItemClick(ottList[position], position)
-            holder.bind(ottList[position])
+            myItemClickListener.onItemClick(movieInfoList[position], position)
+            holder.bind(movieInfoList[position])
         }
     }
 
     override fun getItemCount(): Int {
-        return ottList.size
+        return movieInfoList.size
     }
 
 
     inner class Viewholder(val binding : ItemOttsBinding ) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(ott : Ott){
-            binding.itemOttImgIv.setImageResource(ott.Img!!)
-            binding.itemOttTitle.text = ott.title
-            binding.itemOttGenre.text = ott.genre
-            if(!ott.like){
+        fun bind(movieInfo: movieInfo){
+            Glide.with(itemView).load(movieInfo!!.moviePhotoList[0]).into(binding.itemOttImgIv)
+            binding.itemOttTitle.text = movieInfo.movieName
+            binding.itemOttGenre.text = movieInfo.movieGenreList?.joinToString(separator = ",")
+            if(!movieInfo.isLiked){
                 binding.itemOttLikeIv.visibility = View.VISIBLE
                 binding.itemOttLikeFillImgIv.visibility = View.INVISIBLE
             }
@@ -52,7 +53,7 @@ class OttRVAdapter(private val ottList : ArrayList<Ott>) : RecyclerView.Adapter<
                 binding.itemOttLikeIv.visibility = View.INVISIBLE
                 binding.itemOttLikeFillImgIv.visibility = View.VISIBLE
             }
-            binding.itemOttLikeCountTv.text = ott.likecount.toString()
+            binding.itemOttLikeCountTv.text = ""
         }
     }
 }
