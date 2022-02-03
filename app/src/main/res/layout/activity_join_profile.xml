@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JoinProfileActivity">
+    tools:context="com.example.corn_farmer.src.join.JoinProfileActivity">
 
     <ImageView
         android:id="@+id/profile_back_iv"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context="com.example.corn_farmer.src.splash.SplashActivity">
 
     <ImageView
         android:id="@+id/splash_logo_iv"

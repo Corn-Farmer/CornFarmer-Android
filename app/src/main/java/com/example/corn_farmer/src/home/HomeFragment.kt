@@ -12,8 +12,6 @@ import com.example.corn_farmer.src.home.model.MovieDto
 import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.detail.DetailFragment
-import com.example.corn_farmer.src.home.model.MovieDto
-import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentHomeBinding
 

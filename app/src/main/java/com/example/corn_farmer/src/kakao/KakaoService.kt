@@ -1,10 +1,8 @@
-package com.example.corn_farmer.src.login
+package com.example.corn_farmer.src.kakao
 
-import android.util.Log
 import com.example.corn_farmer.config.Application
-import com.example.corn_farmer.src.login.model.KakaoResponse
-import com.example.corn_farmer.src.login.model.KakaoRetrofitInterface
-import com.example.getRetrofit
+import com.example.corn_farmer.src.kakao.model.KakaoResponse
+import com.example.corn_farmer.src.kakao.model.KakaoRetrofitInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

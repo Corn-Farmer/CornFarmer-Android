@@ -1,6 +1,6 @@
-package com.example.corn_farmer.src.login
+package com.example.corn_farmer.src.kakao
 
-import com.example.corn_farmer.src.login.model.KakaoResponse
+import com.example.corn_farmer.src.kakao.model.KakaoResponse
 
 interface KakaoView {
     fun onKakaoLoginSuccess(response: KakaoResponse)

@@ -1,4 +1,4 @@
-package com.example.corn_farmer
+package com.example.corn_farmer.src.kakao
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

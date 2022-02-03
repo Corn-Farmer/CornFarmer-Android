@@ -1,4 +1,4 @@
-package com.example.corn_farmer.src.login.model
+package com.example.corn_farmer.src.kakao.model
 
 import com.google.gson.annotations.SerializedName
 

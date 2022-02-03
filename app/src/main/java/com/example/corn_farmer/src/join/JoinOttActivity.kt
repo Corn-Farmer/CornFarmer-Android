@@ -1,23 +1,17 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.join
 
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.corn_farmer.MainActivity
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityJoinOttBinding
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class JoinOttActivity : AppCompatActivity(), View.OnClickListener {

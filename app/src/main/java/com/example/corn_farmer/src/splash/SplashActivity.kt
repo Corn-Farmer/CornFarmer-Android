@@ -1,10 +1,11 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.corn_farmer.src.login.LoginActivity
+import com.example.corn_farmer.src.kakao.LoginActivity
+import com.example.cornfarmer_android.R
 
 class SplashActivity : AppCompatActivity() {
 

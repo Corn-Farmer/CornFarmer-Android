@@ -1,17 +1,13 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.join
 
 import android.content.Intent
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.example.cornfarmer_android.databinding.ActivityJoinNicknameBinding
-import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
-import java.util.regex.Pattern
 
 class JoinNicknameActivity : AppCompatActivity() {
 

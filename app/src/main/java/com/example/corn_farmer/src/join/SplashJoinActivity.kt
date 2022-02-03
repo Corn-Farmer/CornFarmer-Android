@@ -1,14 +1,10 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.join
 
 import android.content.Intent
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.cornfarmer_android.databinding.ActivitySplashJoinBinding
-import android.graphics.BitmapFactory
 import android.os.Handler
-import android.util.Base64
-import java.lang.Exception
 
 
 class SplashJoinActivity : AppCompatActivity() {

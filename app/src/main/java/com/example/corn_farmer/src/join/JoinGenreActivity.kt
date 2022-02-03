@@ -1,10 +1,9 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.join
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.example.corn_farmer.MainActivity
 import com.example.cornfarmer_android.databinding.ActivityJoinGenreBinding
 

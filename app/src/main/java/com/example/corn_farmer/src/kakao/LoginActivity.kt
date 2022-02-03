@@ -1,10 +1,11 @@
-package com.example.corn_farmer.src.login
+package com.example.corn_farmer.src.kakao
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.cornfarmer_android.JoinProfileActivity
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.join.JoinProfileActivity
 import com.example.cornfarmer_android.databinding.ActivityLoginBinding
 import com.google.gson.Gson
 import com.kakao.sdk.auth.LoginClient
@@ -77,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
 //                editor.putString("kakaotoken", token.accessToken)
 //                editor.commit()
 
-                val intent = Intent(this, JoinProfileActivity(token.accessToken)::class.java)
+                val intent = Intent(this, JoinProfileActivity()::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
@@ -85,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.loginNoneLoginBt.setOnClickListener {
-            val intent = Intent(this, JoinProfileActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

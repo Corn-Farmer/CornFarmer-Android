@@ -30,25 +30,25 @@
         </provider>
 
         <activity
-            android:name=".SplashJoinActivity"
+            android:name="com.example.corn_farmer.src.join.SplashJoinActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinGenreActivity"
+            android:name="com.example.corn_farmer.src.join.JoinGenreActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinOttActivity"
+            android:name="com.example.corn_farmer.src.join.JoinOttActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinNicknameActivity"
+            android:name="com.example.corn_farmer.src.join.JoinNicknameActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinProfileActivity"
+            android:name="com.example.corn_farmer.src.join.JoinProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.corn_farmer.src.login.LoginActivity"
+            android:name="com.example.corn_farmer.src.kakao.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.corn_farmer.src.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.corn_farmer.AuthCodeHandlerActivity"
+            android:name="com.example.corn_farmer.src.kakao.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

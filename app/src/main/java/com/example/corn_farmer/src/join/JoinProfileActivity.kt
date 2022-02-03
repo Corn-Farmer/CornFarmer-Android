@@ -1,4 +1,4 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.join
 
 import android.Manifest
 import android.content.Intent
@@ -22,17 +22,19 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.corn_farmer.src.login.KakaoService
-import com.example.corn_farmer.src.login.KakaoView
-import com.example.corn_farmer.src.login.model.KakaoResponse
+import com.example.corn_farmer.src.kakao.KakaoService
+import com.example.corn_farmer.src.kakao.KakaoView
+import com.example.corn_farmer.src.kakao.model.KakaoResponse
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.ByteArrayOutputStream
 import kotlin.math.min
 
-class JoinProfileActivity(var accessToken: String) : AppCompatActivity(), KakaoView {
+class JoinProfileActivity() : AppCompatActivity(), KakaoView {
 
     private lateinit var binding: ActivityJoinProfileBinding
 
+    var accessToken: String = ""
 
     val PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
