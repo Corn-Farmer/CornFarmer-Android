@@ -1,6 +1,7 @@
 package com.example.cornfarmer_android
 
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -21,6 +22,7 @@ class JoinNicknameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinNicknameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
 

@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Path
 import android.net.Uri
@@ -12,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -22,17 +22,17 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.KakaoService
-import com.example.KakaoView
+import com.example.corn_farmer.src.login.KakaoService
+import com.example.corn_farmer.src.login.KakaoView
+import com.example.corn_farmer.src.login.model.KakaoResponse
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.ByteArrayOutputStream
-import java.io.OutputStream
-import java.util.*
 import kotlin.math.min
 
-class JoinProfileActivity : AppCompatActivity(), KakaoView {
+class JoinProfileActivity(var accessToken: String) : AppCompatActivity(), KakaoView {
 
     private lateinit var binding: ActivityJoinProfileBinding
+
 
     val PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
@@ -55,6 +55,10 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val kakaoService = KakaoService(this, accessToken)
+
+        kakaoService.tryGetUserInfo()
 
         checkPermissions(PERMISSIONS, PERMISSIONS_REQUEST)
 
@@ -88,6 +92,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePictureIntent.resolveActivity(packageManager)
             startActivityForResult(takePictureIntent, 100)
+            alertDialog.dismiss()
 
 
         }
@@ -114,6 +119,8 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
             binding.profileNextIv.visibility = View.VISIBLE
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
+
+
             binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
 
             var outputStream = ByteArrayOutputStream()
@@ -219,32 +226,28 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+//    override fun onStart() {
+//        super.onStart()
+//
+//        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+//        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
+//
+//        kLogin(kakaotoken.toString())
+//    }
 
-        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
-        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
 
-        kLogin(kakaotoken.toString())
-    }
+    override fun onKakaoLoginSuccess(response: KakaoResponse) {
 
-    private fun kLogin(accessToken: String) {
-        val kakaoService = KakaoService()
-        kakaoService.setKakaoView(this)
+        Log.d("Kakao", accessToken.toString())
 
-        kakaoService.kLogin(accessToken)
-
-    }
-
-    override fun onKakaoLoginLoading() {
-    }
-
-    override fun onKakaoLoginSuccess() {
 
     }
 
-    override fun onKakaoLoginFailure(code: Int, message: String) {
+    override fun onKakaoLoginFailure(message: String) {
+
+        Log.d("Kakao", accessToken.toString())
     }
+
 
 }
 

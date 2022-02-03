@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import com.kakao.sdk.common.util.Utility
+import com.example.corn_farmer.src.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
