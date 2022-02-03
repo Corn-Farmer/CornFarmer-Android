@@ -3,9 +3,11 @@ package com.example.corn_farmer.src.kakao
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinProfileActivity
+import com.example.corn_farmer.src.kakao.model.KakaoResponse
 import com.example.cornfarmer_android.databinding.ActivityLoginBinding
 import com.google.gson.Gson
 import com.kakao.sdk.auth.LoginClient
@@ -13,7 +15,7 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), KakaoView {
 
 
     private lateinit var binding: ActivityLoginBinding
@@ -25,15 +27,19 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
+        val kakaoService = KakaoService(this, kakaotoken.toString())
+        kakaoService.tryGetUserInfo()
+
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
 
             if (error != null) {
                 Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
             } else if (tokenInfo != null) {
                 Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, JoinProfileActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
+
             }
         }
 
@@ -73,14 +79,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             } else if (token != null) {
 
-//                val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
-//                val editor = sharedPreferences.edit()
-//                editor.putString("kakaotoken", token.accessToken)
-//                editor.commit()
+                val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("kakaotoken", token.accessToken)
+                editor.commit()
 
-                val intent = Intent(this, JoinProfileActivity()::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
+
             }
         }
 
@@ -106,12 +110,29 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onKakaoLoginSuccess(response: KakaoResponse) {
+        Log.d("Kakao", response.toString())
+
+        if(response.result!!.isNew){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            finish()
+        }else {
+            val intent = Intent(this, JoinProfileActivity()::class.java)
+            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            finish()
+        }
+
 
     }
 
+    override fun onKakaoLoginFailure(message: String) {
+        Log.d("Kakao", message)
 
 
-
+    }
 
 
 }

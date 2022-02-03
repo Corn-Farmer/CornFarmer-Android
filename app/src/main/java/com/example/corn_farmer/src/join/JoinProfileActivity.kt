@@ -30,11 +30,11 @@ import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.ByteArrayOutputStream
 import kotlin.math.min
 
-class JoinProfileActivity() : AppCompatActivity(), KakaoView {
+class JoinProfileActivity() : AppCompatActivity(){
 
     private lateinit var binding: ActivityJoinProfileBinding
 
-    var accessToken: String = ""
+
 
     val PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
@@ -58,10 +58,6 @@ class JoinProfileActivity() : AppCompatActivity(), KakaoView {
         binding = ActivityJoinProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val kakaoService = KakaoService(this, accessToken)
-
-        kakaoService.tryGetUserInfo()
-
         checkPermissions(PERMISSIONS, PERMISSIONS_REQUEST)
 
         binding.profileImagePlusIv.setOnClickListener {
@@ -76,8 +72,6 @@ class JoinProfileActivity() : AppCompatActivity(), KakaoView {
         binding.profileBackIv.setOnClickListener {
             finish()
         }
-
-
 
     }
 
@@ -228,27 +222,10 @@ class JoinProfileActivity() : AppCompatActivity(), KakaoView {
         }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//
-//        val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
-//        val kakaotoken = sharedPreferences.getString("kakaotoken", null)
-//
-//        kLogin(kakaotoken.toString())
-//    }
 
 
-    override fun onKakaoLoginSuccess(response: KakaoResponse) {
-
-        Log.d("Kakao", accessToken.toString())
 
 
-    }
-
-    override fun onKakaoLoginFailure(message: String) {
-
-        Log.d("Kakao", accessToken.toString())
-    }
 
 
 }
