@@ -52,6 +52,7 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.24048913043478262" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/xml/filepaths.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_genre.xml" value="0.5427083333333333" />
+        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.303125" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_profile.xml" value="0.5427083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_login.xml" value="0.5427083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_main.xml" value="0.4759259259259259" />
@@ -69,6 +70,7 @@
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_ott_service.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_otts.xml" value="0.403125" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_wishmovie.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.303125" />
       </map>
     </option>
   </component>

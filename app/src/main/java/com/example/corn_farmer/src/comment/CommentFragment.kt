@@ -19,7 +19,7 @@ import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class CommentFragment(val movieIdx : Int) : Fragment(),CommentFragmentView {
+class CommentFragment(val movieIdx : Int, val keywordIdx: Int) : Fragment(),CommentFragmentView {
     lateinit var binding : FragmentCommentBinding
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -44,7 +44,7 @@ class CommentFragment(val movieIdx : Int) : Fragment(),CommentFragmentView {
         Toast.makeText(context, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
 
         (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, DetailFragment(movieIdx))
+            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx))
             .commitAllowingStateLoss()
     }
 

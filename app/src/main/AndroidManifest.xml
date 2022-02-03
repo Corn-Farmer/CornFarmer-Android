@@ -58,20 +58,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.AuthCodeHandlerActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+<!--        <activity android:name="com.example.AuthCodeHandlerActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW"/>-->
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
 
-                <data
-                    android:host="oauth"
-                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9"/>
+<!--                <data-->
+<!--                    android:host="oauth"-->
+<!--                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9"/>-->
 
-            </intent-filter>
+<!--            </intent-filter>-->
 
-        </activity>
+<!--        </activity>-->
 
         <activity
             android:name="com.example.corn_farmer.MainActivity"
