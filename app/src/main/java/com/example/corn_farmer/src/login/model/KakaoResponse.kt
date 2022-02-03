@@ -1,4 +1,4 @@
-package com.example
+package com.example.corn_farmer.src.login.model
 
 import com.google.gson.annotations.SerializedName
 

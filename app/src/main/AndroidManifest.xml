@@ -45,7 +45,7 @@
             android:name=".JoinProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.corn_farmer.src.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

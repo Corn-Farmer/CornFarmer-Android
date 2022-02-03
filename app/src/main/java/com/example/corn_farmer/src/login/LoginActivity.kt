@@ -1,12 +1,10 @@
-package com.example.cornfarmer_android
+package com.example.corn_farmer.src.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.example.KakaoService
-import com.example.KakaoView
+import com.example.cornfarmer_android.JoinProfileActivity
 import com.example.cornfarmer_android.databinding.ActivityLoginBinding
 import com.google.gson.Gson
 import com.kakao.sdk.auth.LoginClient
@@ -74,12 +72,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             } else if (token != null) {
 
-                val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putString("kakaotoken", token.accessToken)
-                editor.commit()
+//                val sharedPreferences = getSharedPreferences("kakaotoken", MODE_PRIVATE)
+//                val editor = sharedPreferences.edit()
+//                editor.putString("kakaotoken", token.accessToken)
+//                editor.commit()
 
-                val intent = Intent(this, JoinProfileActivity::class.java)
+                val intent = Intent(this, JoinProfileActivity(token.accessToken)::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
