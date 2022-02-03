@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.home.model.MovieDto
+import com.example.corn_farmer.src.home.model.MovieResponse
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.home.model.MovieDto
 import com.example.corn_farmer.src.home.model.MovieResponse
@@ -28,7 +31,12 @@ class HomeFragment : Fragment(), HomeFragmentView {
         var service = HomeService(this)
         service.tryGetMovieList()
 
+        val mActivity = activity as MainActivity //메인 액티비티
 
+
+        binding.mainSearchIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
+        }
         return binding.root
     }
 
@@ -50,7 +58,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
     }
 
     override fun onGetMovieListFailure(message: String) {
-        Log.d("Fail", "실패")
+        Log.d("Fail", "작품 정보 가져오기 실패")
     }
 
 

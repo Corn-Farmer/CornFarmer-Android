@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context="com.example.corn_farmer.MainActivity">
 
 
     <ImageView
@@ -14,7 +16,6 @@
         android:layout_marginTop="38dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
         />
 
     <ImageView
@@ -45,47 +46,46 @@
         android:layout_marginEnd="28dp"
         />
     <TextView
-        android:id="@+id/search_text_tv"
+        android:id="@+id/search_today_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지금 바로 궁금한 작품을 찾아보세요!"
+        android:text="짜잔! 검색 결과입니다!"
+        android:textColor="#1E005E"
+        android:textStyle="bold"
+        android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_back_iv"
-        android:layout_marginTop="40dp"
-        />
-    <ImageView
-        android:id="@+id/search_input_background_iv"
-        android:layout_width="380dp"
-        android:layout_height="70dp"
-        android:src="@drawable/searchbackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_text_tv"
-        android:layout_marginTop="40dp"
-        android:scaleType="fitXY"
-        />
-    <EditText
-        android:id="@+id/search_search_input_et"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
-        android:inputType="text"
-        android:imeOptions="actionSearch"
-        app:layout_constraintStart_toEndOf="@id/search_search_button_iv"
-        app:layout_constraintTop_toBottomOf="@id/search_text_tv"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"
-        android:background="#00ff0000"
-        />
-    <ImageView
-        android:id="@+id/search_search_button_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/searchblue"
-        app:layout_constraintTop_toTopOf="@id/search_input_background_iv"
-        app:layout_constraintBottom_toBottomOf="@id/search_input_background_iv"
-        app:layout_constraintStart_toStartOf="@id/search_input_background_iv"
-        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="32dp"
         />
 
+    <TextView
+        android:id="@+id/search_result_movie_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFC102"
+        android:text="나홀로 집에"
+        app:layout_constraintStart_toStartOf="@id/search_today_tv"
+        app:layout_constraintTop_toBottomOf="@id/search_today_tv"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/search_descript_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="키워드로 검색한 결과입니다."
+        app:layout_constraintStart_toEndOf="@id/search_result_movie_title_tv"
+        app:layout_constraintTop_toTopOf="@id/search_result_movie_title_tv"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/search_descript_tv"
+        android:id="@+id/search_ott_item_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/item_otts"
+        android:paddingBottom="?attr/actionBarSize"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
