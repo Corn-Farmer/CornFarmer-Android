@@ -88,6 +88,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePictureIntent.resolveActivity(packageManager)
             startActivityForResult(takePictureIntent, 100)
+            alertDialog.dismiss()
 
 
         }
@@ -124,6 +125,7 @@ class JoinProfileActivity : AppCompatActivity(), KakaoView {
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
+
             editor.putString("gallerypic", byteArray.toString())
             editor.commit()
 
