@@ -14,6 +14,7 @@ import com.example.corn_farmer.src.detail.model.getMovieDetailAPI
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.comment.CommentFragment
 import com.example.corn_farmer.src.comment.CommentRVAdapter
+import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.home.HomeService
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
@@ -21,7 +22,7 @@ import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class DetailFragment(val movieIdx: Int): Fragment(),DetailFragmentView {
+class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), DetailFragmentView {
     lateinit var binding : FragmentDetailBinding
 
     override fun onCreateView(
@@ -30,7 +31,7 @@ class DetailFragment(val movieIdx: Int): Fragment(),DetailFragmentView {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-        var service = DetailService(this,movieIdx,1)
+        var service = DetailService(this, movieIdx,1)
         service.tryGetMovieInfo()
         initialize()
 
@@ -41,18 +42,22 @@ class DetailFragment(val movieIdx: Int): Fragment(),DetailFragmentView {
         // 댓글 작성 버튼
         binding.detailPlusCommentIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, CommentFragment(movieIdx))
+                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx))
                 .commitAllowingStateLoss()
         }
 
         // 뒤로가기 버튼
         binding.detailPreviousBtnIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, RecommendFragment())
-                .commitAllowingStateLoss()
+            if (keywordIdx == -1) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, HomeFragment())
+                    .commitAllowingStateLoss()
+            } else {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, RecommendFragment(keywordIdx))
+                    .commitAllowingStateLoss()
+            }
         }
-
-        // http 통신, 영화 정보 가져와서 채워넣기, 댓글 리사이클러뷰
     }
 
 

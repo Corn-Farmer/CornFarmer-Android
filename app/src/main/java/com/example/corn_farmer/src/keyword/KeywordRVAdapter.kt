@@ -13,6 +13,15 @@ import com.example.cornfarmer_android.databinding.ItemKeywordBinding
 class KeywordRVAdapter(private val keywordList: List<KeywordDto>) :
     RecyclerView.Adapter<KeywordRVAdapter.Viewholder>() {
 
+    interface MyItemClickListener{
+        fun onItemClick(KeyworDto : KeywordDto, positon: Int)
+    }
+
+    private lateinit var myItemClickListener : MyItemClickListener
+
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
+        myItemClickListener = itemClickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         val binding: ItemKeywordBinding =
@@ -25,8 +34,8 @@ class KeywordRVAdapter(private val keywordList: List<KeywordDto>) :
         holder.bind(keywordList[position])
         holder.itemView.setOnClickListener { //키워드 객체 하나 선택했을 때
             holder.selectKeyword()
+            myItemClickListener.onItemClick(keywordList[position], position)
         }
-
     }
 
     override fun getItemCount(): Int {
