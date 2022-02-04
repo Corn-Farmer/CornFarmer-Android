@@ -40,14 +40,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_none_login_bt" />
 
-    <Button
-        android:id="@+id/login_kakao_login_bt"
+    <ImageButton
+        android:id="@+id/kakao_login_button"
         android:layout_width="248dp"
         android:layout_height="40dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="56dp"
-        android:background="@drawable/login_kakao_login"
+        android:src="@drawable/kakao_login_medium_narrow"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_line_iv" />
@@ -62,7 +63,7 @@
         android:background="@drawable/login_naver_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_kakao_login_bt" />
+        app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

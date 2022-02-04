@@ -55,7 +55,7 @@ dependencies {
     // 둥근 이미지 뷰
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    implementation "com.kakao.sdk:v2-user:2.0.1" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-user:2.0.1"
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.7'

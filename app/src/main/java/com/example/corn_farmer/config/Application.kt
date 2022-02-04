@@ -22,13 +22,16 @@ class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        KakaoSdk.init(this, "e355d004b5a2901c09d0626d9f643ad9")
+
         sSharedPreferences =
             applicationContext.getSharedPreferences("Corn-Farmer", MODE_PRIVATE)
         // 레트로핏 인스턴스 생성
         initRetrofitInstance()
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
 
-        KakaoSdk.init(this, "e355d004b5a2901c09d0626d9f643ad9")
+
 
     }
     private fun initRetrofitInstance(){
