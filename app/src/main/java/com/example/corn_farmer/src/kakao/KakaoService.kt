@@ -1,29 +1,27 @@
 package com.example.corn_farmer.src.kakao
 
 import com.example.corn_farmer.config.Application
-import com.example.corn_farmer.src.kakao.model.KakaoResponse
 import com.example.corn_farmer.src.kakao.model.KakaoRetrofitInterface
+import com.example.corn_farmer.src.kakao.model.getKakaoAPI
+import com.example.corn_farmer.src.kakao.model.sendKakaoAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class KakaoService(var kakaoView: KakaoView, var accessToken: String) {
-
-    fun tryGetUserInfo(){
+class KakaoService (var view: KakaoView, var sendKakaoAPI: sendKakaoAPI){
+    fun tryPostToken(){
         val retrofitInterface = Application.sRetrofit.create(KakaoRetrofitInterface::class.java)
-        retrofitInterface.getUserInfo(accessToken).enqueue(object : Callback<KakaoResponse>{
-
-            override fun onResponse(call: Call<KakaoResponse>, response: Response<KakaoResponse>) {
-
-                kakaoView.onKakaoLoginSuccess(response.body() as KakaoResponse)
-
+        retrofitInterface.sendToken(sendKakaoAPI).enqueue(object : Callback<getKakaoAPI?>{
+            override fun onResponse(call: Call<getKakaoAPI?>, response: Response<getKakaoAPI?>) {
+                response.body()?.let { view.onPostTokenSuccess(it) }
             }
 
-            override fun onFailure(call: Call<KakaoResponse>, t: Throwable) {
-                kakaoView.onKakaoLoginFailure(t.message?:"통신오류")
+            override fun onFailure(call: Call<getKakaoAPI?>, t: Throwable) {
+                view.onPostTokenFailure(t.message?:"통신오류")
             }
+
 
         })
-    }
 
+    }
 }

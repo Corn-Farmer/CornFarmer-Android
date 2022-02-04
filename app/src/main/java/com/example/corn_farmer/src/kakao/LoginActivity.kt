@@ -7,8 +7,11 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.comment.CommentService
+import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import com.example.corn_farmer.src.join.JoinProfileActivity
-import com.example.corn_farmer.src.kakao.model.KakaoResponse
+import com.example.corn_farmer.src.kakao.model.getKakaoAPI
+import com.example.corn_farmer.src.kakao.model.sendKakaoAPI
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityLoginBinding
 import com.google.gson.Gson
@@ -17,10 +20,14 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), KakaoView {
+
+    lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
@@ -29,9 +36,9 @@ class LoginActivity : AppCompatActivity() {
             }
             else if (tokenInfo != null) {
                 Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, JoinProfileActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
+//                val intent = Intent(this, JoinProfileActivity::class.java)
+//                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+//                finish()
             }
         }
 
@@ -76,25 +83,66 @@ class LoginActivity : AppCompatActivity() {
 
                 Log.d("LEE", token.accessToken.toString())
 
+                val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("kakaotoken", token.accessToken.toString())
+                editor.commit()
+
+                val kakao = sendKakaoAPI(token.accessToken.toString())
+                var service = KakaoService(this,kakao)
+                service.tryPostToken()
+
                 Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, JoinProfileActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
+//                val intent = Intent(this, JoinProfileActivity::class.java)
+//                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+//                finish()
             }
         }
 
+        binding.loginNoneLoginBt.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
-        val kakao_login_button = findViewById<ImageButton>(R.id.kakao_login_button) // 로그인 버튼
-
-        kakao_login_button.setOnClickListener {
+       binding.kakaoLoginButton.setOnClickListener {
             if(LoginClient.instance.isKakaoTalkLoginAvailable(this)){
                 LoginClient.instance.loginWithKakaoTalk(this, callback = callback)
-
-
             }else{
                 LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
+
+        binding.loginNaverLoginBt.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+
+    }
+
+    override fun onPostTokenSuccess(response: getKakaoAPI) {
+        Log.d("LEE2", response.toString())
+
+//        if(response.isSuccess == true && response.result!!.isNew){
+//            startActivity(Intent(this, JoinProfileActivity::class.java))
+//        }else{
+//            startActivity(Intent(this, MainActivity::class.java))
+//        }
+
+    }
+
+    override fun onPostTokenFailure(message: String) {
+        Log.d("LEE3", message.toString())
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
+        val kakaoToken = sharedPreferences.getString("kakaotoken", "1")
+
+        val kakao = sendKakaoAPI(kakaoToken.toString())
+        var service = KakaoService(this,kakao)
+        service.tryPostToken()
+
     }
 
 }

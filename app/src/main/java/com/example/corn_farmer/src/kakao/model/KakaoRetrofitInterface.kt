@@ -1,11 +1,12 @@
 package com.example.corn_farmer.src.kakao.model
 
+import com.example.corn_farmer.src.comment.model.getReviewAPI
+import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface KakaoRetrofitInterface {
-
-    @GET("/users/outh/kakao")
-    fun getUserInfo(@Query("accessToken") accessToken: String): Call<KakaoResponse>
+    @POST("/users/oauth/kakao")
+    fun sendToken(@Body sendKakaoAPI: sendKakaoAPI) : Call<getKakaoAPI>
 }

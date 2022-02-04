@@ -11,7 +11,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -22,9 +21,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.corn_farmer.src.kakao.KakaoService
-import com.example.corn_farmer.src.kakao.KakaoView
-import com.example.corn_farmer.src.kakao.model.KakaoResponse
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.ByteArrayOutputStream

@@ -19,9 +19,6 @@ class JoinNicknameActivity : AppCompatActivity() {
         binding = ActivityJoinNicknameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
         binding.nicknameFinishColorIv.setOnClickListener {
             signUp()
             val intent = Intent(this, SplashJoinActivity::class.java)

@@ -1,8 +1,9 @@
 package com.example.corn_farmer.src.kakao
 
-import com.example.corn_farmer.src.kakao.model.KakaoResponse
+import com.example.corn_farmer.src.comment.model.getReviewAPI
+import com.example.corn_farmer.src.kakao.model.getKakaoAPI
 
 interface KakaoView {
-    fun onKakaoLoginSuccess(response: KakaoResponse)
-    fun onKakaoLoginFailure(message: String)
+    fun onPostTokenSuccess(response: getKakaoAPI)
+    fun onPostTokenFailure(message : String)
 }
