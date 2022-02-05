@@ -10,7 +10,7 @@ data class getKakaoAPI(
 )
 
 data class getKakaoResult(
-    var isNew: Boolean,
+    var new_result: Boolean,
     var token: String,
     var userIdx: Int
 )

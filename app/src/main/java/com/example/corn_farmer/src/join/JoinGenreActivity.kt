@@ -3,38 +3,53 @@ package com.example.corn_farmer.src.join
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.join.model.getJoinAPI
 import com.example.cornfarmer_android.databinding.ActivityJoinGenreBinding
 
-class JoinGenreActivity : AppCompatActivity(), View.OnClickListener {
+class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
-    private lateinit var binding : ActivityJoinGenreBinding
+    private lateinit var binding: ActivityJoinGenreBinding
 
     var genreNum = 0
-    var genreList = mutableListOf<Int>(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+    var genreList = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinGenreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+        val servertoken = sharedPreferences.getString("servertoken", null)
 //        val galleryPic = sharedPreferences.getString("gallerypic", null)
-//        val cameraPic = sharedPreferences.getString("camerapic", null)
-//        val nickname = sharedPreferences.getString("nickname", null)
-//        val sex = sharedPreferences.getString("sex", null)
-//        val birthday = sharedPreferences.getString("birthday", null)
+        val cameraPic = sharedPreferences.getString("camerapic", null)
+        val nickname = sharedPreferences.getString("nickname", null)
+        val sex = sharedPreferences.getString("sex", null)
+        val birthday = sharedPreferences.getString("birthday", null)
 //        val ottList = sharedPreferences.getString("ottlist", null)
 //        val genreList = sharedPreferences.getString("genrelist", null)
+
+        Log.d("JOIN-SHARE", servertoken.toString())
+        Log.d("JOIN-SHARE", cameraPic.toString())
+        Log.d("JOIN-SHARE", nickname.toString())
+        Log.d("JOIN-SHARE", sex.toString())
+        Log.d("JOIN-SHARE", birthday.toString())
+
 //
-//        Toast.makeText(this, galleryPic.toString(), Toast.LENGTH_LONG).show()
+
 //        Toast.makeText(this, cameraPic.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, nickname.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, sex.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, birthday.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, ottList.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, genreList.toString(), Toast.LENGTH_LONG).show()
+
+//        val join = sendJoinAPI()
+//        var service = JoinService(this, join)
+//        service.tryPostJoin()
 
         binding.genreBackIv.setOnClickListener {
             finish()
@@ -55,7 +70,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun bindOtt(){
+    private fun bindOtt() {
         binding.genreDacuIv.setOnClickListener(this)
         binding.genreDacuColorIv.setOnClickListener(this)
         binding.genreAnimeIv.setOnClickListener(this)
@@ -290,17 +305,23 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener {
         }
         binding.genreFinishIv.visibility = View.GONE
 
-        if(genreNum == 0){
+        if (genreNum == 0) {
             binding.genreFinishColorIv.visibility = View.GONE
             binding.genreFinishIv.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.genreFinishColorIv.visibility = View.VISIBLE
             binding.genreFinishIv.visibility = View.GONE
         }
 
     }
 
+    override fun onPostJoinSuccess(response: getJoinAPI) {
+        Log.d("JOIN-API", response.toString())
+    }
 
+    override fun onPostJoinFailure(message: String) {
+        Log.d("JOIN-API", message.toString())
+    }
 
 
 }
