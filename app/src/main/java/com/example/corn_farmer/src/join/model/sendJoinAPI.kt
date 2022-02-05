@@ -5,6 +5,6 @@ data class sendJoinAPI(
     var phtoto: String,
     var is_male: Boolean,
     var birth: String,
-    var ottList: List<Int>,
-    var genreList: List<Int>
+    var ottList: List<String>,
+    var genreList: List<String>
 )
