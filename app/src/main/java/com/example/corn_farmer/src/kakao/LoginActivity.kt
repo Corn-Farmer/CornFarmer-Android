@@ -119,18 +119,22 @@ class LoginActivity : AppCompatActivity(), KakaoView {
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {
-        Log.d("LEE2", response.toString())
+        Log.d("KAKAO-API", response.toString())
 
-//        if(response.isSuccess == true && response.result!!.isNew){
-//            startActivity(Intent(this, JoinProfileActivity::class.java))
-//        }else{
-//            startActivity(Intent(this, MainActivity::class.java))
-//        }
+        if(response.isSuccess == true && response.result!!.new_result){
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("servertoken", response.result!!.token)
+            editor.commit()
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }else if(response.isSuccess == true && !(response.result!!.new_result)){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
     }
 
     override fun onPostTokenFailure(message: String) {
-        Log.d("LEE3", message.toString())
+        Log.d("KAKAO-API", message.toString())
     }
 
     override fun onStart() {

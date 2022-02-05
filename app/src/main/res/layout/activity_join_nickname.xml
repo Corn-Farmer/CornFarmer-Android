@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -110,84 +111,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickname_nickname_rl" />
 
-    <ImageView
-        android:id="@+id/nickname_email_iv"
-        android:src="@drawable/join_email"
-        app:layout_constraintTop_toBottomOf="@id/nickname_using_nickname_iv"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="29dp"
-        android:layout_width="67dp"
-        android:layout_height="28dp"/>
 
-
-
-    <EditText
-        android:id="@+id/login_id_et"
-        android:layout_width="196dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="34dp"
-        android:background="@null"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nickname_email_iv" />
-
-    <View
-        android:id="@+id/login_id_underscore_view"
-        android:layout_width="196dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="#a8a8a8"
-        app:layout_constraintEnd_toEndOf="@id/login_id_et"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/login_id_et"
-        app:layout_constraintTop_toBottomOf="@id/login_id_et" />
-
-    <TextView
-        android:id="@+id/login_at_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:text="\@"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/login_id_et"
-        app:layout_constraintStart_toEndOf="@id/login_id_et"
-        app:layout_constraintEnd_toStartOf="@id/login_email_et"
-        app:layout_constraintTop_toTopOf="@id/login_id_et" />
-
-    <EditText
-        android:id="@+id/login_email_et"
-        android:layout_width="96dp"
-        android:layout_height="22dp"
-        android:background="@null"
-        android:inputType="text"
-        android:hint="직접입력"
-        android:textSize="11sp"
-        android:gravity="center"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/robotoregular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/login_id_et"
-        app:layout_constraintStart_toEndOf="@id/login_at_et"
-        app:layout_constraintTop_toTopOf="@id/login_id_et" />
-
-    <View
-        android:id="@+id/login_email_underscore_view"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="#a8a8a8"
-        app:layout_constraintEnd_toEndOf="@id/login_email_et"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/login_email_et"
-        app:layout_constraintTop_toBottomOf="@id/login_email_et" />
 
     <ImageView
         android:id="@+id/nickname_birthday_iv"
         android:src="@drawable/join_birthday"
-        app:layout_constraintTop_toBottomOf="@id/login_id_underscore_view"
+        app:layout_constraintTop_toBottomOf="@id/nickname_using_nickname_iv"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="29dp"
@@ -198,10 +127,12 @@
         android:id="@+id/login_birthday_et"
         android:layout_width="114dp"
         android:layout_height="22dp"
+        android:gravity="center"
         android:layout_marginStart="20dp"
+        android:maxLength="4"
         android:layout_marginTop="36dp"
         android:background="@null"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 
@@ -233,9 +164,11 @@
         android:layout_width="67dp"
         android:layout_height="22dp"
         android:layout_marginStart="6dp"
+        android:maxLength="2"
         android:layout_marginTop="36dp"
+        android:gravity="center"
         android:background="@null"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/login_birthday_iv"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 
@@ -268,8 +201,10 @@
         android:layout_height="22dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:maxLength="2"
         android:background="@null"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/login_birthday_month_iv"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 
@@ -304,25 +239,40 @@
         android:layout_width="45dp"
         android:layout_height="28dp"/>
 
-    <EditText
-        android:id="@+id/nickname_sex_et"
-        android:layout_width="100dp"
+    <RadioGroup
+        android:id="@+id/nickname_rg"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickname_sex_iv"
         android:layout_marginTop="36dp"
-        android:background="@null"
         android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/nickname_sex_line"
-        android:layout_width="100dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="#a8a8a8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/nickname_sex_et"
-        app:layout_constraintTop_toBottomOf="@id/nickname_sex_et" />
+        <RadioButton
+            android:id="@+id/nickname_male_rb"
+            android:layout_width="100dp"
+            android:text="남자"
+            android:checked="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nickname_sex_iv"
+            android:layout_height="wrap_content"/>
+
+
+        <RadioButton
+            android:id="@+id/nickname_female_rb"
+            android:layout_width="100dp"
+            android:text="여자"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nickname_sex_iv"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RadioGroup>
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

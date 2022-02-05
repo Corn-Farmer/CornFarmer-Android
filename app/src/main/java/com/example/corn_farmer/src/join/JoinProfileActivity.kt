@@ -30,8 +30,6 @@ class JoinProfileActivity() : AppCompatActivity(){
 
     private lateinit var binding: ActivityJoinProfileBinding
 
-
-
     val PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -111,7 +109,6 @@ class JoinProfileActivity() : AppCompatActivity(){
             binding.profileNextIv.visibility = View.VISIBLE
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
-
 
             binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
 
