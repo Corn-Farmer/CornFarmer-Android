@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.cornfarmer_android.databinding.ActivityJoinNicknameBinding
@@ -21,6 +22,7 @@ class JoinNicknameActivity : AppCompatActivity() {
 
         binding.nicknameFinishColorIv.setOnClickListener {
             signUp()
+
             val intent = Intent(this, SplashJoinActivity::class.java)
             startActivity(intent)
         }
@@ -106,6 +108,9 @@ class JoinNicknameActivity : AppCompatActivity() {
 
     private fun signUp(){
 
+        var isMale : String
+        var isFemale : String
+
         if (binding.loginBirthdayEt.text.toString().isEmpty()
             || binding.loginBirthdayMonthEt.text.toString().isEmpty()
             || binding.loginBirthdayDayEt.text.toString().isEmpty()){
@@ -121,14 +126,17 @@ class JoinNicknameActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
 
-        if(binding.nicknameMaleRb.isChecked){
-            editor.putBoolean("sex", true)
-        }else if(binding.nicknameFemaleRb.isChecked){
-            editor.putBoolean("sex", false)
+        if(binding.nicknameMaleRb.isChecked) {
+            isMale = "true"
+            editor.putString("isMale",isMale)
+        }
+        else if(binding.nicknameFemaleRb.isChecked){
+            isFemale = "false"
+            editor.putString("isFemale",isFemale)
         }
 
+        editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
 
         editor.putString("birthday", binding.loginBirthdayEt.text.toString() + "-" +
                 binding.loginBirthdayMonthEt.text.toString() + "-" +
