@@ -128,7 +128,12 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             editor.commit()
             startActivity(Intent(this, JoinProfileActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
-            startActivity(Intent(this, MainActivity::class.java))
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("servertoken", response.result!!.token)
+            editor.commit() // 나중에 지우기
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+            // 나중에 main으로 바꾸기
         }
 
     }

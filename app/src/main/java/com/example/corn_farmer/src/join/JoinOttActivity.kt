@@ -118,14 +118,13 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottPrimeVideoSelectIv.visibility = View.GONE
                 binding.ottAppleTvIv.visibility = View.VISIBLE
                 binding.ottAppleTvSelectIv.visibility = View.GONE
-                ottList.removeAll(listOf("2","3","4","5","6","7","8","9"))
+                ottList.clear()
                 ottNum++
                 ottList.add("1")
             }
             binding.ottNoUseSelectIv.id -> {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 ottNum = 0
-
                 binding.ottNoUseSelectIv.visibility = View.GONE
             }
             binding.ottNetflixIv.id -> {
