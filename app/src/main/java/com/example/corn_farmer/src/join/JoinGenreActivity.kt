@@ -15,37 +15,15 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
     private lateinit var binding: ActivityJoinGenreBinding
 
     var genreNum = 0
-    var genreList = mutableListOf<String>("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0")
+    var genreList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinGenreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-        val servertoken = sharedPreferences.getString("servertoken", null)
-//        val galleryPic = sharedPreferences.getString("gallerypic", null)
-        val cameraPic = sharedPreferences.getString("camerapic", null)
-        val nickname = sharedPreferences.getString("nickname", null)
-        val sex = sharedPreferences.getString("sex", null)
-        val birthday = sharedPreferences.getString("birthday", null)
-//        val ottList = sharedPreferences.getString("ottlist", null)
-//        val genreList = sharedPreferences.getString("genrelist", null)
 
-        Log.d("JOIN-SHARE", servertoken.toString())
-        Log.d("JOIN-SHARE", cameraPic.toString())
-        Log.d("JOIN-SHARE", nickname.toString())
-        Log.d("JOIN-SHARE", sex.toString())
-        Log.d("JOIN-SHARE", birthday.toString())
 
-//
-
-//        Toast.makeText(this, cameraPic.toString(), Toast.LENGTH_LONG).show()
-//        Toast.makeText(this, nickname.toString(), Toast.LENGTH_LONG).show()
-//        Toast.makeText(this, sex.toString(), Toast.LENGTH_LONG).show()
-//        Toast.makeText(this, birthday.toString(), Toast.LENGTH_LONG).show()
-//        Toast.makeText(this, ottList.toString(), Toast.LENGTH_LONG).show()
-//        Toast.makeText(this, genreList.toString(), Toast.LENGTH_LONG).show()
 
 //        val join = sendJoinAPI()
 //        var service = JoinService(this, join)
@@ -58,9 +36,20 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
         binding.genreFinishColorIv.setOnClickListener {
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("genrelist", genreList.toString())
-            editor.commit()
+            val servertoken = sharedPreferences.getString("servertoken", null)
+            val photo = sharedPreferences.getString("photo", null)
+            val nickname = sharedPreferences.getString("nickname", null)
+            val sex = sharedPreferences.getBoolean("sex", true)
+            val birthday = sharedPreferences.getString("birthday", null)
+            val ottList = sharedPreferences.getString("ottlist", null)
+
+            Log.d("JOIN-SHARE", servertoken.toString())
+            Log.d("JOIN-SHARE", photo.toString())
+            Log.d("JOIN-SHARE", nickname.toString())
+            Log.d("JOIN-SHARE", sex.toString())
+            Log.d("JOIN-SHARE", birthday.toString())
+            Log.d("JOIN-SHARE", ottList.toString())
+            Log.d("JOIN-SHARE", genreList.toString())
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -124,180 +113,180 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
                 binding.genreAnimeIv.visibility = View.GONE
                 binding.genreAnimeColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("2")
             }
             binding.genreAnimeColorIv.id -> {
                 binding.genreAnimeIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("2")
                 binding.genreAnimeColorIv.visibility = View.GONE
             }
             binding.genreFantasyIv.id -> {
                 binding.genreFantasyIv.visibility = View.GONE
                 binding.genreFantasyColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("3")
             }
             binding.genreFantasyColorIv.id -> {
                 binding.genreFantasyIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("3")
                 binding.genreFantasyColorIv.visibility = View.GONE
             }
             binding.genreThrillIv.id -> {
                 binding.genreThrillIv.visibility = View.GONE
                 binding.genreThrillColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("4")
             }
             binding.genreThrillColorIv.id -> {
                 binding.genreThrillIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("4")
                 binding.genreThrillColorIv.visibility = View.GONE
             }
             binding.genreSportIv.id -> {
                 binding.genreSportIv.visibility = View.GONE
                 binding.genreSportColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("5")
             }
             binding.genreSportColorIv.id -> {
                 binding.genreSportIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("5")
                 binding.genreSportColorIv.visibility = View.GONE
             }
             binding.genreRomanceIv.id -> {
                 binding.genreRomanceIv.visibility = View.GONE
                 binding.genreRomanceColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("6")
             }
             binding.genreRomanceColorIv.id -> {
                 binding.genreRomanceIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("6")
                 binding.genreRomanceColorIv.visibility = View.GONE
             }
             binding.genreDramaIv.id -> {
                 binding.genreDramaIv.visibility = View.GONE
                 binding.genreDramaColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("7")
             }
             binding.genreDramaColorIv.id -> {
                 binding.genreDramaIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("7")
                 binding.genreDramaColorIv.visibility = View.GONE
             }
             binding.genreComedyIv.id -> {
                 binding.genreComedyIv.visibility = View.GONE
                 binding.genreComedyColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("8")
             }
             binding.genreComedyColorIv.id -> {
                 binding.genreComedyIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("8")
                 binding.genreComedyColorIv.visibility = View.GONE
             }
             binding.genreFamilyIv.id -> {
                 binding.genreFamilyIv.visibility = View.GONE
                 binding.genreFamilyColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("9")
             }
             binding.genreFamilyColorIv.id -> {
                 binding.genreFamilyIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("9")
                 binding.genreFamilyColorIv.visibility = View.GONE
             }
             binding.genreMusicIv.id -> {
                 binding.genreMusicIv.visibility = View.GONE
                 binding.genreMusicColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("10")
             }
             binding.genreMusicColorIv.id -> {
                 binding.genreMusicIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("10")
                 binding.genreMusicColorIv.visibility = View.GONE
             }
             binding.genreSfIv.id -> {
                 binding.genreSfIv.visibility = View.GONE
                 binding.genreSfColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("11")
             }
             binding.genreSfColorIv.id -> {
                 binding.genreSfIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("11")
                 binding.genreSfColorIv.visibility = View.GONE
             }
             binding.genreActionIv.id -> {
                 binding.genreActionIv.visibility = View.GONE
                 binding.genreActionColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("12")
             }
             binding.genreActionColorIv.id -> {
                 binding.genreActionIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("12")
                 binding.genreActionColorIv.visibility = View.GONE
             }
             binding.genreHistoryIv.id -> {
                 binding.genreHistoryIv.visibility = View.GONE
                 binding.genreHistoryColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("13")
             }
             binding.genreHistoryColorIv.id -> {
                 binding.genreHistoryIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("13")
                 binding.genreHistoryColorIv.visibility = View.GONE
             }
             binding.genreHororIv.id -> {
                 binding.genreHororIv.visibility = View.GONE
                 binding.genreHororColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("14")
             }
             binding.genreHororColorIv.id -> {
                 binding.genreHororIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("14")
                 binding.genreHororColorIv.visibility = View.GONE
             }
             binding.genreCrimeIv.id -> {
                 binding.genreCrimeIv.visibility = View.GONE
                 binding.genreCrimeColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("15")
             }
             binding.genreCrimeColorIv.id -> {
                 binding.genreCrimeIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("15")
                 binding.genreCrimeColorIv.visibility = View.GONE
             }
             binding.genreWarIv.id -> {
                 binding.genreWarIv.visibility = View.GONE
                 binding.genreWarColorIv.visibility = View.VISIBLE
                 genreNum++
-                genreList.add("1")
+                genreList.add("16")
             }
             binding.genreWarColorIv.id -> {
                 binding.genreWarIv.visibility = View.VISIBLE
                 genreNum--
-                genreList.remove("1")
+                genreList.remove("16")
                 binding.genreWarColorIv.visibility = View.GONE
             }
 

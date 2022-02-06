@@ -124,14 +124,14 @@ class JoinNicknameActivity : AppCompatActivity() {
         editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
 
         if(binding.nicknameMaleRb.isChecked){
-            editor.putString("sex", binding.nicknameMaleRb.text.toString())
+            editor.putBoolean("sex", true)
         }else if(binding.nicknameFemaleRb.isChecked){
-            editor.putString("sex", binding.nicknameFemaleRb.text.toString())
+            editor.putBoolean("sex", false)
         }
 
 
-        editor.putString("birthday", binding.loginBirthdayEt.text.toString() +
-                binding.loginBirthdayMonthEt.text.toString() +
+        editor.putString("birthday", binding.loginBirthdayEt.text.toString() + "-" +
+                binding.loginBirthdayMonthEt.text.toString() + "-" +
                 binding.loginBirthdayDayEt.text.toString())
         editor.commit()
 

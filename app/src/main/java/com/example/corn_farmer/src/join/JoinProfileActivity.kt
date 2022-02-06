@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,10 @@ import androidx.core.content.ContextCompat
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
 import kotlin.math.min
 
 class JoinProfileActivity() : AppCompatActivity(){
@@ -36,12 +41,6 @@ class JoinProfileActivity() : AppCompatActivity(){
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
     val PERMISSIONS_REQUEST = 100
-
-    private val BUTTON1 = 100
-    private val BUTTON2 = 200
-    private val BUTTON3 = 300
-    private val BUTTON4 = 400
-    private val BUTTON5 = 500
 
     private var photoUri: Uri? = null
 
@@ -109,36 +108,38 @@ class JoinProfileActivity() : AppCompatActivity(){
             binding.profileNextIv.visibility = View.VISIBLE
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
-
+            saveBitmapAsPNGFile(bitmap)
             binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
 
-            var outputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-            var byteArray = outputStream.toByteArray()
-
-            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
-
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("gallerypic", byteArray.toString())
-            editor.commit()
+//            var outputStream = ByteArrayOutputStream()
+//            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+//            var byteArray = outputStream.toByteArray()
+//
+//            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+//
+//            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+//            val editor = sharedPreferences.edit()
+//            editor.putString("gallerypic", byteArray.toString())
+//            editor.commit()
 
         } else if (resultCode == RESULT_OK && requestCode == 100) {
             binding.profileFinishIv.visibility = View.GONE
             binding.profileNextIv.visibility = View.VISIBLE
+
             val imageBitmap = data?.extras?.get("data") as Bitmap
+            saveBitmapAsPNGFile(imageBitmap)
             binding.profileImageIv.setImageBitmap(imageBitmap.cropCircularArea(10))
 
-            var outputStream = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-            var byteArray = outputStream.toByteArray()
-
-            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
-
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("camerapic", byteArray.toString())
-            editor.commit()
+//            var outputStream = ByteArrayOutputStream()
+//            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+//            var byteArray = outputStream.toByteArray()
+//
+//            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
+//
+//            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+//            val editor = sharedPreferences.edit()
+//            editor.putString("camerapic", byteArray.toString())
+//            editor.commit()
         }
 
     }
@@ -215,6 +216,35 @@ class JoinProfileActivity() : AppCompatActivity(){
         }
     }
 
+    private fun newPngFileName() : String {
+        val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
+        val filename = sdf.format(System.currentTimeMillis())
+        return "${filename}.png"
+    }
+    private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
+        val path = File(filesDir, "image")
+        if(!path.exists()){
+            path.mkdirs()
+        }
+        val file = File(path, newPngFileName())
+        var imageFile: OutputStream? = null
+        try{
+            file.createNewFile()
+            imageFile = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
+            imageFile.close()
+            Toast.makeText(this, file.absolutePath, Toast.LENGTH_LONG).show()
+
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("photo", file.absolutePath.toString())
+            Log.d("photo", file.absolutePath.toString())
+            editor.commit()
+
+        }catch (e: Exception){
+            null
+        }
+    }
 
 
 

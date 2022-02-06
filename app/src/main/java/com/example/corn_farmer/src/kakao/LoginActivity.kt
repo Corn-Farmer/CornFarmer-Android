@@ -128,7 +128,8 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             editor.commit()
             startActivity(Intent(this, JoinProfileActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+            // 나중에 main으로 바꾸기
         }
 
     }
