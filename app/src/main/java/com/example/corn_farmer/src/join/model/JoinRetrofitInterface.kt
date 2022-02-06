@@ -12,7 +12,7 @@ import retrofit2.http.Multipart
 interface JoinRetrofitInterface {
 
     @Multipart
-    @POST("/users")
+    @POST("/users/")
     fun sendJoin(
         @Header("X-ACCESS-TOKEN") token: String,
         @Part file: MultipartBody.Part,

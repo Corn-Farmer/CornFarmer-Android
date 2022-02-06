@@ -14,13 +14,15 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Multipart
+import java.util.*
+import kotlin.collections.HashMap
 
 class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
     private lateinit var binding: ActivityJoinGenreBinding
 
     var genreNum = 0
-    var genreList = mutableListOf<String>()
+    var genreList = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,42 +37,43 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val servertoken = sharedPreferences.getString("servertoken", null)
-            val photo = sharedPreferences.getString("photo", null)
-            val nickname = sharedPreferences.getString("nickname", null)
-            val sex = sharedPreferences.getBoolean("sex", true)
-            val birthday = sharedPreferences.getString("birthday", null)
-            val ottList = sharedPreferences.getString("ottlist", null)
-            val photoName = sharedPreferences.getString("photoname", null)
+//            val photo = sharedPreferences.getString("photo", null)
+//            val nickname = sharedPreferences.getString("nickname", null)
+//            val sex = sharedPreferences.getBoolean("sex", true)
+//            val birthday = sharedPreferences.getString("birthday", null)
+//            val ottList = sharedPreferences.getString("ottlist", null)
+//            val photoName = sharedPreferences.getString("photoname", null)
 
 
-            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname)
-            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex.toString())
-            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday)
+            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), "Yj")
+            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), "true")
+            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), "2002-07-31")
             val ottListRequest =
-                RequestBody.create(MediaType.parse("text/plain"), ottList.toString())
+                RequestBody.create(MediaType.parse("text/plain"), "1")
             val genreRequest =
-                RequestBody.create(MediaType.parse("text/plain"), genreList.toString())
+                RequestBody.create(MediaType.parse("text/plain"), "2")
 
             val fileBody: RequestBody =
-                RequestBody.create(MediaType.parse("image/png"), photo.toString());
+                RequestBody.create(MediaType.parse("image/png"), "/data/user/0/com.example.cornfarmer_android/files/image/20220206_164047.png");
             val filePart: MultipartBody.Part =
-                MultipartBody.Part.createFormData("photo", photoName, fileBody)
+                MultipartBody.Part.createFormData("photo", "photoName", fileBody)
 
             val requestMap: HashMap<String, RequestBody> = HashMap()
+
             requestMap.put("nickname", nicknameRequest)
             requestMap.put("is_male", sexRequest)
             requestMap.put("birth", birthdayRequest)
             requestMap.put("ottList", ottListRequest)
             requestMap.put("genreList", genreRequest)
 
-            Log.d("JOIN-token", servertoken.toString())
-            Log.d("JOIN-photo", filePart.toString())
-            Log.d("JOIN-nickname", nickname.toString())
-            Log.d("JOIN-sex", sex.toString())
-            Log.d("JOIN-birthday", birthday.toString())
-            Log.d("JOIN-ottlist", ottList.toString())
-            Log.d("JOIN-genrelist", genreList.toString())
-            Log.d("JOIN-photoname", photoName.toString())
+//            Log.d("JOIN-token", servertoken.toString())
+//            Log.d("JOIN-photo", filePart.toString())
+//            Log.d("JOIN-nickname", nickname.toString())
+//            Log.d("JOIN-sex", sex.toString())
+//            Log.d("JOIN-birthday", birthday.toString())
+//            Log.d("JOIN-ottlist", ottList.toString())
+//            Log.d("JOIN-genrelist", genreList.toString())
+//            Log.d("JOIN-photoname", photoName.toString())
 
 
             var service = JoinService(this, servertoken.toString(), filePart, requestMap)
