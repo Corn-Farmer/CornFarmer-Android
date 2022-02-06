@@ -241,6 +241,7 @@ class JoinProfileActivity() : AppCompatActivity(){
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
+            Log.d("Photo",file.absolutePath.toString())
             editor.putString("photoname", photoName)
             editor.commit()
 
