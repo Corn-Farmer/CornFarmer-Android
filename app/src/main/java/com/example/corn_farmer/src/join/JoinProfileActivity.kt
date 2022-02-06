@@ -227,7 +227,10 @@ class JoinProfileActivity() : AppCompatActivity(){
         if(!path.exists()){
             path.mkdirs()
         }
-        val file = File(path, newPngFileName())
+
+        val photoName = newPngFileName()
+
+        val file = File(path, photoName)
         var imageFile: OutputStream? = null
         try{
             file.createNewFile()
@@ -238,6 +241,7 @@ class JoinProfileActivity() : AppCompatActivity(){
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
+            editor.putString("photoname", photoName)
             editor.commit()
 
         }catch (e: Exception){

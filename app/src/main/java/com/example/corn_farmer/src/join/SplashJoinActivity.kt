@@ -27,8 +27,6 @@ class SplashJoinActivity : AppCompatActivity() {
 
         Handler().postDelayed({
 
-
-
             val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
             finish()

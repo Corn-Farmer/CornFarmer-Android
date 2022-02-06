@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.join
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,10 @@ import android.widget.Toast
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.model.getJoinAPI
 import com.example.cornfarmer_android.databinding.ActivityJoinGenreBinding
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Multipart
 
 class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
@@ -21,13 +26,6 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinGenreBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-
-//        val join = sendJoinAPI()
-//        var service = JoinService(this, join)
-//        service.tryPostJoin()
 
         binding.genreBackIv.setOnClickListener {
             finish()
@@ -42,17 +40,46 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             val sex = sharedPreferences.getBoolean("sex", true)
             val birthday = sharedPreferences.getString("birthday", null)
             val ottList = sharedPreferences.getString("ottlist", null)
+            val photoName = sharedPreferences.getString("photoname", null)
 
-            Log.d("JOIN-SHARE", servertoken.toString())
-            Log.d("JOIN-SHARE", photo.toString())
-            Log.d("JOIN-SHARE", nickname.toString())
-            Log.d("JOIN-SHARE", sex.toString())
-            Log.d("JOIN-SHARE", birthday.toString())
-            Log.d("JOIN-SHARE", ottList.toString())
-            Log.d("JOIN-SHARE", genreList.toString())
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname)
+            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex.toString())
+            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday)
+            val ottListRequest =
+                RequestBody.create(MediaType.parse("text/plain"), ottList.toString())
+            val genreRequest =
+                RequestBody.create(MediaType.parse("text/plain"), genreList.toString())
+
+            val fileBody: RequestBody =
+                RequestBody.create(MediaType.parse("image/png"), photo.toString());
+            val filePart: MultipartBody.Part =
+                MultipartBody.Part.createFormData("photo", photoName, fileBody)
+
+            val requestMap: HashMap<String, RequestBody> = HashMap()
+            requestMap.put("nickname", nicknameRequest)
+            requestMap.put("is_male", sexRequest)
+            requestMap.put("birth", birthdayRequest)
+            requestMap.put("ottList", ottListRequest)
+            requestMap.put("genreList", genreRequest)
+
+            Log.d("JOIN-token", servertoken.toString())
+            Log.d("JOIN-photo", filePart.toString())
+            Log.d("JOIN-nickname", nickname.toString())
+            Log.d("JOIN-sex", sex.toString())
+            Log.d("JOIN-birthday", birthday.toString())
+            Log.d("JOIN-ottlist", ottList.toString())
+            Log.d("JOIN-genrelist", genreList.toString())
+            Log.d("JOIN-photoname", photoName.toString())
+
+
+            var service = JoinService(this, servertoken.toString(), filePart, requestMap)
+            service.tryPostJoin()
+
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+
+
         }
 
         bindOtt()
@@ -307,11 +334,18 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onPostJoinFailure(message: String) {
         Log.d("JOIN-API", message.toString())
     }
 
+    override fun onStart() {
+        super.onStart()
+
+
+    }
 
 }
