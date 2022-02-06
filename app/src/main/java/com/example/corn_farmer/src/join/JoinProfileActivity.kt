@@ -221,6 +221,7 @@ class JoinProfileActivity() : AppCompatActivity(){
         val filename = sdf.format(System.currentTimeMillis())
         return "${filename}.png"
     }
+
     private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
         val path = File(filesDir, "image")
         if(!path.exists()){
