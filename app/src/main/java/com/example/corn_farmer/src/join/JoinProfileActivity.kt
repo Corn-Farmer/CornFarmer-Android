@@ -234,12 +234,10 @@ class JoinProfileActivity() : AppCompatActivity(){
             imageFile = FileOutputStream(file)
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
             imageFile.close()
-            Toast.makeText(this, file.absolutePath, Toast.LENGTH_LONG).show()
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
-            Log.d("photo", file.absolutePath.toString())
             editor.commit()
 
         }catch (e: Exception){

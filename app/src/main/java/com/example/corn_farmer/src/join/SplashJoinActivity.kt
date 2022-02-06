@@ -19,25 +19,21 @@ class SplashJoinActivity : AppCompatActivity() {
         binding = ActivitySplashJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
         val nickname = sharedPreferences.getString("nickname", null)
         val photo = sharedPreferences.getString("photo", null)
         binding.splashJoinNicknameTv.text = nickname.toString()
         binding.splashJoinImageIv.setImageURI(Uri.parse(photo))
 
-        Toast.makeText(this, photo.toString(), Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({
 
 
-//        Handler().postDelayed({
-//
-//
-//
-//            val intent = Intent(this, JoinOttActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//
-//        }, 3000)
+
+            val intent = Intent(this, JoinOttActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }, 3000)
     }
 
 
