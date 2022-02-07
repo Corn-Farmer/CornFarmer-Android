@@ -31,18 +31,18 @@
 
             <ImageView
                 android:id="@+id/detail_search_btn_iv"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_search"
+                android:src="@drawable/search"
                 app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/detail_heart_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_heart"
@@ -51,13 +51,13 @@
 
             <ImageView
                 android:id="@+id/detail_news_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="28dp"
-                android:src="@drawable/ic_bell_off"
+                android:src="@drawable/bell"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/detail_heart_btn_iv"  />
 
             <ImageView
                 android:id="@+id/detail_movie_image_iv"
@@ -238,11 +238,48 @@
                 app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
                 app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
 
+            <TextView
+                android:id="@+id/detail_review_sort_recent_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최신순"
+                android:textSize="11sp"
+                android:textColor="#C4C4C4"
+                app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator_tv"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/detail_review_sort_separator_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="|"
+                android:textSize="11sp"
+                android:textColor="#C4C4C4"
+                app:layout_constraintEnd_toStartOf="@id/detail_review_sort_like_tv"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/detail_review_sort_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="좋아요순"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"/>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_comment_RV"
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"

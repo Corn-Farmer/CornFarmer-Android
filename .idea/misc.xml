@@ -61,6 +61,7 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.24048913043478262" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/xml/filepaths.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_genre.xml" value="0.5427083333333333" />
+        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.303125" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_join_profile.xml" value="0.5427083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_login.xml" value="0.5427083333333333" />
@@ -68,11 +69,12 @@
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_splash.xml" value="0.5427083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/activity_splash_join.xml" value="0.5427083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_comment.xml" value="0.23796296296296296" />
-        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_detail.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_home.xml" value="0.34203655352480417" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_keyword.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_profile.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_recommend.xml" value="0.384375" />
+        <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_search.xml" value="0.1953125" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/fragment_wishlist.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_comment.xml" value="0.3390151515151515" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_keyword.xml" value="0.35520833333333335" />
