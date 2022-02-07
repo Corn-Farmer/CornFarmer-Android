@@ -13,13 +13,14 @@ import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.home.HomeService
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentCommentBinding
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class CommentFragment(val movieIdx : Int, val keywordIdx: Int) : Fragment(),CommentFragmentView {
+class CommentFragment(val movieIdx : Int, val keywordIdx: Int, val keyword: String) : Fragment(), CommentFragmentView {
     lateinit var binding : FragmentCommentBinding
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -36,15 +37,29 @@ class CommentFragment(val movieIdx : Int, val keywordIdx: Int) : Fragment(),Comm
             var service = CommentService(this,review)
             service.tryPostReview()
         }
+
+        binding.commentPreviousBtnIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword))
+                .commitAllowingStateLoss()
+        }
+
+        binding.commentSearchBtnIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SearchFragment())
+                .commitAllowingStateLoss()
+        }
+
         return binding.root
     }
 
 
     override fun onPostReviewSuccess(response: getReviewAPI) {
+
         Toast.makeText(context, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
 
         (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx))
+            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword))
             .commitAllowingStateLoss()
     }
 

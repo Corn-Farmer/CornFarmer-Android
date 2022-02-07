@@ -12,6 +12,7 @@ import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.keyword.model.KeywordDto
 import com.example.corn_farmer.src.keyword.model.KeywordResponse
 import com.example.corn_farmer.src.recommend.RecommendFragment
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentKeywordBinding
 
@@ -37,7 +38,11 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
 
         }
 
-
+        binding.mainSearchIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SearchFragment())
+                .commitAllowingStateLoss()
+        }
 
         return binding.root
     }

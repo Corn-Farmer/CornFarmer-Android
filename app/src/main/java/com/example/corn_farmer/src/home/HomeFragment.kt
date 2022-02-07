@@ -26,15 +26,16 @@ class HomeFragment : Fragment(), HomeFragmentView {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        var service = HomeService(this)
-        service.tryGetMovieList()
 
         val mActivity = activity as MainActivity //메인 액티비티
-
 
         binding.mainSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
+        var service = HomeService(this)
+        service.tryGetMovieList()
+
+
         return binding.root
     }
 
@@ -49,7 +50,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         todayMovieRVAdapter.setMyItemClickListener(object : TodayMovieRVAdapter.MyItemClickListener {
             override fun onItemClick(MovieDto: MovieDto, position: Int) {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(MovieDto.movieIdx!!, -1))
+                    .replace(R.id.main_frame, DetailFragment(MovieDto.movieIdx!!, -1, ""))
                     .commitAllowingStateLoss()
             }
         })
@@ -58,6 +59,4 @@ class HomeFragment : Fragment(), HomeFragmentView {
     override fun onGetMovieListFailure(message: String) {
         Log.d("Fail", "작품 정보 가져오기 실패")
     }
-
-
 }//HomeFragment 끝

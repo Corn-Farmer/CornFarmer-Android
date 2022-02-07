@@ -14,40 +14,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/comment_previous_btn1_iv"
-                android:layout_width="7dp"
-                android:layout_height="14dp"
+                android:id="@+id/comment_previous_btn_iv"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="38dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_back_btn1"
+                android:src="@drawable/back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/comment_previous_btn2_iv"
-                android:layout_width="7dp"
-                android:layout_height="14dp"
-                android:layout_marginTop="38dp"
-                android:scaleType="center"
-                android:src="@drawable/ic_back_btn2"
-                app:layout_constraintStart_toEndOf="@id/comment_previous_btn1_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
                 android:id="@+id/comment_search_btn_iv"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_search"
+                android:src="@drawable/search"
                 app:layout_constraintEnd_toStartOf="@id/comment_heart_btn_iv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/comment_heart_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_heart"
@@ -56,13 +45,13 @@
 
             <ImageView
                 android:id="@+id/comment_news_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="28dp"
-                android:src="@drawable/ic_bell_off"
+                android:src="@drawable/bell"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/comment_heart_btn_iv"/>
 
             <TextView
                 android:id="@+id/comment_ask_score_tv"

@@ -13,6 +13,16 @@ import com.example.cornfarmer_android.databinding.ItemOttsBinding
 
 class SearchResultRVAdapter(private val movieList : List<MovieDto>) : RecyclerView.Adapter<SearchResultRVAdapter.Viewholder>() {
 
+    interface MyItemClickListener{
+        fun onItemClick(movieList: MovieDto, position: Int)
+    }
+
+    private lateinit var myItemClickListener : MyItemClickListener
+
+    fun setMyItemClickListener(itemClickListener : MyItemClickListener) {
+        myItemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         val binding : ItemOttsBinding = ItemOttsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return Viewholder(binding)
@@ -20,6 +30,9 @@ class SearchResultRVAdapter(private val movieList : List<MovieDto>) : RecyclerVi
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bind(movieList[position])
+        holder.itemView.setOnClickListener {
+            myItemClickListener.onItemClick(movieList[position], position)
+        }
     }
 
     override fun getItemCount(): Int = movieList.size
@@ -40,6 +53,5 @@ class SearchResultRVAdapter(private val movieList : List<MovieDto>) : RecyclerVi
                 binding.itemOttLikeIv.setImageResource(R.drawable.like_white)
             }
         }
-
     }
 }

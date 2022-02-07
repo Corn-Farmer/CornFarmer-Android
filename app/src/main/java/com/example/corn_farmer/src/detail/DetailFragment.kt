@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.detail
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,13 +17,15 @@ import com.example.corn_farmer.src.comment.CommentFragment
 import com.example.corn_farmer.src.comment.CommentRVAdapter
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.home.HomeService
+import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.search_result.SearchResultFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), DetailFragmentView {
+class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
     lateinit var binding : FragmentDetailBinding
 
     override fun onCreateView(
@@ -33,7 +36,9 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), Detail
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         var service = DetailService(this, movieIdx,1)
         service.tryGetMovieInfo()
+
         initialize()
+        reviewSort()
 
         return binding.root
     }
@@ -42,7 +47,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), Detail
         // 댓글 작성 버튼
         binding.detailPlusCommentIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx))
+                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx, keyword))
                 .commitAllowingStateLoss()
         }
 
@@ -52,11 +57,23 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), Detail
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frame, HomeFragment())
                     .commitAllowingStateLoss()
-            } else {
+            } else if (keywordIdx == -2) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, SearchResultFragment(keyword))
+                    .commitAllowingStateLoss()
+            }
+            else {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frame, RecommendFragment(keywordIdx))
                     .commitAllowingStateLoss()
             }
+        }
+
+        // search button
+        binding.detailSearchBtnIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SearchFragment())
+                .commitAllowingStateLoss()
         }
     }
 
@@ -102,5 +119,26 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), Detail
     override fun onGetDetailFailure(message: String) {
         Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("detailMovieInfo", message.toString())
+    }
+
+    fun reviewSort() {
+
+        var sortIdx = 2
+
+        binding.detailReviewSortRecentTv.setOnClickListener {
+            sortIdx = 1
+            binding.detailReviewSortRecentTv.setTextColor(Color.BLACK)
+            binding.detailReviewSortLikeTv.setTextColor(Color.LTGRAY)
+        }
+
+        binding.detailReviewSortLikeTv.setOnClickListener {
+            sortIdx = 2
+            binding.detailReviewSortRecentTv.setTextColor(Color.LTGRAY)
+            binding.detailReviewSortLikeTv.setTextColor(Color.BLACK)
+        }
+
+        var service = DetailService(this, movieIdx,sortIdx)
+        service.tryGetMovieInfo()
+
     }
 }
