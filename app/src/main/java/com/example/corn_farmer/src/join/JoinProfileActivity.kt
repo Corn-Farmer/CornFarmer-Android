@@ -82,15 +82,12 @@ class JoinProfileActivity() : AppCompatActivity(){
             takePictureIntent.resolveActivity(packageManager)
             startActivityForResult(takePictureIntent, 100)
             alertDialog.dismiss()
-
-
         }
 
         alertDialog.findViewById<Button>(R.id.select_album_bt)?.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 200)
             alertDialog.dismiss()
-
         }
 
         alertDialog.findViewById<ImageView>(R.id.select_cancel_bt)?.setOnClickListener {
@@ -109,18 +106,8 @@ class JoinProfileActivity() : AppCompatActivity(){
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             saveBitmapAsPNGFile(bitmap)
-            binding.profileImageIv.setImageBitmap(bitmap.cropCircularArea(50))
+            binding.profileImageIv.setImageBitmap(bitmap)
 
-//            var outputStream = ByteArrayOutputStream()
-//            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-//            var byteArray = outputStream.toByteArray()
-//
-//            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
-//
-//            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-//            val editor = sharedPreferences.edit()
-//            editor.putString("gallerypic", byteArray.toString())
-//            editor.commit()
 
         } else if (resultCode == RESULT_OK && requestCode == 100) {
             binding.profileFinishIv.visibility = View.GONE
@@ -128,59 +115,9 @@ class JoinProfileActivity() : AppCompatActivity(){
 
             val imageBitmap = data?.extras?.get("data") as Bitmap
             saveBitmapAsPNGFile(imageBitmap)
-            binding.profileImageIv.setImageBitmap(imageBitmap.cropCircularArea(10))
-
-//            var outputStream = ByteArrayOutputStream()
-//            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-//            var byteArray = outputStream.toByteArray()
-//
-//            Toast.makeText(this, byteArray.toString(), Toast.LENGTH_LONG).show()
-//
-//            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-//            val editor = sharedPreferences.edit()
-//            editor.putString("camerapic", byteArray.toString())
-//            editor.commit()
+            binding.profileImageIv.setImageBitmap(imageBitmap)
         }
 
-    }
-
-    private fun Bitmap.cropCircularArea(heightY: Int): Bitmap? {
-        val bitmap = Bitmap.createBitmap(
-            width, // width in pixels
-            height, // height in pixels
-            Bitmap.Config.ARGB_8888
-        )
-
-        val canvas = Canvas(bitmap)
-
-        // create a circular path
-        val path = Path()
-        val radius = min(width / 2f, height / 2f)
-        path.apply {
-            addCircle(
-                width / 2f,
-                height / 2f,
-                radius,
-                Path.Direction.CCW
-            )
-        }
-
-        // draw circular bitmap on canvas
-        canvas.clipPath(path)
-        canvas.drawBitmap(this, 0f, 0f, null)
-
-        val diameter = (radius * 2).toInt()
-        val x = (width - diameter) / 2
-        val y = (height - diameter) / 2
-
-        // return cropped circular bitmap
-        return Bitmap.createBitmap(
-            bitmap, // source bitmap
-            x, // x coordinate of the first pixel in source
-            y, // y coordinate of the first pixel in source
-            diameter, // width
-            diameter + heightY // height
-        )
     }
 
     private fun checkPermissions(permissions: Array<String>, permissionsRequest: Int): Boolean {
@@ -249,11 +186,5 @@ class JoinProfileActivity() : AppCompatActivity(){
             null
         }
     }
-
-
-
-
-
-
 }
 

@@ -45,6 +45,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             val photoName = sharedPreferences.getString("photoname", null)
             val isMale = sharedPreferences.getString("isMale",null)
             val isFemale = sharedPreferences.getString("isFemale",null)
+
             if(isMale==null){
                 sex = "false"
             }
@@ -54,7 +55,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
 
             val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
-            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
+            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex.toString())
             val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
             val ottListRequest =
                 RequestBody.create(MediaType.parse("text/plain"), ottList!!)
@@ -345,18 +346,18 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
+
+        val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("useridx", response.result!!.userIdx)
+        editor.commit()
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
     override fun onPostJoinFailure(message: String) {
         Log.d("JOIN-API", message.toString())
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-
     }
 
 }

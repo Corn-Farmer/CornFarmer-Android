@@ -131,7 +131,8 @@ class JoinNicknameActivity : AppCompatActivity() {
             isMale = "true"
             editor.putString("isMale",isMale)
         }
-        else if(binding.nicknameFemaleRb.isChecked){
+
+        if(binding.nicknameFemaleRb.isChecked){
             isFemale = "false"
             editor.putString("isFemale",isFemale)
         }
