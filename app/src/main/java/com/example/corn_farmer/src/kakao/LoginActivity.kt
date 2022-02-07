@@ -112,7 +112,7 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         }
 
         binding.loginNaverLoginBt.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, JoinProfileActivity::class.java))
         }
 
 
@@ -132,7 +132,7 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.commit() // 나중에 지우기
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             // 나중에 main으로 바꾸기
         }
 
