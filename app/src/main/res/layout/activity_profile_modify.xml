@@ -67,6 +67,25 @@
                         android:layout_height="190dp"
                         android:background="@android:color/transparent" />
 
+                    <ImageView
+                        android:id="@+id/profile_image_plus_iv"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="134dp"
+                        android:layout_marginTop="154dp"
+                        android:layout_marginEnd="34dp"
+                        android:src="@drawable/modify_img"/>
+
+                    <ImageView
+                        android:id="@+id/profile_image_delete_iv"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="170dp"
+                        android:layout_marginTop="154dp"
+                        android:layout_marginEnd="34dp"
+                        android:src="@drawable/modify_img"/>
+
+
 
                 </RelativeLayout>
 
@@ -146,27 +165,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:textColor="#545454"
+                    android:hint="lee"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/modify_nickname_tv"
-                    app:layout_constraintTop_toTopOf="@id/modify_nickname_tv" />
+                    app:layout_constraintTop_toTopOf="@id/modify_nickname_tv"
+                    app:layout_constraintBottom_toBottomOf="@id/modify_nickname_tv"/>
 
 
-                <EditText
+                <TextView
                     android:id="@+id/modify_gender_info_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="남성"
+                    android:text="남성"
                     android:textColor="#545454"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/modify_nickname_info_et"
                     app:layout_constraintTop_toTopOf="@id/modify_gender_tv" />
 
-                <EditText
+                <TextView
                     android:id="@+id/modify_birth_info_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="1995년 04월 03일"
+                    android:text="1995년 04월 03일"
                     android:textColor="#545454"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/modify_gender_info_et"

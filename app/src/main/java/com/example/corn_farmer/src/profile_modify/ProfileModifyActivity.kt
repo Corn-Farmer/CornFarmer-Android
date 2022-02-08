@@ -1,9 +1,13 @@
 package com.example.corn_farmer.src.profile_modify
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import com.example.corn_farmer.src.profile.ProfileService
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityProfileModifyBinding
 
@@ -16,26 +20,24 @@ class ProfileModifyActivity : AppCompatActivity() {
         binding = ActivityProfileModifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-        val nickname = sharedPreferences.getString("nickname", null)
-        var sex : String = ""
-        val birthday = sharedPreferences.getString("birthday", null)
-        val isMale = sharedPreferences.getString("isMale",null)
-        val isFemale = sharedPreferences.getString("isFemale",null)
+        val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
+        val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
 
-        if(isMale==null){
-            sex = "여자"
-            Log.d("female","여자")
+        var gender = sharedPreferences?.getString("isMale",null)
+        if(gender == "true"){
+            binding.modifyGenderInfoEt.text = "남자"
         }
-        else if(isFemale==null){
-            sex = "남자"
-            Log.d("male","남자")
+        else{
+            binding.modifyGenderInfoEt.text = "여자"
         }
 
+        val birth = sharedPreferences?.getString("birthday",null)
+        binding.modifyBirthInfoEt.text = birth
 
-        binding.modifyNicknameInfoEt.hint = nickname
-        binding.modifyGenderInfoEt.hint = sex
-        binding.modifyBirthInfoEt.hint = birthday
+
+        //수정할 때 닉네임이랑 사진 다시 하기
+
+        val nickname = sharedPreferences?.getString("nickname",null)
 
         binding.modifyCancelIv.setOnClickListener {
             finish()
