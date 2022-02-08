@@ -1,4 +1,4 @@
-package com.example.corn_farmer.src.profile
+package com.example.corn_farmer.src.profile_modify
 
 import com.example.corn_farmer.src.profile.model.ModifyResponse
 

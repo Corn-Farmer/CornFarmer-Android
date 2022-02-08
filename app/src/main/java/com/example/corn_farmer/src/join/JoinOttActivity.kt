@@ -120,7 +120,6 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottAppleTvSelectIv.visibility = View.GONE
                 ottList.clear()
                 ottNum++
-                ottList.add("1")
             }
             binding.ottNoUseSelectIv.id -> {
                 binding.ottNoUseIv.visibility = View.VISIBLE
@@ -133,11 +132,11 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("2")
+                ottList.add("7")
             }
             binding.ottNetflixSelectIv.id -> {
                 ottNum--
-                ottList.remove("2")
+                ottList.remove("7")
                 binding.ottNetflixIv.visibility = View.VISIBLE
                 binding.ottNetflixSelectIv.visibility = View.GONE
             }
@@ -146,12 +145,12 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("3")
+                ottList.add("8")
                 binding.ottWhatchaSelectIv.visibility = View.VISIBLE
             }
             binding.ottWhatchaSelectIv.id -> {
                 ottNum--
-                ottList.remove("3")
+                ottList.remove("8")
                 binding.ottWhatchaIv.visibility = View.VISIBLE
                 binding.ottWhatchaSelectIv.visibility = View.GONE
             }
@@ -159,13 +158,13 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("4")
+                ottList.add("3")
                 binding.ottDisneyIv.visibility = View.GONE
                 binding.ottDisneySelectIv.visibility = View.VISIBLE
             }
             binding.ottDisneySelectIv.id -> {
                 ottNum--
-                ottList.remove("4")
+                ottList.remove("3")
                 binding.ottDisneyIv.visibility = View.VISIBLE
                 binding.ottDisneySelectIv.visibility = View.GONE
             }
@@ -201,13 +200,13 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("7")
+                ottList.add("4")
                 binding.ottCoupangIv.visibility = View.GONE
                 binding.ottCoupangSelectIv.visibility = View.VISIBLE
             }
             binding.ottCoupangSelectIv.id -> {
                 ottNum--
-                ottList.remove("7")
+                ottList.remove("4")
                 binding.ottCoupangIv.visibility = View.VISIBLE
                 binding.ottCoupangSelectIv.visibility = View.GONE
             }
@@ -215,13 +214,13 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("8")
+                ottList.add("2")
                 binding.ottPrimeVideoIv.visibility = View.GONE
                 binding.ottPrimeVideoSelectIv.visibility = View.VISIBLE
             }
             binding.ottPrimeVideoSelectIv.id -> {
                 ottNum--
-                ottList.remove("8")
+                ottList.remove("2")
                 binding.ottPrimeVideoIv.visibility = View.VISIBLE
                 binding.ottPrimeVideoSelectIv.visibility = View.GONE
             }
@@ -229,13 +228,13 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
                 binding.ottNoUseIv.visibility = View.VISIBLE
                 binding.ottNoUseSelectIv.visibility = View.GONE
                 ottNum++
-                ottList.add("9")
+                ottList.add("1")
                 binding.ottAppleTvIv.visibility = View.GONE
                 binding.ottAppleTvSelectIv.visibility = View.VISIBLE
             }
             binding.ottAppleTvSelectIv.id -> {
                 ottNum--
-                ottList.remove("9")
+                ottList.remove("1")
                 binding.ottAppleTvIv.visibility = View.VISIBLE
                 binding.ottAppleTvSelectIv.visibility = View.GONE
             }

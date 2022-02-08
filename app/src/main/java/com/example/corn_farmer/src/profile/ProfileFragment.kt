@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.profile
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.corn_farmer.src.profile.model.ProfileResponse
+import com.example.corn_farmer.src.profile_modify.ProfileModifyActivity
 import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(),ProfileFragmentView {
@@ -22,10 +24,14 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater,container,false)
-        val service = ProfileService(this)
+        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        val sharedPreferences2 = this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+
+        var userIdx = sharedPreferences2?.getInt("useridx",0)
+        var serverToken = sharedPreferences?.getString("servertoken",null)
+        val service = ProfileService(this,userIdx,serverToken)
         service.tryGetProfile()
 
-        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         var gender = sharedPreferences?.getString("isMale",null)
         if(gender == "true"){
             binding.profileGenderInfoTv.text = "남자"
@@ -46,6 +52,11 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         val photo = sharedPreferences?.getString("photo",null)
         binding.profileImageIv.setImageURI(Uri.parse(photo))
 
+
+        binding.profileReIv.setOnClickListener {
+            val intent = Intent(requireContext(),ProfileModifyActivity::class.java)
+            startActivity(intent)
+        }
         return binding.root
 
     }

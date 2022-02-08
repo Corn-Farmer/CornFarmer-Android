@@ -1,18 +1,13 @@
-package com.example.corn_farmer.src.profile
+package com.example.corn_farmer.src.profile_modify
 
 import com.example.corn_farmer.config.Application
-import com.example.corn_farmer.src.join.JoinView
 import com.example.corn_farmer.src.profile.model.ModifyResponse
-import com.example.corn_farmer.src.profile.model.ModifyRetrofitInterface
-import com.example.corn_farmer.src.profile.model.ProfileResponse
+import com.example.corn_farmer.src.profile_modify.model.ModifyRetrofitInterface
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Part
-import retrofit2.http.PartMap
-
 
 
 class ModifyService(var view: ModifyView, var token: String, var file: MultipartBody.Part, var params: Map<String, RequestBody>) {
