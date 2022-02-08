@@ -22,7 +22,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
     private lateinit var binding: ActivityJoinGenreBinding
 
     var genreNum = 0
-    var genreList = arrayListOf<String>()
+    var genreList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +48,11 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
             if(isMale==null){
                 sex = "false"
+                Log.d("female","여자")
             }
             else if(isFemale==null){
                 sex = "true"
+                Log.d("male","남자")
             }
 
 
@@ -58,9 +60,9 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex.toString())
             val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
             val ottListRequest =
-                RequestBody.create(MediaType.parse("text/plain"), ottList!!)
+                RequestBody.create(MediaType.parse("text/plain"), ottList!!.replace("[","").replace("]",""))
             val genreRequest =
-                RequestBody.create(MediaType.parse("text/plain"), genreList!!.toString())
+                RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
 
             val fileBody: RequestBody =
                 RequestBody.create(MediaType.parse("image/png"), photo!!);
@@ -80,8 +82,8 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             Log.d("JOIN-nickname", nickname.toString())
             Log.d("JOIN-sex", sex.toString())
             Log.d("JOIN-birthday", birthday.toString())
-            Log.d("JOIN-ottlist", ottList.toString())
-            Log.d("JOIN-genrelist", genreList.toString())
+            Log.d("JOIN-ottlist", ottList.toString().replace("[","").replace("]",""))
+            Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
             Log.d("JOIN-photoname", photoName.toString())
 
 

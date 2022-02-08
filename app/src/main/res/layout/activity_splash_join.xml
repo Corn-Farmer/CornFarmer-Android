@@ -25,12 +25,11 @@
         android:src="@drawable/splash_join_image"
         />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/splash_join_image_iv"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        android:background="@android:color/transparent"
-         />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/splash_join_image_iv"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:background="@android:color/transparent" />
 
 
     </RelativeLayout>

@@ -1,216 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/profile_back_iv"
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:src="@drawable/back"
         android:layout_marginStart="29dp"
         android:layout_marginTop="38dp"
+        android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/profile_search_iv"
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:src="@drawable/search"
-        app:layout_constraintEnd_toStartOf="@id/profile_like_iv"
-        app:layout_constraintBottom_toBottomOf="@id/profile_like_iv"
         android:layout_marginEnd="12dp"
-        />
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@id/profile_like_iv"
+        app:layout_constraintEnd_toStartOf="@id/profile_like_iv" />
+
     <ImageView
         android:id="@+id/profile_like_iv"
         android:layout_width="22dp"
         android:layout_height="22dp"
+        android:layout_marginEnd="12dp"
         android:src="@drawable/heartgray"
         app:layout_constraintBottom_toBottomOf="@id/profile_back_iv"
-        app:layout_constraintEnd_toStartOf="@id/profile_bell_iv"
-        android:layout_marginEnd="12dp"
-        />
+        app:layout_constraintEnd_toStartOf="@id/profile_bell_iv" />
+
     <ImageView
         android:id="@+id/profile_bell_iv"
         android:layout_width="29dp"
         android:layout_height="29dp"
+        android:layout_marginEnd="28dp"
         android:src="@drawable/bell"
         app:layout_constraintBottom_toBottomOf="@id/profile_back_iv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="28dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/profile_profile_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="프로필"
         android:textColor="#1E005E"
+        android:textSize="35sp"
         android:textStyle="bold"
-        android:textSize="21sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_back_iv"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_back_iv" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/profile_Ns"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/profile_profile_tv">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile_profile_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/profile_rl"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image_shadow"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/splash_join_image"
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image_iv"
+                    android:layout_width="190dp"
+                    android:layout_height="190dp"
+                    android:background="@android:color/transparent" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/profile_bar_bold_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/profile_bar1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_rl" />
+
+            <TextView
+                android:id="@+id/profile_std_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="회원 정보"
+                android:textColor="#1E005E"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_bar_bold_iv" />
+
+            <ImageView
+                android:id="@+id/profile_bar_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/profile_bar2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_std_info_tv" />
+
+            <TextView
+                android:id="@+id/profile_nickname_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:text="닉네임"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/profile_std_info_tv"
+                app:layout_constraintTop_toBottomOf="@id/profile_bar_iv" />
+
+            <TextView
+                android:id="@+id/profile_gender_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="성별"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/profile_nickname_tv"
+                app:layout_constraintTop_toBottomOf="@id/profile_nickname_tv" />
+
+            <TextView
+                android:id="@+id/profile_birth_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="생년월일"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/profile_nickname_tv"
+                app:layout_constraintTop_toBottomOf="@id/profile_gender_tv" />
+
+            <TextView
+                android:id="@+id/profile_nickname_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:textColor="#545454"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/profile_nickname_tv"
+                app:layout_constraintTop_toTopOf="@id/profile_nickname_tv" />
+
+            <TextView
+                android:id="@+id/profile_gender_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남성"
+                android:textColor="#545454"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/profile_nickname_info_tv"
+                app:layout_constraintTop_toTopOf="@id/profile_gender_tv" />
+
+            <TextView
+                android:id="@+id/profile_birth_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1995년 04월 03일"
+                android:textColor="#545454"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/profile_nickname_info_tv"
+                app:layout_constraintTop_toTopOf="@id/profile_birth_tv" />
+
+            <TextView
+                android:id="@+id/profile_use_ott_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="사용중인 OTT"
+                android:textColor="#1E005E"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/profile_std_info_tv"
+                app:layout_constraintTop_toBottomOf="@id/profile_birth_info_tv" />
+            <ImageView
+                android:id="@+id/profile_bar2_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/profile_bar2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_use_ott_tv" />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profile_rc1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/profile_bar2_iv"
+                android:overScrollMode="never"
+                />
+
+            <TextView
+                android:id="@+id/profile_genre_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="선호하는 장르"
+                android:textColor="#1E005E"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/profile_rc1"
+                app:layout_constraintStart_toStartOf="@id/profile_use_ott_tv"
+                />
+            <ImageView
+                android:id="@+id/profile_bar3_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/profile_bar2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_genre_tv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profile_rc2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/profile_bar3_iv"
+                android:overScrollMode="never"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
     <ImageView
-        android:id="@+id/profile_profile_img_iv"
-        android:src="@drawable/profile_img"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:id="@+id/profile_re_iv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/profile_Ns"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_profile_tv"
+        android:src="@drawable/profile_re"/>
+    <ImageView
+        android:id="@+id/profile_comment_iv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/profile_re_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/profile_comment"
         android:layout_marginTop="10dp"
         />
-    <TextView
-        android:id="@+id/profile_std_info_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기본 정보"
-        android:textColor="#1E005E"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_profile_img_iv"
-        android:layout_marginStart="30dp"
-        />
-    <TextView
-        android:id="@+id/profile_nickname_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="닉네임"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/profile_std_info_tv"
-        app:layout_constraintStart_toStartOf="@id/profile_std_info_tv"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        />
-    <TextView
-        android:id="@+id/profile_gender_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="성별"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/profile_nickname_tv"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_tv"
-        android:layout_marginTop="15dp"
-        />
-    <TextView
-        android:id="@+id/profile_birth_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="생년월일"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/profile_gender_tv"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_tv"
-        android:layout_marginTop="15dp"
-        />
-    <TextView
-        android:id="@+id/profile_mail_info_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이메일"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/profile_birth_tv"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_tv"
-        android:layout_marginTop="15dp"
-        />
-    <TextView
-        android:id="@+id/profile_nickname_info_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="슈퍼소닉"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/profile_nickname_tv"
-        app:layout_constraintStart_toEndOf="@id/profile_nickname_tv"
-        android:layout_marginStart="40dp"
-        android:textColor="#545454"
-        />
-    <TextView
-        android:id="@+id/profile_gender_info_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="남성"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_info_tv"
-        app:layout_constraintTop_toTopOf="@id/profile_gender_tv"
-        android:textStyle="bold"
-        android:textColor="#545454"
-        />
-    <TextView
-        android:id="@+id/profile_birth_info_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1995년 04월 03일"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_info_tv"
-        app:layout_constraintTop_toTopOf="@id/profile_birth_tv"
-        android:textStyle="bold"
-        android:textColor="#545454"
-        />
-    <TextView
-        android:id="@+id/profile_mail_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="superxonix@naver.com"
-        app:layout_constraintStart_toStartOf="@id/profile_nickname_info_tv"
-        app:layout_constraintTop_toTopOf="@id/profile_mail_info_tv"
-        android:textStyle="bold"
-        android:textColor="#545454"
-        />
-    <TextView
-        android:id="@+id/profile_use_ott_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="사용중인 OTT"
-        android:textColor="#1E005E"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@id/profile_std_info_tv"
-        app:layout_constraintTop_toBottomOf="@id/profile_mail_info_tv"
-        android:layout_marginTop="20dp"
-        />
-    <ImageView
-        android:id="@+id/profile_netflix_iv"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/olaf"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toBottomOf="@id/profile_use_ott_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="35dp"
-        />
-    <ImageView
-        android:id="@+id/profile_t_iv"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/olaf"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="@id/profile_netflix_iv"
-        app:layout_constraintTop_toTopOf="@id/profile_netflix_iv"
-        />
-    <ImageView
-        android:id="@+id/profile_plus_iv"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:src="@drawable/ottplus"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="@id/profile_t_iv"
-        app:layout_constraintTop_toTopOf="@id/profile_netflix_iv"
-        app:layout_constraintBottom_toBottomOf="@id/profile_t_iv"
-        android:layout_marginStart="10dp"
-        />
-    <TextView
-        android:id="@+id/profile_like_ott_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선호하는 장르"
-        android:textColor="#1E005E"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@id/profile_std_info_tv"
-        app:layout_constraintTop_toBottomOf="@id/profile_netflix_iv"
-        android:layout_marginTop="5dp"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
