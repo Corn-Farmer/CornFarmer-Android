@@ -245,6 +245,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/apple_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_apple_tv_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_apple_tv_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_apple_tv_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -262,6 +272,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/prime_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_prime_video_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_prime_video_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_prime_video_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -279,6 +299,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/disney_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_disney_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_disney_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_disney_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -296,6 +326,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/coupang_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_coupang_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_coupang_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_coupang_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -313,6 +353,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/wave_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_wavve_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_wavve_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_wavve_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -331,6 +381,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/tving_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_tving_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_tving_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_tving_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -348,6 +408,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/netflix_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_netflix_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_netflix_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_netflix_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -365,6 +435,16 @@
                             android:layout_height="70dp"
                             android:src="@drawable/watcha_plus"
                             android:visibility="gone" />
+                        <ImageView
+                            android:id="@+id/ott_whatcha_select_cancel_iv"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ott_remove"
+                            app:layout_constraintStart_toEndOf="@id/ott_whatcha_iv"
+                            app:layout_constraintTop_toTopOf="@id/ott_whatcha_iv"
+                            android:layout_marginStart="-17.5dp"
+                            android:layout_marginTop="4dp"
+                            />
 
                     </LinearLayout>
 
@@ -409,7 +489,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/modify_bar3_iv">
 
-                    <LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="10dp"
+                        >
 
                         <TextView
                             android:id="@+id/profile_action_color_tv"
@@ -448,7 +530,9 @@
 
                     </LinearLayout>
 
-                    <LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="10dp"
+                        >
 
                         <TextView
                             android:id="@+id/profile_anime_color_tv"
@@ -478,7 +562,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="애니메이션"
-                            android:background="@drawable/genre_background_color"
+                            android:background="@drawable/genre_backround_no_color"
                             android:gravity="center"
                             android:visibility="gone"
                             android:layout_marginTop="10dp"
@@ -516,7 +600,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="코미디"
-                            android:background="@drawable/genre_background_color"
+                            android:background="@drawable/genre_backround_no_color"
                             android:gravity="center"
                             android:visibility="gone"
                             android:layout_marginTop="10dp"
@@ -527,7 +611,7 @@
                     <LinearLayout>
 
                         <TextView
-                            android:id="@+id/profile_cirme_color_tv"
+                            android:id="@+id/profile_crime_color_tv"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_width="wrap_content"
@@ -554,7 +638,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="범죄"
-                            android:background="@drawable/genre_background_color"
+                            android:background="@drawable/genre_backround_no_color"
                             android:gravity="center"
                             android:visibility="gone"
                             android:layout_marginTop="10dp"
