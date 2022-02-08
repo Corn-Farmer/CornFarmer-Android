@@ -86,6 +86,10 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
             Log.d("JOIN-photoname", photoName.toString())
 
+            val editor = sharedPreferences.edit()
+            editor.putString("genrelist",genreList.toString())
+            editor.commit()
+
 
             var service = JoinService(this, servertoken.toString(), filePart, requestMap)
             service.tryPostJoin()
