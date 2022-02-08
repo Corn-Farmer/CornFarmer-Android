@@ -44,7 +44,7 @@ class ProfileModifyActivity : AppCompatActivity() {
 
 
         var ottList : ArrayList<ProfileOtt>
-        var userOttList : ArrayList<> //지금
+
 
 
 
@@ -53,6 +53,9 @@ class ProfileModifyActivity : AppCompatActivity() {
 
         binding.modifyCancelIv.setOnClickListener {
             finish()
+        }
+        binding.ottAppleTvIv.setOnClickListener {
+
         }
 
 
