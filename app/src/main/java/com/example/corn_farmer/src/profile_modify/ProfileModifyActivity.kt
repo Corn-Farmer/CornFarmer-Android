@@ -30,6 +30,8 @@ import java.text.SimpleDateFormat
 class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     lateinit var binding: ActivityProfileModifyBinding
+    var ottList = mutableListOf<String>()
+    var genreList = mutableListOf<String>()
 
     private var photoUri: Uri? = null
 
@@ -42,31 +44,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
-
-        val photo = sharedPreferences.getString("photo", null)
-        var ottList = mutableListOf<String>()
-        var genreList = mutableListOf<String>()
-        var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
-        val photoName = sharedPreferences.getString("photoname", null)
-
-        val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
-
-        val ottListRequest =
-            RequestBody.create(MediaType.parse("text/plain"), ottList!!.toString().replace("[","").replace("]",""))
-        val genreRequest =
-            RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
-        val fileBody: RequestBody =
-            RequestBody.create(MediaType.parse("image/png"), photo!!);
-        val filePart: MultipartBody.Part =
-            MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
-        val servertoken = sharedPreferences.getString("servertoken", null)
-        val requestMap: HashMap<String, RequestBody> = HashMap()
-
-        requestMap.put("nickname", nicknameRequest)
-        requestMap.put("ottList", ottListRequest)
-        requestMap.put("genreList", genreRequest)
-
-
 
         var gender = sharedPreferences?.getString("isMale", null)
         if (gender == "true") {
@@ -691,12 +668,32 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         }
 
         binding.modifyCompleteIv.setOnClickListener {
-            Log.d("Ott", ottList.toString())
-            Log.d("Genre", genreList.toString())
-            Log.d("Nickname",modifiedNickname)
+            val photo = sharedPreferences.getString("photo", null)
+
+            var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
+            val photoName = sharedPreferences.getString("photoname", null)
+
+            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
+
+            val ottListRequest =
+                RequestBody.create(MediaType.parse("text/plain"), ottList!!.toString().replace("[","").replace("]",""))
+            val genreRequest =
+                RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
+            val fileBody: RequestBody =
+                RequestBody.create(MediaType.parse("image/png"), photo!!);
+            val filePart: MultipartBody.Part =
+                MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+            val servertoken = sharedPreferences.getString("servertoken", null)
+            val requestMap: HashMap<String, RequestBody> = HashMap()
+
+            requestMap.put("nickname", nicknameRequest)
+            requestMap.put("userOtt", ottListRequest)
+            requestMap.put("genreList", genreRequest)
 
             var service = ModifyService(this, servertoken.toString(), filePart, requestMap)
             service.tryPutModify()
+
+
         }
     }//onCreate
 
