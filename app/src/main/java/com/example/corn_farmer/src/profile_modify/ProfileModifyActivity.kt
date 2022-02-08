@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import com.example.corn_farmer.src.profile.ProfileService
+import com.example.corn_farmer.src.profile.model.ProfileGenre
+import com.example.corn_farmer.src.profile.model.ProfileOtt
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityProfileModifyBinding
 
@@ -38,6 +40,16 @@ class ProfileModifyActivity : AppCompatActivity() {
         //수정할 때 닉네임이랑 사진 다시 하기
 
         val nickname = sharedPreferences?.getString("nickname",null)
+
+
+
+        var ottList : ArrayList<ProfileOtt>
+        var userOttList : ArrayList<> //지금
+
+
+
+
+        var genreList : ArrayList<ProfileGenre>
 
         binding.modifyCancelIv.setOnClickListener {
             finish()
