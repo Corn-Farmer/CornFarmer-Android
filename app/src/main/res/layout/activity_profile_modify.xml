@@ -139,8 +139,9 @@
                     app:layout_constraintStart_toStartOf="@id/modify_nickname_tv"
                     app:layout_constraintTop_toBottomOf="@id/modify_gender_tv" />
 
-                <TextView
-                    android:id="@+id/modify_nickname_info_tv"
+
+                <EditText
+                    android:id="@+id/modify_nickname_info_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
@@ -150,24 +151,25 @@
                     app:layout_constraintStart_toEndOf="@id/modify_nickname_tv"
                     app:layout_constraintTop_toTopOf="@id/modify_nickname_tv" />
 
-                <TextView
-                    android:id="@+id/modify_gender_info_tv"
+
+                <EditText
+                    android:id="@+id/modify_gender_info_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="남성"
+                    android:hint="남성"
                     android:textColor="#545454"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/modify_nickname_info_tv"
+                    app:layout_constraintStart_toStartOf="@id/modify_nickname_info_et"
                     app:layout_constraintTop_toTopOf="@id/modify_gender_tv" />
 
-                <TextView
-                    android:id="@+id/modify_birth_info_tv"
+                <EditText
+                    android:id="@+id/modify_birth_info_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1995년 04월 03일"
+                    android:hint="1995년 04월 03일"
                     android:textColor="#545454"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/modify_nickname_info_tv"
+                    app:layout_constraintStart_toStartOf="@id/modify_gender_info_et"
                     app:layout_constraintTop_toTopOf="@id/modify_birth_tv" />
 
                 <TextView
@@ -181,7 +183,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/modify_std_info_tv"
-                    app:layout_constraintTop_toBottomOf="@id/modify_birth_info_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/modify_birth_info_et" />
                 <ImageView
                     android:id="@+id/modify_bar2_iv"
                     android:layout_width="match_parent"
