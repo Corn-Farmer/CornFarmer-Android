@@ -12,17 +12,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.RequiresApi
+import com.example.corn_farmer.src.join.JoinService
 import com.example.corn_farmer.src.profile.ProfileService
+import com.example.corn_farmer.src.profile.model.ModifyResponse
 import com.example.corn_farmer.src.profile.model.ProfileGenre
 import com.example.corn_farmer.src.profile.model.ProfileOtt
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityProfileModifyBinding
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 
-class ProfileModifyActivity : AppCompatActivity() {
+class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     lateinit var binding: ActivityProfileModifyBinding
 
@@ -35,9 +40,32 @@ class ProfileModifyActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+
+        val photo = sharedPreferences.getString("photo", null)
+        var ottList = mutableListOf<String>()
+        var genreList = mutableListOf<String>()
+        var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
+        val photoName = sharedPreferences.getString("photoname", null)
+
+        val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
+
+        val ottListRequest =
+            RequestBody.create(MediaType.parse("text/plain"), ottList!!.toString().replace("[","").replace("]",""))
+        val genreRequest =
+            RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
+        val fileBody: RequestBody =
+            RequestBody.create(MediaType.parse("image/png"), photo!!);
+        val filePart: MultipartBody.Part =
+            MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+        val servertoken = sharedPreferences.getString("servertoken", null)
+        val requestMap: HashMap<String, RequestBody> = HashMap()
+
+        requestMap.put("nickname", nicknameRequest)
+        requestMap.put("ottList", ottListRequest)
+        requestMap.put("genreList", genreRequest)
+
 
 
         var gender = sharedPreferences?.getString("isMale", null)
@@ -67,8 +95,7 @@ class ProfileModifyActivity : AppCompatActivity() {
         val nickname = sharedPreferences?.getString("nickname", null)
         binding.modifyNicknameInfoEt.hint = nickname
 
-        var ottList = mutableListOf<String>()
-        var genreList = mutableListOf<String>()
+
 
 
         var nowUserHasgenre = sharedPreferences.getString("genrelist", null)
@@ -666,8 +693,10 @@ class ProfileModifyActivity : AppCompatActivity() {
         binding.modifyCompleteIv.setOnClickListener {
             Log.d("Ott", ottList.toString())
             Log.d("Genre", genreList.toString())
-            var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
             Log.d("Nickname",modifiedNickname)
+
+            var service = ModifyService(this, servertoken.toString(), filePart, requestMap)
+            service.tryPutModify()
         }
     }//onCreate
 
@@ -726,6 +755,14 @@ class ProfileModifyActivity : AppCompatActivity() {
         }catch (e: Exception){
             null
         }
+    }
+
+    override fun onPutModifySuccess(response: ModifyResponse) {
+        Log.d("Modify-API", response.toString())
+    }
+
+    override fun onPutModifyFailure(message: String) {
+        Log.d("Modify-API", message.toString())
     }
 
 
