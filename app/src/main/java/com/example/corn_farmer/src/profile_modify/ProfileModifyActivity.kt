@@ -2,35 +2,60 @@ package com.example.corn_farmer.src.profile_modify
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.example.corn_farmer.src.profile.ProfileService
 import com.example.corn_farmer.src.profile.model.ProfileGenre
 import com.example.corn_farmer.src.profile.model.ProfileOtt
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityProfileModifyBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
 
 class ProfileModifyActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityProfileModifyBinding
+
+    private var photoUri: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityProfileModifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+
 
         var gender = sharedPreferences?.getString("isMale", null)
         if (gender == "true") {
             binding.modifyGenderInfoEt.text = "남자"
         } else {
             binding.modifyGenderInfoEt.text = "여자"
+        }
+
+        binding.profileImagePlusIv.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            takePictureIntent.resolveActivity(packageManager)
+            startActivityForResult(takePictureIntent, 100)
+        }
+
+        binding.profileImageDeleteIv.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 200)
         }
 
         val birth = sharedPreferences?.getString("birthday", null)
@@ -645,5 +670,63 @@ class ProfileModifyActivity : AppCompatActivity() {
             Log.d("Nickname",modifiedNickname)
         }
     }//onCreate
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK && requestCode == 200) {
+
+            var dataUri = data?.data
+            var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
+            saveBitmapAsPNGFile(bitmap)
+            binding.modifyImageIv.setImageBitmap(bitmap)
+
+
+        } else if (resultCode == RESULT_OK && requestCode == 100) {
+
+
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            saveBitmapAsPNGFile(imageBitmap)
+            binding.modifyImageIv.setImageBitmap(imageBitmap)
+        }
+
+    }
+
+    private fun newPngFileName() : String {
+        val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
+        val filename = sdf.format(System.currentTimeMillis())
+        return "${filename}.png"
+    }
+
+    private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
+        val path = File(filesDir, "image")
+        if(!path.exists()){
+            path.mkdirs()
+        }
+
+        val photoName = newPngFileName()
+
+        val file = File(path, photoName)
+        var imageFile: OutputStream? = null
+        try{
+            file.createNewFile()
+            imageFile = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
+            imageFile.close()
+
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("photo", file.absolutePath.toString())
+            Log.d("Photo",file.absolutePath.toString())
+            editor.putString("photoname", photoName)
+            editor.commit()
+
+        }catch (e: Exception){
+            null
+        }
+    }
+
 
 }
