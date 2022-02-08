@@ -10,10 +10,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ModifyService(var view: ModifyView, var token: String, var file: MultipartBody.Part, var params: Map<String, RequestBody>) {
+class ModifyService(var view: ModifyView, var token: String, var file: MultipartBody.Part, var params: Map<String, RequestBody>,var userIdx : Int) {
     fun tryPutModify(){
         val retrofitInterface = Application.sRetrofit.create(ModifyRetrofitInterface::class.java)
-        retrofitInterface.putModify(token, file, params).enqueue(object : Callback<ModifyResponse?>{
+        retrofitInterface.putModify(token,userIdx,file, params).enqueue(object : Callback<ModifyResponse?>{
 
             override fun onResponse(
                 call: Call<ModifyResponse?>,

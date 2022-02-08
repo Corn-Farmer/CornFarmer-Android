@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.RequiresApi
+import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinService
 import com.example.corn_farmer.src.profile.ProfileService
 import com.example.corn_farmer.src.profile.model.ModifyResponse
@@ -44,6 +45,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+        val userIdx : Int = sharedPreferences2.getInt("useridx",0)
 
         var gender = sharedPreferences?.getString("isMale", null)
         if (gender == "true") {
@@ -69,8 +71,8 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         //수정할 때 닉네임이랑 사진 다시 하기
 
-        val nickname = sharedPreferences?.getString("nickname", null)
-        binding.modifyNicknameInfoEt.hint = nickname
+        val nickname : String? = sharedPreferences?.getString("nickname", null)
+        binding.modifyNicknameInfoEt.setText(nickname)
 
 
 
@@ -667,7 +669,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             finish()
         }
 
-        binding.modifyCompleteIv.setOnClickListener {
+        binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
             val photo = sharedPreferences.getString("photo", null)
 
             var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
@@ -690,8 +692,15 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             requestMap.put("userOtt", ottListRequest)
             requestMap.put("genreList", genreRequest)
 
-            var service = ModifyService(this, servertoken.toString(), filePart, requestMap)
+            val editor = sharedPreferences.edit()
+            editor.putString("nickname",modifiedNickname)
+            editor.putString("ottlist",ottList.toString())
+            editor.putString("genrelist",genreList.toString())
+            editor.commit()
+
+            var service = ModifyService(this, servertoken.toString(), filePart, requestMap,userIdx)
             service.tryPutModify()
+
 
 
         }
@@ -756,6 +765,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     override fun onPutModifySuccess(response: ModifyResponse) {
         Log.d("Modify-API", response.toString())
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
     override fun onPutModifyFailure(message: String) {

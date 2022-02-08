@@ -12,6 +12,7 @@ interface ModifyRetrofitInterface {
     @POST("/users/{userIdx}")
     fun putModify(
         @Header("X-ACCESS-TOKEN") token: String,
+        @Path("userIdx")userIdx : Int,
         @Part file: MultipartBody.Part,
         @PartMap params: Map<String, @JvmSuppressWildcards RequestBody>): Call<ModifyResponse?>
 }
