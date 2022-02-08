@@ -36,9 +36,11 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         var gender2 = sharedPreferences?.getString("isFemale",null)
         if(gender == "true"){
             binding.profileGenderInfoTv.text = "남자"
+            Log.d("man","남자")
         }
         else if(gender2 == "false"){
             binding.profileGenderInfoTv.text = "여자"
+            Log.d("woman","여자")
         }
 
         val birth = sharedPreferences?.getString("birthday",null)

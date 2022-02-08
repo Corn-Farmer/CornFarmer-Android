@@ -109,7 +109,6 @@ class JoinNicknameActivity : AppCompatActivity() {
     private fun signUp(){
 
         var isMale : String
-        var isFemale : String
 
         if (binding.loginBirthdayEt.text.toString().isEmpty()
             || binding.loginBirthdayMonthEt.text.toString().isEmpty()
@@ -132,9 +131,9 @@ class JoinNicknameActivity : AppCompatActivity() {
             editor.putString("isMale",isMale)
         }
 
-        if(binding.nicknameFemaleRb.isChecked){
-            isFemale = "false"
-            editor.putString("isFemale",isFemale)
+        else if(binding.nicknameFemaleRb.isChecked){
+            isMale = "false"
+            editor.putString("isMale",isMale)
         }
 
         editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
