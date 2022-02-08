@@ -15,15 +15,15 @@ data class getMovieDetailResult(
     var movieGenreList : ArrayList<String>,
     var isLiked : Boolean,
     var likeCnt : Int,
-    var ottList : ArrayList<getOttList>,
+    var ottList : ArrayList<getOttList>?,
     var synopsis : String,
     var reviewList : ArrayList<getReviewList>
 )
 
 data class getOttList(
-    var ottIdx : Int,
-    var ottName : String,
-    var ottImage : String
+    var ottIdx : Int?,
+    var ottName : String?,
+    var ottImage : String?
 )
 
 data class getReviewList(

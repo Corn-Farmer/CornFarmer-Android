@@ -75,8 +75,7 @@
             android:id="@+id/profile_image_iv"
             android:layout_width="190dp"
             android:layout_height="190dp"
-            android:background="@android:color/transparent"
-            />
+            android:background="@android:color/transparent" />
 
         <ImageView
             android:id="@+id/profile_image_plus_iv"

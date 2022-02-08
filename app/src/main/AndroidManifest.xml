@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name="com.example.corn_farmer.src.profile_modify.ProfileModifyActivity"
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -56,10 +58,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 

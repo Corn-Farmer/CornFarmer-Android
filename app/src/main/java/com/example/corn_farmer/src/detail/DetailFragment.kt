@@ -93,7 +93,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             // ott 정보 리사이클러뷰
             val ottList = movieInfo.ottList
 
-            val OttserviceRvAdapter = OttserviceRVAdapter(ottList)
+            val OttserviceRvAdapter = OttserviceRVAdapter(ottList!!)
             binding.detailOttServiceRv.adapter = OttserviceRvAdapter
             binding.detailOttServiceRv.layoutManager = LinearLayoutManager(
                 context,
