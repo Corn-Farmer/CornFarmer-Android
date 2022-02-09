@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.join
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -14,10 +15,12 @@ import com.example.cornfarmer_android.databinding.ActivityJoinNicknameBinding
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.File
 
 class JoinNicknameActivity : AppCompatActivity(),JoinView  {
 
     private lateinit var binding: ActivityJoinNicknameBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -38,6 +41,11 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
             val photoName = sharedPreferences.getString("photoname", null)
             val genreList = sharedPreferences.getString("genrelist",null)
 
+            val file = File(photo.toString())
+            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+
+
+
 
 
 
@@ -51,8 +59,8 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
 
             val fileBody: RequestBody =
                 RequestBody.create(MediaType.parse("image/png"), photo!!);
-            val filePart: MultipartBody.Part =
-                MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+            val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
 
             val requestMap: HashMap<String, RequestBody> = HashMap()
 
@@ -71,10 +79,7 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
             Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
             Log.d("JOIN-photoname", photoName.toString())
 
-
-
-
-            var service = JoinService(this, servertoken.toString(), filePart, requestMap)
+            var service = JoinService(this, servertoken.toString(), body, requestMap)
             service.tryPostJoin()
 
 
@@ -135,13 +140,13 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(binding.nicknameNicknameEt.length() < 3
-                            || binding.loginBirthdayEt.length() < 4
-                            || binding.loginBirthdayMonthEt.length() < 2
-                            || binding.loginBirthdayDayEt.length() < 2
-                            || binding.loginBirthdayEt.text.toString().toInt() > 2100
-                            || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
-                            || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
-                        binding.nicknameFinishIv.visibility = View.VISIBLE
+                    || binding.loginBirthdayEt.length() < 4
+                    || binding.loginBirthdayMonthEt.length() < 2
+                    || binding.loginBirthdayDayEt.length() < 2
+                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
+                    binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
                     && binding.loginBirthdayDayEt.length() > 1){
@@ -236,4 +241,6 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
 
     override fun onPostJoinFailure(message: String) {
     }
+
+
 }
