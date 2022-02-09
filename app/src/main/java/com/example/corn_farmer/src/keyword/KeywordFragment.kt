@@ -39,14 +39,11 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
 
         }
 
-        val mActivity = activity as MainActivity //메인 액티비티
-
         binding.mainSearchIv.setOnClickListener {
-            mActivity.callFragment(SearchFragment())
-
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SearchFragment())
+                .commitAllowingStateLoss()
         }
-
-
 
         return binding.root
     }

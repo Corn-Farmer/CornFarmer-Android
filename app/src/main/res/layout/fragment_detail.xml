@@ -34,6 +34,8 @@
                 android:id="@+id/detail_search_btn_iv"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/search"
                 app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv"
                 app:layout_constraintBottom_toBottomOf="@id/detail_heart_btn_iv"
@@ -43,8 +45,9 @@
                 android:id="@+id/detail_heart_btn_iv"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:src="@drawable/heartgray"
-                app:layout_constraintBottom_toBottomOf="@id/detail_news_btn_iv"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_heart"
                 app:layout_constraintEnd_toStartOf="@id/detail_news_btn_iv"
                 android:layout_marginEnd="12dp"
                 />
@@ -52,41 +55,11 @@
                 android:id="@+id/detail_news_btn_iv"
                 android:layout_width="29dp"
                 android:layout_height="29dp"
-                android:src="@drawable/ring"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="38dp"
                 android:layout_marginEnd="28dp"
-                android:layout_marginTop="30dp"
-                />
-<!--            <ImageView-->
-<!--                android:id="@+id/detail_search_btn_iv"-->
-<!--                android:layout_width="17dp"-->
-<!--                android:layout_height="17dp"-->
-<!--                android:layout_marginTop="38dp"-->
-<!--                android:layout_marginEnd="15dp"-->
-<!--                android:src="@drawable/ic_search"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/detail_heart_btn_iv"-->
-<!--                android:layout_width="18dp"-->
-<!--                android:layout_height="17dp"-->
-<!--                android:layout_marginTop="38dp"-->
-<!--                android:layout_marginEnd="15dp"-->
-<!--                android:src="@drawable/ic_heart"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/detail_news_btn_iv"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/detail_news_btn_iv"-->
-<!--                android:layout_width="18dp"-->
-<!--                android:layout_height="17dp"-->
-<!--                android:layout_marginTop="38dp"-->
-<!--                android:layout_marginEnd="28dp"-->
-<!--                android:src="@drawable/ring"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+                android:src="@drawable/bell"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/detail_heart_btn_iv"  />
 
             <ImageView
                 android:id="@+id/detail_movie_image_iv"
@@ -94,7 +67,6 @@
                 android:layout_height="360dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="49dp"
-                android:src="@drawable/img_example_movie_detail1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv" />
@@ -146,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="올라프가 전해요"
+                android:text="영화 제목"
                 android:textColor="#1E005D"
                 android:textSize="21sp"
                 android:textStyle="bold"
@@ -171,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="6dp"
-                android:text="애니메이션, 가족, 판타지, 코미디"
+                android:text="장르"
                 android:textColor="#515151"
                 android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
@@ -219,7 +191,7 @@
                 android:layout_marginStart="34dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="34dp"
-                android:text="“올라프는 눈사람에서 쇼맨으로 변신해 자신이 좋아하는\n월트 디즈니 애니메니션 스튜디오의 이야기 5편을\n 독특한 방법으로 이야기해 준다.\n\n 카리스마가 넘치고 다재다능한 올라프는 인어공주, 지니, 라이온킹과 같은 상징적인 역할들을 맡아, 이 사랑스러운 이야기를 유쾌하게 축약한 버전으로 아렌델을 즐겁게 해준다.”"
+                android:text="줄거리"
                 android:textColor="#000000"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -267,11 +239,48 @@
                 app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
                 app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
 
+            <TextView
+                android:id="@+id/detail_review_sort_recent_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최신순"
+                android:textSize="11sp"
+                android:textColor="#C4C4C4"
+                app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator_tv"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/detail_review_sort_separator_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="|"
+                android:textSize="11sp"
+                android:textColor="#C4C4C4"
+                app:layout_constraintEnd_toStartOf="@id/detail_review_sort_like_tv"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:id="@+id/detail_review_sort_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="좋아요순"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"/>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_comment_RV"
                 android:layout_width="400dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"

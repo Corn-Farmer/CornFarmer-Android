@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.detail.DetailFragment
+import com.example.corn_farmer.src.home.model.MovieDto
 import com.example.corn_farmer.src.search_result.model.SearchResultResponse
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentSearchResultBinding
 
 class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragmentView {
@@ -49,6 +52,13 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         val searchResultRVAdapter = SearchResultRVAdapter(searchResultList)
         binding.searchOttItemRecyclerview.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         binding.searchOttItemRecyclerview.adapter = searchResultRVAdapter
+        searchResultRVAdapter.setMyItemClickListener(object : SearchResultRVAdapter.MyItemClickListener {
+            override fun onItemClick(movieList: MovieDto, position: Int) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, DetailFragment(movieList.movieIdx!!, -2, keyword!!))
+                    .commitAllowingStateLoss()
+            }
+        })
     }
 
     override fun onGetSearchResultFailure(message: String) {

@@ -12,6 +12,7 @@ import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI
 import com.example.corn_farmer.src.recommend.model.movieInfo
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentRecommendBinding
 
@@ -34,6 +35,12 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
                 .commitAllowingStateLoss()
         }
 
+        binding.recommendSearchBtnIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SearchFragment())
+                .commitAllowingStateLoss()
+        }
+
         return binding.root
     }
 
@@ -50,7 +57,7 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
         ottRVAdapter.setMyItemClickListener(object : OttRVAdapter.MyItemClickListener {
             override fun onItemClick(movieInfo : movieInfo, position: Int) {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(movieInfo.movieIdx, keywordIdx))
+                    .replace(R.id.main_frame, DetailFragment(movieInfo.movieIdx, keywordIdx, ""))
                     .commitAllowingStateLoss()
             }
         })
