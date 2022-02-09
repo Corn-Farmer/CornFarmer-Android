@@ -33,7 +33,8 @@ data class getReviewList(
     var contents : String,
     var rate : Float,
     var likeCnt : Int,
-    var createdAt : String
+    var createdAt : String,
+    var isLiked : Boolean
 )
 
 data class getReviewWriterInfo(

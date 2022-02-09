@@ -1,13 +1,25 @@
-package com.example.corn_farmer.src.comment
+package com.example.corn_farmer.src.detail
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.corn_farmer.src.detail.model.getReviewList
 import com.example.cornfarmer_android.databinding.ItemCommentBinding
+import kotlin.coroutines.coroutineContext
 
 class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
+
+    interface CommentLikeBtnClickListener{
+        fun onHeartClick(getReviewList: getReviewList, position: Int)
+    }
+
+    private lateinit var commentLikeBtnClickListener : CommentLikeBtnClickListener
+
+    fun setCommentLikeBtnClickListener(heartClickListener : CommentLikeBtnClickListener) {
+        commentLikeBtnClickListener = heartClickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding : ItemCommentBinding = ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -17,6 +29,12 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(reviewList[position], position)
+        holder.binding.detailComentHeartOnIv.setOnClickListener {
+            commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
+        }
+        holder.binding.detailComentHeartOffIv.setOnClickListener {
+            commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -30,6 +48,13 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
             binding.detailCommentDateTv.text = reviewList.createdAt
             binding.detailCommentLikecntTv.text = "+ ${reviewList.likeCnt.toString()}"
             Glide.with(itemView).load(reviewList.writer.writerPhoto.toString()).into(binding.detailCommentUserProfileIv)
+            if (reviewList.isLiked) {
+                binding.detailComentHeartOnIv.visibility = View.VISIBLE
+                binding.detailComentHeartOffIv.visibility = View.GONE
+            } else {
+                binding.detailComentHeartOnIv.visibility = View.GONE
+                binding.detailComentHeartOffIv.visibility = View.VISIBLE
+            }
         }
     }
 }
