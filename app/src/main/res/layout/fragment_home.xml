@@ -57,6 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/main_back_iv"
         android:layout_marginTop="60dp"
         android:layout_marginStart="32dp"
+        android:fontFamily="@font/roboto_regular"
         />
 
     <TextView
@@ -67,6 +68,7 @@
         app:layout_constraintStart_toStartOf="@id/main_today_tv"
         app:layout_constraintTop_toBottomOf="@id/main_today_tv"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
 
         />
 
@@ -74,10 +76,11 @@
         app:layout_constraintTop_toBottomOf="@id/main_today_descript_tv"
         android:id="@+id/home_ott_item_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         tools:listitem="@layout/item_otts"
-        android:paddingBottom="?attr/actionBarSize"
+        android:paddingBottom="200dp"
         android:overScrollMode="never"
+        android:clipToPadding="false"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

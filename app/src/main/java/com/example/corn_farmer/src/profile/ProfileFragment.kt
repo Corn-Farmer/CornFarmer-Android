@@ -24,12 +24,14 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
     lateinit var binding: FragmentProfileBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 =
             this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
@@ -59,8 +61,6 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
         //수정할 때 닉네임이랑 사진 다시 하기
 
-        val nickname = sharedPreferences?.getString("nickname", null)
-        binding.profileNicknameInfoTv.text = nickname
 
         val photo = sharedPreferences?.getString("photo", null)
         binding.profileImageIv.setImageURI(Uri.parse(photo))
@@ -95,6 +95,13 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         binding.profileRc2.adapter = profileGenreRVAdapter
 
         var nick = response.result.nickname
+        binding.profileNicknameInfoTv.text = nick
+
+        val sharedPreferences3 = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        val editor = sharedPreferences3?.edit()
+        editor?.putString("nickname",nick)
+        editor?.commit()
+
 
     }
 

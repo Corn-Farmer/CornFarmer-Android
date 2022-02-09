@@ -44,9 +44,14 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         setContentView(binding.root)
 
 
+
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
         val userIdx : Int = sharedPreferences2.getInt("useridx",0)
+
+
+        val photo = sharedPreferences.getString("photo", null)
+        binding.modifyImageIv.setImageURI(Uri.parse(photo))
 
         var gender = sharedPreferences?.getString("isMale", null)
         if (gender == "true") {
@@ -757,7 +762,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             editor.putString("photo", file.absolutePath.toString())
             Log.d("Photo",file.absolutePath.toString())
             editor.putString("photoname", photoName)
-            editor.commit()
 
         }catch (e: Exception){
             null

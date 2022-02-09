@@ -21,8 +21,14 @@
         <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.5" />
         <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.4328125" />
         <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/activity_join_profile.xml" value="0.4328125" />
-        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_keyword.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/activity_profile_modify.xml" value="0.3953125" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/activity_splash.xml" value="0.38333333333333336" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_comment.xml" value="0.4432291666666667" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_home.xml" value="0.4432291666666667" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_keyword.xml" value="0.5039920159680639" />
         <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_profile.xml" value="0.40520833333333334" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_search.xml" value="0.4432291666666667" />
+        <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/fragment_search_result.xml" value="0.4543589743589744" />
         <entry key="..\:/Users/jhje5/Desktop/Main_Branch/CornFarmer-Android/app/src/main/res/layout/item_keyword.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/drawable/button_topside_round.xml" value="0.561025641025641" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/drawable/plus2.xml" value="0.47359307359307357" />
