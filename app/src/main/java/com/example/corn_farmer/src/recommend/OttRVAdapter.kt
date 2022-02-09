@@ -45,7 +45,7 @@ class OttRVAdapter(private val movieInfoList : ArrayList<movieInfo>) : RecyclerV
             Glide.with(itemView).load(movieInfo!!.moviePhotoList[0]).into(binding.itemOttImgIv)
             binding.itemOttTitle.text = movieInfo.movieName
             binding.itemOttGenre.text = movieInfo.movieGenreList?.joinToString(separator = ",")
-            if(!movieInfo.isLiked){
+            if(!movieInfo.liked){
                 binding.itemOttLikeIv.visibility = View.VISIBLE
                 binding.itemOttLikeFillImgIv.visibility = View.INVISIBLE
             }

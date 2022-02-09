@@ -29,9 +29,9 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     ): View? {
         binding = FragmentRecommendBinding.inflate(inflater, container, false)
 
-        val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val servertoken = sharedPreferences?.getString("servertoken", "")
-
+        Log.d("키워드 토큰",servertoken.toString())
         var service = RecommendService(this, keywordIdx, servertoken!!)
         service.tryGetMovieInfo()
 
@@ -71,7 +71,7 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     }
 
     override fun onGetRecommendFailure(message: String) {
-        Log.d("Fail", "실패")
+        Log.d("키워드Fail", "실패")
     }
 
     override fun onPutMovieLikeSuccess(response: putMovieLike) {
