@@ -43,8 +43,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         binding = ActivityProfileModifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
         val userIdx : Int = sharedPreferences2.getInt("useridx",0)
@@ -59,6 +57,9 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         } else {
             binding.modifyGenderInfoEt.text = "여자"
         }
+
+
+
 
         binding.profileImagePlusIv.setOnClickListener {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -679,7 +680,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val photo = sharedPreferences.getString("photo", null)
 
             var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
-            val photoName = sharedPreferences.getString("photoname", null)
 
             val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
 
@@ -687,12 +687,13 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
                 RequestBody.create(MediaType.parse("text/plain"), ottList!!.toString().replace("[","").replace("]",""))
             val genreRequest =
                 RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
-            val fileBody: RequestBody =
-                RequestBody.create(MediaType.parse("image/png"), photo!!);
-            val filePart: MultipartBody.Part =
-                MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+
             val servertoken = sharedPreferences.getString("servertoken", null)
             val requestMap: HashMap<String, RequestBody> = HashMap()
+
+            val file = File(photo.toString())
+            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
 
             requestMap.put("nickname", nicknameRequest)
             requestMap.put("userOtt", ottListRequest)
@@ -704,7 +705,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             editor.putString("genrelist",genreList.toString())
             editor.commit()
 
-            var service = ModifyService(this, servertoken.toString(), filePart, requestMap,userIdx)
+            var service = ModifyService(this, servertoken.toString(), body, requestMap,userIdx)
             service.tryPutModify()
 
 
@@ -762,6 +763,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             editor.putString("photo", file.absolutePath.toString())
             Log.d("Photo",file.absolutePath.toString())
             editor.putString("photoname", photoName)
+            editor.commit()
 
         }catch (e: Exception){
             null
@@ -774,7 +776,8 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             Toast.makeText(this,"중복된 닉네임 입니다.",Toast.LENGTH_SHORT).show()
         }
         else{
-            startActivity(Intent(this,MainActivity::class.java))
+//            startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
 
     }

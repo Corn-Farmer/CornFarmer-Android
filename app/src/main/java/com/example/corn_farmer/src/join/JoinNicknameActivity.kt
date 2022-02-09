@@ -44,11 +44,6 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
             val file = File(photo.toString())
             val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
 
-
-
-
-
-
             val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
             val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
             val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)

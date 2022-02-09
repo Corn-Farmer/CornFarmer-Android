@@ -4,14 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.kakao.LoginActivity
+import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.my_comment.MyCommentFragment
 import com.example.corn_farmer.src.profile.model.DeleteResponse
 import com.example.corn_farmer.src.profile.model.ProfileResponse
@@ -23,7 +26,15 @@ import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment(),ProfileFragmentView {
 
     lateinit var binding: FragmentProfileBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.show()
+        Handler().postDelayed({
+            loadingAnimDialog.dismiss()
+        },500)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,9 +73,9 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         //수정할 때 닉네임이랑 사진 다시 하기
 
 
-        val photo = sharedPreferences?.getString("photo", null)
-        binding.profileImageIv.setImageURI(Uri.parse(photo))
-        Log.d("photo", photo.toString())
+//        val photo = sharedPreferences?.getString("photo", null)
+//        binding.profileImageIv.setImageURI(Uri.parse(photo))
+//        Log.d("photo", photo.toString())
 
 
         binding.profileReIv.setOnClickListener {
@@ -96,6 +107,10 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
         var nick = response.result.nickname
         binding.profileNicknameInfoTv.text = nick
+
+        Glide.with(this)
+            .load(response.result.photo)
+            .into(binding.profileImageIv)
 
         val sharedPreferences3 = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val editor = sharedPreferences3?.edit()

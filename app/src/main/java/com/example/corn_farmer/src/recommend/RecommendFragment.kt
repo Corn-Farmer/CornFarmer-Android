@@ -2,6 +2,7 @@ package com.example.corn_farmer.src.recommend
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.keyword.KeywordFragment
+import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI
 import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.corn_farmer.src.recommend.model.putMovieLike
@@ -21,6 +23,14 @@ import com.example.cornfarmer_android.databinding.FragmentRecommendBinding
 
 class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentView {
     lateinit var binding : FragmentRecommendBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.show()
+        Handler().postDelayed({
+            loadingAnimDialog.dismiss()
+        },2500)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

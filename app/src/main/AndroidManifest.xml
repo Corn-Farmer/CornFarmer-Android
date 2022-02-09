@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.example.corn_farmer.config.Application"
         android:allowBackup="true"
@@ -16,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
-        <receiver android:name="com.example.corn_farmer.src.home.HomeFragment$Alarm"/>
         <activity
             android:name="com.example.corn_farmer.src.profile_modify.ProfileModifyActivity"
             android:exported="true" />

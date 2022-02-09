@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import com.example.corn_farmer.src.kakao.LoginActivity
 import com.example.cornfarmer_android.R
+import com.kakao.sdk.user.UserApiClient
 
 class SplashActivity : AppCompatActivity() {
 
@@ -22,6 +24,7 @@ class SplashActivity : AppCompatActivity() {
             finish()
 
         }, 2000)
+
 
     }
 }
