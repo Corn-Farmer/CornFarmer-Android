@@ -39,25 +39,16 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             val servertoken = sharedPreferences.getString("servertoken", null)
             val photo = sharedPreferences.getString("photo", null)
             val nickname = sharedPreferences.getString("nickname", null)
-            var sex : String = ""
+            var sex = sharedPreferences.getString("isMale",null)
             val birthday = sharedPreferences.getString("birthday", null)
             val ottList = sharedPreferences.getString("ottlist", null)
             val photoName = sharedPreferences.getString("photoname", null)
-            val isMale = sharedPreferences.getString("isMale",null)
-            val isFemale = sharedPreferences.getString("isFemale",null)
 
-            if(isMale==null){
-                sex = "false"
-                Log.d("female","여자")
-            }
-            else if(isFemale==null){
-                sex = "true"
-                Log.d("male","남자")
-            }
+
 
 
             val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
-            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex.toString())
+            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
             val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
             val ottListRequest =
                 RequestBody.create(MediaType.parse("text/plain"), ottList!!.replace("[","").replace("]",""))
@@ -85,6 +76,10 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
             Log.d("JOIN-ottlist", ottList.toString().replace("[","").replace("]",""))
             Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
             Log.d("JOIN-photoname", photoName.toString())
+
+            val editor = sharedPreferences.edit()
+            editor.putString("genrelist",genreList.toString())
+            editor.commit()
 
 
             var service = JoinService(this, servertoken.toString(), filePart, requestMap)

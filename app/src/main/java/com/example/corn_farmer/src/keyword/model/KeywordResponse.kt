@@ -11,5 +11,5 @@ data class KeywordResponse(
 
 data class KeywordDto(
     @SerializedName("keywordIdx") var keywordIdx : Int?,
-    @SerializedName("keyword") var keyword : String?
+    @SerializedName("keyword") var keyword : String?,
 )

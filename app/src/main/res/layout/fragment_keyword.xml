@@ -5,6 +5,7 @@
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:scrollbars="none"
+    android:overScrollMode="never"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,10 +90,11 @@
             app:layout_constraintTop_toBottomOf="@id/keyword_refresh_iv"
             android:id="@+id/keyword_keyword_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="0dp"
             android:layout_marginTop="10dp"
             tools:listitem="@layout/item_keyword"
             android:paddingBottom="30dp"
+             android:overScrollMode="never"
             />
 
         <ImageView

@@ -78,57 +78,6 @@
         android:layout_marginTop="10dp"
         tools:listitem="@layout/item_otts"
         android:paddingBottom="?attr/actionBarSize"
+        android:overScrollMode="never"
         />
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:id="@+id/main_ott1_img_cv"-->
-<!--        android:layout_width="320dp"-->
-<!--        android:layout_height="144dp"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/main_today_descript_tv"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/main_today_descript_tv"-->
-<!--        >-->
-<!--        <ImageView-->
-<!--            android:id="@+id/main_ott1_iv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            android:src="@drawable/olaf"-->
-<!--            />-->
-<!--    </androidx.cardview.widget.CardView>-->
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:id="@+id/main_ott2_img_cv"-->
-<!--        android:layout_width="320dp"-->
-<!--        android:layout_height="144dp"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/main_ott1_img_cv"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/main_ott1_img_cv"-->
-<!--        >-->
-<!--        <ImageView-->
-<!--            android:id="@+id/main_ott2_iv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            android:src="@drawable/olaf"-->
-<!--            />-->
-<!--    </androidx.cardview.widget.CardView>-->
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:id="@+id/main_ott3_img_cv"-->
-<!--        android:layout_width="320dp"-->
-<!--        android:layout_height="144dp"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/main_ott2_img_cv"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/main_ott2_img_cv"-->
-<!--        >-->
-<!--        <ImageView-->
-<!--            android:id="@+id/main_ott3_iv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            android:src="@drawable/olaf"-->
-<!--            />-->
-<!--    </androidx.cardview.widget.CardView>-->
-<!--    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

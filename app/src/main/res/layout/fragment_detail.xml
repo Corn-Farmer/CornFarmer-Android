@@ -13,7 +13,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:overScrollMode="never"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,7 +30,6 @@
                 android:src="@drawable/back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/detail_search_btn_iv"
                 android:layout_width="22dp"
@@ -37,8 +38,9 @@
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/search"
                 app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintBottom_toBottomOf="@id/detail_heart_btn_iv"
+                android:layout_marginEnd="12dp"
+                />
             <ImageView
                 android:id="@+id/detail_heart_btn_iv"
                 android:layout_width="22dp"
@@ -47,8 +49,8 @@
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_heart"
                 app:layout_constraintEnd_toStartOf="@id/detail_news_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                android:layout_marginEnd="12dp"
+                />
             <ImageView
                 android:id="@+id/detail_news_btn_iv"
                 android:layout_width="29dp"

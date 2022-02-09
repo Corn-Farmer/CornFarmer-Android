@@ -20,8 +20,9 @@ import com.example.corn_farmer.src.detail.model.getCommentLike
 import com.example.corn_farmer.src.detail.model.getMovieDetailResult
 import com.example.corn_farmer.src.detail.model.getReviewList
 import com.example.corn_farmer.src.home.HomeFragment
-import com.example.corn_farmer.src.recommend.model.movieInfo
+import com.example.corn_farmer.src.home.HomeService
 import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.corn_farmer.src.search_result.SearchResultFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
@@ -70,12 +71,10 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                     .commitAllowingStateLoss()
             }
         }
-
-        // search button
+        
+        val mActivity = activity as MainActivity //검색 버튼
         binding.detailSearchBtnIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, SearchFragment())
-                .commitAllowingStateLoss()
+            mActivity.callFragment(SearchFragment())
         }
     }
 

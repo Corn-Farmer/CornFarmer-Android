@@ -25,15 +25,23 @@
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.340625" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_join_profile.xml" value="0.36770833333333336" />
-        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_profile_modify.xml" value="0.5" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_main.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_profile_modify.xml" value="0.33" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_profile_modify2.xml" value="0.4662280701754386" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_splash.xml" value="0.425" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/activity_splash_join.xml" value="0.27807017543859647" />
-        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_detail.xml" value="0.33" />
-        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_detail.xml" value="0.4504237288135593" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_home.xml" value="0.4662280701754386" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_keyword.xml" value="0.4662280701754386" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_profile.xml" value="0.5" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_recommend.xml" value="0.4662280701754386" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/fragment_search.xml" value="0.4662280701754386" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_keyword.xml" value="0.4662280701754386" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_ott_service.xml" value="0.3925438596491228" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_otts.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_profile_genre.xml" value="0.67" />
         <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_profile_ott.xml" value="0.9" />
+        <entry key="..\:/Users/jhje5/Desktop/lee/CornFarmer-Android/app/src/main/res/layout/item_wishmovie.xml" value="0.3567708333333333" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_bottomside_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_leftside_rightside_round_white.xml" value="0.26979166666666665" />

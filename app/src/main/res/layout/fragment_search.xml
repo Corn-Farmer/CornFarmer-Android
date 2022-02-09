@@ -5,17 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
-        android:id="@+id/search_back_iv"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:src="@drawable/back"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="38dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
-        />
+
 
     <ImageView
         android:id="@+id/search_search_iv"
@@ -31,7 +21,7 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:src="@drawable/heartgray"
-        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
+        app:layout_constraintBottom_toBottomOf="@id/search_bell_iv"
         app:layout_constraintEnd_toStartOf="@id/search_bell_iv"
         android:layout_marginEnd="12dp"
         />
@@ -39,10 +29,11 @@
         android:id="@+id/search_bell_iv"
         android:layout_width="29dp"
         android:layout_height="29dp"
-        android:src="@drawable/bell"
-        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
+        android:src="@drawable/ring"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="28dp"
+        android:layout_marginTop="30dp"
         />
     <TextView
         android:id="@+id/search_text_tv"
@@ -51,7 +42,7 @@
         android:text="지금 바로 궁금한 작품을 찾아보세요!"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_back_iv"
+        app:layout_constraintTop_toBottomOf="@id/search_search_iv"
         android:layout_marginTop="40dp"
         />
     <ImageView

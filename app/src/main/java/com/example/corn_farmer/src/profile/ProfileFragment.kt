@@ -37,11 +37,18 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         service.tryGetProfile()
 
         var gender = sharedPreferences?.getString("isMale",null)
+        var gender2 = sharedPreferences?.getString("isFemale",null)
         if(gender == "true"){
             binding.profileGenderInfoTv.text = "남자"
+            Log.d("man","남자")
         }
-        else{
+        else if(gender2 == "false"){
             binding.profileGenderInfoTv.text = "여자"
+            Log.d("woman","여자")
+        }
+        val mActivity = activity as MainActivity
+        binding.profileSearchIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
         }
 
         val birth = sharedPreferences?.getString("birthday",null)
