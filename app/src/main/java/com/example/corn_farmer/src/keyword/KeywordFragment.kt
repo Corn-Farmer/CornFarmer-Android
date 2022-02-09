@@ -12,6 +12,8 @@ import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.keyword.model.KeywordDto
 import com.example.corn_farmer.src.keyword.model.KeywordResponse
 import com.example.corn_farmer.src.recommend.RecommendFragment
+import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.search_result.SearchResultFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentKeywordBinding
 
@@ -34,6 +36,13 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
         }
 
         binding.keywordCompleteBtnIv.setOnClickListener {
+
+        }
+
+        val mActivity = activity as MainActivity //메인 액티비티
+
+        binding.mainSearchIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
 
         }
 

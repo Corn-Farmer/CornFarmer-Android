@@ -16,6 +16,7 @@ import com.example.corn_farmer.src.comment.CommentFragment
 import com.example.corn_farmer.src.comment.CommentRVAdapter
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.home.HomeService
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 import retrofit2.*
@@ -57,6 +58,11 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int): Fragment(), Detail
                     .replace(R.id.main_frame, RecommendFragment(keywordIdx))
                     .commitAllowingStateLoss()
             }
+        }
+
+        val mActivity = activity as MainActivity //검색 버튼
+        binding.detailSearchBtnIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
         }
     }
 

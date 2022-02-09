@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.profile.model.ProfileResponse
 import com.example.corn_farmer.src.profile_modify.ProfileModifyActivity
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(),ProfileFragmentView {
@@ -41,6 +43,10 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         else if(gender2 == "false"){
             binding.profileGenderInfoTv.text = "여자"
             Log.d("woman","여자")
+        }
+        val mActivity = activity as MainActivity
+        binding.profileSearchIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
         }
 
         val birth = sharedPreferences?.getString("birthday",null)

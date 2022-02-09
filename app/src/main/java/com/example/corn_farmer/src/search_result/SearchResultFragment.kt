@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.search_result.model.SearchResultResponse
 import com.example.cornfarmer_android.databinding.FragmentSearchResultBinding
 
@@ -19,6 +21,17 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+
+        val mActivity = activity as MainActivity //메인 액티비티
+
+
+        binding.searchBackIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
+        }
+
+        binding.searchSearchIv.setOnClickListener {
+            mActivity.callFragment(SearchFragment())
+        }
 
         var service = SearchResultService(this,keyword,1)
         service.tryGetSearchResultList()
