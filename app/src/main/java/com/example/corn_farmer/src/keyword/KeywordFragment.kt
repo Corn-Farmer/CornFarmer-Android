@@ -35,9 +35,9 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
             service.tryGetKeywordList()
         }
 
-        binding.keywordCompleteBtnIv.setOnClickListener {
-
-        }
+//        binding.keywordCompleteBtnIv.setOnClickListener {
+//
+//        }
 
         binding.mainSearchIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()

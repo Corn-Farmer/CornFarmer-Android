@@ -8,9 +8,14 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.join.model.getJoinAPI
 import com.example.cornfarmer_android.databinding.ActivityJoinNicknameBinding
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
-class JoinNicknameActivity : AppCompatActivity() {
+class JoinNicknameActivity : AppCompatActivity(),JoinView  {
 
     private lateinit var binding: ActivityJoinNicknameBinding
 
@@ -23,8 +28,56 @@ class JoinNicknameActivity : AppCompatActivity() {
         binding.nicknameFinishColorIv.setOnClickListener {
             signUp()
 
-            val intent = Intent(this, SplashJoinActivity::class.java)
-            startActivity(intent)
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val servertoken = sharedPreferences.getString("servertoken", null)
+            val photo = sharedPreferences.getString("photo", null)
+            val nickname = sharedPreferences.getString("nickname", null)
+            var sex = sharedPreferences.getString("isMale",null)
+            val birthday = sharedPreferences.getString("birthday", null)
+            val ottList = sharedPreferences.getString("ottlist", null)
+            val photoName = sharedPreferences.getString("photoname", null)
+            val genreList = sharedPreferences.getString("genrelist",null)
+
+
+
+
+            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
+            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
+            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
+            val ottListRequest =
+                RequestBody.create(MediaType.parse("text/plain"), ottList!!.replace("[","").replace("]",""))
+            val genreRequest =
+                RequestBody.create(MediaType.parse("text/plain"), genreList!!.replace("[","").replace("]",""))
+
+            val fileBody: RequestBody =
+                RequestBody.create(MediaType.parse("image/png"), photo!!);
+            val filePart: MultipartBody.Part =
+                MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
+
+            val requestMap: HashMap<String, RequestBody> = HashMap()
+
+            requestMap.put("nickname", nicknameRequest)
+            requestMap.put("is_male", sexRequest)
+            requestMap.put("birth", birthdayRequest)
+            requestMap.put("ottList", ottListRequest)
+            requestMap.put("genreList", genreRequest)
+
+            Log.d("JOIN-token", servertoken.toString())
+            Log.d("JOIN-photo", filePart.toString())
+            Log.d("JOIN-nickname", nickname.toString())
+            Log.d("JOIN-sex", sex.toString())
+            Log.d("JOIN-birthday", birthday.toString())
+            Log.d("JOIN-ottlist", ottList.toString().replace("[","").replace("]",""))
+            Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
+            Log.d("JOIN-photoname", photoName.toString())
+
+
+
+
+            var service = JoinService(this, servertoken.toString(), filePart, requestMap)
+            service.tryPostJoin()
+
+
         }
 
         binding.nicknameBackIv.setOnClickListener {
@@ -82,13 +135,13 @@ class JoinNicknameActivity : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(binding.nicknameNicknameEt.length() < 3
-                    || binding.loginBirthdayEt.length() < 4
-                    || binding.loginBirthdayMonthEt.length() < 2
-                    || binding.loginBirthdayDayEt.length() < 2
-                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
-                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
-                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
-                    binding.nicknameFinishIv.visibility = View.VISIBLE
+                            || binding.loginBirthdayEt.length() < 4
+                            || binding.loginBirthdayMonthEt.length() < 2
+                            || binding.loginBirthdayDayEt.length() < 2
+                            || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                            || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                            || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
+                        binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
                     && binding.loginBirthdayDayEt.length() > 1){
@@ -160,5 +213,24 @@ class JoinNicknameActivity : AppCompatActivity() {
                 binding.loginBirthdayMonthEt.text.toString() + "-" +
                 binding.loginBirthdayDayEt.text.toString())
         editor.commit()
+    }
+
+    override fun onPostJoinSuccess(response: getJoinAPI) {
+        Log.d("JOIN-API", response.toString())
+
+        val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("useridx", response.result!!.userIdx)
+        editor.commit()
+
+        val intent = Intent(this, SplashJoinActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    override fun onPostJoinFailure(message: String) {
+        if(message == "중복된 닉네임 입니다."){
+            binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
+        }
     }
 }

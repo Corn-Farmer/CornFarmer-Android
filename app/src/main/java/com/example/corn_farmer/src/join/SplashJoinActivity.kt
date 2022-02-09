@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.example.cornfarmer_android.databinding.ActivitySplashJoinBinding
 import android.os.Handler
 import android.widget.Toast
+import com.example.corn_farmer.MainActivity
 import com.example.cornfarmer_android.R
 
 
@@ -27,7 +28,7 @@ class SplashJoinActivity : AppCompatActivity() {
 
         Handler().postDelayed({
 
-            val intent = Intent(this, JoinOttActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
 

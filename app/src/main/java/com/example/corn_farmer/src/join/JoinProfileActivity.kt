@@ -58,7 +58,7 @@ class JoinProfileActivity() : AppCompatActivity(){
         }
 
         binding.profileNextIv.setOnClickListener {
-            val intent = Intent(this, JoinNicknameActivity::class.java)
+            val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
         }
 

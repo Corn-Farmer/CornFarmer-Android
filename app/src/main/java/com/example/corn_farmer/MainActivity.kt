@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
         initNavigation() // 화면 설정
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -51,7 +54,15 @@ class MainActivity : AppCompatActivity() {
             callFragment(HomeFragment())
         }
         binding.mainProfileIv.setOnClickListener {
-            callFragment(ProfileFragment())
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val serverToken = sharedPreferences.getString("servertoken","1")
+            if(serverToken=="1"){
+                Toast.makeText(this,"로그인이 필요한 서비스입니다.",Toast.LENGTH_SHORT).show()
+
+            }
+            else {
+                callFragment(ProfileFragment())
+            }
         }
     }
 

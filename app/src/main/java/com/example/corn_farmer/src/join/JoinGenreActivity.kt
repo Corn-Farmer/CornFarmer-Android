@@ -17,7 +17,7 @@ import retrofit2.http.Multipart
 import java.util.*
 import kotlin.collections.HashMap
 
-class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
+class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
 
     private lateinit var binding: ActivityJoinGenreBinding
 
@@ -34,59 +34,11 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
         }
 
         binding.genreFinishColorIv.setOnClickListener {
-
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val servertoken = sharedPreferences.getString("servertoken", null)
-            val photo = sharedPreferences.getString("photo", null)
-            val nickname = sharedPreferences.getString("nickname", null)
-            var sex = sharedPreferences.getString("isMale",null)
-            val birthday = sharedPreferences.getString("birthday", null)
-            val ottList = sharedPreferences.getString("ottlist", null)
-            val photoName = sharedPreferences.getString("photoname", null)
-
-
-
-
-            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
-            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
-            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
-            val ottListRequest =
-                RequestBody.create(MediaType.parse("text/plain"), ottList!!.replace("[","").replace("]",""))
-            val genreRequest =
-                RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
-
-            val fileBody: RequestBody =
-                RequestBody.create(MediaType.parse("image/png"), photo!!);
-            val filePart: MultipartBody.Part =
-                MultipartBody.Part.createFormData("photo", photoName!!, fileBody)
-
-            val requestMap: HashMap<String, RequestBody> = HashMap()
-
-            requestMap.put("nickname", nicknameRequest)
-            requestMap.put("is_male", sexRequest)
-            requestMap.put("birth", birthdayRequest)
-            requestMap.put("ottList", ottListRequest)
-            requestMap.put("genreList", genreRequest)
-
-            Log.d("JOIN-token", servertoken.toString())
-            Log.d("JOIN-photo", filePart.toString())
-            Log.d("JOIN-nickname", nickname.toString())
-            Log.d("JOIN-sex", sex.toString())
-            Log.d("JOIN-birthday", birthday.toString())
-            Log.d("JOIN-ottlist", ottList.toString().replace("[","").replace("]",""))
-            Log.d("JOIN-genrelist", genreList.toString().replace("[","").replace("]",""))
-            Log.d("JOIN-photoname", photoName.toString())
-
             val editor = sharedPreferences.edit()
             editor.putString("genrelist",genreList.toString())
             editor.commit()
-
-
-            var service = JoinService(this, servertoken.toString(), filePart, requestMap)
-            service.tryPostJoin()
-
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
+            startActivity(Intent(this,JoinNicknameActivity::class.java))
 
 
         }
@@ -341,20 +293,6 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener, JoinView {
 
     }
 
-    override fun onPostJoinSuccess(response: getJoinAPI) {
-        Log.d("JOIN-API", response.toString())
 
-        val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("useridx", response.result!!.userIdx)
-        editor.commit()
-
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
-    override fun onPostJoinFailure(message: String) {
-        Log.d("JOIN-API", message.toString())
-    }
 
 }
