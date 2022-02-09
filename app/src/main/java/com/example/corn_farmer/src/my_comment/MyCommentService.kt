@@ -7,10 +7,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyCommentService(var view : MyCommentFragmentView, var userIdx : Int, var sort : String) {
+class MyCommentService(var view : MyCommentFragmentView, var userIdx : Int, var sort : String, var token : String) {
     fun tryGetMyComment() {
         val retrofitInterface = Application.sRetrofit.create(MyCommentRetrofitInterface::class.java)
-        retrofitInterface.getMyComment(userIdx, sort)
+        retrofitInterface.getMyComment(userIdx, sort, token)
             .enqueue(object : Callback<getMyComment> {
                 override fun onResponse(
                     call: Call<getMyComment>,
