@@ -39,7 +39,10 @@
         android:id="@+id/search_text_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지금 바로 궁금한 작품을 찾아보세요!"
+        android:textSize="25sp"
+        android:textColor="#1E005E"
+        android:textStyle="bold"
+        android:text="\t\t\t\t\t\t\t\t\t\t\t\t지금 바로 \n궁금한 작품을 찾아보세요!"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_search_iv"
@@ -53,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_text_tv"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:scaleType="fitXY"
         />
     <EditText
@@ -64,9 +67,10 @@
         android:imeOptions="actionSearch"
         app:layout_constraintStart_toEndOf="@id/search_search_button_iv"
         app:layout_constraintTop_toBottomOf="@id/search_text_tv"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         android:background="#00ff0000"
+        android:hint="나홀로 집에"
         />
     <ImageView
         android:id="@+id/search_search_button_iv"

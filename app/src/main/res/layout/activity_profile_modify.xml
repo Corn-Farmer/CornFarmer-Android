@@ -161,7 +161,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:hint="lee"
                     android:textColor="#545454"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -219,9 +218,9 @@
                     android:id="@+id/modify_gr1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="20dp"
                     android:columnCount="5"
                     android:orientation="horizontal"
                     android:rowCount="2"
@@ -490,621 +489,613 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/modify_bar3_iv">
 
-                    <LinearLayout
-                        android:layout_marginEnd="10dp"
-                        >
+                    <LinearLayout android:layout_marginEnd="10dp">
 
-                        <TextView
-                            android:id="@+id/profile_action_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="액션"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_action_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
 
-                        <TextView
-                            android:id="@+id/profile_action_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="액션"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/profile_action_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="액션" />
+
+                            <ImageView
+                                android:id="@+id/profile_action_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_action_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="액션"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_marginEnd="10dp"
-                        >
+                    <LinearLayout android:layout_marginEnd="10dp">
 
-                        <TextView
-                            android:id="@+id/profile_anime_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="애니메이션"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_anime_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_anime_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="애니메이션"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+
+                            <TextView
+                                android:id="@+id/profile_anime_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="애니메이션" />
+
+                            <ImageView
+                                android:id="@+id/profile_anime_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_anime_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="애니메이션"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_comedy_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="코미디"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_comedy_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_comedy_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="코미디"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+
+                            <TextView
+                                android:id="@+id/profile_comedy_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="코미디" />
+
+                            <ImageView
+                                android:id="@+id/profile_comedy_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_comedy_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="코미디"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_crime_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="범죄"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_crime_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_crime_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="범죄"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                            <TextView
+                                android:id="@+id/profile_crime_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="범죄" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/profile_crime_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
 
-                    <LinearLayout>
+                            <TextView
+                                android:id="@+id/profile_crime_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="범죄"
+                                android:visibility="gone" />
 
-                        <TextView
-                            android:id="@+id/profile_dacu_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="다큐멘터리"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_dacu_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
 
-                        <TextView
-                            android:id="@+id/profile_dacu_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="다큐멘터리"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout>
-
-                        <TextView
-                            android:id="@+id/profile_drama_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="드라마"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_drama_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
-
-                        <TextView
-                            android:id="@+id/profile_drama_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="드라마"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
-
-                    </LinearLayout>
-
-                    <LinearLayout>
-
-                        <TextView
-                            android:id="@+id/profile_fantasy_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="판타지"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_fantasy_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
-
-                        <TextView
-                            android:id="@+id/profile_fantasy_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="판타지"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_history_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="역사"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_history_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_history_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="역사"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
 
-                    </LinearLayout>
-                    <LinearLayout>
+                            <TextView
+                                android:id="@+id/profile_dacu_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="다큐멘터리" />
 
-                        <TextView
-                            android:id="@+id/profile_horor_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="공포"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_horor_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            <ImageView
+                                android:id="@+id/profile_dacu_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
 
-                        <TextView
-                            android:id="@+id/profile_horor_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="공포"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                            <TextView
+                                android:id="@+id/profile_dacu_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="다큐멘터리"
+                                android:visibility="gone" />
 
+
+                        </RelativeLayout>
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_family_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="가족"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_family_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_family_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="가족"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/profile_drama_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="드라마" />
 
-                    <LinearLayout>
+                            <ImageView
+                                android:id="@+id/profile_drama_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
 
-                        <TextView
-                            android:id="@+id/profile_music_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="음악"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_music_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            <TextView
+                                android:id="@+id/profile_drama_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="드라마"
+                                android:visibility="gone" />
 
-                        <TextView
-                            android:id="@+id/profile_music_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="음악"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_thrill_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="스릴러"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_thrill_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
-
-                        <TextView
-                            android:id="@+id/profile_thrill_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="스릴러"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
-
-                    </LinearLayout>
+                            android:layout_height="wrap_content">
 
 
-                    <LinearLayout>
+                            <TextView
+                                android:id="@+id/profile_fantasy_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="판타지" />
 
-                        <TextView
-                            android:id="@+id/profile_romance_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="로맨스"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_romance_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            <ImageView
+                                android:id="@+id/profile_fantasy_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
 
-                        <TextView
-                            android:id="@+id/profile_romance_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="로맨스"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                            <TextView
+                                android:id="@+id/profile_fantasy_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="판타지"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_sf_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SF"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_sf_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_sf_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SF"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+
+                            <TextView
+                                android:id="@+id/profile_history_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="역사" />
+
+                            <ImageView
+                                android:id="@+id/profile_history_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_history_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="역사"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_sport_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="스포츠"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_sport_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_sport_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="스포츠"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+
+                            <TextView
+                                android:id="@+id/profile_horor_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="공포" />
+
+                            <ImageView
+                                android:id="@+id/profile_horor_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_horor_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="공포"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
                     <LinearLayout>
 
-                        <TextView
-                            android:id="@+id/profile_war_color_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="전쟁"
-                            android:background="@drawable/genre_background_color"
-                            android:gravity="center"
-                            android:layout_marginTop="10dp"
-                            />
-                        <ImageView
-                            android:id="@+id/profile_war_delete_iv"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ott_remove"
-                            app:layout_constraintStart_toEndOf="@id/profile_genre_tv"
-                            app:layout_constraintTop_toTopOf="@id/profile_genre_tv"
-                            android:layout_marginStart="-11.5dp"
-                            />
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/profile_war_tv"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                            <TextView
+                                android:id="@+id/profile_family_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="가족" />
+
+                            <ImageView
+                                android:id="@+id/profile_family_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_family_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="가족"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout>
+
+                        <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="전쟁"
-                            android:background="@drawable/genre_backround_no_color"
-                            android:gravity="center"
-                            android:visibility="gone"
-                            android:layout_marginTop="10dp"
-                            />
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:id="@+id/profile_music_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="음악" />
+
+                            <ImageView
+                                android:id="@+id/profile_music_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_music_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="음악"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:id="@+id/profile_thrill_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="스릴러" />
+
+                            <ImageView
+                                android:id="@+id/profile_thrill_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_thrill_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="스릴러"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/profile_romance_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="로맨스" />
+
+                            <ImageView
+                                android:id="@+id/profile_romance_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_romance_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="로맨스"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/profile_sf_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="SF" />
+
+                            <ImageView
+                                android:id="@+id/profile_sf_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_sf_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="SF"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:id="@+id/profile_sport_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="스포츠" />
+
+                            <ImageView
+                                android:id="@+id/profile_sport_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_sport_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="스포츠"
+                                android:visibility="gone" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:id="@+id/profile_war_color_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_background_color"
+                                android:gravity="center"
+                                android:text="전쟁" />
+
+                            <ImageView
+                                android:id="@+id/profile_war_delete_iv"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="90dp"
+                                android:src="@drawable/ott_remove" />
+
+                            <TextView
+                                android:id="@+id/profile_war_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/genre_backround_no_color"
+                                android:gravity="center"
+                                android:text="전쟁"
+                                android:visibility="gone" />
+
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>

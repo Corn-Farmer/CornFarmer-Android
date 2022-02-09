@@ -49,10 +49,10 @@
         android:id="@+id/search_today_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="짜잔! 검색 결과입니다!"
+        android:text="찾으시는 작품이 맞나요?"
         android:textColor="#1E005E"
         android:textStyle="bold"
-        android:textSize="21sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_back_iv"
         android:layout_marginTop="60dp"
@@ -67,7 +67,6 @@
         android:text="나홀로 집에"
         app:layout_constraintStart_toStartOf="@id/search_today_tv"
         app:layout_constraintTop_toBottomOf="@id/search_today_tv"
-        android:layout_marginTop="10dp"
         />
     <TextView
         android:id="@+id/search_descript_tv"
@@ -87,5 +86,6 @@
         android:layout_marginTop="10dp"
         tools:listitem="@layout/item_otts"
         android:paddingBottom="?attr/actionBarSize"
+        android:overScrollMode="never"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
