@@ -314,7 +314,7 @@
         app:layout_constraintTop_toBottomOf="@id/profile_comment_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/profile_comment"
+        android:src="@drawable/profile_user_delete"
         android:layout_marginTop="10dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

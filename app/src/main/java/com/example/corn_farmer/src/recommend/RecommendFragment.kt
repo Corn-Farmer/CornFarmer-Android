@@ -68,7 +68,7 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
         val ottRVAdapter = OttRVAdapter(movieInfoList)
 
         binding.recommendTitleKeywordTv.text = "# ${result.keyword}"
-        binding.recommendSubtitleTv.text = "컨파머가 추천하는 ${result.keyword}을 위한 컨텐츠"
+        binding.recommendSubtitleTv.text = "컨파머가 추천하는 ${result.keyword}를(을) 위한 컨텐츠"
 
         binding.recommendMovieRV.adapter = ottRVAdapter
         binding.recommendMovieRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)

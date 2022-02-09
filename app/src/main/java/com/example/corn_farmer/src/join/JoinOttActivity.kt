@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.kakao.OttSelectCustomDialog
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityJoinOttBinding
 
@@ -74,20 +75,18 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun showDialog() {
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.ott_select_custom_dialog, null)
-        val mBuilder = AlertDialog.Builder(this, R.style.OttAlertDialog)
-            .setView(mDialogView)
+        val dialog = OttSelectCustomDialog(this)
+        dialog.show()
 
-        val alertDialog = mBuilder.show()
-        alertDialog.window?.setGravity(Gravity.CENTER_VERTICAL)
+        dialog.window?.setGravity(Gravity.CENTER_VERTICAL)
 
-        alertDialog.findViewById<Button>(R.id.select_next_time_bt)?.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        dialog.findViewById<Button>(R.id.select_next_time_bt)?.setOnClickListener {
+            val intent = Intent(this, JoinNicknameActivity::class.java)
             startActivity(intent)
         }
 
-        alertDialog.findViewById<Button>(R.id.select_ok_bt)?.setOnClickListener {
-            alertDialog.dismiss()
+        dialog.findViewById<Button>(R.id.select_ok_bt)?.setOnClickListener {
+            dialog.dismiss()
             binding.ottJumpIv.visibility = View.GONE
             binding.ottFinishNoColorIv.visibility = View.VISIBLE
         }

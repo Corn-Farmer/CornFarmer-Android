@@ -8,15 +8,15 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.cornfarmer_android.R
-import com.example.cornfarmer_android.databinding.CustomLoadingDialogBinding
+import com.example.cornfarmer_android.databinding.CustomDialogLoadingBinding
 
 class CustomLoadingDialog(context: Context):Dialog(context) {
 
     lateinit var turnAround : Animation
-    lateinit var binding : CustomLoadingDialogBinding
+    lateinit var binding : CustomDialogLoadingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = CustomLoadingDialogBinding.inflate(layoutInflater)
+        binding = CustomDialogLoadingBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
