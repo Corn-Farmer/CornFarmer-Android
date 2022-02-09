@@ -23,6 +23,7 @@ class CustomLoadingDialog(context: Context):Dialog(context) {
         turnAround = AnimationUtils.loadAnimation(context,R.anim.turn_around)
         binding.loadingImg.startAnimation(turnAround)
 
+
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

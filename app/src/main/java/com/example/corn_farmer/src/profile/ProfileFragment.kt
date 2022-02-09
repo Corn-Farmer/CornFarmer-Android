@@ -30,6 +30,8 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         super.onCreate(savedInstanceState)
 
         val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.setCancelable(false)
+        loadingAnimDialog.setCanceledOnTouchOutside(false)
         loadingAnimDialog.show()
         Handler().postDelayed({
             loadingAnimDialog.dismiss()

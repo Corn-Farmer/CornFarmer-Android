@@ -26,6 +26,8 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.setCancelable(false)
+        loadingAnimDialog.setCanceledOnTouchOutside(false)
         loadingAnimDialog.show()
         Handler().postDelayed({
             loadingAnimDialog.dismiss()
