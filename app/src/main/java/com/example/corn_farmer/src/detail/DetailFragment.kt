@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.detail
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -14,16 +15,16 @@ import com.example.corn_farmer.src.recommend.RecommendFragment
 import com.example.corn_farmer.src.detail.model.getMovieDetailAPI
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.comment.CommentFragment
-import com.example.corn_farmer.src.comment.CommentRVAdapter
+import com.example.corn_farmer.src.comment.CommentService
+import com.example.corn_farmer.src.detail.model.getCommentLike
+import com.example.corn_farmer.src.detail.model.getMovieDetailResult
+import com.example.corn_farmer.src.detail.model.getReviewList
 import com.example.corn_farmer.src.home.HomeFragment
-import com.example.corn_farmer.src.home.HomeService
+import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.search_result.SearchResultFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
     lateinit var binding : FragmentDetailBinding
@@ -34,6 +35,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
+
         var service = DetailService(this, movieIdx,1)
         service.tryGetMovieInfo()
 
@@ -83,15 +85,16 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
         if (response!!.isSuccess) {
             // 영화 정보
             val movieInfo = response!!.result
-            binding.detailMovieTitleTv.text = movieInfo?.movieName
-            binding.detailMovieReleaseTv.text = "(${movieInfo?.releaseYear.toString()}년 개봉)"
-            binding.detailMovieGenreTv.text = movieInfo?.movieGenreList?.joinToString(separator = ",")
-            binding.detailMovieStoryTv.text = movieInfo?.synopsis
+            Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
+            binding.detailMovieTitleTv.text = movieInfo!!.movieName
+            binding.detailMovieReleaseTv.text = "${movieInfo.releaseYear.toString()}년 개봉)"
+            binding.detailMovieGenreTv.text = movieInfo.movieGenreList?.joinToString(separator = ",")
+            binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
 
             // ott 정보 리사이클러뷰
-            val ottList = movieInfo.ottList
+            val ottList = movieInfo!!.ottList
 
             val OttserviceRvAdapter = OttserviceRVAdapter(ottList!!)
             binding.detailOttServiceRv.adapter = OttserviceRvAdapter
@@ -102,7 +105,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             )
 
             // 댓글 리사이클러뷰
-            val reviewInfo = movieInfo.reviewList
+            val reviewInfo = movieInfo!!.reviewList
 
             val ReviewRVadapter = CommentRVAdapter(reviewInfo)
             binding.detailCommentRV.adapter = ReviewRVadapter
@@ -111,6 +114,20 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 LinearLayoutManager.VERTICAL,
                 false
             )
+            ReviewRVadapter.setCommentLikeBtnClickListener(object : CommentRVAdapter.CommentLikeBtnClickListener {
+                override fun onHeartClick(getReviewList: getReviewList, position: Int) {
+
+                    val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+                    val servertoken = sharedPreferences?.getString("servertoken", null)
+
+                    if (servertoken == null) {
+                        Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        var service = CommentLikeService(this@DetailFragment, movieInfo!!.reviewList[position].reviewIdx, servertoken)
+                        service.tryPutCommetLike()
+                    }
+                }
+            })
         } else {
             Toast.makeText(context, "영화 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
         }
@@ -119,6 +136,14 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     override fun onGetDetailFailure(message: String) {
         Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
         Log.d("detailMovieInfo", message.toString())
+    }
+
+    override fun onPutCommentLikeSuccess(response: getCommentLike) {
+        Toast.makeText(context, response.result.msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPutCommentLikeFailure(message: String) {
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
 
     fun reviewSort() {

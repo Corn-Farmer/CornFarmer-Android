@@ -9,10 +9,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class CommentService(var view : CommentFragmentView,var sendReviewAPI: sendReviewAPI) {
+class CommentService(var view : CommentFragmentView,var sendReviewAPI: sendReviewAPI, var token : String) {
     fun tryPostReview(){
         val retrofitInterface = Application.sRetrofit.create(ReviewRetrofitInterface::class.java)
-        retrofitInterface.sendReview(sendReviewAPI).enqueue(object : Callback<getReviewAPI> {
+        retrofitInterface.sendReview(sendReviewAPI, token).enqueue(object : Callback<getReviewAPI> {
             override fun onResponse(call: Call<getReviewAPI>, response: Response<getReviewAPI>) {
                 view.onPostReviewSuccess(response.body() as getReviewAPI)
             }

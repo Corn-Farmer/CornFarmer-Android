@@ -10,8 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.my_comment.MyCommentFragment
 import com.example.corn_farmer.src.profile.model.ProfileResponse
 import com.example.corn_farmer.src.profile_modify.ProfileModifyActivity
+import com.example.corn_farmer.src.search.SearchFragment
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(),ProfileFragmentView {
@@ -57,6 +61,13 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
             val intent = Intent(requireContext(),ProfileModifyActivity::class.java)
             startActivity(intent)
         }
+
+        binding.profileCommentIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, MyCommentFragment())
+                .commitAllowingStateLoss()
+        }
+
         return binding.root
 
     }
