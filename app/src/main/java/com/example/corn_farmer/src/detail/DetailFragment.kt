@@ -39,7 +39,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
         var service = DetailService(this, movieIdx,1)
         service.tryGetMovieInfo()
-
+        Log.d("movieIdx", movieIdx.toString())
         initialize()
         reviewSort()
 
@@ -105,7 +105,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             // 댓글 리사이클러뷰
             val reviewInfo = movieInfo!!.reviewList
-
+            Log.d("reviewList", "${reviewInfo}")
             val ReviewRVadapter = CommentRVAdapter(reviewInfo)
             binding.detailCommentRV.adapter = ReviewRVadapter
             binding.detailCommentRV.layoutManager = LinearLayoutManager(

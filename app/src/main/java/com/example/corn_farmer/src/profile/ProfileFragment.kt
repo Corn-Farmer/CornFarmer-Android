@@ -62,6 +62,7 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
         val photo = sharedPreferences?.getString("photo",null)
         binding.profileImageIv.setImageURI(Uri.parse(photo))
+        Log.d("photo", photo.toString())
 
 
         binding.profileReIv.setOnClickListener {

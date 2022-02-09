@@ -1,5 +1,7 @@
 package com.example.corn_farmer.src.detail
 
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +49,8 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
             binding.detailCommentTextTv.text = reviewList.contents
             binding.detailCommentDateTv.text = reviewList.createdAt
             binding.detailCommentLikecntTv.text = "+ ${reviewList.likeCnt.toString()}"
-            Glide.with(itemView).load(reviewList.writer.writerPhoto.toString()).into(binding.detailCommentUserProfileIv)
+            Glide.with(itemView).load(reviewList.writer.writerPhoto).into(binding.detailCommentUserProfileIv)
+            Log.d("writerPhoto", reviewList.writer.writerPhoto)
             if (reviewList.isLiked) {
                 binding.detailComentHeartOnIv.visibility = View.VISIBLE
                 binding.detailComentHeartOffIv.visibility = View.GONE

@@ -2,6 +2,7 @@ package com.example.corn_farmer.src.my_comment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,15 +24,16 @@ class MyCommentFragment() : Fragment(), MyCommentFragmentView {
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-
-        val service = MyCommentService(this, userIdx!!, "rate")
+        val servertoken = sharedPreferences?.getString("servertoken", null)
+        Log.d("userIdx", "${userIdx}")
+        val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
         service.tryGetMyComment()
 
         return binding.root
     }
 
     override fun onGetMyCommentSuccess(response: getMyComment) {
-        val result = response.result
+        val result = response!!.result!!
 
         val MyCommentRVAdapter = MyCommentRVAdapter(result)
         binding.mycommentRV.adapter = MyCommentRVAdapter

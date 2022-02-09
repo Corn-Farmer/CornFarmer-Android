@@ -1,10 +1,12 @@
 package com.example.corn_farmer.src.recommend
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
@@ -12,6 +14,7 @@ import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI
 import com.example.corn_farmer.src.recommend.model.movieInfo
+import com.example.corn_farmer.src.recommend.model.putMovieLike
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentRecommendBinding
@@ -26,7 +29,10 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     ): View? {
         binding = FragmentRecommendBinding.inflate(inflater, container, false)
 
-        var service = RecommendService(this, keywordIdx)
+        val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        val servertoken = sharedPreferences?.getString("servertoken", "")
+
+        var service = RecommendService(this, keywordIdx, servertoken!!)
         service.tryGetMovieInfo()
 
         binding.recommendPreviousBtnIv.setOnClickListener {
@@ -66,5 +72,13 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
 
     override fun onGetRecommendFailure(message: String) {
         Log.d("Fail", "실패")
+    }
+
+    override fun onPutMovieLikeSuccess(response: putMovieLike) {
+        Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPutMovieLikeFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

@@ -15,7 +15,7 @@ data class getRecommendMovieResult(
 data class movieInfo(
     var movieIdx : Int,
     var movieName : String,
-    var moviePhotoList : ArrayList<String>,
+    var moviePhotoList : String,
     var movieGenreList : ArrayList<String>,
     var isLiked : Boolean
 )

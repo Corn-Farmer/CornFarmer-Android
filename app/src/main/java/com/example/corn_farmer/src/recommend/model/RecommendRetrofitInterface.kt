@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface RecommendRetrofitInterface {
     @GET("/movies/keywords/{keywordIdx}")
-    fun getRecommendInfo(@Path("keywordIdx") keywordIdx:Int) : Call<getRecommendMovieAPI>
+    fun getRecommendInfo(@Path("keywordIdx") keywordIdx:Int, @Path("X-ACCESS-TOKEN") token : String) : Call<getRecommendMovieAPI>
 }
