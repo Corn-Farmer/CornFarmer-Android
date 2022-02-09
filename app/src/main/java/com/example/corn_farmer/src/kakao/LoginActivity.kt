@@ -29,23 +29,14 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
-                Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+                Log.d("accessToken", "토큰 정보 보기 실패")
             }
             else if (tokenInfo != null) {
-                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-//                val intent = Intent(this, JoinProfileActivity::class.java)
-//                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-//                finish()
+                Log.d("accessToken", "토큰 정보 보기 성공")
             }
         }
-
-
-//        val keyHash = Utility.getKeyHash(this)
-//        Log.d("Hash", keyHash)
-
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
@@ -92,10 +83,7 @@ class LoginActivity : AppCompatActivity(), KakaoView {
                 var service = KakaoService(this,kakao)
                 service.tryPostToken()
 
-                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-//                val intent = Intent(this, JoinProfileActivity::class.java)
-//                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-//                finish()
+                Log.d("kakaologin", "로그인에 성공하였습니다.")
             }
         }
 
@@ -114,8 +102,6 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         binding.loginNaverLoginBt.setOnClickListener {
             startActivity(Intent(this, JoinProfileActivity::class.java))
         }
-
-
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {
@@ -131,11 +117,9 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
-            editor.commit() // 나중에 지우기
+            editor.commit()
             startActivity(Intent(this, MainActivity::class.java))
-            // 나중에 main으로 바꾸기
         }
-
     }
 
     override fun onPostTokenFailure(message: String) {

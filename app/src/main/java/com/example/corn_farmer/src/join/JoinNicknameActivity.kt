@@ -35,8 +35,13 @@ class JoinNicknameActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(binding.nicknameNicknameEt.length() < 3 || binding.loginBirthdayEt.length() < 4 || binding.loginBirthdayMonthEt.length() < 2
-                    || binding.loginBirthdayDayEt.length() < 2) {
+                if(binding.nicknameNicknameEt.length() < 3
+                    || binding.loginBirthdayEt.length() < 4
+                    || binding.loginBirthdayMonthEt.length() < 2
+                    || binding.loginBirthdayDayEt.length() < 2
+                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
                     binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
@@ -53,8 +58,13 @@ class JoinNicknameActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(binding.nicknameNicknameEt.length() < 3 || binding.loginBirthdayEt.length() < 4 || binding.loginBirthdayMonthEt.length() < 2
-                    || binding.loginBirthdayDayEt.length() < 2) {
+                if(binding.nicknameNicknameEt.length() < 3
+                    || binding.loginBirthdayEt.length() < 4
+                    || binding.loginBirthdayMonthEt.length() < 2
+                    || binding.loginBirthdayDayEt.length() < 2
+                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
                     binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
@@ -71,8 +81,13 @@ class JoinNicknameActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(binding.nicknameNicknameEt.length() < 3 || binding.loginBirthdayEt.length() < 4 || binding.loginBirthdayMonthEt.length() < 2
-                    || binding.loginBirthdayDayEt.length() < 2) {
+                if(binding.nicknameNicknameEt.length() < 3
+                    || binding.loginBirthdayEt.length() < 4
+                    || binding.loginBirthdayMonthEt.length() < 2
+                    || binding.loginBirthdayDayEt.length() < 2
+                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
                     binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
@@ -89,8 +104,13 @@ class JoinNicknameActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(binding.nicknameNicknameEt.length() < 3 || binding.loginBirthdayEt.length() < 4 || binding.loginBirthdayMonthEt.length() < 2
-                    || binding.loginBirthdayDayEt.length() < 2) {
+                if(binding.nicknameNicknameEt.length() < 3
+                    || binding.loginBirthdayEt.length() < 4
+                    || binding.loginBirthdayMonthEt.length() < 2
+                    || binding.loginBirthdayDayEt.length() < 2
+                    || binding.loginBirthdayEt.text.toString().toInt() > 2100
+                    || binding.loginBirthdayMonthEt.text.toString().toInt() > 12
+                    || binding.loginBirthdayDayEt.text.toString().toInt() > 31) {
                     binding.nicknameFinishIv.visibility = View.VISIBLE
                     binding.nicknameFinishColorIv.visibility = View.GONE
                 }else if(binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
@@ -117,7 +137,6 @@ class JoinNicknameActivity : AppCompatActivity() {
             return
         }
 
-
         if (binding.nicknameNicknameEt.text.toString().isEmpty()){
             Toast.makeText(this, "닉네임 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
             return
@@ -135,17 +154,11 @@ class JoinNicknameActivity : AppCompatActivity() {
             isMale = "false"
             editor.putString("isMale",isMale)
         }
-
         editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
 
         editor.putString("birthday", binding.loginBirthdayEt.text.toString() + "-" +
                 binding.loginBirthdayMonthEt.text.toString() + "-" +
                 binding.loginBirthdayDayEt.text.toString())
         editor.commit()
-
     }
-
-
-
-
 }
