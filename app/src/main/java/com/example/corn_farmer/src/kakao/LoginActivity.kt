@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit() // 나중에 지우기
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -147,11 +147,6 @@ class LoginActivity : AppCompatActivity(), KakaoView {
         var service = KakaoService(this,kakao)
         service.tryPostToken()
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        finish()
     }
 
 }

@@ -776,8 +776,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             Toast.makeText(this,"중복된 닉네임 입니다.",Toast.LENGTH_SHORT).show()
         }
         else{
-//            startActivity(Intent(this,MainActivity::class.java))
-            finish()
+            startActivity(Intent(this,MainActivity::class.java))
         }
 
     }

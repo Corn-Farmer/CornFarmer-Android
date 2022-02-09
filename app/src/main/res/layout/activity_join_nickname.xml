@@ -86,7 +86,7 @@
             android:layout_marginTop="11dp"
             android:background="@android:color/transparent"
             android:fontFamily="@font/robotoregular"
-            android:hint="보라보라돌이"
+            android:hint="컨파머 (3글자 이상)"
             android:maxLength="6"
             android:textColor="#7D7D7D"
             android:textSize="18sp" />
@@ -133,6 +133,7 @@
         android:layout_marginTop="36dp"
         android:background="@null"
         android:inputType="number"
+        android:hint="2022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 
@@ -169,6 +170,7 @@
         android:gravity="center"
         android:background="@null"
         android:inputType="number"
+        android:hint="01"
         app:layout_constraintStart_toEndOf="@+id/login_birthday_iv"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 
@@ -205,6 +207,7 @@
         android:maxLength="2"
         android:background="@null"
         android:inputType="number"
+        android:hint="01"
         app:layout_constraintStart_toEndOf="@+id/login_birthday_month_iv"
         app:layout_constraintTop_toBottomOf="@id/nickname_birthday_iv" />
 

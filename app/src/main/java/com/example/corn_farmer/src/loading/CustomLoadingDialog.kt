@@ -12,7 +12,6 @@ import com.example.cornfarmer_android.databinding.CustomLoadingDialogBinding
 
 class CustomLoadingDialog(context: Context):Dialog(context) {
 
-    lateinit var turnHorizontal : Animation
     lateinit var turnAround : Animation
     lateinit var binding : CustomLoadingDialogBinding
 

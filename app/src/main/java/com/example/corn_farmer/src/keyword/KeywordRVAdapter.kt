@@ -71,7 +71,7 @@ class KeywordRVAdapter(private val keywordList: List<KeywordDto>) :
 
         fun keywordUnSelected() {
             binding.itemKeywordTv.setBackgroundResource(R.drawable.keyword)
-            binding.itemKeywordTv.setTextSize(Dimension.SP, 15F)
+            binding.itemKeywordTv.setTextSize(Dimension.SP, 20F)
             binding.itemKeywordTv.setTextColor(Color.GRAY)
         }
 

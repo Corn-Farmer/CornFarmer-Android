@@ -88,5 +88,4 @@
         android:paddingBottom="200dp"
         android:overScrollMode="never"
         />
-    <!--        android:paddingBottom="?attr/actionBarSize"-->
 </androidx.constraintlayout.widget.ConstraintLayout>
