@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.example.corn_farmer.src.home.model.MovieDto
 import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.detail.DetailFragment
+import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentHomeBinding
 import java.util.*
@@ -39,6 +41,13 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
         binding.mainSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
+        }
+        binding.mainBackIv.setOnClickListener {
+            val loadingAnimDialog = CustomLoadingDialog(requireContext())
+            loadingAnimDialog.show()
+            Handler().postDelayed({
+                loadingAnimDialog.dismiss()
+            },5000)
         }
 
         var service = HomeService(this)
