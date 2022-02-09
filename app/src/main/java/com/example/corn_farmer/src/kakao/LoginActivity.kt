@@ -149,9 +149,4 @@ class LoginActivity : AppCompatActivity(), KakaoView {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        finish()
-    }
-
 }

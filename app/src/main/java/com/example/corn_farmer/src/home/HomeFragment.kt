@@ -28,7 +28,16 @@ class HomeFragment : Fragment(), HomeFragmentView {
     lateinit var binding: FragmentHomeBinding
 
     var list: List<MovieDto> = arrayListOf()
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.setCancelable(false)
+        loadingAnimDialog.setCanceledOnTouchOutside(false)
+        loadingAnimDialog.show()
+        Handler().postDelayed({
+            loadingAnimDialog.dismiss()
+        },2500)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,11 +52,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
             mActivity.callFragment(SearchFragment())
         }
         binding.mainBackIv.setOnClickListener {
-            val loadingAnimDialog = CustomLoadingDialog(requireContext())
-            loadingAnimDialog.show()
-            Handler().postDelayed({
-                loadingAnimDialog.dismiss()
-            },5000)
+
         }
 
         var service = HomeService(this)

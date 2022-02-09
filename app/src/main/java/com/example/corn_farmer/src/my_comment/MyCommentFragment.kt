@@ -25,6 +25,8 @@ class MyCommentFragment() : Fragment(), MyCommentFragmentView {
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
         val servertoken = sharedPreferences?.getString("servertoken", null)
+        val nickname = sharedPreferences?.getString("nickname",null)
+        binding.mycommentSubtitleNicknameTv.text = nickname
         Log.d("userIdx", "${userIdx}")
         val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
         service.tryGetMyComment()

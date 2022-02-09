@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.example.corn_farmer.config.Application"
         android:allowBackup="true"
@@ -16,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
-        <receiver android:name="com.example.corn_farmer.src.home.HomeFragment$Alarm"/>
         <activity
             android:name="com.example.corn_farmer.src.profile_modify.ProfileModifyActivity"
             android:exported="true" />
@@ -54,9 +54,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -74,7 +74,9 @@
         </activity>
         <activity
             android:name="com.example.corn_farmer.MainActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>

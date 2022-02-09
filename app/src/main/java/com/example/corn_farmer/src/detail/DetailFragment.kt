@@ -86,7 +86,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             val movieInfo = response!!.result
             Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
             binding.detailMovieTitleTv.text = movieInfo!!.movieName
-            binding.detailMovieReleaseTv.text = "${movieInfo.releaseYear.toString()}년 개봉)"
+            binding.detailMovieReleaseTv.text = "(${movieInfo.releaseYear.toString()}년 개봉)"
             binding.detailMovieGenreTv.text = movieInfo.movieGenreList?.joinToString(separator = ",")
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."

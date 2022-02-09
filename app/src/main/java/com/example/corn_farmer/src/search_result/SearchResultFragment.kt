@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.search_result
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,24 @@ import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.home.model.MovieDto
+import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.search_result.model.SearchResultResponse
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentSearchResultBinding
 
 class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragmentView {
     lateinit var binding: FragmentSearchResultBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.setCancelable(false)
+        loadingAnimDialog.setCanceledOnTouchOutside(false)
+        loadingAnimDialog.show()
+        Handler().postDelayed({
+            loadingAnimDialog.dismiss()
+        },3000)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
