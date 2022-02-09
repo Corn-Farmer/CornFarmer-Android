@@ -218,19 +218,22 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
 
-        val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("useridx", response.result!!.userIdx)
-        editor.commit()
 
-        val intent = Intent(this, SplashJoinActivity::class.java)
-        startActivity(intent)
+        if(response.code == 3015){
+            binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
+        }
+        else {
+            val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putInt("useridx", response.result!!.userIdx)
+            editor.commit()
+
+            val intent = Intent(this, SplashJoinActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
     override fun onPostJoinFailure(message: String) {
-        if(message == "중복된 닉네임 입니다."){
-            binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
-        }
     }
 }

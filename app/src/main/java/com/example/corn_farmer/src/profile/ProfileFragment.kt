@@ -11,25 +11,27 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.kakao.LoginActivity
 import com.example.corn_farmer.src.my_comment.MyCommentFragment
+import com.example.corn_farmer.src.profile.model.DeleteResponse
 import com.example.corn_farmer.src.profile.model.ProfileResponse
 import com.example.corn_farmer.src.profile_modify.ProfileModifyActivity
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 
-class ProfileFragment : Fragment(),ProfileFragmentView {
+class ProfileFragment : Fragment(),ProfileFragmentView,DeleteView {
 
     lateinit var binding : FragmentProfileBinding
-
+    val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+    val sharedPreferences2 = this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater,container,false)
-        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
-        val sharedPreferences2 = this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+
 
         var userIdx = sharedPreferences2?.getInt("useridx",0)
         var serverToken = sharedPreferences?.getString("servertoken",null)
@@ -74,6 +76,10 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
                 .replace(R.id.main_frame, MyCommentFragment())
                 .commitAllowingStateLoss()
         }
+        binding.profileDeleteIv.setOnClickListener {
+            val service2 = DeleteService(this,userIdx,serverToken)
+            service2.tryPutDeleteUser()
+        }
 
         return binding.root
 
@@ -97,5 +103,17 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
     override fun onGetProfileFailure(message: String) {
         Log.d("Profile","프로필 실패")
+    }
+
+    override fun onPutDeleteSuccess(response: DeleteResponse) {
+        val editor = sharedPreferences?.edit()
+        val editor2 = sharedPreferences2?.edit()
+        editor?.clear()
+        editor2?.clear()
+        startActivity(Intent(requireContext(),LoginActivity::class.java))
+    }
+
+    override fun onPutDeleteFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

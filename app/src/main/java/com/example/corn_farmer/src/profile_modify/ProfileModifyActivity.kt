@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinService
@@ -765,7 +766,13 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     override fun onPutModifySuccess(response: ModifyResponse) {
         Log.d("Modify-API", response.toString())
-        startActivity(Intent(this,MainActivity::class.java))
+        if(response.code==3015){
+            Toast.makeText(this,"중복된 닉네임 입니다.",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            startActivity(Intent(this,MainActivity::class.java))
+        }
+
     }
 
     override fun onPutModifyFailure(message: String) {

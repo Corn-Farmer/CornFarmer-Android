@@ -32,8 +32,6 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.ottFinishColorIv.setOnClickListener {
 
-            Toast.makeText(this, ottList.toString(), Toast.LENGTH_LONG).show()
-
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("ottlist", ottList.toString())
