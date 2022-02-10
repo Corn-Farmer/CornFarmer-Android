@@ -1,7 +1,6 @@
-package com.example.corn_farmer.src.recommend.model
+package com.example.corn_farmer.src.detail.model
 
 import retrofit2.Call
-import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.PUT
 import retrofit2.http.Path

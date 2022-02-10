@@ -88,11 +88,6 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
             startActivity(intent)
         }
 
-        binding.profileCommentIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, MyCommentFragment())
-                .commitAllowingStateLoss()
-        }
         binding.profileDeleteIv.setOnClickListener {
             showDialog()
         }
@@ -128,6 +123,13 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
         var nick = response.result.nickname
         binding.profileNicknameInfoTv.text = nick
+
+
+        binding.profileCommentIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, MyCommentFragment(nick))
+                .commitAllowingStateLoss()
+        }
 
         Glide.with(this)
             .load(response.result.photo)

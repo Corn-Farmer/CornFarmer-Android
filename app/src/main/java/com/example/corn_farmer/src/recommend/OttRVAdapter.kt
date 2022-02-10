@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.recommend
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,19 @@ class OttRVAdapter(private val movieInfoList : ArrayList<movieInfo>) : RecyclerV
         fun onItemClick(movieInfo: movieInfo, position: Int)
     }
 
+    interface HeartClickListener{
+        fun onHeartClick(movieInfo: movieInfo, position: Int)
+    }
+
     private lateinit var myItemClickListener: MyItemClickListener
+    private lateinit var myHeartClickListener: HeartClickListener
 
     fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
         myItemClickListener = itemClickListener
+    }
+
+    fun setHeartClickListener(heartClickListener: HeartClickListener) {
+        myHeartClickListener = heartClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
@@ -28,9 +38,10 @@ class OttRVAdapter(private val movieInfoList : ArrayList<movieInfo>) : RecyclerV
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         holder.bind(movieInfoList[position])
-        holder.itemView.setOnClickListener {
+        holder.binding.itemOttImgCv.setOnClickListener {
             myItemClickListener.onItemClick(movieInfoList[position], position)
             holder.bind(movieInfoList[position])
+            Log.d("heart", "item")
         }
     }
 
@@ -45,15 +56,7 @@ class OttRVAdapter(private val movieInfoList : ArrayList<movieInfo>) : RecyclerV
             Glide.with(itemView).load(movieInfo!!.moviePhotoList[0]).into(binding.itemOttImgIv)
             binding.itemOttTitle.text = movieInfo.movieName
             binding.itemOttGenre.text = movieInfo.movieGenreList?.joinToString(separator = ",")
-            if(!movieInfo.liked){
-                binding.itemOttLikeIv.visibility = View.VISIBLE
-                binding.itemOttLikeFillImgIv.visibility = View.INVISIBLE
-            }
-            else{
-                binding.itemOttLikeIv.visibility = View.INVISIBLE
-                binding.itemOttLikeFillImgIv.visibility = View.VISIBLE
-            }
-            binding.itemOttLikeCountTv.text = ""
+            binding.itemOttLikeCountTv.text = movieInfo.likeCnt.toString()
         }
     }
 }

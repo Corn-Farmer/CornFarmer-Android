@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.src.my_comment.model.getMyComment
 import com.example.cornfarmer_android.databinding.FragmentMyCommentBinding
 
-class MyCommentFragment() : Fragment(), MyCommentFragmentView {
+class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentView {
     lateinit var binding : FragmentMyCommentBinding
 
     override fun onCreateView(
@@ -21,6 +21,8 @@ class MyCommentFragment() : Fragment(), MyCommentFragmentView {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyCommentBinding.inflate(inflater, container, false)
+
+        binding.mycommentSubtitleNicknameTv.text = nickname
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
@@ -44,7 +46,6 @@ class MyCommentFragment() : Fragment(), MyCommentFragmentView {
             LinearLayoutManager.VERTICAL,
             false
         )
-
     }
 
     override fun onGetMyCommentFailure(message: String) {

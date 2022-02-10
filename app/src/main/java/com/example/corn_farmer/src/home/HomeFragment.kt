@@ -20,6 +20,7 @@ import com.example.corn_farmer.src.home.model.MovieResponse
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.loading.CustomLoadingDialog
+import com.example.corn_farmer.src.wishlist.WishlistActivity
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentHomeBinding
 import java.util.*
@@ -57,6 +58,10 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
         var service = HomeService(this)
         service.tryGetMovieList()
+
+        binding.mainLikeIv.setOnClickListener {
+            startActivity(Intent(activity, WishlistActivity::class.java))
+        }
 
         return binding.root
     }

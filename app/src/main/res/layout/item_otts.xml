@@ -35,7 +35,8 @@
         android:layout_marginStart="20dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/item_ott_img_cv"
-        app:layout_constraintTop_toTopOf="@id/item_ott_like_iv" />
+        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/item_ott_genre"
@@ -56,29 +57,31 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:src="@drawable/like"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:visibility="visible"/>
 
-    <ImageView
-        android:id="@+id/item_ott_like_fill_img_iv"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"
-        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="25dp"
-        android:src="@drawable/likefill"
-        android:visibility="invisible"
-        android:scaleType="fitCenter"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/item_ott_like_fill_img_iv"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"-->
+<!--        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="25dp"-->
+<!--        android:src="@drawable/likefill"-->
+<!--        android:visibility="gone"-->
+<!--        android:scaleType="fitCenter"/>-->
     <TextView
         android:id="@+id/item_ott_like_count_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/item_ott_like_fill_img_iv"
-        app:layout_constraintEnd_toEndOf="@id/item_ott_like_fill_img_iv"
-        app:layout_constraintTop_toBottomOf="@id/item_ott_like_fill_img_iv"
+        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"
+        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
         android:text="12"
         android:textSize="11sp"
         android:textColor="#FFFFFF"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="30dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

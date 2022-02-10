@@ -1,7 +1,7 @@
 package com.example.corn_farmer.src.recommend
 
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI
-import com.example.corn_farmer.src.recommend.model.putMovieLike
+import com.example.corn_farmer.src.detail.model.putMovieLike
 
 interface RecommendFragmentView {
     fun onGetRecommendSuccess(response: getRecommendMovieAPI)

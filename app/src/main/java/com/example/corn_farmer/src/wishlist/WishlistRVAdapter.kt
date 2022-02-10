@@ -3,10 +3,11 @@ package com.example.corn_farmer.src.wishlist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.corn_farmer.src.wishlist.model.wishMovie
+import com.bumptech.glide.Glide
+import com.example.corn_farmer.src.wishlist.model.getWishMovieResult
 import com.example.cornfarmer_android.databinding.ItemWishmovieBinding
 
-class WishlistRVAdapter(private val wishList : ArrayList<wishMovie>) : RecyclerView.Adapter<WishlistRVAdapter.ViewHolder>() {
+class WishlistRVAdapter(private val wishList : ArrayList<getWishMovieResult>) : RecyclerView.Adapter<WishlistRVAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val binding : ItemWishmovieBinding = ItemWishmovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,9 +23,9 @@ class WishlistRVAdapter(private val wishList : ArrayList<wishMovie>) : RecyclerV
     }
 
     inner class ViewHolder(val binding : ItemWishmovieBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(wishMovie : wishMovie) {
-            binding.wishlistMovie1ImageIv.setImageResource(wishMovie.movie_image)
-            binding.wishlistMovie1TextTv.text = wishMovie.title
+        fun bind(wishMovie : getWishMovieResult) {
+            Glide.with(itemView).load(wishMovie.moviePhoto).into(binding.wishlistMovie1ImageIv)
+            binding.wishlistMovie1TextTv.text = wishMovie.movieTitle
         }
     }
 }

@@ -47,13 +47,7 @@ class TodayMovieRVAdapter(private val movieList : List<MovieDto>) : RecyclerView
                 .centerCrop()
                 .into(binding.itemOttImgIv)
             binding.itemOttLikeCountTv.text = movie.likeCnt.toString()
-            if(movie.liked == true){
-                binding.itemOttLikeIv.setImageResource(R.drawable.likefill)
-            }
-            else{
-                binding.itemOttLikeIv.setImageResource(R.drawable.like_white)
-            }
+            binding.itemOttLikeIv.setImageResource(R.drawable.like_white)
         }
-
     }
 }
