@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
+import com.example.corn_farmer.src.my_comment_modify.model.sendModifyComment
 import com.example.cornfarmer_android.databinding.ItemMyCommentBinding
 
 class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>) : RecyclerView.Adapter<MyCommentRVAdapter.ViewHolder>() {
@@ -14,10 +15,19 @@ class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>)
         fun onItemClick(getMyCommentResult : getMyCommentResult, position : Int)
     }
 
-    private lateinit var  myItemClickListener : MyItemClickListener
+    interface MyModifyBtnClickListener{
+        fun onModifyBtnClick(getMyCommentResult: getMyCommentResult, position : Int, reviewInfo : sendModifyComment)
+    }
+
+    private lateinit var myItemClickListener : MyItemClickListener
+    private lateinit var myModifyBtnClickListener : MyModifyBtnClickListener
 
     fun setMyItemClickLisetenr(itemClickListener: MyItemClickListener) {
         myItemClickListener = itemClickListener
+    }
+
+    fun setMyModifyBtnClickListener(itemClickListener: MyModifyBtnClickListener){
+        myModifyBtnClickListener = itemClickListener
     }
 
     override fun onCreateViewHolder(
@@ -33,6 +43,9 @@ class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>)
         holder.bind(reviewList[position], position)
         holder.binding.itemMycommentMovieImgIv.setOnClickListener {
             myItemClickListener.onItemClick(reviewList[position], position)
+        }
+        holder.binding.itemMycommentModifyBtnTv.setOnClickListener {
+            myModifyBtnClickListener.onModifyBtnClick(reviewList[position], position, sendModifyComment(reviewList[position].content, reviewList[position].rate.toDouble()))
         }
     }
 
