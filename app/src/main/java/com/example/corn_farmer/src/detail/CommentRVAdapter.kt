@@ -35,14 +35,14 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
         holder.binding.detailComentHeartOnIv.setOnClickListener {
             likeCnt = likeCnt - 1
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${likeCnt}"
+            holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
             holder.binding.detailComentHeartOnIv.visibility = View.GONE
             holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
         }
         holder.binding.detailComentHeartOffIv.setOnClickListener {
             likeCnt = likeCnt + 1
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${likeCnt}"
+            holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
             holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
             holder.binding.detailComentHeartOffIv.visibility = View.GONE
         }
