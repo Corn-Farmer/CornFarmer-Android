@@ -15,10 +15,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinService
+import com.example.corn_farmer.src.profile.ProfileFragmentView
 import com.example.corn_farmer.src.profile.ProfileService
 import com.example.corn_farmer.src.profile.model.ModifyResponse
 import com.example.corn_farmer.src.profile.model.ProfileGenre
 import com.example.corn_farmer.src.profile.model.ProfileOtt
+import com.example.corn_farmer.src.profile.model.ProfileResponse
+import com.example.corn_farmer.src.profile_modify.model.ModifyProfileResponse
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityProfileModifyBinding
 import okhttp3.MediaType
@@ -43,9 +46,15 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         binding = ActivityProfileModifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
-        val userIdx : Int = sharedPreferences2.getInt("useridx",0)
+        val userIdx: Int = sharedPreferences2.getInt("useridx", 0)
+
+        val serverToken = sharedPreferences.getString("servertoken", null)
+
+        val service = ModifyProfileService(this, userIdx, serverToken)
+        service.tryGetModifyProfile()
 
 
         val photo = sharedPreferences.getString("photo", null)
@@ -78,214 +87,60 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         //수정할 때 닉네임이랑 사진 다시 하기
 
-        val nickname : String? = sharedPreferences?.getString("nickname", null)
+        val nickname: String? = sharedPreferences?.getString("nickname", null)
         binding.modifyNicknameInfoEt.setText(nickname)
 
 
 
 
-        var nowUserHasgenre = sharedPreferences.getString("genrelist", null)
-        nowUserHasgenre = nowUserHasgenre!!.replace("[", "").replace("]", "").replace(" ", "")
-        var nowUserHasGenreList: List<String> = nowUserHasgenre.split(",")
-        Log.d("장르 리스트 : ", nowUserHasGenreList.toString())
-
-        var nowUserHasOtt = sharedPreferences.getString("ottlist", null)
-        nowUserHasOtt = nowUserHasOtt!!.replace("[", "").replace("]", "").replace(" ", "")
-        var nowUserHasOttList: List<String> = nowUserHasOtt.split(",") //
-
-        if (nowUserHasOttList.contains("1")) {
-            binding.ottAppleTvIv.visibility = View.VISIBLE
-            binding.ottAppleTvSelectIv.visibility = View.GONE
-            binding.ottAppleTvSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("1")
-        } else {
-            binding.ottAppleTvSelectIv.visibility = View.VISIBLE
-            binding.ottAppleTvIv.visibility = View.GONE
-            binding.ottAppleTvSelectCancelIv.visibility = View.GONE
+        binding.modifyCancelIv.setOnClickListener {
+            finish()
         }
 
-        if (nowUserHasOttList.contains("2")) {
-            binding.ottPrimeVideoIv.visibility = View.VISIBLE
-            binding.ottPrimeVideoSelectIv.visibility = View.GONE
-            binding.ottPrimeVideoSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("2")
-        } else {
-            binding.ottPrimeVideoIv.visibility = View.GONE
-            binding.ottPrimeVideoSelectIv.visibility = View.VISIBLE
-            binding.ottPrimeVideoSelectCancelIv.visibility = View.GONE
-        }
+        binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
+            val photo = sharedPreferences.getString("photo", null)
 
-        if (nowUserHasOttList.contains("3")) {
-            binding.ottDisneyIv.visibility = View.VISIBLE
-            binding.ottDisneySelectIv.visibility = View.GONE
-            binding.ottDisneySelectCancelIv.visibility = View.VISIBLE
-            ottList.add("3")
-        } else {
-            binding.ottDisneyIv.visibility = View.GONE
-            binding.ottDisneySelectIv.visibility = View.VISIBLE
-            binding.ottDisneySelectCancelIv.visibility = View.GONE
+            var modifiedNickname: String = binding.modifyNicknameInfoEt.text.toString()
 
-        }
-        if (nowUserHasOttList.contains("4")) {
-            binding.ottCoupangIv.visibility = View.VISIBLE
-            binding.ottCoupangSelectIv.visibility = View.GONE
-            binding.ottCoupangSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("4")
-        } else {
-            binding.ottCoupangIv.visibility = View.GONE
-            binding.ottCoupangSelectIv.visibility = View.VISIBLE
-            binding.ottCoupangSelectCancelIv.visibility = View.GONE
+            val nicknameRequest =
+                RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
 
-        }
-        if (nowUserHasOttList.contains("5")) {
-            binding.ottWavveIv.visibility = View.VISIBLE
-            binding.ottWavveSelectIv.visibility = View.GONE
-            binding.ottWavveSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("5")
-        } else {
-            binding.ottWavveIv.visibility = View.GONE
-            binding.ottWavveSelectIv.visibility = View.VISIBLE
-            binding.ottWavveSelectCancelIv.visibility = View.GONE
+            val ottListRequest =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    ottList!!.toString().replace("[", "").replace("]", "")
+                )
+            val genreRequest =
+                RequestBody.create(
+                    MediaType.parse("text/plain"),
+                    genreList.toString().replace("[", "").replace("]", "")
+                )
 
-        }
-        if (nowUserHasOttList.contains("6")) {
-            binding.ottTvingIv.visibility = View.VISIBLE
-            binding.ottTvingSelectIv.visibility = View.GONE
-            binding.ottTvingSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("6")
-        } else {
-            binding.ottTvingIv.visibility = View.GONE
-            binding.ottTvingSelectIv.visibility = View.VISIBLE
-            binding.ottTvingSelectCancelIv.visibility = View.GONE
+            val servertoken = sharedPreferences.getString("servertoken", null)
+            val requestMap: HashMap<String, RequestBody> = HashMap()
 
-        }
-        if (nowUserHasOttList.contains("7")) {
-            binding.ottNetflixIv.visibility = View.VISIBLE
-            binding.ottNetflixSelectIv.visibility = View.GONE
-            binding.ottNetflixSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("7")
-        } else {
-            binding.ottNetflixIv.visibility = View.GONE
-            binding.ottNetflixSelectIv.visibility = View.VISIBLE
-            binding.ottNetflixSelectCancelIv.visibility = View.GONE
-        }
-        if (nowUserHasOttList.contains("8")) {
-            binding.ottWhatchaIv.visibility = View.VISIBLE
-            binding.ottWhatchaSelectIv.visibility = View.GONE
-            binding.ottWhatchaSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("8")
-        } else {
-            binding.ottWhatchaIv.visibility = View.GONE
-            binding.ottWhatchaSelectIv.visibility = View.VISIBLE
-            binding.ottWhatchaSelectCancelIv.visibility = View.GONE
-        }
+            val file = File(photo.toString())
+            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+
+            requestMap.put("nickname", nicknameRequest)
+            requestMap.put("userOtt", ottListRequest)
+            requestMap.put("genreList", genreRequest)
+
+            val editor = sharedPreferences.edit()
+            editor.putString("nickname", modifiedNickname)
+            editor.putString("ottlist", ottList.toString())
+            editor.putString("genrelist", genreList.toString())
+            editor.commit()
+
+            var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
+            service.tryPutModify()
 
 
-        binding.ottAppleTvSelectCancelIv.setOnClickListener {
-            binding.ottAppleTvIv.visibility = View.GONE
-            binding.ottAppleTvSelectIv.visibility = View.VISIBLE
-            binding.ottAppleTvSelectCancelIv.visibility = View.GONE
-            ottList.remove("1")
         }
-        binding.ottAppleTvSelectIv.setOnClickListener {
-            binding.ottAppleTvIv.visibility = View.VISIBLE
-            binding.ottAppleTvSelectIv.visibility = View.GONE
-            binding.ottAppleTvSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("1")
-        }
+    }//onCreate
 
-        binding.ottPrimeVideoSelectCancelIv.setOnClickListener {
-            binding.ottPrimeVideoIv.visibility = View.GONE
-            binding.ottPrimeVideoSelectIv.visibility = View.VISIBLE
-            binding.ottPrimeVideoSelectCancelIv.visibility = View.GONE
-            ottList.remove("2")
-        }
-        binding.ottPrimeVideoSelectIv.setOnClickListener {
-            binding.ottPrimeVideoIv.visibility = View.VISIBLE
-            binding.ottPrimeVideoSelectIv.visibility = View.GONE
-            binding.ottPrimeVideoSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("2")
-        }
-        binding.ottDisneySelectCancelIv.setOnClickListener {
-            binding.ottDisneyIv.visibility = View.GONE
-            binding.ottDisneySelectIv.visibility = View.VISIBLE
-            binding.ottDisneySelectCancelIv.visibility = View.GONE
-            ottList.remove("3")
-        }
-        binding.ottDisneySelectIv.setOnClickListener {
-            binding.ottDisneyIv.visibility = View.VISIBLE
-            binding.ottDisneySelectIv.visibility = View.GONE
-            binding.ottDisneySelectCancelIv.visibility = View.VISIBLE
-            ottList.add("3")
-        }
-
-        binding.ottCoupangSelectCancelIv.setOnClickListener {
-            binding.ottCoupangIv.visibility = View.GONE
-            binding.ottCoupangSelectIv.visibility = View.VISIBLE
-            binding.ottCoupangSelectCancelIv.visibility = View.GONE
-            ottList.remove("4")
-        }
-        binding.ottCoupangSelectIv.setOnClickListener {
-            binding.ottCoupangIv.visibility = View.VISIBLE
-            binding.ottCoupangSelectIv.visibility = View.GONE
-            binding.ottCoupangSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("4")
-        }
-
-        binding.ottWavveSelectCancelIv.setOnClickListener {
-            binding.ottWavveIv.visibility = View.GONE
-            binding.ottWavveSelectIv.visibility = View.VISIBLE
-            binding.ottWavveSelectCancelIv.visibility = View.GONE
-            ottList.remove("5")
-        }
-
-        binding.ottWavveSelectIv.setOnClickListener {
-            ottList.add("5")
-            binding.ottWavveIv.visibility = View.VISIBLE
-            binding.ottWavveSelectIv.visibility = View.GONE
-            binding.ottWavveSelectCancelIv.visibility = View.VISIBLE
-        }
-
-        binding.ottTvingSelectCancelIv.setOnClickListener {
-            binding.ottTvingIv.visibility = View.GONE
-            binding.ottTvingSelectIv.visibility = View.VISIBLE
-            binding.ottTvingSelectCancelIv.visibility = View.GONE
-            ottList.remove("6")
-        }
-        binding.ottTvingSelectIv.setOnClickListener {
-            binding.ottTvingIv.visibility = View.VISIBLE
-            binding.ottTvingSelectIv.visibility = View.GONE
-            binding.ottTvingSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("6")
-        }
-        binding.ottNetflixSelectCancelIv.setOnClickListener {
-            binding.ottNetflixIv.visibility = View.GONE
-            binding.ottNetflixSelectIv.visibility = View.VISIBLE
-            binding.ottNetflixSelectCancelIv.visibility = View.GONE
-            ottList.remove("7")
-        }
-        binding.ottNetflixSelectIv.setOnClickListener {
-            binding.ottNetflixIv.visibility = View.VISIBLE
-            binding.ottNetflixSelectIv.visibility = View.GONE
-            binding.ottNetflixSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("7")
-        }
-        binding.ottWhatchaSelectCancelIv.setOnClickListener {
-            binding.ottWhatchaIv.visibility = View.GONE
-            binding.ottWhatchaSelectIv.visibility = View.VISIBLE
-            binding.ottWhatchaSelectCancelIv.visibility = View.GONE
-            ottList.remove("8")
-        }
-        binding.ottWhatchaSelectIv.setOnClickListener {
-            binding.ottWhatchaIv.visibility = View.VISIBLE
-            binding.ottWhatchaSelectIv.visibility = View.GONE
-            binding.ottWhatchaSelectCancelIv.visibility = View.VISIBLE
-            ottList.add("8")
-        }
-
-
-        //여기부터 장르
-
+    private fun genreVisibility(nowUserHasGenreList: List<String>) {
         if (nowUserHasGenreList.contains("1")) {
             genreList.add("1")
             binding.profileActionColorTv.visibility = View.VISIBLE
@@ -670,49 +525,199 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileWarDeleteIv.visibility = View.INVISIBLE
             binding.profileWarTv.visibility = View.VISIBLE
         }
+    }
 
-
-        binding.modifyCancelIv.setOnClickListener {
-            finish()
+    private fun ottVisibility(nowUserHasOttList: List<String>) {
+        if (nowUserHasOttList.contains("1")) {
+            binding.ottAppleTvIv.visibility = View.VISIBLE
+            binding.ottAppleTvSelectIv.visibility = View.GONE
+            binding.ottAppleTvSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("1")
+        } else {
+            binding.ottAppleTvSelectIv.visibility = View.VISIBLE
+            binding.ottAppleTvIv.visibility = View.GONE
+            binding.ottAppleTvSelectCancelIv.visibility = View.GONE
         }
 
-        binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
-            val photo = sharedPreferences.getString("photo", null)
+        if (nowUserHasOttList.contains("2")) {
+            binding.ottPrimeVideoIv.visibility = View.VISIBLE
+            binding.ottPrimeVideoSelectIv.visibility = View.GONE
+            binding.ottPrimeVideoSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("2")
+        } else {
+            binding.ottPrimeVideoIv.visibility = View.GONE
+            binding.ottPrimeVideoSelectIv.visibility = View.VISIBLE
+            binding.ottPrimeVideoSelectCancelIv.visibility = View.GONE
+        }
 
-            var modifiedNickname : String = binding.modifyNicknameInfoEt.text.toString()
-
-            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), modifiedNickname!!)
-
-            val ottListRequest =
-                RequestBody.create(MediaType.parse("text/plain"), ottList!!.toString().replace("[","").replace("]",""))
-            val genreRequest =
-                RequestBody.create(MediaType.parse("text/plain"), genreList.toString().replace("[","").replace("]",""))
-
-            val servertoken = sharedPreferences.getString("servertoken", null)
-            val requestMap: HashMap<String, RequestBody> = HashMap()
-
-            val file = File(photo.toString())
-            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
-            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
-
-            requestMap.put("nickname", nicknameRequest)
-            requestMap.put("userOtt", ottListRequest)
-            requestMap.put("genreList", genreRequest)
-
-            val editor = sharedPreferences.edit()
-            editor.putString("nickname",modifiedNickname)
-            editor.putString("ottlist",ottList.toString())
-            editor.putString("genrelist",genreList.toString())
-            editor.commit()
-
-            var service = ModifyService(this, servertoken.toString(), body, requestMap,userIdx)
-            service.tryPutModify()
-
-
+        if (nowUserHasOttList.contains("3")) {
+            binding.ottDisneyIv.visibility = View.VISIBLE
+            binding.ottDisneySelectIv.visibility = View.GONE
+            binding.ottDisneySelectCancelIv.visibility = View.VISIBLE
+            ottList.add("3")
+        } else {
+            binding.ottDisneyIv.visibility = View.GONE
+            binding.ottDisneySelectIv.visibility = View.VISIBLE
+            binding.ottDisneySelectCancelIv.visibility = View.GONE
 
         }
-    }//onCreate
+        if (nowUserHasOttList.contains("4")) {
+            binding.ottCoupangIv.visibility = View.VISIBLE
+            binding.ottCoupangSelectIv.visibility = View.GONE
+            binding.ottCoupangSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("4")
+        } else {
+            binding.ottCoupangIv.visibility = View.GONE
+            binding.ottCoupangSelectIv.visibility = View.VISIBLE
+            binding.ottCoupangSelectCancelIv.visibility = View.GONE
 
+        }
+        if (nowUserHasOttList.contains("5")) {
+            binding.ottWavveIv.visibility = View.VISIBLE
+            binding.ottWavveSelectIv.visibility = View.GONE
+            binding.ottWavveSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("5")
+        } else {
+            binding.ottWavveIv.visibility = View.GONE
+            binding.ottWavveSelectIv.visibility = View.VISIBLE
+            binding.ottWavveSelectCancelIv.visibility = View.GONE
+
+        }
+        if (nowUserHasOttList.contains("6")) {
+            binding.ottTvingIv.visibility = View.VISIBLE
+            binding.ottTvingSelectIv.visibility = View.GONE
+            binding.ottTvingSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("6")
+        } else {
+            binding.ottTvingIv.visibility = View.GONE
+            binding.ottTvingSelectIv.visibility = View.VISIBLE
+            binding.ottTvingSelectCancelIv.visibility = View.GONE
+
+        }
+        if (nowUserHasOttList.contains("7")) {
+            binding.ottNetflixIv.visibility = View.VISIBLE
+            binding.ottNetflixSelectIv.visibility = View.GONE
+            binding.ottNetflixSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("7")
+        } else {
+            binding.ottNetflixIv.visibility = View.GONE
+            binding.ottNetflixSelectIv.visibility = View.VISIBLE
+            binding.ottNetflixSelectCancelIv.visibility = View.GONE
+        }
+        if (nowUserHasOttList.contains("8")) {
+            binding.ottWhatchaIv.visibility = View.VISIBLE
+            binding.ottWhatchaSelectIv.visibility = View.GONE
+            binding.ottWhatchaSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("8")
+        } else {
+            binding.ottWhatchaIv.visibility = View.GONE
+            binding.ottWhatchaSelectIv.visibility = View.VISIBLE
+            binding.ottWhatchaSelectCancelIv.visibility = View.GONE
+        }
+
+
+        binding.ottAppleTvSelectCancelIv.setOnClickListener {
+            binding.ottAppleTvIv.visibility = View.GONE
+            binding.ottAppleTvSelectIv.visibility = View.VISIBLE
+            binding.ottAppleTvSelectCancelIv.visibility = View.GONE
+            ottList.remove("1")
+        }
+        binding.ottAppleTvSelectIv.setOnClickListener {
+            binding.ottAppleTvIv.visibility = View.VISIBLE
+            binding.ottAppleTvSelectIv.visibility = View.GONE
+            binding.ottAppleTvSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("1")
+        }
+
+        binding.ottPrimeVideoSelectCancelIv.setOnClickListener {
+            binding.ottPrimeVideoIv.visibility = View.GONE
+            binding.ottPrimeVideoSelectIv.visibility = View.VISIBLE
+            binding.ottPrimeVideoSelectCancelIv.visibility = View.GONE
+            ottList.remove("2")
+        }
+        binding.ottPrimeVideoSelectIv.setOnClickListener {
+            binding.ottPrimeVideoIv.visibility = View.VISIBLE
+            binding.ottPrimeVideoSelectIv.visibility = View.GONE
+            binding.ottPrimeVideoSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("2")
+        }
+        binding.ottDisneySelectCancelIv.setOnClickListener {
+            binding.ottDisneyIv.visibility = View.GONE
+            binding.ottDisneySelectIv.visibility = View.VISIBLE
+            binding.ottDisneySelectCancelIv.visibility = View.GONE
+            ottList.remove("3")
+        }
+        binding.ottDisneySelectIv.setOnClickListener {
+            binding.ottDisneyIv.visibility = View.VISIBLE
+            binding.ottDisneySelectIv.visibility = View.GONE
+            binding.ottDisneySelectCancelIv.visibility = View.VISIBLE
+            ottList.add("3")
+        }
+
+        binding.ottCoupangSelectCancelIv.setOnClickListener {
+            binding.ottCoupangIv.visibility = View.GONE
+            binding.ottCoupangSelectIv.visibility = View.VISIBLE
+            binding.ottCoupangSelectCancelIv.visibility = View.GONE
+            ottList.remove("4")
+        }
+        binding.ottCoupangSelectIv.setOnClickListener {
+            binding.ottCoupangIv.visibility = View.VISIBLE
+            binding.ottCoupangSelectIv.visibility = View.GONE
+            binding.ottCoupangSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("4")
+        }
+
+        binding.ottWavveSelectCancelIv.setOnClickListener {
+            binding.ottWavveIv.visibility = View.GONE
+            binding.ottWavveSelectIv.visibility = View.VISIBLE
+            binding.ottWavveSelectCancelIv.visibility = View.GONE
+            ottList.remove("5")
+        }
+
+        binding.ottWavveSelectIv.setOnClickListener {
+            ottList.add("5")
+            binding.ottWavveIv.visibility = View.VISIBLE
+            binding.ottWavveSelectIv.visibility = View.GONE
+            binding.ottWavveSelectCancelIv.visibility = View.VISIBLE
+        }
+
+        binding.ottTvingSelectCancelIv.setOnClickListener {
+            binding.ottTvingIv.visibility = View.GONE
+            binding.ottTvingSelectIv.visibility = View.VISIBLE
+            binding.ottTvingSelectCancelIv.visibility = View.GONE
+            ottList.remove("6")
+        }
+        binding.ottTvingSelectIv.setOnClickListener {
+            binding.ottTvingIv.visibility = View.VISIBLE
+            binding.ottTvingSelectIv.visibility = View.GONE
+            binding.ottTvingSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("6")
+        }
+        binding.ottNetflixSelectCancelIv.setOnClickListener {
+            binding.ottNetflixIv.visibility = View.GONE
+            binding.ottNetflixSelectIv.visibility = View.VISIBLE
+            binding.ottNetflixSelectCancelIv.visibility = View.GONE
+            ottList.remove("7")
+        }
+        binding.ottNetflixSelectIv.setOnClickListener {
+            binding.ottNetflixIv.visibility = View.VISIBLE
+            binding.ottNetflixSelectIv.visibility = View.GONE
+            binding.ottNetflixSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("7")
+        }
+        binding.ottWhatchaSelectCancelIv.setOnClickListener {
+            binding.ottWhatchaIv.visibility = View.GONE
+            binding.ottWhatchaSelectIv.visibility = View.VISIBLE
+            binding.ottWhatchaSelectCancelIv.visibility = View.GONE
+            ottList.remove("8")
+        }
+        binding.ottWhatchaSelectIv.setOnClickListener {
+            binding.ottWhatchaIv.visibility = View.VISIBLE
+            binding.ottWhatchaSelectIv.visibility = View.GONE
+            binding.ottWhatchaSelectCancelIv.visibility = View.VISIBLE
+            ottList.add("8")
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -736,7 +741,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     }
 
-    private fun newPngFileName() : String {
+    private fun newPngFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
         return "${filename}.png"
@@ -744,7 +749,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
         val path = File(filesDir, "image")
-        if(!path.exists()){
+        if (!path.exists()) {
             path.mkdirs()
         }
 
@@ -752,7 +757,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         val file = File(path, photoName)
         var imageFile: OutputStream? = null
-        try{
+        try {
             file.createNewFile()
             imageFile = FileOutputStream(file)
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
@@ -761,22 +766,21 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
-            Log.d("Photo",file.absolutePath.toString())
+            Log.d("Photo", file.absolutePath.toString())
             editor.putString("photoname", photoName)
             editor.commit()
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             null
         }
     }
 
     override fun onPutModifySuccess(response: ModifyResponse) {
         Log.d("Modify-API", response.toString())
-        if(response.code==3015){
-            Toast.makeText(this,"중복된 닉네임 입니다.",Toast.LENGTH_SHORT).show()
-        }
-        else{
-            startActivity(Intent(this,MainActivity::class.java))
+        if (response.code == 3015) {
+            Toast.makeText(this, "중복된 닉네임 입니다.", Toast.LENGTH_SHORT).show()
+        } else {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
     }
@@ -784,6 +788,24 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
     override fun onPutModifyFailure(message: String) {
         Log.d("Modify-API", message.toString())
     }
+
+    override fun onGetModifyProfileSuccess(response: ModifyProfileResponse) {
+        var UserInfo = response.result!!
+        binding.modifyNicknameInfoEt.setText(UserInfo.nickname)
+        var ottListString = UserInfo.ottList.toString()
+        var genreListString = UserInfo.genreList.toString()
+        ottListString = ottListString.replace("[", "").replace("]", "").replace(" ", "")
+        genreListString = genreListString.replace("[", "").replace("]", "").replace(" ", "")
+        var nowUserHasOttList: List<String> = ottListString.split(",")
+        var nowUserHasGenreList: List<String> = genreListString.split(",")
+        ottVisibility(nowUserHasOttList)
+        genreVisibility(nowUserHasGenreList)
+    }
+
+    override fun onGetModifyProfileFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
 
 
 }
