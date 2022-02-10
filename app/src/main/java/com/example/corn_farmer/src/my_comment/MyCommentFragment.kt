@@ -13,6 +13,8 @@ import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.my_comment.model.getMyComment
 import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
+import com.example.corn_farmer.src.my_comment_modify.MyCommentModifyFragment
+import com.example.corn_farmer.src.my_comment_modify.model.sendModifyComment
 import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentMyCommentBinding
@@ -37,6 +39,8 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
         Log.d("userIdx", "${userIdx}")
         val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
         service.tryGetMyComment()
+        sortReview()
+
 
         return binding.root
     }
@@ -58,9 +62,49 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
                     .commitAllowingStateLoss()
             }
         })
+        MyCommentRVAdapter.setMyModifyBtnClickListener(object : MyCommentRVAdapter.MyModifyBtnClickListener {
+            override fun onModifyBtnClick(getMyCommentResult: getMyCommentResult, position: Int, reviewInfo : sendModifyComment) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, MyCommentModifyFragment(reviewInfo, getMyCommentResult.reviewIdx, nickname))
+                    .commitAllowingStateLoss()
+            }
+        })
     }
 
     override fun onGetMyCommentFailure(message: String) {
         Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun sortReview() {
+        binding.mycommentSortLikeTv.setOnClickListener {
+            val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val userIdx = sharedPreferences?.getInt("userIdx", -1000)
+            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val nickname = sharedPreferences?.getString("nickname",null)
+            binding.mycommentSubtitleNicknameTv.text = nickname
+            Log.d("userIdx", "${userIdx}")
+            val service = MyCommentService(this, userIdx!!, "like", servertoken!!)
+            service.tryGetMyComment()
+        }
+        binding.mycommentSortRateTv.setOnClickListener {
+            val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val userIdx = sharedPreferences?.getInt("userIdx", -1000)
+            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val nickname = sharedPreferences?.getString("nickname",null)
+            binding.mycommentSubtitleNicknameTv.text = nickname
+            Log.d("userIdx", "${userIdx}")
+            val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
+            service.tryGetMyComment()
+        }
+        binding.mycommentSortRecentTv.setOnClickListener {
+            val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val userIdx = sharedPreferences?.getInt("userIdx", -1000)
+            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val nickname = sharedPreferences?.getString("nickname",null)
+            binding.mycommentSubtitleNicknameTv.text = nickname
+            Log.d("userIdx", "${userIdx}")
+            val service = MyCommentService(this, userIdx!!, "recent", servertoken!!)
+            service.tryGetMyComment()
+        }
     }
 }
