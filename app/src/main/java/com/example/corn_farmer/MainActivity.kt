@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
         binding.mainProfileIv.setOnClickListener {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val serverToken = sharedPreferences.getString("servertoken","1")
-            if(serverToken=="1"){
+            val serverToken = sharedPreferences.getString("servertoken",null)
+            if(serverToken==null){
                 Toast.makeText(this,"로그인이 필요한 서비스입니다.",Toast.LENGTH_SHORT).show()
 
             }

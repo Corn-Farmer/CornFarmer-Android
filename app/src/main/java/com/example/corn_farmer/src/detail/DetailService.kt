@@ -7,10 +7,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailService(var view : DetailFragmentView, var movieIdx : Int,var sort : Int) {
+class DetailService(var view : DetailFragmentView, var movieIdx : Int,var sort : String,var token : String) {
     fun tryGetMovieInfo() {
         val retrofitInterface = Application.sRetrofit.create(DetailRetrofitInterface::class.java)
-        retrofitInterface.getMovieInfo(movieIdx, sort)
+        retrofitInterface.getMovieInfo(movieIdx, sort,token)
             .enqueue(object : Callback<getMovieDetailAPI> {
                 override fun onResponse(
                     call: Call<getMovieDetailAPI>,

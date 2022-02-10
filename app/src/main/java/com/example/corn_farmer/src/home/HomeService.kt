@@ -7,10 +7,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeService(var view : HomeFragmentView) {
+class HomeService(var view : HomeFragmentView,var token : String) {
     fun tryGetMovieList(){
         val retrofitInterface = Application.sRetrofit.create(MovieRetrofitInterface::class.java)
-        retrofitInterface.getMovieList().enqueue(object : Callback<MovieResponse> {
+        retrofitInterface.getMovieList(token).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 view.onGetMovieListSuccess(response.body() as MovieResponse)
             }

@@ -18,6 +18,7 @@ data class MovieDto(
     @SerializedName("movieName") var movieName : String?,
     @SerializedName("moviePhotoList") var moviePhotoList : List<String> = arrayListOf(),
     @SerializedName("movieGenreList")var movieGenreList : List<String> = arrayListOf(),
-    @SerializedName("isLiked")var liked : Boolean?,
-    @SerializedName("likeCnt")var likeCnt : Int?
+    @SerializedName("likeCnt")var likeCnt : Int?,
+    @SerializedName("liked")var liked : Boolean?
+
 )

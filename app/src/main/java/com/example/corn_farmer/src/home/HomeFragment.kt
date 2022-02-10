@@ -47,13 +47,16 @@ class HomeFragment : Fragment(), HomeFragmentView {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
+        val serverToken = sharedPreferences?.getString("servertoken",null)
+
         val mActivity = activity as MainActivity //메인 액티비티
 
         binding.mainSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
 
-        var service = HomeService(this)
+        var service = HomeService(this,serverToken!!)
         service.tryGetMovieList()
 
         binding.mainLikeIv.setOnClickListener {
@@ -67,6 +70,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
         list = response!!.result!!
 
         Log.d("HomeFragment", "$list")
+
+        binding.mainLikeIv
 
         val todayMovieRVAdapter = TodayMovieRVAdapter(list)
         binding.homeOttItemRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

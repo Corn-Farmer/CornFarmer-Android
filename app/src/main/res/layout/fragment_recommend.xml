@@ -77,11 +77,14 @@
 
             <TextView
                 android:id="@+id/recommend_subtitle_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="컨파머가 추천하는 따뜻한 연말을 위한 컨텐츠"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="#515151"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recommend_title_keyword_tv"
                 app:layout_constraintEnd_toEndOf="parent"

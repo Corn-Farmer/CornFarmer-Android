@@ -56,21 +56,21 @@
         app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
-        android:src="@drawable/like"
+        android:src="@drawable/detail_heart_white"
         android:scaleType="fitCenter"
         android:visibility="visible"/>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/item_ott_like_fill_img_iv"-->
-<!--        android:layout_width="20dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"-->
-<!--        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginEnd="25dp"-->
-<!--        android:src="@drawable/likefill"-->
-<!--        android:visibility="gone"-->
-<!--        android:scaleType="fitCenter"/>-->
+    <ImageView
+        android:id="@+id/item_ott_like_fill_img_iv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"
+        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/likefill"
+        android:visibility="gone"
+        android:scaleType="fitCenter"/>
     <TextView
         android:id="@+id/item_ott_like_count_tv"
         android:layout_width="wrap_content"

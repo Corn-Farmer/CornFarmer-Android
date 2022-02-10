@@ -33,9 +33,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="28dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="36dp"
         />
     <TextView
+        android:layout_marginTop="60dp"
         android:id="@+id/search_text2_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
