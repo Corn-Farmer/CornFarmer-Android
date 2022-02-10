@@ -30,6 +30,7 @@ import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
     lateinit var binding: FragmentDetailBinding
     var likeCount = 0
+    var likeCount_comment = 0
 
 
     override fun onCreateView(
@@ -90,7 +91,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             val servertoken = sharedPreferences?.getString("servertoken", "")
 
             if (servertoken == "") {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
                 service.tryPutMovieLike()
@@ -158,7 +159,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             // 댓글 리사이클러뷰
             val reviewInfo = movieInfo!!.reviewList
-            Log.d("reviewList", "${reviewInfo}")
+                Log.d("reviewList", "${reviewInfo}")
             val ReviewRVadapter = CommentRVAdapter(reviewInfo)
             binding.detailCommentRV.adapter = ReviewRVadapter
             binding.detailCommentRV.layoutManager = LinearLayoutManager(

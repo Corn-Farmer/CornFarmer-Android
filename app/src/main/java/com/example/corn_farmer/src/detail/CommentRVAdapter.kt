@@ -33,13 +33,13 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
         holder.bind(reviewList[position], position)
         holder.binding.detailComentHeartOnIv.setOnClickListener {
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${(reviewList[position].likeCnt-1).toString()}"
+            holder.binding.detailCommentLikecntTv.text = "${(reviewList[position].likeCnt-1).toString()}"
             holder.binding.detailComentHeartOnIv.visibility = View.GONE
             holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
         }
         holder.binding.detailComentHeartOffIv.setOnClickListener {
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${(reviewList[position].likeCnt+1).toString()}"
+            holder.binding.detailCommentLikecntTv.text = "${(reviewList[position].likeCnt+1).toString()}"
             holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
             holder.binding.detailComentHeartOffIv.visibility = View.GONE
         }
@@ -54,7 +54,7 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
             binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
             binding.detailCommentTextTv.text = reviewList.contents
             binding.detailCommentDateTv.text = reviewList.createdAt
-            binding.detailCommentLikecntTv.text = "+ ${reviewList.likeCnt.toString()}"
+            binding.detailCommentLikecntTv.text = "${reviewList.likeCnt.toString()}"
             Glide.with(itemView).load(reviewList.writer.writerPhoto).into(binding.detailCommentUserProfileIv)
             Log.d("writerPhoto", reviewList.writer.writerPhoto)
             if (reviewList.liked) {

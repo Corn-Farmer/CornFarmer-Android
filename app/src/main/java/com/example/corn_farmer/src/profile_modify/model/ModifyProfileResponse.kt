@@ -11,5 +11,9 @@ data class ModifyProfileResult(
     var nickname : String,
     var photo : String,
     var ottList : ArrayList<String>,
-    var genreList : ArrayList<String>
+    var genreList : ArrayList<String>,
+    var is_male : Int,
+    var birth : String
 )
+
+//정보 받아오는거

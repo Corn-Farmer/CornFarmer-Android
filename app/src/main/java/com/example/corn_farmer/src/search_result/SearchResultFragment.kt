@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.search_result
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -39,6 +40,9 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
     ): View? {
         binding = FragmentSearchResultBinding.inflate(inflater, container, false)
 
+        var getSharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        var serverToken = getSharedPreferences?.getString("servertoken","")
+
         val mActivity = activity as MainActivity //메인 액티비티
 
 
@@ -52,7 +56,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
         binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
         binding.searchReviewSortRecentTv.setTextColor(Color.BLACK)
-        var service = SearchResultService(this,keyword,"recent")
+        var service = SearchResultService(this,keyword,"recent",serverToken!!)
         service.tryGetSearchResultList()
 
         binding.searchReviewSortLikeTv.setOnClickListener {
@@ -66,7 +70,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
             binding.searchReviewSortLikeTv.setTextColor(Color.BLACK)
             binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
             binding.searchReviewSortRecentTv.setTextColor(Color.LTGRAY)
-            var service = SearchResultService(this,keyword,"likeCnt")
+            var service = SearchResultService(this,keyword,"likeCnt",serverToken!!)
             service.tryGetSearchResultList()
         }
         binding.searchReviewSortRecentTv.setOnClickListener {
@@ -80,7 +84,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
             binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
             binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
             binding.searchReviewSortRecentTv.setTextColor(Color.BLACK)
-            var service = SearchResultService(this,keyword,"recent")
+            var service = SearchResultService(this,keyword,"recent",serverToken!!)
             service.tryGetSearchResultList()
         }
         binding.searchReviewSortRateTv.setOnClickListener {
@@ -94,7 +98,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
             binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
             binding.searchReviewSortRateTv.setTextColor(Color.BLACK)
             binding.searchReviewSortRecentTv.setTextColor(Color.LTGRAY)
-            var service = SearchResultService(this,keyword,"review")
+            var service = SearchResultService(this,keyword,"review",serverToken!!)
             service.tryGetSearchResultList()
         }
 

@@ -60,13 +60,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         val photo = sharedPreferences.getString("photo", null)
         binding.modifyImageIv.setImageURI(Uri.parse(photo))
 
-        var gender = sharedPreferences?.getString("isMale", null)
-        if (gender == "true") {
-            binding.modifyGenderInfoEt.text = "남자"
-        } else {
-            binding.modifyGenderInfoEt.text = "여자"
-        }
-
 
 
 
@@ -80,15 +73,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 200)
         }
-
-        val birth = sharedPreferences?.getString("birthday", null)
-        binding.modifyBirthInfoEt.text = birth
-
-
-        //수정할 때 닉네임이랑 사진 다시 하기
-
-        val nickname: String? = sharedPreferences?.getString("nickname", null)
-        binding.modifyNicknameInfoEt.setText(nickname)
 
 
 
@@ -126,12 +110,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             requestMap.put("nickname", nicknameRequest)
             requestMap.put("userOtt", ottListRequest)
             requestMap.put("genreList", genreRequest)
-
-            val editor = sharedPreferences.edit()
-            editor.putString("nickname", modifiedNickname)
-            editor.putString("ottlist", ottList.toString())
-            editor.putString("genrelist", genreList.toString())
-            editor.commit()
 
             var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
             service.tryPutModify()
@@ -800,6 +778,14 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         var nowUserHasGenreList: List<String> = genreListString.split(",")
         ottVisibility(nowUserHasOttList)
         genreVisibility(nowUserHasGenreList)
+        binding.modifyBirthInfoEt.text = UserInfo.birth
+        if(UserInfo.is_male==1){
+            binding.modifyGenderInfoEt.text = "남성"
+        }
+        else{
+            binding.modifyGenderInfoEt.text = "여성"
+        }
+
     }
 
     override fun onGetModifyProfileFailure(message: String) {

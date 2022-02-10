@@ -61,30 +61,12 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         val service = ProfileService(this, userIdx, serverToken)
         service.tryGetProfile()
 
-        var gender = sharedPreferences?.getString("isMale", null)
-        var gender2 = sharedPreferences?.getString("isFemale", null)
-        if (gender == "true") {
-            binding.profileGenderInfoTv.text = "남자"
-            Log.d("man", "남자")
-        } else if (gender2 == "false") {
-            binding.profileGenderInfoTv.text = "여자"
-            Log.d("woman", "여자")
-        }
+
         val mActivity = activity as MainActivity
         binding.profileSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
 
-        val birth = sharedPreferences?.getString("birthday", null)
-        binding.profileBirthInfoTv.text = birth
-
-
-        //수정할 때 닉네임이랑 사진 다시 하기
-
-
-//        val photo = sharedPreferences?.getString("photo", null)
-//        binding.profileImageIv.setImageURI(Uri.parse(photo))
-//        Log.d("photo", photo.toString())
 
 
         binding.profileReIv.setOnClickListener {
@@ -127,8 +109,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
-        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
-        val editor = sharedPreferences?.edit()
 
         val ott = response.result.ottList //서버에서 받아옴
         val profileRVAdapter = ProfileRVAdapter(ott)
@@ -140,8 +120,18 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         binding.profileRc2.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.profileRc2.adapter = profileGenreRVAdapter
 
-        var nick = response.result.nickname
+        var nick = response.result.nickname //닉네임
         binding.profileNicknameInfoTv.text = nick
+
+        var gender = response.result.is_male
+        var birth = response.result.birth
+        if(gender==1){
+            binding.profileGenderInfoTv.text = "남성"
+        }
+        else{
+            binding.profileGenderInfoTv.text = "여성"
+        }
+        binding.profileBirthInfoTv.text = birth
 
 
         binding.profileCommentIv.setOnClickListener {
@@ -153,11 +143,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         Glide.with(this)
             .load(response.result.photo)
             .into(binding.profileImageIv)
-
-        editor?.putString("ottlist", ott.toString())
-        editor?.putString("genrelist", genre.toString())
-        editor?.putString("nickname", nick)
-        editor?.commit()
 
     }
 

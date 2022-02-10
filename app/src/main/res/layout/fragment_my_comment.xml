@@ -24,57 +24,19 @@
             android:layout_height="match_parent">
 
 
-            <ImageView
-                android:id="@+id/mycomment_previous_btn_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="38dp"
-                android:src="@drawable/back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/mycomment_search_btn_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/search"
-                app:layout_constraintEnd_toStartOf="@id/mycomment_heart_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/mycomment_heart_btn_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_heart"
-                app:layout_constraintEnd_toStartOf="@id/mycomment_news_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/mycomment_news_btn_iv"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginEnd="28dp"
-                android:src="@drawable/bell"
-                app:layout_constraintBottom_toBottomOf="@id/mycomment_heart_btn_iv"
-                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/mycomment_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:text="내가 남긴 후기 관리"
                 android:textColor="#FFBD02"
                 android:textSize="27sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mycomment_previous_btn_iv" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/mycomment_subtitle1_tv"
@@ -128,7 +90,7 @@
                 android:layout_marginEnd="3dp"
                 android:text="최신순"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/mycomment_sort_rate_tv"
                 app:layout_constraintEnd_toStartOf="@id/mycomment_seperator1_tv" />
 
@@ -141,9 +103,11 @@
                 android:layout_marginBottom="2dp"
                 android:text="|"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/mycomment_sort_rate_tv"
-                app:layout_constraintEnd_toStartOf="@id/mycomment_sort_like_tv" />
+                app:layout_constraintEnd_toStartOf="@id/mycomment_sort_like_tv"
+                app:layout_constraintTop_toTopOf="@id/mycomment_sort_rate_tv"
+                />
 
 
             <TextView
@@ -153,7 +117,7 @@
                 android:layout_marginEnd="3dp"
                 android:text="좋아요순"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/mycomment_sort_rate_tv"
                 app:layout_constraintEnd_toStartOf="@id/mycomment_seperator2_tv" />
 
@@ -165,19 +129,22 @@
                 android:layout_marginBottom="2dp"
                 android:text="|"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/mycomment_sort_rate_tv"
-                app:layout_constraintEnd_toStartOf="@id/mycomment_sort_rate_tv" />
+                app:layout_constraintEnd_toStartOf="@id/mycomment_sort_rate_tv"
+                app:layout_constraintTop_toTopOf="@id/mycomment_sort_rate_tv"
+
+                />
 
 
             <TextView
                 android:id="@+id/mycomment_sort_rate_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="10dp"
                 android:text="평점순"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/mycomment_line1_iv"
                 app:layout_constraintEnd_toEndOf="@id/mycomment_line1_iv" />
 
@@ -186,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="30dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/purple_horizontal_line"

@@ -1,7 +1,9 @@
 package com.example.corn_farmer.src.my_comment
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
+import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.my_comment.model.getMyComment
 import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
 import com.example.corn_farmer.src.my_comment_modify.MyCommentModifyFragment
@@ -29,14 +32,21 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
     ): View? {
         binding = FragmentMyCommentBinding.inflate(inflater, container, false)
 
-        binding.mycommentSubtitleNicknameTv.text = nickname
-
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
         val servertoken = sharedPreferences?.getString("servertoken", "")
         val nickname = sharedPreferences?.getString("nickname",null)
         binding.mycommentSubtitleNicknameTv.text = nickname
-        Log.d("userIdx", "${userIdx}")
+        binding.mycommentSortRecentTv.setTextColor(Color.BLACK)
+        binding.mycommentSortRateTv.setTextColor(Color.LTGRAY)
+        binding.mycommentSortLikeTv.setTextColor(Color.LTGRAY)
+        val loadingAnimDialog = CustomLoadingDialog(requireContext())
+        loadingAnimDialog.setCancelable(false)
+        loadingAnimDialog.setCanceledOnTouchOutside(false)
+        loadingAnimDialog.show()
+        Handler().postDelayed({
+            loadingAnimDialog.dismiss()
+        },200)
         val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
         service.tryGetMyComment()
         sortReview()
@@ -46,7 +56,14 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
     }
 
     override fun onGetMyCommentSuccess(response: getMyComment) {
+
         val result = response!!.result!!
+        if(result.toString()=="[]"){
+            Toast.makeText(context,"후기를 작성해 주세요!",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            binding.mycommentSubtitleNicknameTv.text = result[0].nickname
+        }
 
         val MyCommentRVAdapter = MyCommentRVAdapter(result)
         binding.mycommentRV.adapter = MyCommentRVAdapter
@@ -76,33 +93,33 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
     }
 
     fun sortReview() {
-        binding.mycommentSortLikeTv.setOnClickListener {
+        binding.mycommentSortLikeTv.setOnClickListener { //좋아요순
             val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
             val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
-            val nickname = sharedPreferences?.getString("nickname",null)
-            binding.mycommentSubtitleNicknameTv.text = nickname
-            Log.d("userIdx", "${userIdx}")
+            val servertoken = sharedPreferences?.getString("servertoken", "")
+            binding.mycommentSortRecentTv.setTextColor(Color.LTGRAY)
+            binding.mycommentSortRateTv.setTextColor(Color.LTGRAY)
+            binding.mycommentSortLikeTv.setTextColor(Color.BLACK)
             val service = MyCommentService(this, userIdx!!, "like", servertoken!!)
             service.tryGetMyComment()
         }
-        binding.mycommentSortRateTv.setOnClickListener {
+        binding.mycommentSortRateTv.setOnClickListener { //후기많은순
             val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
             val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
-            val nickname = sharedPreferences?.getString("nickname",null)
-            binding.mycommentSubtitleNicknameTv.text = nickname
-            Log.d("userIdx", "${userIdx}")
+            val servertoken = sharedPreferences?.getString("servertoken", "")
+            binding.mycommentSortRecentTv.setTextColor(Color.LTGRAY)
+            binding.mycommentSortRateTv.setTextColor(Color.BLACK)
+            binding.mycommentSortLikeTv.setTextColor(Color.LTGRAY)
             val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
             service.tryGetMyComment()
         }
-        binding.mycommentSortRecentTv.setOnClickListener {
+        binding.mycommentSortRecentTv.setOnClickListener { // 최신순
             val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
             val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
-            val nickname = sharedPreferences?.getString("nickname",null)
-            binding.mycommentSubtitleNicknameTv.text = nickname
-            Log.d("userIdx", "${userIdx}")
+            val servertoken = sharedPreferences?.getString("servertoken", "")
+            binding.mycommentSortRecentTv.setTextColor(Color.BLACK)
+            binding.mycommentSortRateTv.setTextColor(Color.LTGRAY)
+            binding.mycommentSortLikeTv.setTextColor(Color.LTGRAY)
             val service = MyCommentService(this, userIdx!!, "recent", servertoken!!)
             service.tryGetMyComment()
         }

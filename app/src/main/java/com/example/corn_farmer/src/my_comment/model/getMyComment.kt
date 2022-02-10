@@ -10,6 +10,7 @@ data class getMyComment(
 )
 
 data class getMyCommentResult(
+    var nickname : String,
     var reviewIdx : Int,
     var movie : getMovie,
     var content : String,

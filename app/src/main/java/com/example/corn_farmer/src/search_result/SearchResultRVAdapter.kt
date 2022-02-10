@@ -47,10 +47,12 @@ class SearchResultRVAdapter(private val movieList : List<MovieDto>) : RecyclerVi
                 .into(binding.itemOttImgIv)
             binding.itemOttLikeCountTv.text = movie.likeCnt.toString()
             if(movie.liked == true){
-                binding.itemOttLikeIv.setImageResource(R.drawable.likefill)
+                binding.itemOttLikeIv.visibility = View.GONE
+                binding.itemOttLikeFillImgIv.visibility = View.VISIBLE
             }
             else{
-                binding.itemOttLikeIv.setImageResource(R.drawable.like_white)
+                binding.itemOttLikeIv.visibility = View.VISIBLE
+                binding.itemOttLikeFillImgIv.visibility = View.GONE
             }
         }
     }

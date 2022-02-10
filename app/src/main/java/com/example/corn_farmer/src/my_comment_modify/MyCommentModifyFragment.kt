@@ -131,7 +131,7 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         (context as MainActivity).supportFragmentManager.beginTransaction()
             .replace(R.id.main_frame, MyCommentFragment(nickname))
             .commitAllowingStateLoss()
-        Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPutMyCommentModifyFailure(message: String) {
@@ -140,7 +140,10 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
 
     fun getRate() {
 
+
         binding.commentRateCorn1Iv.setOnClickListener {
+
+
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.GONE
             binding.commentRateCorn3ColorIv.visibility = View.GONE
@@ -175,6 +178,8 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         }
 
         binding.commentRateCorn2Iv.setOnClickListener {
+
+
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn3ColorIv.visibility = View.GONE
@@ -277,6 +282,7 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         }
 
         binding.commentRateCorn5Iv.setOnClickListener {
+
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
