@@ -38,7 +38,7 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
         }
 
         binding.mainLikeIv.setOnClickListener {
-            startActivity(Intent(activity, WishlistActivity::class.java))
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
         }
 
         binding.mainSearchIv.setOnClickListener {

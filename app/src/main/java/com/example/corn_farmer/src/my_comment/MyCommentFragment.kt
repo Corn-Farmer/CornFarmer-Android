@@ -33,7 +33,7 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-        val servertoken = sharedPreferences?.getString("servertoken", null)
+        val servertoken = sharedPreferences?.getString("servertoken", "")
         val nickname = sharedPreferences?.getString("nickname",null)
         binding.mycommentSubtitleNicknameTv.text = nickname
         Log.d("userIdx", "${userIdx}")

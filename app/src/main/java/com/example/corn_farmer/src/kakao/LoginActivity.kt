@@ -131,14 +131,6 @@ class LoginActivity : AppCompatActivity(), KakaoView {
     override fun onStart() {
         super.onStart()
 
-//        UserApiClient.instance.unlink { error ->
-//            if (error != null) {
-//                Log.e("카카오토큰 삭제 실패", "연결 끊기 실패", error)
-//            }
-//            else {
-//                Log.i("토큰 삭제 성공", "연결 끊기 성공. SDK에서 토큰 삭제 됨")
-//            }
-//        }
 
         val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
         val kakaoToken = sharedPreferences.getString("kakaotoken", null)

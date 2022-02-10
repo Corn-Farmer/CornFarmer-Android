@@ -56,13 +56,12 @@ class CommentFragment(val movieIdx : Int, val keywordIdx: Int, val keyword: Stri
             val review = sendReviewAPI(movieIdx, binding.commentEdittext.text.toString() , binding.commentRateSaveTv.text.toString().toDouble())
 
             val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", "null")
-
-            if (servertoken == null) {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            val servertoken = sharedPreferences?.getString("servertoken", "")
+            if (servertoken == "") {
+                Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
 
-                var service = CommentService(this, review, servertoken)
+                var service = CommentService(this, review, servertoken!!)
                 service.tryPostReview()
                 Toast.makeText(context, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
             }
