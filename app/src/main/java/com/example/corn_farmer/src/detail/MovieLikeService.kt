@@ -8,10 +8,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieLikeService(var view : DetailFragmentView, var movieIdx : Int, var token : String) {
+class MovieLikeService(var view : DetailFragmentView, var movieIdx : Int?, var token : String?) {
     fun tryPutMovieLike() {
         val retrofitInterface = Application.sRetrofit.create(movieLikeRetrofitInterface::class.java)
-        retrofitInterface.putMovieLike(movieIdx, token)
+        retrofitInterface.putMovieLike(movieIdx!!, token!!)
             .enqueue(object : Callback<putMovieLike>{
                 override fun onResponse(
                     call: Call<putMovieLike>,

@@ -26,8 +26,14 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
         val servertoken = sharedPreferences?.getString("servertoken", "")
         val userIdx = sharedPreferences?.getInt("userIdx", 0)
 
-        var service = WishlistService(this, userIdx!!, servertoken!!)
-        service.tryGetWishlist()
+        if(servertoken==""){
+            Toast.makeText(this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            var service = WishlistService(this, userIdx!!, servertoken!!)
+            service.tryGetWishlist()
+        }
+
 
         binding.wishlistPreviousBtn1Iv.setOnClickListener {
             finish()

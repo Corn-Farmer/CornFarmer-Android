@@ -1,5 +1,7 @@
 package com.example.corn_farmer.src.search_result
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -28,7 +30,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         loadingAnimDialog.show()
         Handler().postDelayed({
             loadingAnimDialog.dismiss()
-        },3000)
+        },1500)
     }
 
     override fun onCreateView(
@@ -37,6 +39,9 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+
+        var getSharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        var serverToken = getSharedPreferences?.getString("servertoken","")
 
         val mActivity = activity as MainActivity //메인 액티비티
 
@@ -48,9 +53,55 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         binding.searchSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
-
-        var service = SearchResultService(this,keyword,1)
+        binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
+        binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
+        binding.searchReviewSortRecentTv.setTextColor(Color.BLACK)
+        var service = SearchResultService(this,keyword,"recent",serverToken!!)
         service.tryGetSearchResultList()
+
+        binding.searchReviewSortLikeTv.setOnClickListener {
+            val loadingAnimDialog = CustomLoadingDialog(requireContext())
+            loadingAnimDialog.setCancelable(false)
+            loadingAnimDialog.setCanceledOnTouchOutside(false)
+            loadingAnimDialog.show()
+            Handler().postDelayed({
+                loadingAnimDialog.dismiss()
+            },1500)//좋아요순
+            binding.searchReviewSortLikeTv.setTextColor(Color.BLACK)
+            binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
+            binding.searchReviewSortRecentTv.setTextColor(Color.LTGRAY)
+            var service = SearchResultService(this,keyword,"likeCnt",serverToken!!)
+            service.tryGetSearchResultList()
+        }
+        binding.searchReviewSortRecentTv.setOnClickListener {
+            val loadingAnimDialog = CustomLoadingDialog(requireContext())
+            loadingAnimDialog.setCancelable(false)
+            loadingAnimDialog.setCanceledOnTouchOutside(false)
+            loadingAnimDialog.show()
+            Handler().postDelayed({
+                loadingAnimDialog.dismiss()
+            },1500)// 최신순
+            binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
+            binding.searchReviewSortRateTv.setTextColor(Color.LTGRAY)
+            binding.searchReviewSortRecentTv.setTextColor(Color.BLACK)
+            var service = SearchResultService(this,keyword,"recent",serverToken!!)
+            service.tryGetSearchResultList()
+        }
+        binding.searchReviewSortRateTv.setOnClickListener {
+            val loadingAnimDialog = CustomLoadingDialog(requireContext())
+            loadingAnimDialog.setCancelable(false)
+            loadingAnimDialog.setCanceledOnTouchOutside(false)
+            loadingAnimDialog.show()
+            Handler().postDelayed({
+                loadingAnimDialog.dismiss()
+            },1500)//후기많은순
+            binding.searchReviewSortLikeTv.setTextColor(Color.LTGRAY)
+            binding.searchReviewSortRateTv.setTextColor(Color.BLACK)
+            binding.searchReviewSortRecentTv.setTextColor(Color.LTGRAY)
+            var service = SearchResultService(this,keyword,"review",serverToken!!)
+            service.tryGetSearchResultList()
+        }
+
 
 
         binding.searchResultMovieTitleTv.text = "\""+keyword+"\""

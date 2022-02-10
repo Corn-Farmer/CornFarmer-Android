@@ -10,7 +10,9 @@ data class ProfileResult(
     var nickname : String,
     var photo : String,
     var ottList : ArrayList<ProfileOtt>,
-    var genreList : ArrayList<ProfileGenre>
+    var genreList : ArrayList<ProfileGenre>,
+    var is_male : Int,
+    var birth : String
 )
 data class ProfileOtt(
     var ott_idx : Int,

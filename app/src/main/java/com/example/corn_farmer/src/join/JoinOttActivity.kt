@@ -78,7 +78,11 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
         dialog.window?.setGravity(Gravity.CENTER_VERTICAL)
 
         dialog.findViewById<Button>(R.id.select_next_time_bt)?.setOnClickListener {
-            val intent = Intent(this, JoinNicknameActivity::class.java)
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("ottlist", ottList.toString())
+            editor.commit()
+            val intent = Intent(this, JoinGenreActivity::class.java)
             startActivity(intent)
         }
 

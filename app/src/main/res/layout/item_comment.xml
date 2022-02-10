@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:id="@+id/detail_comment_border_iv"
-        android:layout_width="400dp"
-        android:layout_height="110dp"
-        android:src="@drawable/comment_border"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/round_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="10dp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/detail_comment_user_profile_iv"
@@ -26,17 +26,6 @@
         android:layout_marginTop="20dp" />
 
 
-<!--    <ImageView-->
-<!--        android:id="@+id/detail_comment_user_profile_iv"-->
-<!--        android:layout_width="35dp"-->
-<!--        android:layout_height="35dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/detail_comment_border_iv"-->
-<!--        app:layout_constraintTop_toTopOf="@id/detail_comment_border_iv"-->
-<!--        android:background="@drawable/img_yellow_cicle_empty"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="20dp" />-->
-
-
     <TextView
         android:id="@+id/detail_comment_user_nickname_tv"
         android:layout_width="wrap_content"
@@ -44,7 +33,7 @@
         android:text="슈퍼소닉"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:textSize="15sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile_iv"
         app:layout_constraintTop_toTopOf="@id/detail_comment_border_iv"
         android:layout_marginTop="30dp"
@@ -62,21 +51,21 @@
         app:layout_constraintStart_toEndOf="@id/detail_comment_user_nickname_tv"
         android:layout_marginStart="6dp"/>
 
-    <ImageView
-        android:id="@+id/detail_comment_more_btn_iv"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@drawable/ic_more_btn"
-        android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
-        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/detail_comment_more_btn_iv"-->
+<!--        android:layout_width="15dp"-->
+<!--        android:layout_height="15dp"-->
+<!--        android:src="@drawable/ic_more_btn"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginEnd="30dp"/>-->
 
     <ImageView
         android:id="@+id/detail_coment_heart_on_iv"
-        android:layout_width="13dp"
-        android:layout_height="15dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:src="@drawable/ic_heart_on"
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
@@ -86,28 +75,31 @@
 
     <ImageView
         android:id="@+id/detail_coment_heart_off_iv"
-        android:layout_width="13dp"
-        android:layout_height="15dp"
-        android:src="@drawable/ic_heart_off"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/detail_heart_black"
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
         android:visibility="visible"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginEnd="3dp"
+        />
 
 
     <TextView
         android:id="@+id/detail_comment_likecnt_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+ 0"
+        android:text="12"
         android:textColor="#515151"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/detail_comment_more_btn_iv"
-        app:layout_constraintBottom_toBottomOf="@id/detail_comment_more_btn_iv"
-        app:layout_constraintEnd_toStartOf="@id/detail_comment_more_btn_iv"
-        android:layout_marginEnd="5dp"/>
+        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
+        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="5dp"
+        />
 
 
     <TextView
@@ -116,7 +108,7 @@
         android:layout_height="wrap_content"
         android:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!"
         android:textColor="#515151"
-        android:textSize="11sp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname_tv"
         android:layout_marginTop="6dp" />

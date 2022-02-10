@@ -57,7 +57,7 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
             binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
             binding.detailCommentTextTv.text = reviewList.contents
             binding.detailCommentDateTv.text = reviewList.createdAt
-            binding.detailCommentLikecntTv.text = "+ ${reviewList.likeCnt.toString()}"
+            binding.detailCommentLikecntTv.text = "${reviewList.likeCnt.toString()}"
             Glide.with(itemView).load(reviewList.writer.writerPhoto).into(binding.detailCommentUserProfileIv)
             Log.d("writerPhoto", reviewList.writer.writerPhoto)
             if (reviewList.liked) {

@@ -7,10 +7,10 @@ import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
 
-class SearchResultService(var view : SearchResultFragmentView,var keyword : String?,var sort: Int?) {
+class SearchResultService(var view : SearchResultFragmentView,var keyword : String?,var sort: String,var token : String) {
     fun tryGetSearchResultList(){
         val retrofitInterface = Application.sRetrofit.create(SearchResultRetrofitInterface::class.java)
-        retrofitInterface.getSearchInfo(keyword,sort).enqueue(object : Callback<SearchResultResponse>{
+        retrofitInterface.getSearchInfo(keyword,sort,token).enqueue(object : Callback<SearchResultResponse>{
             override fun onResponse(
                 call: Call<SearchResultResponse>,
                 response: Response<SearchResultResponse>

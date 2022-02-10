@@ -59,41 +59,81 @@ class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>)
             binding.itemMycommentReviewTv.text = reviewList.content
             Glide.with(itemView).load(reviewList.movie.moviePhoto.toString()).into(binding.itemMycommentMovieImgIv)
             if (reviewList.rate <= 0.1) {
-                binding.itemMycommentRate1Iv.visibility = View.INVISIBLE
+                binding.itemMycommentRate1Iv.visibility = View.GONE
                 binding.itemMycommentRate2Iv.visibility = View.GONE
                 binding.itemMycommentRate3Iv.visibility = View.GONE
                 binding.itemMycommentRate4Iv.visibility = View.GONE
                 binding.itemMycommentRate5Iv.visibility = View.GONE
+
+                binding.itemCommentRate1Iv.visibility = View.VISIBLE
+                binding.itemCommentRate2Iv.visibility = View.VISIBLE
+                binding.itemCommentRate3Iv.visibility = View.VISIBLE
+                binding.itemCommentRate4Iv.visibility = View.VISIBLE
+                binding.itemCommentRate5Iv.visibility = View.VISIBLE
+
+
+
             } else if (reviewList.rate <= 1.1) {
                 binding.itemMycommentRate1Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate2Iv.visibility = View.GONE
                 binding.itemMycommentRate3Iv.visibility = View.GONE
                 binding.itemMycommentRate4Iv.visibility = View.GONE
                 binding.itemMycommentRate5Iv.visibility = View.GONE
+
+                binding.itemCommentRate1Iv.visibility = View.GONE
+                binding.itemCommentRate2Iv.visibility = View.VISIBLE
+                binding.itemCommentRate3Iv.visibility = View.VISIBLE
+                binding.itemCommentRate4Iv.visibility = View.VISIBLE
+                binding.itemCommentRate5Iv.visibility = View.VISIBLE
+
+
             }else if (reviewList.rate <= 2.1) {
                 binding.itemMycommentRate1Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate2Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate3Iv.visibility = View.GONE
                 binding.itemMycommentRate4Iv.visibility = View.GONE
                 binding.itemMycommentRate5Iv.visibility = View.GONE
+
+                binding.itemCommentRate1Iv.visibility = View.GONE
+                binding.itemCommentRate2Iv.visibility = View.GONE
+                binding.itemCommentRate3Iv.visibility = View.VISIBLE
+                binding.itemCommentRate4Iv.visibility = View.VISIBLE
+                binding.itemCommentRate5Iv.visibility = View.VISIBLE
             } else if (reviewList.rate <= 3.1) {
                 binding.itemMycommentRate1Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate2Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate3Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate4Iv.visibility = View.GONE
                 binding.itemMycommentRate5Iv.visibility = View.GONE
+
+                binding.itemCommentRate1Iv.visibility = View.GONE
+                binding.itemCommentRate2Iv.visibility = View.GONE
+                binding.itemCommentRate3Iv.visibility = View.GONE
+                binding.itemCommentRate4Iv.visibility = View.VISIBLE
+                binding.itemCommentRate5Iv.visibility = View.VISIBLE
             } else if (reviewList.rate <= 4.1) {
                 binding.itemMycommentRate1Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate2Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate3Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate4Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate5Iv.visibility = View.GONE
+
+                binding.itemCommentRate1Iv.visibility = View.GONE
+                binding.itemCommentRate2Iv.visibility = View.GONE
+                binding.itemCommentRate3Iv.visibility = View.GONE
+                binding.itemCommentRate4Iv.visibility = View.GONE
+                binding.itemCommentRate5Iv.visibility = View.VISIBLE
             } else if (reviewList.rate <= 5.1) {
                 binding.itemMycommentRate1Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate2Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate3Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate4Iv.visibility = View.VISIBLE
                 binding.itemMycommentRate5Iv.visibility = View.VISIBLE
+                binding.itemCommentRate1Iv.visibility = View.GONE
+                binding.itemCommentRate2Iv.visibility = View.GONE
+                binding.itemCommentRate3Iv.visibility = View.GONE
+                binding.itemCommentRate4Iv.visibility = View.GONE
+                binding.itemCommentRate5Iv.visibility = View.GONE
             }
         }
     }

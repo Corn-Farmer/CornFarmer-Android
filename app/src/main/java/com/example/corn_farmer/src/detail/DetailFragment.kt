@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.detail
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -22,30 +23,35 @@ import com.example.corn_farmer.src.detail.model.putMovieLike
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.search_result.SearchResultFragment
+import com.example.corn_farmer.src.wishlist.WishlistActivity
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
-    lateinit var binding : FragmentDetailBinding
+    lateinit var binding: FragmentDetailBinding
     var likeCount = 0
-    var reviewLikeCount = 0
+    var likeCount_comment = 0
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
-        container : ViewGroup?,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
 
-        val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
-        var serverToken = sharedPreferences?.getString("servertoken",null)
+        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        var serverToken = sharedPreferences?.getString("servertoken", "")
 
-        var service = DetailService(this, movieIdx,"likeCnt",serverToken!!)
+        var service = DetailService(this, movieIdx, "likeCnt", serverToken!!)
         service.tryGetMovieInfo()
         Log.d("movieIdx", movieIdx.toString())
         initialize()
         reviewSort()
+
+        binding.detailHeartBtnIv.setOnClickListener {
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
+        }
 
         return binding.root
     }
@@ -68,14 +74,13 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frame, SearchResultFragment(keyword))
                     .commitAllowingStateLoss()
-            }
-            else {
+            } else {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frame, RecommendFragment(keywordIdx))
                     .commitAllowingStateLoss()
             }
         }
-        
+
         val mActivity = activity as MainActivity //검색 버튼
         binding.detailSearchBtnIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
@@ -83,10 +88,10 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
         binding.detailMovieLikeOnBtnIv.setOnClickListener {
             val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val servertoken = sharedPreferences?.getString("servertoken", "")
 
-            if (servertoken == null) {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            if (servertoken == "") {
+                Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
                 service.tryPutMovieLike()
@@ -100,9 +105,9 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
         binding.detailMovieLikeOffBtnIv.setOnClickListener {
             val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val servertoken = sharedPreferences?.getString("servertoken", "")
 
-            if (servertoken == null) {
+            if (servertoken == "") {
                 Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
@@ -124,7 +129,8 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
             binding.detailMovieTitleTv.text = movieInfo!!.movieName
             binding.detailMovieReleaseTv.text = "(${movieInfo.releaseYear.toString()})"
-            binding.detailMovieGenreTv.text = movieInfo.movieGenreList?.joinToString(separator = ",")
+            binding.detailMovieGenreTv.text =
+                movieInfo.movieGenreList?.joinToString(separator = ",")
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
             likeCount = movieInfo?.likeCnt
@@ -153,7 +159,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             // 댓글 리사이클러뷰
             val reviewInfo = movieInfo!!.reviewList
-            Log.d("reviewList", "${reviewInfo}")
+                Log.d("reviewList", "${reviewInfo}")
             val ReviewRVadapter = CommentRVAdapter(reviewInfo)
             binding.detailCommentRV.adapter = ReviewRVadapter
             binding.detailCommentRV.layoutManager = LinearLayoutManager(
@@ -161,16 +167,22 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 LinearLayoutManager.VERTICAL,
                 false
             )
-            ReviewRVadapter.setCommentLikeBtnClickListener(object : CommentRVAdapter.CommentLikeBtnClickListener { //후기
+            ReviewRVadapter.setCommentLikeBtnClickListener(object :
+                CommentRVAdapter.CommentLikeBtnClickListener { //후기
                 override fun onHeartClick(getReviewList: getReviewList, position: Int) {
 
-                    val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-                    val servertoken = sharedPreferences?.getString("servertoken", null)
+                    val sharedPreferences =
+                        context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+                    val servertoken = sharedPreferences?.getString("servertoken", "")
 
-                    if (servertoken == null) {
+                    if (servertoken == "") {
                         Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        var service = CommentLikeService(this@DetailFragment, movieInfo!!.reviewList[position].reviewIdx, servertoken)
+                        var service = CommentLikeService(
+                            this@DetailFragment,
+                            movieInfo!!.reviewList[position].reviewIdx,
+                            servertoken!!
+                        )
                         service.tryPutCommetLike()
                     }
                 }
@@ -203,15 +215,15 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     }
 
     fun reviewSort() {
-        val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
-        var serverToken = sharedPreferences?.getString("servertoken",null)
-        var sort : String = ""
+        val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+        var serverToken = sharedPreferences?.getString("servertoken", "")
+        var sort: String = ""
 
         binding.detailReviewSortRecentTv.setOnClickListener {
             sort = "recent"
             binding.detailReviewSortRecentTv.setTextColor(Color.BLACK)
             binding.detailReviewSortLikeTv.setTextColor(Color.LTGRAY)
-            var service = DetailService(this, movieIdx,sort,serverToken!!)
+            var service = DetailService(this, movieIdx, sort, serverToken!!)
             service.tryGetMovieInfo()
         }
 
@@ -219,16 +231,16 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             sort = "likeCnt"
             binding.detailReviewSortRecentTv.setTextColor(Color.LTGRAY)
             binding.detailReviewSortLikeTv.setTextColor(Color.BLACK)
-            var service = DetailService(this, movieIdx,sort,serverToken!!)
+            var service = DetailService(this, movieIdx, sort, serverToken!!)
             service.tryGetMovieInfo()
         }
 
 
-
     }
-    private fun setViewMore(contentTextView: TextView, viewMoreTextView: TextView){
+
+    private fun setViewMore(contentTextView: TextView, viewMoreTextView: TextView) {
         // getEllipsisCount()을 통한 더보기 표시 및 구현
-        contentTextView.post{
+        contentTextView.post {
             val lineCount = contentTextView.layout.lineCount
             if (lineCount > 0) {
                 if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
@@ -239,7 +251,15 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                     viewMoreTextView.setOnClickListener {
                         contentTextView.maxLines = Int.MAX_VALUE
                         viewMoreTextView.visibility = View.GONE
+                        binding.viewLoss.visibility = View.VISIBLE
                     }
+
+                    binding.viewLoss.setOnClickListener {
+                        contentTextView.maxLines = 5
+                        viewMoreTextView.visibility = View.VISIBLE
+                        binding.viewLoss.visibility = View.GONE
+                    }
+
                 }
             }
         }
