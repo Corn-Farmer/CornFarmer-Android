@@ -48,7 +48,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
-        val serverToken = sharedPreferences?.getString("servertoken",null)
+        val serverToken = sharedPreferences?.getString("servertoken","")
 
         val mActivity = activity as MainActivity //메인 액티비티
 
@@ -56,11 +56,17 @@ class HomeFragment : Fragment(), HomeFragmentView {
             mActivity.callFragment(SearchFragment())
         }
 
-        var service = HomeService(this,serverToken!!)
-        service.tryGetMovieList()
+        if(serverToken==""){ //비로그인
+            var service = HomeService(this,"")
+            service.tryGetMovieList()
+        }
+        else {
+            var service = HomeService(this, serverToken)
+            service.tryGetMovieList()
+        }
 
         binding.mainLikeIv.setOnClickListener {
-            startActivity(Intent(activity, WishlistActivity::class.java))
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
         }
 
         return binding.root

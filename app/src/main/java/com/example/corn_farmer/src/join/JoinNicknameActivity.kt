@@ -32,7 +32,7 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
             signUp()
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            val servertoken = sharedPreferences.getString("servertoken", null)
+            val servertoken = sharedPreferences.getString("servertoken", "")
             val photo = sharedPreferences.getString("photo", null)
             val nickname = sharedPreferences.getString("nickname", null)
             var sex = sharedPreferences.getString("isMale",null)

@@ -13,7 +13,6 @@ import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.my_comment.model.getMyComment
 import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
-import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentMyCommentBinding
 
@@ -31,7 +30,7 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
-        val servertoken = sharedPreferences?.getString("servertoken", null)
+        val servertoken = sharedPreferences?.getString("servertoken", "")
         val nickname = sharedPreferences?.getString("nickname",null)
         binding.mycommentSubtitleNicknameTv.text = nickname
         Log.d("userIdx", "${userIdx}")

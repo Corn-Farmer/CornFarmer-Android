@@ -33,7 +33,7 @@ class SearchFragment : Fragment() {
             mActivity.callFragment(SearchResultFragment(searchMovie))
         }
         binding.searchLikeIv.setOnClickListener {
-            startActivity(Intent(activity, WishlistActivity::class.java))
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
         }
 
 

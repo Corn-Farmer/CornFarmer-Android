@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
-import com.example.corn_farmer.src.detail.MovieLikeService
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI

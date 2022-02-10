@@ -51,7 +51,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
         val userIdx: Int = sharedPreferences2.getInt("useridx", 0)
 
-        val serverToken = sharedPreferences.getString("servertoken", null)
+        val serverToken = sharedPreferences.getString("servertoken", "")
 
         val service = ModifyProfileService(this, userIdx, serverToken)
         service.tryGetModifyProfile()
@@ -116,7 +116,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
                     genreList.toString().replace("[", "").replace("]", "")
                 )
 
-            val servertoken = sharedPreferences.getString("servertoken", null)
+            val servertoken = sharedPreferences.getString("servertoken", "")
             val requestMap: HashMap<String, RequestBody> = HashMap()
 
             val file = File(photo.toString())

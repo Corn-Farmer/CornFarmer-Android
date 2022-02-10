@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.detail
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,7 @@ import com.example.corn_farmer.src.detail.model.putMovieLike
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.search_result.SearchResultFragment
+import com.example.corn_farmer.src.wishlist.WishlistActivity
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 
@@ -38,13 +40,17 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
         binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
-        var serverToken = sharedPreferences?.getString("servertoken",null)
+        var serverToken = sharedPreferences?.getString("servertoken","")
 
         var service = DetailService(this, movieIdx,"likeCnt",serverToken!!)
         service.tryGetMovieInfo()
         Log.d("movieIdx", movieIdx.toString())
         initialize()
         reviewSort()
+
+        binding.detailHeartBtnIv.setOnClickListener {
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
+        }
 
         return binding.root
     }
@@ -82,9 +88,9 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
         binding.detailMovieLikeOnBtnIv.setOnClickListener {
             val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val servertoken = sharedPreferences?.getString("servertoken", "")
 
-            if (servertoken == null) {
+            if (servertoken == "") {
                 Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
@@ -99,9 +105,9 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
         binding.detailMovieLikeOffBtnIv.setOnClickListener {
             val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
+            val servertoken = sharedPreferences?.getString("servertoken", "")
 
-            if (servertoken == null) {
+            if (servertoken == "") {
                 Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
@@ -164,12 +170,12 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 override fun onHeartClick(getReviewList: getReviewList, position: Int) {
 
                     val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-                    val servertoken = sharedPreferences?.getString("servertoken", null)
+                    val servertoken = sharedPreferences?.getString("servertoken", "")
 
-                    if (servertoken == null) {
+                    if (servertoken == "") {
                         Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        var service = CommentLikeService(this@DetailFragment, movieInfo!!.reviewList[position].reviewIdx, servertoken)
+                        var service = CommentLikeService(this@DetailFragment, movieInfo!!.reviewList[position].reviewIdx, servertoken!!)
                         service.tryPutCommetLike()
                     }
                 }
@@ -203,7 +209,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
     fun reviewSort() {
         val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
-        var serverToken = sharedPreferences?.getString("servertoken",null)
+        var serverToken = sharedPreferences?.getString("servertoken","")
         var sort : String = ""
 
         binding.detailReviewSortRecentTv.setOnClickListener {

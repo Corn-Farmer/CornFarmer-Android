@@ -56,7 +56,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
             this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
 
         var userIdx = sharedPreferences2?.getInt("useridx", 0)
-        var serverToken = sharedPreferences?.getString("servertoken", null)
+        var serverToken = sharedPreferences?.getString("servertoken", "")
         val service = ProfileService(this, userIdx, serverToken)
         service.tryGetProfile()
 
@@ -95,7 +95,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
             showDialog()
         }
         binding.profileLikeIv.setOnClickListener {
-            startActivity(Intent(activity, WishlistActivity::class.java))
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
         }
 
         return binding.root
@@ -113,7 +113,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
                 this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
 
             var userIdx = sharedPreferences2?.getInt("useridx", 0)
-            var serverToken = sharedPreferences?.getString("servertoken", null)
+            var serverToken = sharedPreferences?.getString("servertoken", "")
 
             val deleteService = DeleteService(this,userIdx!!,serverToken!!)
             deleteService.tryPutDeleteUser()
@@ -174,6 +174,14 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
             }
         }
         Log.d("회원탈퇴","회원탈퇴 성공")
+        val getSharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
+        val getSharedPreferences2 = this.activity?.getSharedPreferences("userinfo",Context.MODE_PRIVATE)
+        val editor1 = getSharedPreferences?.edit()
+        val editor2 = getSharedPreferences2?.edit()
+        editor1?.putString("servertoken","")
+        editor2?.clear()
+        editor1?.commit()
+        editor2?.commit()
         startActivity(Intent(activity, LoginActivity::class.java))
     }
 
