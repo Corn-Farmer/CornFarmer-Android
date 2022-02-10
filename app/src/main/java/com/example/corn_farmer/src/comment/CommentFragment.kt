@@ -236,7 +236,7 @@ class CommentFragment(val movieIdx : Int, val keywordIdx: Int, val keyword: Stri
             binding.commentRateSaveTv.text = (5.0).toString()
         }
 
-        binding.commentRateCorn3ColorIv.setOnClickListener {
+        binding.commentRateCorn5ColorIv.setOnClickListener {
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn3ColorIv.visibility = View.VISIBLE

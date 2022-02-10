@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.home.HomeFragment
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.profile.ProfileFragment
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         ) //전체화면
+
+        if (intent.getIntExtra("movieIdx", -1)!! > 0) {
+            callFragment(DetailFragment(intent.getIntExtra("movieIdx", 1), -1, ""))
+        }
 
 
     } //onCreate

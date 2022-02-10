@@ -1,6 +1,7 @@
 package com.example.corn_farmer.src.wishlist
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -42,9 +43,10 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
         )
         wishlistRVAdapter.setMyItemClickListener(object : WishlistRVAdapter.MyItemClickListener{
             override fun onItemClick(wishMovie: getWishMovieResult, position: Int) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(wishMovie.movieIdx!!, -1, ""))
-                    .commitAllowingStateLoss()
+                val movieIdx = wishMovie.movieIdx
+                val intent = Intent(this@WishlistActivity, MainActivity::class.java)
+                intent.putExtra("movieIdx", movieIdx)
+                startActivity(intent)
             }
 
 
