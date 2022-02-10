@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     lateinit var binding : FragmentDetailBinding
     var likeCount = 0
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container : ViewGroup?,
@@ -35,7 +37,10 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
 
-        var service = DetailService(this, movieIdx,1)
+        val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
+        var serverToken = sharedPreferences?.getString("servertoken",null)
+
+        var service = DetailService(this, movieIdx,"likeCnt",serverToken!!)
         service.tryGetMovieInfo()
         Log.d("movieIdx", movieIdx.toString())
         initialize()
@@ -97,15 +102,15 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             val servertoken = sharedPreferences?.getString("servertoken", null)
 
             if (servertoken == null) {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
                 var service = MovieLikeService(this, movieIdx, servertoken)
                 service.tryPutMovieLike()
+                binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
+                binding.detailMovieLikeOffBtnIv.visibility = View.GONE
+                likeCount = likeCount + 1
+                binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
             }
-            binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
-            binding.detailMovieLikeOffBtnIv.visibility = View.GONE
-            likeCount = likeCount + 1
-            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
         }
     }
 
@@ -117,12 +122,13 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             val movieInfo = response!!.result
             Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
             binding.detailMovieTitleTv.text = movieInfo!!.movieName
-            binding.detailMovieReleaseTv.text = "(${movieInfo.releaseYear.toString()}년 개봉)"
+            binding.detailMovieReleaseTv.text = "(${movieInfo.releaseYear.toString()})"
             binding.detailMovieGenreTv.text = movieInfo.movieGenreList?.joinToString(separator = ",")
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
             likeCount = movieInfo?.likeCnt
 
+            setViewMore(binding.detailMovieStoryTv, binding.viewMore)
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
 
             if (movieInfo.liked) {
@@ -154,14 +160,14 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 LinearLayoutManager.VERTICAL,
                 false
             )
-            ReviewRVadapter.setCommentLikeBtnClickListener(object : CommentRVAdapter.CommentLikeBtnClickListener {
+            ReviewRVadapter.setCommentLikeBtnClickListener(object : CommentRVAdapter.CommentLikeBtnClickListener { //후기
                 override fun onHeartClick(getReviewList: getReviewList, position: Int) {
 
                     val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
                     val servertoken = sharedPreferences?.getString("servertoken", null)
 
                     if (servertoken == null) {
-                        Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         var service = CommentLikeService(this@DetailFragment, movieInfo!!.reviewList[position].reviewIdx, servertoken)
                         service.tryPutCommetLike()
@@ -196,23 +202,46 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     }
 
     fun reviewSort() {
-
-        var sortIdx = 2
+        val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
+        var serverToken = sharedPreferences?.getString("servertoken",null)
+        var sort : String = ""
 
         binding.detailReviewSortRecentTv.setOnClickListener {
-            sortIdx = 1
+            sort = "recent"
             binding.detailReviewSortRecentTv.setTextColor(Color.BLACK)
             binding.detailReviewSortLikeTv.setTextColor(Color.LTGRAY)
+            var service = DetailService(this, movieIdx,sort,serverToken!!)
+            service.tryGetMovieInfo()
         }
 
         binding.detailReviewSortLikeTv.setOnClickListener {
-            sortIdx = 2
+            sort = "likeCnt"
             binding.detailReviewSortRecentTv.setTextColor(Color.LTGRAY)
             binding.detailReviewSortLikeTv.setTextColor(Color.BLACK)
+            var service = DetailService(this, movieIdx,sort,serverToken!!)
+            service.tryGetMovieInfo()
         }
 
-        var service = DetailService(this, movieIdx,sortIdx)
-        service.tryGetMovieInfo()
+
+
+    }
+    private fun setViewMore(contentTextView: TextView, viewMoreTextView: TextView){
+        // getEllipsisCount()을 통한 더보기 표시 및 구현
+        contentTextView.post{
+            val lineCount = contentTextView.layout.lineCount
+            if (lineCount > 0) {
+                if (contentTextView.layout.getEllipsisCount(lineCount - 1) > 0) {
+                    // 더보기 표시
+                    viewMoreTextView.visibility = View.VISIBLE
+
+                    // 더보기 클릭 이벤트
+                    viewMoreTextView.setOnClickListener {
+                        contentTextView.maxLines = Int.MAX_VALUE
+                        viewMoreTextView.visibility = View.GONE
+                    }
+                }
+            }
+        }
 
     }
 }

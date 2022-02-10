@@ -23,6 +23,7 @@ import com.example.corn_farmer.src.profile.model.DeleteResponse
 import com.example.corn_farmer.src.profile.model.ProfileResponse
 import com.example.corn_farmer.src.profile_modify.ProfileModifyActivity
 import com.example.corn_farmer.src.search.SearchFragment
+import com.example.corn_farmer.src.wishlist.WishlistActivity
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentProfileBinding
 
@@ -91,6 +92,9 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
         binding.profileDeleteIv.setOnClickListener {
             showDialog()
         }
+        binding.profileLikeIv.setOnClickListener {
+            startActivity(Intent(activity, WishlistActivity::class.java))
+        }
 
         return binding.root
 
@@ -101,6 +105,7 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
 
             dialog.findViewById<Button>(R.id.yesBtn)?.setOnClickListener {
+
         }
 
         dialog.findViewById<Button>(R.id.noBtn)?.setOnClickListener {

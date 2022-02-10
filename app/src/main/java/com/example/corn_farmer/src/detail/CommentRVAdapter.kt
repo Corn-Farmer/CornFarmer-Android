@@ -51,7 +51,7 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
             binding.detailCommentLikecntTv.text = "+ ${reviewList.likeCnt.toString()}"
             Glide.with(itemView).load(reviewList.writer.writerPhoto).into(binding.detailCommentUserProfileIv)
             Log.d("writerPhoto", reviewList.writer.writerPhoto)
-            if (reviewList.isLiked) {
+            if (reviewList.liked) {
                 binding.detailComentHeartOnIv.visibility = View.VISIBLE
                 binding.detailComentHeartOffIv.visibility = View.GONE
             } else {

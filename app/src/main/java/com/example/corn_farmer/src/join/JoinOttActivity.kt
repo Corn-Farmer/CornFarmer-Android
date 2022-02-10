@@ -42,9 +42,6 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-        binding.ottBackIv.setOnClickListener {
-            finish()
-        }
 
         bindOtt()
 

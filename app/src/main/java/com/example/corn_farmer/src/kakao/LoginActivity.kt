@@ -99,9 +99,9 @@ class LoginActivity : AppCompatActivity(), KakaoView {
             }
         }
 
-        binding.loginNaverLoginBt.setOnClickListener {
-            startActivity(Intent(this, JoinProfileActivity::class.java))
-        }
+//        binding.loginNaverLoginBt.setOnClickListener { ->네이버 로그인 버튼
+//            startActivity(Intent(this, JoinProfileActivity::class.java))
+//        }
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {
@@ -141,7 +141,7 @@ class LoginActivity : AppCompatActivity(), KakaoView {
 //        }
 
         val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
-        val kakaoToken = sharedPreferences.getString("kakaotoken", "1")
+        val kakaoToken = sharedPreferences.getString("kakaotoken", null)
 
         val kakao = sendKakaoAPI(kakaoToken.toString())
         var service = KakaoService(this,kakao)

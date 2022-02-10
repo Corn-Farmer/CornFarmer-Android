@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.wishlist.model.getWishMovie
+import com.example.corn_farmer.src.wishlist.model.getWishMovieResult
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.ActivityWishlistBinding
 
 
@@ -23,6 +27,10 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
 
         var service = WishlistService(this, userIdx!!, servertoken!!)
         service.tryGetWishlist()
+
+        binding.wishlistPreviousBtn1Iv.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onGetWishlistSuccess(response: getWishMovie) {
@@ -32,6 +40,15 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
         binding.wishlistRV.layoutManager = GridLayoutManager(
             this, 3
         )
+        wishlistRVAdapter.setMyItemClickListener(object : WishlistRVAdapter.MyItemClickListener{
+            override fun onItemClick(wishMovie: getWishMovieResult, position: Int) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, DetailFragment(wishMovie.movieIdx!!, -1, ""))
+                    .commitAllowingStateLoss()
+            }
+
+
+        })
     }
 
     override fun onGetWishlistFailure(message: String) {

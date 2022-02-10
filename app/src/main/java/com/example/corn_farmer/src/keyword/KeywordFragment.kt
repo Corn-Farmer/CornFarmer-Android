@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.keyword
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.example.corn_farmer.src.keyword.model.KeywordResponse
 import com.example.corn_farmer.src.recommend.RecommendFragment
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.corn_farmer.src.search_result.SearchResultFragment
+import com.example.corn_farmer.src.wishlist.WishlistActivity
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentKeywordBinding
 
@@ -35,9 +37,9 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
             service.tryGetKeywordList()
         }
 
-//        binding.keywordCompleteBtnIv.setOnClickListener {
-//
-//        }
+        binding.mainLikeIv.setOnClickListener {
+            startActivity(Intent(activity, WishlistActivity::class.java))
+        }
 
         binding.mainSearchIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
