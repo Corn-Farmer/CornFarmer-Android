@@ -9,6 +9,17 @@ import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
 import com.example.cornfarmer_android.databinding.ItemMyCommentBinding
 
 class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>) : RecyclerView.Adapter<MyCommentRVAdapter.ViewHolder>() {
+
+    interface MyItemClickListener{
+        fun onItemClick(getMyCommentResult : getMyCommentResult, position : Int)
+    }
+
+    private lateinit var  myItemClickListener : MyItemClickListener
+
+    fun setMyItemClickLisetenr(itemClickListener: MyItemClickListener) {
+        myItemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -20,6 +31,9 @@ class MyCommentRVAdapter(private val reviewList : ArrayList<getMyCommentResult>)
 
     override fun onBindViewHolder(holder: MyCommentRVAdapter.ViewHolder, position: Int) {
         holder.bind(reviewList[position], position)
+        holder.binding.itemMycommentMovieImgIv.setOnClickListener {
+            myItemClickListener.onItemClick(reviewList[position], position)
+        }
     }
 
     override fun getItemCount(): Int {

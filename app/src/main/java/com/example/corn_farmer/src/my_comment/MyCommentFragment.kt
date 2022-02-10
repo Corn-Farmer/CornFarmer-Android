@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.corn_farmer.MainActivity
+import com.example.corn_farmer.src.detail.DetailFragment
 import com.example.corn_farmer.src.my_comment.model.getMyComment
+import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
+import com.example.corn_farmer.src.recommend.model.movieInfo
+import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentMyCommentBinding
 
 class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentView {
@@ -46,6 +51,13 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
             LinearLayoutManager.VERTICAL,
             false
         )
+        MyCommentRVAdapter.setMyItemClickLisetenr(object : MyCommentRVAdapter.MyItemClickListener {
+            override fun onItemClick(getMyCommentResult: getMyCommentResult, position: Int) {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frame, DetailFragment(getMyCommentResult.movie.movieIdx, -1, ""))
+                    .commitAllowingStateLoss()
+            }
+        })
     }
 
     override fun onGetMyCommentFailure(message: String) {
