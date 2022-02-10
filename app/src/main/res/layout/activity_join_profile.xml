@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.corn_farmer.src.join.JoinProfileActivity">
 
-    <ImageView
-        android:id="@+id/profile_back_iv"
-        android:layout_width="16dp"
-        android:layout_height="14dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="47dp"
-        android:src="@drawable/back_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/profile_profile_iv"

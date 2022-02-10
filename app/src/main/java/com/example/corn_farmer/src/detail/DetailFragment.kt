@@ -75,38 +75,38 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             mActivity.callFragment(SearchFragment())
         }
 
-        binding.detailMovieLikeOnBtnIv.setOnClickListener {
-            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
-
-            if (servertoken == null) {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                var service = MovieLikeService(this, movieIdx, servertoken)
-                service.tryPutMovieLike()
-            }
-
-            binding.detailMovieLikeOnBtnIv.visibility = View.GONE
-            binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
-            likeCount = likeCount - 1
-            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
-        }
-
-        binding.detailMovieLikeOffBtnIv.setOnClickListener {
-            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val servertoken = sharedPreferences?.getString("servertoken", null)
-
-            if (servertoken == null) {
-                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                var service = MovieLikeService(this, movieIdx, servertoken)
-                service.tryPutMovieLike()
-            }
-            binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
-            binding.detailMovieLikeOffBtnIv.visibility = View.GONE
-            likeCount = likeCount + 1
-            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
-        }
+//        binding.detailMovieLikeOnBtnIv.setOnClickListener {
+//            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+//            val servertoken = sharedPreferences?.getString("servertoken", null)
+//
+//            if (servertoken == null) {
+//                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+//            } else {
+//                var service = MovieLikeService(this, movieIdx, servertoken)
+//                service.tryPutMovieLike()
+//            }
+//
+//            binding.detailMovieLikeOnBtnIv.visibility = View.GONE
+//            binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
+//            likeCount = likeCount - 1
+//            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
+//        }
+//
+//        binding.detailMovieLikeOffBtnIv.setOnClickListener {
+//            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+//            val servertoken = sharedPreferences?.getString("servertoken", null)
+//
+//            if (servertoken == null) {
+//                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+//            } else {
+//                var service = MovieLikeService(this, movieIdx, servertoken)
+//                service.tryPutMovieLike()
+//            }
+//            binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
+//            binding.detailMovieLikeOffBtnIv.visibility = View.GONE
+//            likeCount = likeCount + 1
+//            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
+//        }
     }
 
 
@@ -125,13 +125,13 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
 
-            if (movieInfo.liked) {
-                binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
-                binding.detailMovieLikeOffBtnIv.visibility = View.GONE
-            } else {
-                binding.detailMovieLikeOnBtnIv.visibility = View.GONE
-                binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
-            }
+//            if (movieInfo.liked) {
+//                binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
+//                binding.detailMovieLikeOffBtnIv.visibility = View.GONE
+//            } else {
+//                binding.detailMovieLikeOnBtnIv.visibility = View.GONE
+//                binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
+//            }
 
             // ott 정보 리사이클러뷰
             val ottList = movieInfo!!.ottList

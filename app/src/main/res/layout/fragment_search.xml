@@ -81,7 +81,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         android:background="#00ff0000"
-        android:hint="나홀로 집에"
+        android:hint="나 홀로 집에"
         />
     <ImageView
         android:id="@+id/search_search_button_iv"

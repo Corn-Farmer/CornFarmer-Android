@@ -29,9 +29,6 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
         binding = ActivityJoinGenreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.genreBackIv.setOnClickListener {
-            finish()
-        }
 
         binding.genreFinishColorIv.setOnClickListener {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)

@@ -52,9 +52,6 @@ class HomeFragment : Fragment(), HomeFragmentView {
         binding.mainSearchIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
-        binding.mainBackIv.setOnClickListener {
-
-        }
 
         var service = HomeService(this)
         service.tryGetMovieList()

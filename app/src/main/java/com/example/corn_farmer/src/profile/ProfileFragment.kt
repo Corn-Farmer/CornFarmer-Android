@@ -101,6 +101,7 @@ class ProfileFragment : Fragment(),ProfileFragmentView {
 
 
             dialog.findViewById<Button>(R.id.yesBtn)?.setOnClickListener {
+
         }
 
         dialog.findViewById<Button>(R.id.noBtn)?.setOnClickListener {

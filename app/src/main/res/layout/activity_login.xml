@@ -54,19 +54,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_line_iv" />
 
-    <ImageButton
-        android:id="@+id/login_naver_login_bt"
-        android:layout_width="248dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="56dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@drawable/login_naver_login2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/login_naver_login_bt"-->
+<!--        android:layout_width="248dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginEnd="56dp"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/login_naver_login2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
