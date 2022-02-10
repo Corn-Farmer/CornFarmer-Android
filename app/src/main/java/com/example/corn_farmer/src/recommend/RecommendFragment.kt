@@ -12,11 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.detail.DetailFragment
+import com.example.corn_farmer.src.detail.MovieLikeService
 import com.example.corn_farmer.src.keyword.KeywordFragment
 import com.example.corn_farmer.src.loading.CustomLoadingDialog
 import com.example.corn_farmer.src.recommend.model.getRecommendMovieAPI
 import com.example.corn_farmer.src.recommend.model.movieInfo
-import com.example.corn_farmer.src.recommend.model.putMovieLike
+import com.example.corn_farmer.src.detail.model.putMovieLike
 import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentRecommendBinding
@@ -77,13 +78,13 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frame, DetailFragment(movieInfo.movieIdx, keywordIdx, ""))
                     .commitAllowingStateLoss()
+                Log.d("heart", "itemclick")
             }
         })
-
     }
 
     override fun onGetRecommendFailure(message: String) {
-        Log.d("키워드Fail", "실패")
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPutMovieLikeSuccess(response: putMovieLike) {
@@ -91,6 +92,6 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     }
 
     override fun onPutMovieLikeFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
 }

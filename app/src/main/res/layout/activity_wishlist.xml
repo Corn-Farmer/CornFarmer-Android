@@ -41,30 +41,11 @@
                 android:layout_width="17dp"
                 android:layout_height="17dp"
                 android:layout_marginTop="38dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_search"
-                app:layout_constraintEnd_toStartOf="@id/wishlist_heart_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/wishlist_heart_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_heart"
-                app:layout_constraintEnd_toStartOf="@id/wishlist_news_btn_iv"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/wishlist_news_btn_iv"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
-                android:layout_marginTop="38dp"
                 android:layout_marginEnd="28dp"
-                android:src="@drawable/ic_bell_off"
+                android:src="@drawable/search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/wishlist_title_tv"
@@ -75,19 +56,9 @@
                 android:textColor="#1E005D"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/wishlist_news_btn_iv"
+                app:layout_constraintTop_toBottomOf="@id/wishlist_search_btn_iv"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="60dp" />
-
-            <ImageView
-                android:id="@+id/wishlist_setting_btn_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_setting"
-                app:layout_constraintTop_toTopOf="@id/wishlist_title_tv"
-                app:layout_constraintBottom_toBottomOf="@id/wishlist_title_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="30dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/wishlist_RV"

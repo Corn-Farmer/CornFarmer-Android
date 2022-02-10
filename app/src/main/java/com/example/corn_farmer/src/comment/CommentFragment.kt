@@ -32,9 +32,28 @@ class CommentFragment(val movieIdx : Int, val keywordIdx: Int, val keyword: Stri
     ): View? {
         binding = FragmentCommentBinding.inflate(inflater, container, false)
 
+        getRate()
+        initialize()
 
+        return binding.root
+    }
+
+    override fun onPostReviewSuccess(response: getReviewAPI) {
+
+        Log.d("comment", "${response}")
+
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword))
+            .commitAllowingStateLoss()
+    }
+
+    override fun onPostReviewFailure(message: String) {
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun initialize() {
         binding.commentCompleteBtnIv.setOnClickListener {
-            val review = sendReviewAPI(movieIdx, binding.commentEdittext.text.toString() , 3.53)
+            val review = sendReviewAPI(movieIdx, binding.commentEdittext.text.toString() , binding.commentRateSaveTv.text.toString().toDouble())
 
             val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
             val servertoken = sharedPreferences?.getString("servertoken", null)
@@ -60,21 +79,178 @@ class CommentFragment(val movieIdx : Int, val keywordIdx: Int, val keyword: Stri
                 .replace(R.id.main_frame, SearchFragment())
                 .commitAllowingStateLoss()
         }
-
-        return binding.root
     }
 
+    fun getRate() {
 
-    override fun onPostReviewSuccess(response: getReviewAPI) {
+        binding.commentRateCorn1Iv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.GONE
+            binding.commentRateCorn3ColorIv.visibility = View.GONE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-        Log.d("comment", "${response}")
 
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword))
-            .commitAllowingStateLoss()
-    }
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.VISIBLE
+            binding.commentRateCorn3Iv.visibility = View.VISIBLE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
 
-    override fun onPostReviewFailure(message: String) {
-        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+            binding.commentRateSaveTv.text = (1.0).toString()
+        }
+
+        binding.commentRateCorn1ColorIv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.GONE
+            binding.commentRateCorn2ColorIv.visibility = View.GONE
+            binding.commentRateCorn3ColorIv.visibility = View.GONE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.VISIBLE
+            binding.commentRateCorn2Iv.visibility = View.VISIBLE
+            binding.commentRateCorn3Iv.visibility = View.VISIBLE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (0.0).toString()
+        }
+
+        binding.commentRateCorn2Iv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.GONE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.VISIBLE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (2.0).toString()
+        }
+
+        binding.commentRateCorn2ColorIv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.GONE
+            binding.commentRateCorn3ColorIv.visibility = View.GONE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.VISIBLE
+            binding.commentRateCorn3Iv.visibility = View.VISIBLE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (1.0).toString()
+        }
+
+        binding.commentRateCorn3Iv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.GONE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (3.0).toString()
+        }
+
+        binding.commentRateCorn3ColorIv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.GONE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.VISIBLE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (2.0).toString()
+        }
+
+        binding.commentRateCorn4Iv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.GONE
+            binding.commentRateCorn4Iv.visibility = View.GONE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (4.0).toString()
+        }
+
+        binding.commentRateCorn4ColorIv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn4ColorIv.visibility = View.GONE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.GONE
+            binding.commentRateCorn4Iv.visibility = View.VISIBLE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (3.0).toString()
+        }
+
+        binding.commentRateCorn5Iv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn5ColorIv.visibility = View.VISIBLE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.GONE
+            binding.commentRateCorn4Iv.visibility = View.GONE
+            binding.commentRateCorn5Iv.visibility = View.GONE
+
+            binding.commentRateSaveTv.text = (5.0).toString()
+        }
+
+        binding.commentRateCorn3ColorIv.setOnClickListener {
+            binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn2ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
+            binding.commentRateCorn5ColorIv.visibility = View.GONE
+
+
+            binding.commentRateCorn1Iv.visibility = View.GONE
+            binding.commentRateCorn2Iv.visibility = View.GONE
+            binding.commentRateCorn3Iv.visibility = View.GONE
+            binding.commentRateCorn4Iv.visibility = View.GONE
+            binding.commentRateCorn5Iv.visibility = View.VISIBLE
+
+            binding.commentRateSaveTv.text = (4.0).toString()
+        }
     }
 }

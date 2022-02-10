@@ -15,20 +15,18 @@ import com.example.corn_farmer.src.recommend.RecommendFragment
 import com.example.corn_farmer.src.detail.model.getMovieDetailAPI
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.comment.CommentFragment
-import com.example.corn_farmer.src.comment.CommentService
 import com.example.corn_farmer.src.detail.model.getCommentLike
-import com.example.corn_farmer.src.detail.model.getMovieDetailResult
 import com.example.corn_farmer.src.detail.model.getReviewList
+import com.example.corn_farmer.src.detail.model.putMovieLike
 import com.example.corn_farmer.src.home.HomeFragment
-import com.example.corn_farmer.src.home.HomeService
 import com.example.corn_farmer.src.search.SearchFragment
-import com.example.corn_farmer.src.recommend.model.movieInfo
 import com.example.corn_farmer.src.search_result.SearchResultFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
     lateinit var binding : FragmentDetailBinding
+    var likeCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,6 +74,39 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
         binding.detailSearchBtnIv.setOnClickListener {
             mActivity.callFragment(SearchFragment())
         }
+
+        binding.detailMovieLikeOnBtnIv.setOnClickListener {
+            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val servertoken = sharedPreferences?.getString("servertoken", null)
+
+            if (servertoken == null) {
+                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                var service = MovieLikeService(this, movieIdx, servertoken)
+                service.tryPutMovieLike()
+            }
+
+            binding.detailMovieLikeOnBtnIv.visibility = View.GONE
+            binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
+            likeCount = likeCount - 1
+            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
+        }
+
+        binding.detailMovieLikeOffBtnIv.setOnClickListener {
+            val sharedPreferences = context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val servertoken = sharedPreferences?.getString("servertoken", null)
+
+            if (servertoken == null) {
+                Toast.makeText(context, "유저 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                var service = MovieLikeService(this, movieIdx, servertoken)
+                service.tryPutMovieLike()
+            }
+            binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
+            binding.detailMovieLikeOffBtnIv.visibility = View.GONE
+            likeCount = likeCount + 1
+            binding.detailNumberOfLikeTv.text = "${likeCount}명이 찜했어요."
+        }
     }
 
 
@@ -90,7 +121,17 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             binding.detailMovieGenreTv.text = movieInfo.movieGenreList?.joinToString(separator = ",")
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
+            likeCount = movieInfo?.likeCnt
+
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
+
+            if (movieInfo.liked) {
+                binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE
+                binding.detailMovieLikeOffBtnIv.visibility = View.GONE
+            } else {
+                binding.detailMovieLikeOnBtnIv.visibility = View.GONE
+                binding.detailMovieLikeOffBtnIv.visibility = View.VISIBLE
+            }
 
             // ott 정보 리사이클러뷰
             val ottList = movieInfo!!.ottList
@@ -142,6 +183,15 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     }
 
     override fun onPutCommentLikeFailure(message: String) {
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+    }
+
+
+    override fun onPutMovieLikeSuccess(response: putMovieLike) {
+        Toast.makeText(context, response.result.msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPutMovieLikeFailure(message: String) {
         Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
 

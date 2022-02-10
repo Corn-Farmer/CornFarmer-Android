@@ -1,136 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/mycomment_previous_btn_iv"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:src="@drawable/back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="38dp"
-        android:layout_marginStart="29dp"/>
-
-    <ImageView
-        android:id="@+id/mycomment_search_btn_iv"
-        android:src="@drawable/search"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/mycomment_heart_btn_iv"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="15dp" />
-
-    <ImageView
-        android:id="@+id/mycomment_heart_btn_iv"
-        android:src="@drawable/ic_heart"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/mycomment_news_btn_iv"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="15dp" />
-
-    <ImageView
-        android:id="@+id/mycomment_news_btn_iv"
-        android:src="@drawable/bell"
-        android:layout_width="29dp"
-        android:layout_height="29dp"
-        app:layout_constraintBottom_toBottomOf="@id/mycomment_heart_btn_iv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="28dp" />
-
-    <TextView
-        android:id="@+id/mycomment_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/mycomment_previous_btn_iv"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="내가 남긴 후기 관리"
-        android:textColor="#FFBD02"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="30dp"/>
-
-    <TextView
-        android:id="@+id/mycomment_subtitle1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="12dp"
-        android:text="지금까지 "
-        android:textColor="#515151"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/mycomment_subtitle_nickname_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
-        app:layout_constraintStart_toEndOf="@id/mycomment_subtitle1_tv"
-        android:layout_marginTop="12dp"
-        android:text="닉네임"
-        android:textSize="15sp"
-        android:textColor="@color/purple_700"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/mycomment_subtitle2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
-        app:layout_constraintStart_toEndOf="@id/mycomment_subtitle_nickname_tv"
-        android:layout_marginTop="12dp"
-        android:text="님이 남기신 후기입니다."
-        android:textSize="15sp"
-        android:textColor="#515151"/>
-
-    <TextView
-        android:id="@+id/mycomment_subtitle3_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_subtitle1_tv"
-        app:layout_constraintStart_toStartOf="@id/mycomment_subtitle1_tv"
-        android:text="어떤 작품이 기억에 남나요?"
-        android:textSize="15sp"
-        android:textColor="#515151"/>
-
-    <ImageView
-        android:id="@+id/mycomment_line1_iv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_subtitle3_tv"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/purple_horizontal_line"
-        android:scaleType="fitXY"
-        android:layout_marginTop="35dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mycomment_RV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mycomment_line1_iv"
-        tools:listitem="@layout/item_my_comment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         android:overScrollMode="never"
-        />
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
+            <ImageView
+                android:id="@+id/mycomment_previous_btn_iv"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="38dp"
+                android:layout_marginStart="29dp"/>
 
+            <ImageView
+                android:id="@+id/mycomment_search_btn_iv"
+                android:src="@drawable/search"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/mycomment_heart_btn_iv"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp" />
+
+            <ImageView
+                android:id="@+id/mycomment_heart_btn_iv"
+                android:src="@drawable/ic_heart"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/mycomment_news_btn_iv"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="15dp" />
+
+            <ImageView
+                android:id="@+id/mycomment_news_btn_iv"
+                android:src="@drawable/bell"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                app:layout_constraintBottom_toBottomOf="@id/mycomment_heart_btn_iv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="28dp" />
+
+            <TextView
+                android:id="@+id/mycomment_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/mycomment_previous_btn_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="내가 남긴 후기 관리"
+                android:textColor="#FFBD02"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"/>
+
+            <TextView
+                android:id="@+id/mycomment_subtitle1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="12dp"
+                android:text="지금까지 "
+                android:textColor="#515151"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/mycomment_subtitle_nickname_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
+                app:layout_constraintStart_toEndOf="@id/mycomment_subtitle1_tv"
+                android:layout_marginTop="12dp"
+                android:text="닉네임"
+                android:textSize="15sp"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/mycomment_subtitle2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_title_tv"
+                app:layout_constraintStart_toEndOf="@id/mycomment_subtitle_nickname_tv"
+                android:layout_marginTop="12dp"
+                android:text="님이 남기신 후기입니다."
+                android:textSize="15sp"
+                android:textColor="#515151"/>
+
+            <TextView
+                android:id="@+id/mycomment_subtitle3_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_subtitle1_tv"
+                app:layout_constraintStart_toStartOf="@id/mycomment_subtitle1_tv"
+                android:text="어떤 작품이 기억에 남나요?"
+                android:textSize="15sp"
+                android:textColor="#515151"/>
+
+            <ImageView
+                android:id="@+id/mycomment_line1_iv"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_subtitle3_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/purple_horizontal_line"
+                android:scaleType="fitXY"
+                android:layout_marginTop="35dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mycomment_RV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mycomment_line1_iv"
+                tools:listitem="@layout/item_my_comment"
+                android:overScrollMode="never"
+                android:layout_marginBottom="80dp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
