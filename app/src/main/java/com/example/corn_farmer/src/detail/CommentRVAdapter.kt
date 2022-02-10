@@ -31,15 +31,18 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(reviewList[position], position)
+        var likeCnt = reviewList[position].likeCnt
         holder.binding.detailComentHeartOnIv.setOnClickListener {
+            likeCnt = likeCnt - 1
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${(reviewList[position].likeCnt-1).toString()}"
+            holder.binding.detailCommentLikecntTv.text = "+ ${likeCnt}"
             holder.binding.detailComentHeartOnIv.visibility = View.GONE
             holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
         }
         holder.binding.detailComentHeartOffIv.setOnClickListener {
+            likeCnt = likeCnt + 1
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "+ ${(reviewList[position].likeCnt+1).toString()}"
+            holder.binding.detailCommentLikecntTv.text = "+ ${likeCnt}"
             holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
             holder.binding.detailComentHeartOffIv.visibility = View.GONE
         }

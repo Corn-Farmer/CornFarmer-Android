@@ -28,6 +28,7 @@ import com.example.cornfarmer_android.databinding.FragmentDetailBinding
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
     lateinit var binding : FragmentDetailBinding
     var likeCount = 0
+    var reviewLikeCount = 0
 
 
     override fun onCreateView(
