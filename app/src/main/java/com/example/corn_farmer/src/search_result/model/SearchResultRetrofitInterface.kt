@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface SearchResultRetrofitInterface {
     @GET("/movies/search")
-    fun getSearchInfo(@Query("keyword")keyword:String?,@Query("sort") sort : Int?): Call<SearchResultResponse>
+    fun getSearchInfo(@Query("keyword")keyword:String?,@Query("sort") sort : String?): Call<SearchResultResponse>
 }

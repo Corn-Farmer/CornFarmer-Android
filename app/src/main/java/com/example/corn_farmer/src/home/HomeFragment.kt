@@ -49,6 +49,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
 
         val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
         val serverToken = sharedPreferences?.getString("servertoken","")
+        Log.d("토큰",serverToken.toString())
 
         val mActivity = activity as MainActivity //메인 액티비티
 

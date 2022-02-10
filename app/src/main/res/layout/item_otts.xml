@@ -75,13 +75,23 @@
         android:id="@+id/item_ott_like_count_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"
         app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
+        app:layout_constraintStart_toStartOf="@id/transparent"
+        app:layout_constraintEnd_toEndOf="@id/transparent"
         android:text="12"
         android:textSize="11sp"
         android:textColor="#FFFFFF"
         android:layout_marginTop="42dp"
-        android:layout_marginEnd="30dp"
         />
+    <ImageView
+        android:id="@+id/transparent"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="@id/item_ott_img_cv"
+        app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/detail_heart_white"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

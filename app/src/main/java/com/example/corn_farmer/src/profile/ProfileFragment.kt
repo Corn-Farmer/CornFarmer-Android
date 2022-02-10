@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -176,12 +177,17 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         Log.d("회원탈퇴","회원탈퇴 성공")
         val getSharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
         val getSharedPreferences2 = this.activity?.getSharedPreferences("userinfo",Context.MODE_PRIVATE)
+        val getSharedPreferences3 = this.activity?.getSharedPreferences("token", AppCompatActivity.MODE_PRIVATE)
         val editor1 = getSharedPreferences?.edit()
         val editor2 = getSharedPreferences2?.edit()
+        val editor3 = getSharedPreferences3?.edit()
         editor1?.putString("servertoken","")
         editor2?.clear()
+        editor3?.putString("kakaotoken",null)
+
         editor1?.commit()
         editor2?.commit()
+        editor3?.commit()
         startActivity(Intent(activity, LoginActivity::class.java))
     }
 

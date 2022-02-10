@@ -205,6 +205,16 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv"
                 app:layout_constraintStart_toStartOf="parent"
                 />
+            <TextView
+                android:id="@+id/view_loss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="줄이기"
+                android:visibility="gone"
+                android:layout_marginStart="34dp"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
             <TextView
                 android:id="@+id/detail_comment_title_tv"
@@ -255,7 +265,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="최신순"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
                 app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator_tv" />
 
@@ -267,7 +277,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="|"
                 android:textColor="#C4C4C4"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
                 app:layout_constraintEnd_toStartOf="@id/detail_review_sort_like_tv" />
 
@@ -279,7 +289,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="좋아요순"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
                 app:layout_constraintEnd_toEndOf="parent" />
 
