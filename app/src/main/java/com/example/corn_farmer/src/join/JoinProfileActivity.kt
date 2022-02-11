@@ -58,6 +58,8 @@ class JoinProfileActivity() : AppCompatActivity(){
         }
 
         binding.profileNextIv.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            sharedPreferences.edit().putString("check_camera","완료").commit()
             val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
             finish()
@@ -184,6 +186,10 @@ class JoinProfileActivity() : AppCompatActivity(){
         }catch (e: Exception){
             null
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
 
