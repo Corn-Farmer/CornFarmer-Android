@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.splash
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,27 @@ class SplashActivity : AppCompatActivity(), KakaoView {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+//        UserApiClient.instance.unlink { error -> //카카오 토큰 삭제 -->서버에서 강제 삭제했을 때 앱에서 데이터 지우는 용도
+//            if (error != null) {
+//                Log.e("카카오토큰 삭제 실패", "연결 끊기 실패", error)
+//            } else {
+//                Log.i("토큰 삭제 성공", "연결 끊기 성공. SDK에서 토큰 삭제 됨")
+//            }
+//        }
+//        Log.d("회원탈퇴","회원탈퇴 성공")
+//        val getSharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+//        val getSharedPreferences2 = getSharedPreferences("userinfo", MODE_PRIVATE)
+//        val getSharedPreferences3 = getSharedPreferences("token", MODE_PRIVATE)
+//        val editor1 = getSharedPreferences.edit()
+//        val editor2 = getSharedPreferences2.edit()
+//        val editor3 = getSharedPreferences3.edit()
+//        editor1.putString("servertoken","")
+//        editor2.clear()
+//        editor3.putString("kakaotoken",null)
+//
+//        editor1.commit()
+//        editor2.commit()
+//        editor3.commit()
 
 
         Handler().postDelayed({
