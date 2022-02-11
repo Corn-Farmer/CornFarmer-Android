@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/detail_ott_service_iv"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:src="@drawable/ott_sample"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

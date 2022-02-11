@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="# 혼자 있고 싶을 때"
-        android:textStyle="bold"
+        android:textSize="17sp"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_bold"

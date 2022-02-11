@@ -62,9 +62,9 @@
                 android:id="@+id/detail_movie_cv"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="49dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv"
@@ -75,7 +75,8 @@
                     android:id="@+id/detail_movie_image_iv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    />
             </androidx.cardview.widget.CardView>
 
             <ImageView
@@ -115,7 +116,7 @@
                 android:layout_marginTop="18dp"
                 android:text="1,004명이 찜했어요"
                 android:textColor="#515151"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_cv"
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_cv"
 
@@ -123,27 +124,33 @@
 
             <TextView
                 android:id="@+id/detail_movie_title_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="영화 제목"
+                android:layout_marginTop="10dp"
+                android:text="영화 제목아아아아아아아아아"
+                android:maxLines="2"
                 android:textColor="#1E005D"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/detail_movie_cv"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_number_of_like_tv" />
 
             <TextView
                 android:id="@+id/detail_movie_release_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="2dp"
-                android:text="(2021 개봉)"
+                android:text="(2021)"
+                android:layout_marginEnd="7dp"
                 android:textColor="#7D7D7D"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/detail_movie_title_tv"
-                app:layout_constraintStart_toEndOf="@id/detail_movie_title_tv" />
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@id/detail_number_of_like_tv"
+                app:layout_constraintBottom_toBottomOf="@id/detail_number_of_like_tv"
+                app:layout_constraintEnd_toEndOf="@id/detail_movie_cv"
+
+                />
 
             <TextView
                 android:id="@+id/detail_movie_genre_tv"
@@ -160,9 +167,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_ott_service_rv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginStart="34dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
@@ -175,10 +183,12 @@
 
             <ImageView
                 android:id="@+id/detail_horizontal_line_iv"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:src="@drawable/horizontal_line"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,9 +198,9 @@
                 android:id="@+id/detail_movie_story_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="34dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="34dp"
+                android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="5"
                 android:text="줄거리"

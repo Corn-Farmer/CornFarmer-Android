@@ -36,7 +36,7 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
 
 
         binding.wishlistPreviousBtn1Iv.setOnClickListener {
-            finish()
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 

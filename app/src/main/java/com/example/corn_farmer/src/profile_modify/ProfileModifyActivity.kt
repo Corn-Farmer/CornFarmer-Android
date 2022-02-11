@@ -78,7 +78,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
 
         binding.modifyCancelIv.setOnClickListener {
-            finish()
+            startActivity(Intent(this,MainActivity::class.java))
         }
 
         binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
