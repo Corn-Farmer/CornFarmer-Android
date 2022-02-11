@@ -11,10 +11,10 @@ import com.example.corn_farmer.src.detail.model.getReviewList
 import com.example.cornfarmer_android.databinding.ItemCommentBinding
 import kotlin.coroutines.coroutineContext
 
-class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
+class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>, val token : String) : RecyclerView.Adapter<CommentRVAdapter.ViewHolder>() {
 
     interface CommentLikeBtnClickListener{
-        fun onHeartClick(getReviewList: getReviewList, position: Int)
+        fun onHeartClick(getReviewList: getReviewList, position: Int, token : String)
     }
 
     private lateinit var commentLikeBtnClickListener : CommentLikeBtnClickListener
@@ -31,20 +31,24 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>) : Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(reviewList[position], position)
-        var likeCnt = reviewList[position].likeCnt
+         var likeCnt = reviewList[position].likeCnt
         holder.binding.detailComentHeartOnIv.setOnClickListener {
-            likeCnt = likeCnt - 1
-            commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
-            holder.binding.detailComentHeartOnIv.visibility = View.GONE
-            holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
+            commentLikeBtnClickListener.onHeartClick(reviewList[position], position, token)
+            if (token != "") {
+                likeCnt = likeCnt - 1
+                holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
+                holder.binding.detailComentHeartOnIv.visibility = View.GONE
+                holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
+            }
         }
         holder.binding.detailComentHeartOffIv.setOnClickListener {
-            likeCnt = likeCnt + 1
-            commentLikeBtnClickListener.onHeartClick(reviewList[position], position)
-            holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
-            holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
-            holder.binding.detailComentHeartOffIv.visibility = View.GONE
+            commentLikeBtnClickListener.onHeartClick(reviewList[position], position, token)
+            if (token != "") {
+                likeCnt = likeCnt + 1
+                holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
+                holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
+                holder.binding.detailComentHeartOffIv.visibility = View.GONE
+            }
         }
     }
 
