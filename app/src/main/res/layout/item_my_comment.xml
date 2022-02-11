@@ -150,12 +150,15 @@
         android:id="@+id/item_mycomment_review_tv"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
         android:text="리뷰남기는데"
         android:textColor="#000000"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@id/item_mycomment_rate1_iv"
-        app:layout_constraintTop_toBottomOf="@id/item_mycomment_rate1_iv" />
+        app:layout_constraintStart_toEndOf="@id/item_mycomment_movie_img_cardview"
+        app:layout_constraintTop_toTopOf="@id/item_mycomment_movie_img_cardview"
+        app:layout_constraintBottom_toBottomOf="@id/item_mycomment_movie_img_cardview"
+        />
 
     <ImageView
         android:layout_width="match_parent"

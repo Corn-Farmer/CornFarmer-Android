@@ -64,4 +64,11 @@ class SplashActivity : AppCompatActivity(), KakaoView {
 
     override fun onPostTokenFailure(message: String) {
         Log.d("KAKAO-API", message.toString())
-}}
+}
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+}
+

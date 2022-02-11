@@ -141,4 +141,9 @@ class LoginActivity : AppCompatActivity(), KakaoView {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
 }

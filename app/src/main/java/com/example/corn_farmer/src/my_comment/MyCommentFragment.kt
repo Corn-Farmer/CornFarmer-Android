@@ -18,7 +18,9 @@ import com.example.corn_farmer.src.my_comment.model.getMyComment
 import com.example.corn_farmer.src.my_comment.model.getMyCommentResult
 import com.example.corn_farmer.src.my_comment_modify.MyCommentModifyFragment
 import com.example.corn_farmer.src.my_comment_modify.model.sendModifyComment
+import com.example.corn_farmer.src.profile.ProfileFragment
 import com.example.corn_farmer.src.recommend.model.movieInfo
+import com.example.corn_farmer.src.search.SearchFragment
 import com.example.cornfarmer_android.R
 import com.example.cornfarmer_android.databinding.FragmentMyCommentBinding
 
@@ -50,6 +52,11 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
         val service = MyCommentService(this, userIdx!!, "rate", servertoken!!)
         service.tryGetMyComment()
         sortReview()
+        binding.mycommentBackBtnIv.setOnClickListener {
+            val mActivity = activity as MainActivity
+            mActivity.callFragment(ProfileFragment())
+
+        }
 
 
         return binding.root

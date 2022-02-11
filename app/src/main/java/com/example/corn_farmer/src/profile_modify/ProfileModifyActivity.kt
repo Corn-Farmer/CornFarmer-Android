@@ -754,10 +754,17 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
     }
 
     override fun onPutModifySuccess(response: ModifyResponse) {
-        Log.d("Modify-API", response.toString())
         if (response.code == 3015) {
             Toast.makeText(this, "중복된 닉네임 입니다.", Toast.LENGTH_SHORT).show()
         } else {
+            val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
+            val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
+            val editor1 = sharedPreferences.edit()
+            val editor2 = sharedPreferences2.edit()
+            editor2.putString("servertoken",response.result!!.token)
+            editor1.putInt("useridx",response.result!!.userIdx)
+            editor1.commit()
+            editor2.commit()
             startActivity(Intent(this, MainActivity::class.java))
         }
 
