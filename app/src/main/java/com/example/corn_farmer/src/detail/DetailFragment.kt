@@ -157,34 +157,41 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 false
             )
 
+            val sharedPreferences =
+                context?.getSharedPreferences("join", Context.MODE_PRIVATE)
+            val servertoken = sharedPreferences?.getString("servertoken", "")
+
             // 댓글 리사이클러뷰
             val reviewInfo = movieInfo!!.reviewList
                 Log.d("reviewList", "${reviewInfo}")
-            val ReviewRVadapter = CommentRVAdapter(reviewInfo)
+            val ReviewRVadapter = CommentRVAdapter(reviewInfo, servertoken!!)
             binding.detailCommentRV.adapter = ReviewRVadapter
             binding.detailCommentRV.layoutManager = LinearLayoutManager(
                 context,
                 LinearLayoutManager.VERTICAL,
                 false
             )
+
             ReviewRVadapter.setCommentLikeBtnClickListener(object :
                 CommentRVAdapter.CommentLikeBtnClickListener { //후기
-                override fun onHeartClick(getReviewList: getReviewList, position: Int) {
-
+                override fun onHeartClick(getReviewList: getReviewList, position: Int, token: String) {
                     val sharedPreferences =
                         context?.getSharedPreferences("join", Context.MODE_PRIVATE)
-                    val servertoken = sharedPreferences?.getString("servertoken", "")
-
-                    if (servertoken == "") {
+                    val serverToken = sharedPreferences?.getString("servertoken", "")
+                    Log.d("servertoken", "${serverToken}")
+                    if (serverToken == "") {
                         Toast.makeText(context, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         var service = CommentLikeService(
                             this@DetailFragment,
                             movieInfo!!.reviewList[position].reviewIdx,
-                            servertoken!!
+                            serverToken!!
                         )
                         service.tryPutCommetLike()
                     }
+
+//                    var service = DetailService(this@DetailFragment, movieIdx, "likeCnt", servertoken!!)
+//                    service.tryGetMovieInfo()
                 }
             })
         } else {
