@@ -35,8 +35,8 @@
         android:textStyle="bold"
         android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile_iv"
-        app:layout_constraintTop_toTopOf="@id/detail_comment_border_iv"
-        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="@id/detail_comment_user_profile_iv"
+        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_profile_iv"
         android:layout_marginStart="8dp"/>
 
     <TextView
@@ -97,7 +97,7 @@
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="5dp"
         />
 
