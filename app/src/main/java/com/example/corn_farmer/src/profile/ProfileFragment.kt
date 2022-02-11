@@ -100,6 +100,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
             val deleteService = DeleteService(this,userIdx!!,serverToken!!)
             deleteService.tryPutDeleteUser()
+            dialog.dismiss()
         }
 
         dialog.findViewById<Button>(R.id.noBtn)?.setOnClickListener {
@@ -174,6 +175,10 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         editor2?.commit()
         editor3?.commit()
         startActivity(Intent(activity, LoginActivity::class.java))
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.remove(this)
+            ?.commit()
     }
 
     override fun onPutDeleteFailure(message: String) {

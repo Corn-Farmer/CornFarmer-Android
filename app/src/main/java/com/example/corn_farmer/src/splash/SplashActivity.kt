@@ -45,6 +45,8 @@ class SplashActivity : AppCompatActivity(), KakaoView {
 //        editor3.commit()
 
 
+
+
         Handler().postDelayed({
             val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
             val token = sharedPreferences.getString("kakaotoken", null)

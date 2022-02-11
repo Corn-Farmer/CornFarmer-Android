@@ -227,12 +227,14 @@ class JoinNicknameActivity : AppCompatActivity(),JoinView  {
 
             val intent = Intent(this, SplashJoinActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
 
     override fun onPostJoinFailure(message: String) {
     }
+
 
 
 }
