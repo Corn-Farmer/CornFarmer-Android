@@ -63,6 +63,5 @@ class SplashActivity : AppCompatActivity(), KakaoView {
     }
 
     override fun onPostTokenFailure(message: String) {
-        TODO("Not yet implemented")
-    }
-}
+        Log.d("KAKAO-API", message.toString())
+}}
