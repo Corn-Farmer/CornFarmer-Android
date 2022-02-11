@@ -35,5 +35,10 @@ class SplashJoinActivity : AppCompatActivity() {
         }, 3000)
     }
 
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
+
 
 }

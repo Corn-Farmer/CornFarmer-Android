@@ -1,5 +1,6 @@
 package com.example.corn_farmer.src.splash
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +22,8 @@ class SplashActivity : AppCompatActivity(), KakaoView {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+
 
 
 

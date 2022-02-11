@@ -40,6 +40,8 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
             val intent = Intent(this, JoinGenreActivity::class.java)
             startActivity(intent)
+            finish()
+
         }
 
 

@@ -93,4 +93,11 @@ class MainActivity : AppCompatActivity() {
             finish() // 액티비티 종료
         }
     }
+
+
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
+
 }

@@ -60,6 +60,8 @@ class JoinProfileActivity() : AppCompatActivity(){
         binding.profileNextIv.setOnClickListener {
             val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
+            finish()
+
         }
 
 

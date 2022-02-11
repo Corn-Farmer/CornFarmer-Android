@@ -36,6 +36,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
             editor.putString("genrelist",genreList.toString())
             editor.commit()
             startActivity(Intent(this,JoinNicknameActivity::class.java))
+            finish()
 
 
         }
