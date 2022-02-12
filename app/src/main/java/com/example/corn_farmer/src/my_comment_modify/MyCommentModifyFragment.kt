@@ -51,6 +51,17 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         return binding.root
     }
 
+    override fun onPutMyCommentModifySuccess(response: getCommnetModifyAPI) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frame, MyCommentFragment(nickname))
+            .commitAllowingStateLoss()
+        Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPutMyCommentModifyFailure(message: String) {
+        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+    }
+
     fun setRate() {
         if (reviewInfo.rate <= 0.1) {
             binding.commentRateCorn1ColorIv.visibility = View.INVISIBLE
@@ -127,23 +138,11 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         }
     }
 
-    override fun onPutMyCommentModifySuccess(response: getCommnetModifyAPI) {
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, MyCommentFragment(nickname))
-            .commitAllowingStateLoss()
-        Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPutMyCommentModifyFailure(message: String) {
-        Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
-    }
-
     fun getRate() {
 
+        binding.commentRateSaveTv.text = reviewInfo.rate.toString()
 
         binding.commentRateCorn1Iv.setOnClickListener {
-
-
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.GONE
             binding.commentRateCorn3ColorIv.visibility = View.GONE
