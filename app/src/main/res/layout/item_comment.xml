@@ -66,7 +66,7 @@
         android:id="@+id/detail_coment_heart_on_iv"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:src="@drawable/ic_heart_on"
+        android:src="@drawable/heart_fill_big"
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
@@ -77,12 +77,12 @@
         android:id="@+id/detail_coment_heart_off_iv"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:src="@drawable/detail_heart_black"
+        android:src="@drawable/like_empty_big"
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
         android:visibility="visible"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="5dp"
         />
 
 
@@ -93,7 +93,6 @@
         android:text="12"
         android:textColor="#515151"
         android:textSize="14sp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toEndOf="parent"

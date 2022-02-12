@@ -61,7 +61,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/detail_movie_cv"
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="480dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="49dp"
                 android:layout_marginEnd="20dp"
@@ -69,6 +69,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv"
                 app:cardCornerRadius="20dp"
+                android:background="@drawable/shadow_bg"
                 >
 
                 <ImageView
@@ -76,6 +77,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
+
+
+
                     />
             </androidx.cardview.widget.CardView>
 
@@ -84,7 +88,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="17dp"
-                android:src="@drawable/detail_heart_black"
+                android:src="@drawable/like_empty_big"
                 app:layout_constraintStart_toStartOf="@+id/detail_movie_cv"
                 app:layout_constraintTop_toBottomOf="@+id/detail_movie_cv" />
 
@@ -93,7 +97,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="17dp"
-                android:src="@drawable/ic_heart_on"
+                android:src="@drawable/heart_fill_big"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_cv"
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_cv" />

@@ -89,7 +89,7 @@
         app:layout_constraintTop_toTopOf="@id/item_ott_img_cv"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
-        android:src="@drawable/likefill"
+        android:src="@drawable/heart_fill_big"
         android:visibility="gone"
         android:scaleType="fitCenter"/>
     <TextView
