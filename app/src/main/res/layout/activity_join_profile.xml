@@ -30,8 +30,9 @@
 
         <ImageView
             android:id="@+id/profile_finish_iv"
-            android:layout_width="32dp"
-            android:layout_height="20dp"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent"
             android:src="@drawable/profile_finish" />
 
         <ImageView
@@ -39,7 +40,7 @@
             android:layout_width="32dp"
             android:layout_height="20dp"
             android:src="@drawable/profile_next"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -66,6 +67,7 @@
             android:id="@+id/profile_image_iv"
             android:layout_width="190dp"
             android:layout_height="190dp"
+            android:src="@drawable/cornfarmerprofile"
             android:background="@android:color/transparent" />
 
         <ImageView
@@ -78,5 +80,7 @@
             android:src="@drawable/profile_image_plus" />
 
     </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

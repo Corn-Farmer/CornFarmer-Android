@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinService
 import com.example.corn_farmer.src.profile.ProfileFragmentView
@@ -57,9 +58,18 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         service.tryGetModifyProfile()
 
 
-        val photo = sharedPreferences.getString("photo", null)
-        binding.modifyImageIv.setImageURI(Uri.parse(photo))
+//        val photo = sharedPreferences.getString("photo", null)
+//        binding.modifyImageIv.setImageURI(Uri.parse(photo))
 
+        binding.profileImageDelete2Iv.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("photo", "noimage")
+            editor.commit()
+
+            binding.modifyImageIv.setImageResource(R.drawable.cornfarmerprofile)
+
+        }
 
 
 
@@ -82,7 +92,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         }
 
         binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
-            val photo = sharedPreferences.getString("photo", null)
+            val photo = sharedPreferences.getString("photo", "noimage")
 
             var modifiedNickname: String = binding.modifyNicknameInfoEt.text.toString()
 
@@ -103,17 +113,32 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val servertoken = sharedPreferences.getString("servertoken", "")
             val requestMap: HashMap<String, RequestBody> = HashMap()
 
-            val file = File(photo.toString())
-            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
-            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+
 
             requestMap.put("nickname", nicknameRequest)
-            requestMap.put("userOtt", ottListRequest)
+            requestMap.put("ottList", ottListRequest)
             requestMap.put("genreList", genreRequest)
 
-            var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
-            service.tryPutModify()
+            if(photo == "noimage"){
+                val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
+                val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
+                var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
+                service.tryPutModify()
+            }else{
+                val file = File(photo.toString())
+                val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+                val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+                var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
+                service.tryPutModify()
+            }
 
+//            val file = File(photo.toString())
+//            val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+//            val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
+//
+//            var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
+//            service.tryPutModify()
+//
 
         }
     }//onCreate
@@ -786,6 +811,13 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         ottVisibility(nowUserHasOttList)
         genreVisibility(nowUserHasGenreList)
         binding.modifyBirthInfoEt.text = UserInfo.birth
+
+
+        Glide.with(this)
+            .load(response.result.photo)
+            .into(binding.modifyImageIv)
+
+
         if(UserInfo.is_male==1){
             binding.modifyGenderInfoEt.text = "남성"
         }
@@ -796,7 +828,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
     }
 
     override fun onGetModifyProfileFailure(message: String) {
-        TODO("Not yet implemented")
     }
 
 

@@ -83,6 +83,15 @@
                         android:layout_marginEnd="34dp"
                         android:src="@drawable/group_323" />
 
+                    <ImageView
+                        android:id="@+id/profile_image_delete2_iv"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="206dp"
+                        android:layout_marginTop="154dp"
+                        android:layout_marginEnd="34dp"
+                        android:src="@drawable/group_323" />
+
 
                 </RelativeLayout>
 

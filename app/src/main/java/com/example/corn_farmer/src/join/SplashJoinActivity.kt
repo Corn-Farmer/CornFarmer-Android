@@ -24,7 +24,16 @@ class SplashJoinActivity : AppCompatActivity() {
         val nickname = sharedPreferences.getString("nickname", null)
         val photo = sharedPreferences.getString("photo", null)
         binding.splashJoinNicknameTv.text = nickname.toString()
-        binding.splashJoinImageIv.setImageURI(Uri.parse(photo))
+
+
+        if(photo == null){
+            binding.splashJoinImageIv.setImageResource(R.drawable.cornfarmerprofile)
+        }else{
+            binding.splashJoinImageIv.setImageURI(Uri.parse(photo))
+        }
+
+
+
 
         Handler().postDelayed({
 

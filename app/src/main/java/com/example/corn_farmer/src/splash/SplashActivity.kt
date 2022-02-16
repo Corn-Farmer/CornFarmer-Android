@@ -48,9 +48,6 @@ class SplashActivity : AppCompatActivity(), KakaoView {
 //        editor1.putString("servertoken","")
 //        editor1.commit()
 
-
-
-
         Handler().postDelayed({
             val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
             val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)

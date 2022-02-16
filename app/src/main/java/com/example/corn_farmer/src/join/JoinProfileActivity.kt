@@ -63,7 +63,6 @@ class JoinProfileActivity() : AppCompatActivity(){
             val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
             finish()
-
         }
 
 
@@ -102,8 +101,7 @@ class JoinProfileActivity() : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == 200) {
-            binding.profileFinishIv.visibility = View.GONE
-            binding.profileNextIv.visibility = View.VISIBLE
+
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             saveBitmapAsPNGFile(bitmap)
@@ -111,8 +109,7 @@ class JoinProfileActivity() : AppCompatActivity(){
 
 
         } else if (resultCode == RESULT_OK && requestCode == 100) {
-            binding.profileFinishIv.visibility = View.GONE
-            binding.profileNextIv.visibility = View.VISIBLE
+
 
             val imageBitmap = data?.extras?.get("data") as Bitmap
             saveBitmapAsPNGFile(imageBitmap)
