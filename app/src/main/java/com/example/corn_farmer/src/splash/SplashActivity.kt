@@ -57,7 +57,7 @@ class SplashActivity : AppCompatActivity(), KakaoView {
             Log.d("splashToken",serverToken!!)
 
             //맨 처음에 카카오랑 연동된 유저인지 아닌지 판단
-            if (token == null) {
+            if (token == null || serverToken == "") {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
