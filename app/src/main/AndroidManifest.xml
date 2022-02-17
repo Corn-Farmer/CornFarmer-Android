@@ -20,7 +20,8 @@
         <activity
             android:name="com.example.corn_farmer.src.profile_modify.ProfileModifyActivity"
             android:exported="true" />
-
+        <activity android:name="com.example.corn_farmer.src.comment.CommentActivity"
+            android:exported="true"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.cornfarmer_android.fileProvider"
