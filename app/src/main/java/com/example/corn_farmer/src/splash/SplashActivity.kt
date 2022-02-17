@@ -8,15 +8,15 @@ import android.os.Handler
 import android.util.Log
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinProfileActivity
-import com.example.corn_farmer.src.kakao.KakaoService
-import com.example.corn_farmer.src.kakao.KakaoView
-import com.example.corn_farmer.src.kakao.LoginActivity
+import com.example.corn_farmer.src.kakao.*
 import com.example.corn_farmer.src.kakao.model.getKakaoAPI
+import com.example.corn_farmer.src.kakao.model.getNaverAPI
 import com.example.corn_farmer.src.kakao.model.sendKakaoAPI
+import com.example.corn_farmer.src.kakao.model.sendNaverAPI
 import com.example.cornfarmer_android.R
 import com.kakao.sdk.user.UserApiClient
 
-class SplashActivity : AppCompatActivity(), KakaoView {
+class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,18 +52,27 @@ class SplashActivity : AppCompatActivity(), KakaoView {
             val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
             val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
             val serverToken = sharedPreferences2.getString("servertoken","")
-            val token = sharedPreferences.getString("kakaotoken", null)
-            val kakao = sendKakaoAPI(token.toString())
+            val kakaotoken = sharedPreferences.getString("kakaotoken", null)
+            val navertoken = sharedPreferences.getString("navertoken", null)
+
+
+            val naver = sendNaverAPI(navertoken.toString())
+            val kakao = sendKakaoAPI(kakaotoken.toString())
             Log.d("splashToken",serverToken!!)
 
             //맨 처음에 카카오랑 연동된 유저인지 아닌지 판단
-            if (token == null || serverToken == "") {
+
+
+            if (serverToken == "") {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-            else { //자동 로그인
+            else if(navertoken == null){ //자동 로그인
                 var service = KakaoService(this, kakao)
+                service.tryPostToken()
+            }else if(kakaotoken == null){
+                var service = NaverService(this, naver)
                 service.tryPostToken()
             }
 
@@ -125,6 +134,55 @@ class SplashActivity : AppCompatActivity(), KakaoView {
     override fun onPause() {
         super.onPause()
         finish()
+    }
+
+    override fun onPostNaverSuccess(response: getNaverAPI) {
+        val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
+        val servertoken = sharedPreferences2.getString("servertoken", "")
+        val photo = sharedPreferences2.getString("check_camera", null)
+        val nickname = sharedPreferences2.getString("nickname", null)
+        var sex = sharedPreferences2.getString("isMale",null)
+        val birthday = sharedPreferences2.getString("birthday", null)
+        val ottList = sharedPreferences2.getString("ottlist", null)
+        val genreList = sharedPreferences2.getString("genrelist",null)
+        if( photo != "완료"){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if( ottList==null){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if( genreList==null){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if( birthday==null){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if(  nickname==null){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if(sex==null){
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+        else if (response.isSuccess == true && !(response.result!!.new_result)) {
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("servertoken", response.result!!.token)
+            editor.putInt("userIdx", response.result!!.userIdx)
+            editor.commit() // 나중에 지우기
+            startActivity(Intent(this, MainActivity::class.java)) //자동로그인
+        }
+        else if (response.isSuccess == true && response.result!!.new_result) {
+            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("servertoken", response.result!!.token)
+            editor.putInt("userIdx", response.result!!.userIdx)
+            editor.commit() //새로운 사람->회원가입
+            startActivity(Intent(this, JoinProfileActivity::class.java))
+        }
+    }
+
+    override fun onPostNAverFailure(message: String) {
+        Log.d("NAVER-API", message.toString())
     }
 }
 
