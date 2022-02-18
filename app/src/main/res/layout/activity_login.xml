@@ -46,19 +46,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_none_login_bt" />
 
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/login_naver_login_bt"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="45dp"-->
-    <!--        android:layout_marginStart="88dp"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginEnd="88dp"-->
-    <!--        android:background="@android:color/transparent"-->
-    <!--        android:scaleType="fitXY"-->
-    <!--        android:src="@drawable/naver_login"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />-->
+
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id="@+id/login_naver_login_bt"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

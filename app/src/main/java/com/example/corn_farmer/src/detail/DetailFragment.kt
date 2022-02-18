@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.corn_farmer.src.recommend.RecommendFragment
 import com.example.corn_farmer.src.detail.model.getMovieDetailAPI
 import com.example.corn_farmer.MainActivity
-import com.example.corn_farmer.src.comment.CommentFragment
+import com.example.corn_farmer.src.comment.CommentActivity
 import com.example.corn_farmer.src.detail.model.getCommentLike
 import com.example.corn_farmer.src.detail.model.getReviewList
 import com.example.corn_farmer.src.detail.model.putMovieLike
@@ -57,11 +57,16 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     }
 
     fun initialize() {
-        // 댓글 작성 버튼
+        // 후기 작성 버튼
         binding.detailPlusCommentIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx, keyword))
-                .commitAllowingStateLoss()
+//            (context as MainActivity).supportFragmentManager.beginTransaction()
+//                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx, keyword))
+//                .commitAllowingStateLoss()
+            val intent = Intent(requireContext(),CommentActivity()::class.java)
+            intent.putExtra("movieIdx",movieIdx)
+            intent.putExtra("keywordIdx",keywordIdx)
+            intent.putExtra("keyword",keyword)
+            startActivity(intent)
         }
 
         // 뒤로가기 버튼
