@@ -50,10 +50,11 @@ class CommentActivity() : AppCompatActivity(),
     override fun onPostReviewSuccess(response: getReviewAPI) {
 
         Log.d("comment", "${response}")
-        startActivity(Intent(this,MainActivity::class.java))
+//        startActivity(Intent(this,MainActivity::class.java))
 //        mActivity.supportFragmentManager.beginTransaction()
 //            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
 //            .commitAllowingStateLoss()
+        finish()
     }
 
     override fun onPostReviewFailure(message: String) {
@@ -84,10 +85,11 @@ class CommentActivity() : AppCompatActivity(),
 
 
         binding.commentCancelBtnIv.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+//            startActivity(Intent(this,MainActivity::class.java))
 //            mActivity.supportFragmentManager.beginTransaction()
 //                .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
 //                .commitAllowingStateLoss()
+            finish()
         }
         }
 
