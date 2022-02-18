@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.corn_farmer.src.comment.model.getReviewAPI
 import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import com.example.corn_farmer.MainActivity
@@ -41,6 +42,8 @@ class CommentActivity() : AppCompatActivity(),
         movieIdx = intent.getIntExtra("movieIdx",0)
         keywordIdx = intent.getIntExtra("keywordIdx",0)
         keyword = intent.getStringExtra("keyword")
+        var moviePhoto = intent.getStringExtra("moviePhoto")
+        Glide.with(this).load(moviePhoto).into(binding.commentMovieImgIv)
 
         getRate()
         initialize()
@@ -50,10 +53,6 @@ class CommentActivity() : AppCompatActivity(),
     override fun onPostReviewSuccess(response: getReviewAPI) {
 
         Log.d("comment", "${response}")
-//        startActivity(Intent(this,MainActivity::class.java))
-//        mActivity.supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
-//            .commitAllowingStateLoss()
         finish()
     }
 
@@ -85,10 +84,6 @@ class CommentActivity() : AppCompatActivity(),
 
 
         binding.commentCancelBtnIv.setOnClickListener {
-//            startActivity(Intent(this,MainActivity::class.java))
-//            mActivity.supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
-//                .commitAllowingStateLoss()
             finish()
         }
         }

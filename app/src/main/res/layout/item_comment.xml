@@ -43,10 +43,10 @@
         android:id="@+id/detail_comment_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2022년 4월 3일 작성"
+        android:text="2022-04-04"
         android:textColor="#7D7D7D"
-        android:textSize="9sp"
-        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
+        android:textSize="12sp"
+        android:layout_marginBottom="3dp"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintStart_toEndOf="@id/detail_comment_user_nickname_tv"
         android:layout_marginStart="6dp"/>
