@@ -52,8 +52,13 @@ class CommentActivity() : AppCompatActivity(),
 
     override fun onPostReviewSuccess(response: getReviewAPI) {
 
-        Log.d("comment", "${response}")
-        finish()
+        if(response.code == 2000){
+            Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+        }else if(binding.commentRateCorn1ColorIv.visibility == View.VISIBLE){
+            Log.d("comment", "${response}")
+            Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 
     override fun onPostReviewFailure(message: String) {
@@ -75,10 +80,8 @@ class CommentActivity() : AppCompatActivity(),
             if (servertoken == "") {
                 Toast.makeText(this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
-
                 var service = CommentService(this, review, servertoken!!)
                 service.tryPostReview()
-                Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
 

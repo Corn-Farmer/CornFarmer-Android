@@ -52,10 +52,18 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
     }
 
     override fun onPutMyCommentModifySuccess(response: getCommnetModifyAPI) {
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, MyCommentFragment(nickname))
-            .commitAllowingStateLoss()
-        Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
+
+        if(response.code == 2000){
+            Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
+        }else{
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, MyCommentFragment(nickname))
+                .commitAllowingStateLoss()
+            Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
+
+        }
+
+
     }
 
     override fun onPutMyCommentModifyFailure(message: String) {
