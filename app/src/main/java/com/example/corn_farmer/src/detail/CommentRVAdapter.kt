@@ -58,9 +58,10 @@ class CommentRVAdapter(private val reviewList : ArrayList<getReviewList>, val to
 
     inner class ViewHolder(val binding : ItemCommentBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(reviewList : getReviewList, position: Int) {
+            var createAt = reviewList.createAt.substring(0,10)
             binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
             binding.detailCommentTextTv.text = reviewList.contents
-            binding.detailCommentDateTv.text = reviewList.createdAt
+            binding.detailCommentDateTv.text = createAt
             binding.detailCommentLikecntTv.text = "${reviewList.likeCnt.toString()}"
             Glide.with(itemView).load(reviewList.writer.writerPhoto).into(binding.detailCommentUserProfileIv)
             Log.d("writerPhoto", reviewList.writer.writerPhoto)

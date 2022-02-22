@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.corn_farmer.src.comment.model.getReviewAPI
 import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import com.example.corn_farmer.MainActivity
@@ -41,6 +42,8 @@ class CommentActivity() : AppCompatActivity(),
         movieIdx = intent.getIntExtra("movieIdx",0)
         keywordIdx = intent.getIntExtra("keywordIdx",0)
         keyword = intent.getStringExtra("keyword")
+        var moviePhoto = intent.getStringExtra("moviePhoto")
+        Glide.with(this).load(moviePhoto).into(binding.commentMovieImgIv)
 
         getRate()
         initialize()
@@ -49,11 +52,13 @@ class CommentActivity() : AppCompatActivity(),
 
     override fun onPostReviewSuccess(response: getReviewAPI) {
 
-        Log.d("comment", "${response}")
-        startActivity(Intent(this,MainActivity::class.java))
-//        mActivity.supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
-//            .commitAllowingStateLoss()
+        if(response.code == 2000){
+            Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+        }else if(binding.commentRateCorn1ColorIv.visibility == View.VISIBLE){
+            Log.d("comment", "${response}")
+            Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 
     override fun onPostReviewFailure(message: String) {
@@ -75,19 +80,14 @@ class CommentActivity() : AppCompatActivity(),
             if (servertoken == "") {
                 Toast.makeText(this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
             } else {
-
                 var service = CommentService(this, review, servertoken!!)
                 service.tryPostReview()
-                Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
 
 
         binding.commentCancelBtnIv.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
-//            mActivity.supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frame, DetailFragment(movieIdx, keywordIdx, keyword!!))
-//                .commitAllowingStateLoss()
+            finish()
         }
         }
 

@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.join.JoinProfileActivity
+import com.example.corn_farmer.src.join.TermAgreeActivity
 import com.example.corn_farmer.src.kakao.*
 import com.example.corn_farmer.src.kakao.model.getKakaoAPI
 import com.example.corn_farmer.src.kakao.model.getNaverAPI
@@ -92,22 +93,22 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
         val ottList = sharedPreferences2.getString("ottlist", null)
         val genreList = sharedPreferences2.getString("genrelist",null)
         if( photo != "완료"){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( ottList==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( genreList==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( birthday==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if(  nickname==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if(sex==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if (response.isSuccess == true && !(response.result!!.new_result)) {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
@@ -123,7 +124,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit() //새로운 사람->회원가입
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
     }
 
@@ -146,22 +147,22 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
         val ottList = sharedPreferences2.getString("ottlist", null)
         val genreList = sharedPreferences2.getString("genrelist",null)
         if( photo != "완료"){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( ottList==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( genreList==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if( birthday==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if(  nickname==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if(sex==null){
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if (response.isSuccess == true && !(response.result!!.new_result)) {
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
@@ -177,7 +178,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit() //새로운 사람->회원가입
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }
     }
 

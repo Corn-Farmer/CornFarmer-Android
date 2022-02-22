@@ -12,6 +12,7 @@ import com.example.corn_farmer.MainActivity
 import com.example.corn_farmer.src.comment.CommentService
 import com.example.corn_farmer.src.comment.model.sendReviewAPI
 import com.example.corn_farmer.src.join.JoinProfileActivity
+import com.example.corn_farmer.src.join.TermAgreeActivity
 import com.example.corn_farmer.src.kakao.model.getKakaoAPI
 import com.example.corn_farmer.src.kakao.model.getNaverAPI
 import com.example.corn_farmer.src.kakao.model.sendKakaoAPI
@@ -164,7 +165,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
@@ -210,7 +211,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
-            startActivity(Intent(this, JoinProfileActivity::class.java))
+            startActivity(Intent(this, TermAgreeActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             val editor = sharedPreferences.edit()

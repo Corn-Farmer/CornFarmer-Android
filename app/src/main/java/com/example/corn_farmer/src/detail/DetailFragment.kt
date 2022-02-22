@@ -31,7 +31,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     lateinit var binding: FragmentDetailBinding
     var likeCount = 0
     var likeCount_comment = 0
-
+    var moviePhoto = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,6 +66,8 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             intent.putExtra("movieIdx",movieIdx)
             intent.putExtra("keywordIdx",keywordIdx)
             intent.putExtra("keyword",keyword)
+            intent.putExtra("moviePhoto",moviePhoto)
+
             startActivity(intent)
         }
 
@@ -142,6 +144,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             setViewMore(binding.detailMovieStoryTv, binding.viewMore)
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
+            moviePhoto = movieInfo!!.moviePhotoList[0]
 
             if (movieInfo.liked) {
                 binding.detailMovieLikeOnBtnIv.visibility = View.VISIBLE

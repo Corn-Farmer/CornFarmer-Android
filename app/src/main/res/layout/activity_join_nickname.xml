@@ -78,7 +78,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/robotoregular"
             android:hint="컨파머 (3글자 이상)"
-            android:maxLength="6"
+            android:maxLength="8"
             android:textColor="#7D7D7D"
             android:textSize="18sp" />
 
@@ -91,18 +91,34 @@
 
     </RelativeLayout>
 
-    <ImageView
+    <TextView
         android:id="@+id/nickname_using_nickname_iv"
         android:layout_width="154dp"
         android:visibility="invisible"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/nickname_using"
+        android:textColor="#FF0000"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:text="이미 사용중인 닉네임 입니다."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickname_nickname_rl" />
 
 
+    <TextView
+        android:id="@+id/nickname_nickname_num_iv"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="3자이상 6자이하로 적어주세요."
+        android:textColor="#FF0000"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nickname_nickname_rl" />
 
     <ImageView
         android:id="@+id/nickname_birthday_iv"

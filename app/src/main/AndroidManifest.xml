@@ -36,6 +36,12 @@
             android:name="com.example.corn_farmer.src.join.SplashJoinActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.corn_farmer.src.join.AgreeOneActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.corn_farmer.src.join.AgreeTwoActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.corn_farmer.src.join.JoinGenreActivity"
             android:exported="false" />
         <activity
@@ -44,6 +50,10 @@
         <activity
             android:name="com.example.corn_farmer.src.join.JoinNicknameActivity"
             android:exported="false" />
+        <activity
+            android:name="com.example.corn_farmer.src.join.TermAgreeActivity"
+            android:exported="true" >
+        </activity>
         <activity
             android:name="com.example.corn_farmer.src.join.JoinProfileActivity"
             android:exported="false" />

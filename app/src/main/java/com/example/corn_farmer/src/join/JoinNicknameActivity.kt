@@ -160,8 +160,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
     private fun signUp() {
 
-        var isMale: String
-
 //        if (binding.loginBirthdayEt.text.toString().isEmpty()
 //            || binding.loginBirthdayMonthEt.text.toString().isEmpty()
 //            || binding.loginBirthdayDayEt.text.toString().isEmpty()){
@@ -173,6 +171,8 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 //            Toast.makeText(this, "닉네임 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
 //            return
 //        }
+
+        var isMale: String
 
         val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -197,9 +197,15 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
 
+
         if (response.code == 3015) {
             binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
-        } else {
+            binding.nicknameUsingNicknameIv.text = response.message
+        }else if(response.code == 2022){
+            binding.nicknameNicknameNumIv.visibility = View.VISIBLE
+            binding.nicknameNicknameNumIv.text = response.message
+        }
+        else {
             val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putInt("useridx", response.result!!.userIdx)
