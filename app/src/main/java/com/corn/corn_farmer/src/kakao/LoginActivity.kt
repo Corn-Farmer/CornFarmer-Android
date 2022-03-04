@@ -14,7 +14,6 @@ import com.corn.corn_farmer.src.kakao.model.getNaverAPI
 import com.corn.corn_farmer.src.kakao.model.sendKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.sendNaverAPI
 import com.corn.cornfarmer_android.databinding.ActivityLoginBinding
-import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
@@ -141,10 +140,10 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         }
 
        binding.kakaoLoginButton.setOnClickListener {
-            if(LoginClient.instance.isKakaoTalkLoginAvailable(this)){
-                LoginClient.instance.loginWithKakaoTalk(this, callback = callback)
+            if(UserApiClient.instance.isKakaoTalkLoginAvailable(this)){
+                UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
             }else{
-                LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
+                UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
 
