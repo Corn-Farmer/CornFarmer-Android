@@ -7,8 +7,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <queries>
-        <package android:name="com.kakao.talk"/>
+        <package android:name="com.kakao.talk" />
     </queries>
 
     <application
@@ -21,10 +22,15 @@
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="com.corn.corn_farmer.src.detail.DeclationActivity"
+            android:exported="false" />
+        <activity
             android:name="com.corn.corn_farmer.src.profile_modify.ProfileModifyActivity"
             android:exported="true" />
-        <activity android:name="com.corn.corn_farmer.src.comment.CommentActivity"
-            android:exported="true"/>
+        <activity
+            android:name="com.corn.corn_farmer.src.comment.CommentActivity"
+            android:exported="true" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.corn.cornfarmer_android.fileProvider"
@@ -55,8 +61,7 @@
             android:exported="false" />
         <activity
             android:name="com.corn.corn_farmer.src.join.TermAgreeActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name="com.corn.corn_farmer.src.join.JoinProfileActivity"
             android:exported="false" />
@@ -68,13 +73,17 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="kakaolink"
-                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9"
-                    />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="kakaolink"
+                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9" />
             </intent-filter>
         </activity>
         <activity
@@ -93,12 +102,10 @@
         </activity>
         <activity
             android:name="com.corn.corn_farmer.MainActivity"
-            android:exported="true" >
-
-        </activity>
-        <activity android:name="com.corn.corn_farmer.src.wishlist.WishlistActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
+        <activity
+            android:name="com.corn.corn_farmer.src.wishlist.WishlistActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
