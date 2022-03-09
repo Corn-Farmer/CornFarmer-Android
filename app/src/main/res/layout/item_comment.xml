@@ -82,6 +82,7 @@
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
         android:visibility="visible"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         />
 
@@ -96,7 +97,19 @@
         app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/detail_comment_declaration_iv"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/declation_option"
+        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"
+        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="5dp"
         android:layout_marginTop="5dp"
         />
 
@@ -107,6 +120,8 @@
         android:layout_height="wrap_content"
         android:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!"
         android:textColor="#515151"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname_tv"
         app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname_tv"
