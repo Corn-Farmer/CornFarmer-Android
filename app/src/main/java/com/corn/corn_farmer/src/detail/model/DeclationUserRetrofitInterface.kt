@@ -7,6 +7,6 @@ interface DeclationUserRetrofitInterface {
     @POST("/reviews/{reviewIdx}/report")
     fun sendDeclationUser(
         @Path("reviewIdx") reviewIdx:Int,
-        @Body sendDeclationUserAPI : sendDeclationUserAPI,
+        @Body report : String,
         @Header("X-ACCESS-TOKEN") token : String) : Call<getDeclationUserAPI>
 }

@@ -55,7 +55,9 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
 
             alertDialog.findViewById<ImageView>(R.id.detail_declation_button_iv)
                 ?.setOnClickListener {
+
                     val intent = Intent(holder.itemView?.context, DeclationActivity::class.java)
+                    intent.putExtra("reviewIdx", reviewList[position].reviewIdx)
                     ContextCompat.startActivity(holder.itemView.context, intent, null)
 
                     alertDialog.dismiss()
