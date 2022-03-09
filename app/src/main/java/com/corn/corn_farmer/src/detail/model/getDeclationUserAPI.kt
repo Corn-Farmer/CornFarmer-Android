@@ -4,9 +4,7 @@ data class getDeclationUserAPI(
     var isSuccess : Boolean,
     var code : Int,
     var message : String,
-    var result : getDeclationResult,
-    var reportUser: Boolean,
-    var banUser: Boolean
+    var result : getDeclationResult
 )
 
 data class getDeclationResult(

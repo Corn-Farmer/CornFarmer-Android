@@ -8,6 +8,7 @@ import retrofit2.http.POST
 
 interface ReviewRetrofitInterface {
     @POST("/reviews")
-    fun sendReview(@Body sendReviewAPI: sendReviewAPI,
+    fun sendReview(
+        @Body sendReviewAPI: sendReviewAPI,
     @Header("X-ACCESS-TOKEN") token : String) : Call<getReviewAPI>
 }

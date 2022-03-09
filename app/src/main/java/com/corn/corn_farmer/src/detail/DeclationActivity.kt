@@ -3,8 +3,11 @@ package com.corn.corn_farmer.src.detail
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.corn.corn_farmer.src.comment.model.sendReviewAPI
 import com.corn.corn_farmer.src.detail.model.getDeclationUserAPI
+import com.corn.corn_farmer.src.detail.model.sendDeclationAPI
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityDeclationBinding
 
@@ -17,13 +20,14 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
         binding = ActivityDeclationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         binding.declationFinishBt.setOnClickListener {
 
             val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
             var serverToken = sharedPreferences?.getString("servertoken", "")
-            var reviewIdx = sharedPreferences?.getInt("reviewIdx", 0)
+
+
+            var reviewIdx = intent.getIntExtra("reviewIdx", 0)
+            Log.d("Lee2", reviewIdx.toString())
 
             var reportUser = false
             var banUser = false
@@ -40,7 +44,13 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
                 banUser = true
             }
 
-            var service = DeclationService(this, reviewIdx!!, binding.declationTextEt.text.toString(), serverToken!!)
+            val report = sendDeclationAPI(
+                binding.declationTextEt.text.toString(),
+                reportUser,
+                banUser
+            )
+
+            var service = DeclationService(this, reviewIdx!!, report, serverToken!!)
             service.tryPostDeclation()
         }
 
@@ -49,6 +59,8 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
     }
 
     override fun onPostDeclationSuccess(response: getDeclationUserAPI) {
+        finish()
+
     }
 
     override fun onPostDeclationFailure(message: String) {
