@@ -180,6 +180,8 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_title_tv" />
 
 
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/detail_ott_service_rv"
                 android:layout_width="match_parent"
@@ -246,6 +248,47 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
 
             <TextView
+                android:id="@+id/detail_detail_information_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:text="상세 정보"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+
+            <TextView
+                android:id="@+id/detail_director_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="감독:"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_detail_information_tv" />
+
+
+            <TextView
+                android:id="@+id/detail_appear_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="출연:"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_director_tv" />
+
+
+
+
+            <TextView
                 android:id="@+id/detail_comment_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -255,7 +298,9 @@
                 android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
-                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
+
+
 
             <ImageView
                 android:id="@+id/detail_plus_comment_iv"
@@ -266,7 +311,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_yellow_cicle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
 
             <ImageView
                 android:layout_width="wrap_content"

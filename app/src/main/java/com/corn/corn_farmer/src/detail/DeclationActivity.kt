@@ -27,7 +27,7 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
 
 
             var reviewIdx = intent.getIntExtra("reviewIdx", 0)
-            Log.d("Lee2", reviewIdx.toString())
+            Log.d("reviewIdx", reviewIdx.toString())
 
             var reportUser = false
             var banUser = false
