@@ -272,6 +272,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_detail_information_tv" />
 
+            <TextView
+                android:id="@+id/detail_director_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="감독 이름"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_director_tv" />
+
+
 
             <TextView
                 android:id="@+id/detail_appear_tv"
@@ -283,7 +296,19 @@
                 android:textColor="#000000"
                 android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_director_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_director_name_tv" />
+
+            <TextView
+                android:id="@+id/detail_appear_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="배우 이름"
+                android:textColor="#515151"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
 
 
 
@@ -298,7 +323,7 @@
                 android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
-                app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_appear_name_tv" />
 
 
 
@@ -311,7 +336,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_yellow_cicle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
+                app:layout_constraintTop_toBottomOf="@id/detail_appear_name_tv" />
 
             <ImageView
                 android:layout_width="wrap_content"
