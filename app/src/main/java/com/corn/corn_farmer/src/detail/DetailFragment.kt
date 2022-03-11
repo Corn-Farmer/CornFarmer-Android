@@ -32,7 +32,8 @@ import com.kakao.sdk.link.LinkClient
 import com.kakao.sdk.link.WebSharerClient
 import com.kakao.sdk.template.model.*
 
-class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String): Fragment(), DetailFragmentView {
+class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String) : Fragment(),
+    DetailFragmentView {
     lateinit var binding: FragmentDetailBinding
     var likeCount = 0
     var likeCount_comment = 0
@@ -88,11 +89,13 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 // 카카오톡 설치여부 확인
             if (LinkClient.instance.isKakaoLinkAvailable(requireContext())) {
                 // 카카오톡으로 카카오링크 공유 가능
-                LinkClient.instance.defaultTemplate(requireContext(),defaultFeed) { linkResult, error ->
+                LinkClient.instance.defaultTemplate(
+                    requireContext(),
+                    defaultFeed
+                ) { linkResult, error ->
                     if (error != null) {
                         Log.e("test", "카카오링크 보내기 실패", error)
-                    }
-                    else if (linkResult != null) {
+                    } else if (linkResult != null) {
                         Log.d("test", "카카오링크 보내기 성공 ${linkResult.intent}")
                         startActivity(linkResult.intent)
 
@@ -111,7 +114,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 // 1. CustomTabs으로 Chrome 브라우저 열기
                 try {
                     KakaoCustomTabsClient.openWithDefault(requireContext(), sharerUrl)
-                } catch(e: UnsupportedOperationException) {
+                } catch (e: UnsupportedOperationException) {
                     // Chrome 브라우저가 없을 때 예외처리
                 }
 
@@ -133,11 +136,11 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 //            (context as MainActivity).supportFragmentManager.beginTransaction()
 //                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx, keyword))
 //                .commitAllowingStateLoss()
-            val intent = Intent(requireContext(),CommentActivity()::class.java)
-            intent.putExtra("movieIdx",movieIdx)
-            intent.putExtra("keywordIdx",keywordIdx)
-            intent.putExtra("keyword",keyword)
-            intent.putExtra("moviePhoto",moviePhoto)
+            val intent = Intent(requireContext(), CommentActivity()::class.java)
+            intent.putExtra("movieIdx", movieIdx)
+            intent.putExtra("keywordIdx", keywordIdx)
+            intent.putExtra("keyword", keyword)
+            intent.putExtra("moviePhoto", moviePhoto)
 
             startActivity(intent)
         }
@@ -205,6 +208,18 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             // 영화 정보
             val movieInfo = response!!.result
             Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
+
+//            Log.d("detail!@#!@#", movieInfo!!.director.toString())
+
+//            binding.detailDirectorNameTv.text = movieInfo!!.director
+//
+//            if (movieInfo.actorList != null) {
+//                for (i in 0 until movieInfo.actorList.size) {
+//                    binding.detailAppearNameTv.text = movieInfo!!.actorList[i].toString()
+//                }
+//            }
+
+
             binding.detailMovieTitleTv.text = movieInfo!!.movieName
             binding.detailMovieReleaseTv.text = "(${movieInfo.releaseYear.toString()})"
             binding.detailMovieGenreTv.text =
@@ -212,7 +227,8 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
             likeCount = movieInfo?.likeCnt
-            movieGenre = "#"+movieInfo.movieGenreList?.joinToString(separator = " #") //공유하기에 쓰이는 변수
+            movieGenre =
+                "#" + movieInfo.movieGenreList?.joinToString(separator = " #") //공유하기에 쓰이는 변수
             movieTitle = movieInfo!!.movieName
             setViewMore(binding.detailMovieStoryTv, binding.viewMore)
             Glide.with(this!!).load(movieInfo!!.moviePhotoList[0]).into(binding.detailMovieImageIv)
@@ -243,7 +259,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             // 댓글 리사이클러뷰
             val reviewInfo = movieInfo!!.reviewList
-                Log.d("reviewList", "${reviewInfo}")
+            Log.d("reviewList", "${reviewInfo}")
             val ReviewRVadapter = CommentRVAdapter(reviewInfo, servertoken!!)
             binding.detailCommentRV.adapter = ReviewRVadapter
             binding.detailCommentRV.layoutManager = LinearLayoutManager(
@@ -254,7 +270,11 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
             ReviewRVadapter.setCommentLikeBtnClickListener(object :
                 CommentRVAdapter.CommentLikeBtnClickListener { //후기
-                override fun onHeartClick(getReviewList: getReviewList, position: Int, token: String) {
+                override fun onHeartClick(
+                    getReviewList: getReviewList,
+                    position: Int,
+                    token: String
+                ) {
                     val sharedPreferences =
                         context?.getSharedPreferences("join", Context.MODE_PRIVATE)
                     val serverToken = sharedPreferences?.getString("servertoken", "")

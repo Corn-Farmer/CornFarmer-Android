@@ -17,7 +17,9 @@ data class getMovieDetailResult(
     var ottList : ArrayList<getOttList>?,
     var synopsis : String,
     var reviewList : ArrayList<getReviewList>,
-    var liked : Boolean
+    var liked : Boolean,
+    var director : String,
+    var actorList: ArrayList<String>
 )
 
 data class getOttList(
@@ -35,6 +37,7 @@ data class getReviewList(
     var likeCnt : Int,
     var createAt : String,
     var liked : Boolean
+
 )
 
 data class getReviewWriterInfo(
