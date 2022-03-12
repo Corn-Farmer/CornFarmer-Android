@@ -209,15 +209,15 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             val movieInfo = response!!.result
             Log.d("detail!@#!@#", "dsdfsdf  ${movieInfo}")
 
-//            Log.d("detail!@#!@#", movieInfo!!.director.toString())
+            Log.d("detail!@#!@#", movieInfo!!.director.toString())
 
-//            binding.detailDirectorNameTv.text = movieInfo!!.director
-//
-//            if (movieInfo.actorList != null) {
-//                for (i in 0 until movieInfo.actorList.size) {
-//                    binding.detailAppearNameTv.text = movieInfo!!.actorList[i].toString()
-//                }
-//            }
+            binding.detailDirectorNameTv.text = movieInfo!!.director
+
+            if (movieInfo.actorList != null) {
+                for (i in 0 until movieInfo.actorList.size) {
+                    binding.detailAppearNameTv.text = movieInfo!!.actorList[i].toString()
+                }
+            }
 
 
             binding.detailMovieTitleTv.text = movieInfo!!.movieName
