@@ -137,6 +137,7 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_leftside_rightside_round_white.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_topside_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/cancel_button_round.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/declation_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.26979166666666665" />
@@ -156,7 +157,7 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/font/roboto_regular.xml" value="0.24222222222222223" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/font/robotobold.xml" value="0.24222222222222223" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_auth_code_handler.xml" value="0.35208333333333336" />
-        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_declation.xml" value="0.17391304347826086" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_declation.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_genre.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.536" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.264" />

@@ -1,10 +1,12 @@
 package com.corn.corn_farmer.src.detail
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.src.comment.model.sendReviewAPI
 import com.corn.corn_farmer.src.detail.model.getDeclationUserAPI
 import com.corn.corn_farmer.src.detail.model.sendDeclationAPI
@@ -19,6 +21,11 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
         super.onCreate(savedInstanceState)
         binding = ActivityDeclationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.declationPreviousBtnIv.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
 
         binding.declationFinishBt.setOnClickListener {
 
@@ -59,6 +66,7 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
     }
 
     override fun onPostDeclationSuccess(response: getDeclationUserAPI) {
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
 
     }

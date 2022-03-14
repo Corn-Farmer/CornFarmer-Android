@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/detail_previous_btn_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="17dp"
+                android:layout_height="8dp"
                 android:layout_marginStart="29dp"
                 android:layout_marginTop="38dp"
                 android:src="@drawable/back"
