@@ -66,8 +66,18 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
     }
 
     override fun onPostDeclationSuccess(response: getDeclationUserAPI) {
+
+        if(response.code == 3030){
+            Toast.makeText(this, "해당 리뷰를 찾을 수 없습니다", Toast.LENGTH_SHORT)
+            return
+        }else if(response.code == 2000){
+            Toast.makeText(this, "입력값을 확인해 주세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+
 
     }
 
