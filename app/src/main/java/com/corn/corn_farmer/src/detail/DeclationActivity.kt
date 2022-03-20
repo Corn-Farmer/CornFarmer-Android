@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.comment.model.sendReviewAPI
 import com.corn.corn_farmer.src.detail.model.getDeclationUserAPI
 import com.corn.corn_farmer.src.detail.model.sendDeclationAPI
@@ -29,7 +30,7 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
 
         binding.declationFinishBt.setOnClickListener {
 
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             var serverToken = sharedPreferences?.getString("servertoken", "")
 
 

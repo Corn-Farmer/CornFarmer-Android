@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.profile.model.ModifyResponse
 import com.corn.corn_farmer.src.profile_modify.model.ModifyProfileResponse
 import com.corn.cornfarmer_android.R
@@ -55,7 +56,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 //        binding.modifyImageIv.setImageURI(Uri.parse(photo))
 
         binding.profileImageDelete2Iv.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("photo", "noimage")
             editor.commit()
@@ -759,7 +760,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
             imageFile.close()
 
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
             Log.d("Photo", file.absolutePath.toString())
@@ -776,7 +777,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             Toast.makeText(this, "중복된 닉네임 입니다.", Toast.LENGTH_SHORT).show()
         } else {
             val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
-            val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences2 = Application.joinSharedPreferences
             val editor1 = sharedPreferences.edit()
             val editor2 = sharedPreferences2.edit()
             editor2.putString("servertoken",response.result!!.token)

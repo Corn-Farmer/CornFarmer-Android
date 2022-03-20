@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.detail.DetailFragment
 import com.corn.corn_farmer.src.home.HomeFragment
 import com.corn.corn_farmer.src.keyword.KeywordFragment
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             callFragment(HomeFragment())
         }
         binding.mainProfileIv.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val serverToken = sharedPreferences.getString("servertoken","")
             if(serverToken==""){
                 Toast.makeText(this,"로그인이 필요한 서비스입니다.",Toast.LENGTH_SHORT).show()

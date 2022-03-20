@@ -14,7 +14,8 @@ class Application : Application() {
     val API_URL = "http://3.34.223.58:9000"
     companion object {
         // 만들어져있는 SharedPreferences 를 사용해야합니다. 재생성하지 않도록 유념해주세요
-        lateinit var sSharedPreferences: SharedPreferences
+        lateinit var joinSharedPreferences: SharedPreferences
+        lateinit var tokenSharedPreferences: SharedPreferences
         lateinit var sRetrofit: Retrofit
         // JWT Token Header 키 값
         val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
@@ -25,8 +26,10 @@ class Application : Application() {
 
         KakaoSdk.init(this, "e355d004b5a2901c09d0626d9f643ad9")
 
-        sSharedPreferences =
-            applicationContext.getSharedPreferences("Corn-Farmer", MODE_PRIVATE)
+        joinSharedPreferences =
+            applicationContext.getSharedPreferences("join", MODE_PRIVATE)
+        tokenSharedPreferences =
+                applicationContext.getSharedPreferences("token", MODE_PRIVATE)
         // 레트로핏 인스턴스 생성
         initRetrofitInstance()
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.

@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.corn.cornfarmer_android.databinding.ActivitySplashJoinBinding
 import android.os.Handler
 import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.config.Application
 import com.corn.cornfarmer_android.R
 
 
@@ -19,7 +20,7 @@ class SplashJoinActivity : AppCompatActivity() {
         binding = ActivitySplashJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+        val sharedPreferences = Application.joinSharedPreferences
         val nickname = sharedPreferences.getString("nickname", null)
         val photo = sharedPreferences.getString("photo", null)
         binding.splashJoinNicknameTv.text = nickname.toString()

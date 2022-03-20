@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.model.getJoinAPI
 import com.corn.cornfarmer_android.databinding.ActivityJoinNicknameBinding
 import okhttp3.MediaType
@@ -28,7 +29,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         binding.nicknameFinishColorIv.setOnClickListener {
             signUp()
 
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val servertoken = sharedPreferences.getString("servertoken", "")
             val photo = sharedPreferences.getString("photo", null)
             val nickname = sharedPreferences.getString("nickname", null)
@@ -137,7 +138,10 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     }
 
     private fun joinCheck() {
-        if (binding.nicknameNicknameEt.length() < 3
+        if(binding.nicknameNicknameEt.length() > 2){
+            binding.nicknamePassOk.visibility = View.VISIBLE
+        }
+        else if (binding.nicknameNicknameEt.length() < 3
             || binding.loginBirthdayEt.length() < 4
             || binding.loginBirthdayMonthEt.length() < 2
             || binding.loginBirthdayDayEt.length() < 2
@@ -147,31 +151,22 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         ) {
             binding.nicknameFinishIv.visibility = View.VISIBLE
             binding.nicknameFinishColorIv.visibility = View.GONE
+            binding.nicknamePassOk.visibility = View.GONE
         } else if (binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
             && binding.loginBirthdayDayEt.length() > 1
         ) {
             binding.nicknameFinishIv.visibility = View.GONE
             binding.nicknameFinishColorIv.visibility = View.VISIBLE
+
+
         }
     }
 
     private fun signUp() {
 
-//        if (binding.loginBirthdayEt.text.toString().isEmpty()
-//            || binding.loginBirthdayMonthEt.text.toString().isEmpty()
-//            || binding.loginBirthdayDayEt.text.toString().isEmpty()){
-//            Toast.makeText(this, "생녈월일 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
-//            return
-//        }
-//
-//        if (binding.nicknameNicknameEt.text.toString().isEmpty()){
-//            Toast.makeText(this, "닉네임 형식이 잘못되었습니다.", Toast.LENGTH_LONG).show()
-//            return
-//        }
-
         var isMale: String
 
-        val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+        val sharedPreferences = Application.joinSharedPreferences
         val editor = sharedPreferences.edit()
 
         if (binding.nicknameMaleRb.isChecked) {

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.TermAgreeActivity
 import com.corn.corn_farmer.src.kakao.model.getKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.getNaverAPI
@@ -50,7 +51,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
                     val accessToken: String = mOAuthLoginInstance.getAccessToken(baseContext)
                     Log.d("naver", accessToken)
 
-                    val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
+                    val sharedPreferences = Application.tokenSharedPreferences
                     val editor = sharedPreferences.edit()
                     editor.putString("navertoken", accessToken)
                     editor.commit()
@@ -122,7 +123,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
 
                 Log.d("LEE", token.accessToken.toString())
 
-                val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
+                val sharedPreferences = Application.tokenSharedPreferences
                 val editor = sharedPreferences.edit()
                 editor.putString("kakaotoken", token.accessToken.toString())
                 editor.commit()
@@ -154,14 +155,14 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         Log.d("KAKAO-API", response.toString())
 
         if(response.isSuccess == true && response.result!!.new_result){
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
             startActivity(Intent(this, TermAgreeActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
@@ -178,7 +179,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         super.onStart()
 
 
-        val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
+        val sharedPreferences = Application.tokenSharedPreferences
         val naverToken = sharedPreferences.getString("navertoken", null)
         val kakaoToken = sharedPreferences.getString("kakaotoken", null)
 
@@ -200,14 +201,14 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         Log.d("NAVER-API", response.toString())
 
         if(response.isSuccess == true && response.result!!.new_result){
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
             startActivity(Intent(this, TermAgreeActivity::class.java))
         }else if(response.isSuccess == true && !(response.result!!.new_result)){
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)

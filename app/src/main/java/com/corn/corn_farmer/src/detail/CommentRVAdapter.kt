@@ -31,11 +31,11 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
         commentLikeBtnClickListener = heartClickListener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding: ItemCommentBinding =
-            ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val binding: ItemCommentBinding =
+                ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolder(binding)
+            return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -44,10 +44,12 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
 
         holder.binding.detailCommentDeclarationIv.setOnClickListener {
 
+            val context = holder.itemView.context
+
             val mDialogView =
-                LayoutInflater.from(holder.itemView.context)
+                LayoutInflater.from(context)
                     .inflate(R.layout.detail_declation_dialog, null)
-            val mBuilder = AlertDialog.Builder(holder.itemView.context, R.style.SelectDeclation)
+            val mBuilder = AlertDialog.Builder(context, R.style.SelectDeclation)
                 .setView(mDialogView)
 
             val alertDialog = mBuilder.show()
@@ -56,9 +58,9 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
             alertDialog.findViewById<ImageView>(R.id.detail_declation_button_iv)
                 ?.setOnClickListener {
 
-                    val intent = Intent(holder.itemView?.context, DeclationActivity::class.java)
+                    val intent = Intent(context, DeclationActivity::class.java)
                     intent.putExtra("reviewIdx", reviewList[position].reviewIdx)
-                    ContextCompat.startActivity(holder.itemView.context, intent, null)
+                    context.startActivity(intent)
 
                     alertDialog.dismiss()
                 }
@@ -92,6 +94,7 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
 
     inner class ViewHolder(val binding: ItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(reviewList: getReviewList, position: Int) {
             var createAt = reviewList.createAt.substring(0, 10)
             binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
@@ -108,6 +111,7 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
                 binding.detailComentHeartOnIv.visibility = View.GONE
                 binding.detailComentHeartOffIv.visibility = View.VISIBLE
             }
+            
         }
     }
 }

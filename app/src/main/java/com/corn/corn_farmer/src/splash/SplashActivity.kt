@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.TermAgreeActivity
 import com.corn.corn_farmer.src.kakao.*
 import com.corn.corn_farmer.src.kakao.model.getKakaoAPI
@@ -31,9 +32,9 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
 //            }
 //        }
 //        Log.d("회원탈퇴","회원탈퇴 성공")
-//        val getSharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+//        val getSharedPreferences = Application.joinSharedPreferences
 //        val getSharedPreferences2 = getSharedPreferences("userinfo", MODE_PRIVATE)
-//        val getSharedPreferences3 = getSharedPreferences("token", MODE_PRIVATE)
+//        val getSharedPreferences3 = Application.tokenSharedPreferences
 //        val editor1 = getSharedPreferences.edit()
 //        val editor2 = getSharedPreferences2.edit()
 //        val editor3 = getSharedPreferences3.edit()
@@ -49,11 +50,11 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
 //        editor1.commit()
 
         Handler().postDelayed({
-            val sharedPreferences = getSharedPreferences("token", MODE_PRIVATE)
-            val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
-            val serverToken = sharedPreferences2.getString("servertoken","")
-            val kakaotoken = sharedPreferences.getString("kakaotoken", null)
-            val navertoken = sharedPreferences.getString("navertoken", null)
+            val tokenSharedPreferences = Application.tokenSharedPreferences
+            val joinSharedPreferences = Application.joinSharedPreferences
+            val serverToken = joinSharedPreferences.getString("servertoken","")
+            val kakaotoken = tokenSharedPreferences.getString("kakaotoken", null)
+            val navertoken = tokenSharedPreferences.getString("navertoken", null)
 
 
             val naver = sendNaverAPI(navertoken.toString())
@@ -83,7 +84,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {
-        val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
+        val sharedPreferences2 = Application.joinSharedPreferences
         val servertoken = sharedPreferences2.getString("servertoken", "")
         val photo = sharedPreferences2.getString("check_camera", null)
         val nickname = sharedPreferences2.getString("nickname", null)
@@ -110,7 +111,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if (response.isSuccess == true && !(response.result!!.new_result)) {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
@@ -118,7 +119,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             startActivity(Intent(this, MainActivity::class.java)) //자동로그인
         }
         else if (response.isSuccess == true && response.result!!.new_result) {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
@@ -137,7 +138,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
     }
 
     override fun onPostNaverSuccess(response: getNaverAPI) {
-        val sharedPreferences2 = getSharedPreferences("join", MODE_PRIVATE)
+        val sharedPreferences2 = Application.joinSharedPreferences
         val servertoken = sharedPreferences2.getString("servertoken", "")
         val photo = sharedPreferences2.getString("check_camera", null)
         val nickname = sharedPreferences2.getString("nickname", null)
@@ -164,7 +165,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             startActivity(Intent(this, TermAgreeActivity::class.java))
         }
         else if (response.isSuccess == true && !(response.result!!.new_result)) {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
@@ -172,7 +173,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             startActivity(Intent(this, MainActivity::class.java)) //자동로그인
         }
         else if (response.isSuccess == true && response.result!!.new_result) {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)

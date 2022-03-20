@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.kakao.OttSelectCustomDialog
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityJoinOttBinding
@@ -29,7 +30,7 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.ottFinishColorIv.setOnClickListener {
 
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("ottlist", ottList.toString())
             editor.commit()
@@ -76,7 +77,7 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
         dialog.window?.setGravity(Gravity.CENTER_VERTICAL)
 
         dialog.findViewById<Button>(R.id.select_next_time_bt)?.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("ottlist", ottList.toString())
             editor.commit()

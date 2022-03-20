@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.corn.corn_farmer.config.Application
 import com.corn.cornfarmer_android.databinding.ActivityJoinGenreBinding
 import java.util.*
 
@@ -21,7 +22,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
 
 
         binding.genreFinishColorIv.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("genrelist",genreList.toString())
             editor.commit()

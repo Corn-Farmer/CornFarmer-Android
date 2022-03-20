@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.corn.corn_farmer.config.Application
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityJoinProfileBinding
 import java.io.File
@@ -53,8 +54,12 @@ class JoinProfileActivity() : AppCompatActivity(){
         }
 
         binding.profileNextIv.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
-            sharedPreferences.edit().putString("check_camera","완료").commit()
+
+            val joinSharedPreferences = Application.joinSharedPreferences
+            joinSharedPreferences.edit().putString("check_camera","완료").commit()
+
+//            val sharedPreferences = Application.joinSharedPreferences
+//            sharedPreferences.edit().putString("check_camera","완료").commit()
             val intent = Intent(this, JoinOttActivity::class.java)
             startActivity(intent)
             finish()
@@ -168,7 +173,7 @@ class JoinProfileActivity() : AppCompatActivity(){
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
             imageFile.close()
 
-            val sharedPreferences = getSharedPreferences("join", MODE_PRIVATE)
+            val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
             Log.d("Photo",file.absolutePath.toString())
