@@ -55,7 +55,7 @@ class TermAgreeActivity : AppCompatActivity() {
         binding.agreeCheckTwoCheckbox.setOnClickListener { onCheckChanged(binding.agreeCheckTwoCheckbox) }
         binding.agreeNextTv.setOnClickListener {
             if(isNextPossible == 1){
-                startActivity(Intent(this,JoinProfileActivity::class.java))
+                startActivity(Intent(this,JoinOttActivity::class.java))
             }
         }
 
