@@ -61,7 +61,7 @@
             android:exported="false" />
         <activity
             android:name="com.corn.corn_farmer.src.join.TermAgreeActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.corn.corn_farmer.src.join.JoinProfileActivity"
             android:exported="false" />
@@ -74,11 +74,17 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
+
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
+            <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
@@ -102,7 +108,7 @@
         </activity>
         <activity
             android:name="com.corn.corn_farmer.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.corn.corn_farmer.src.wishlist.WishlistActivity"
             android:exported="true"></activity>

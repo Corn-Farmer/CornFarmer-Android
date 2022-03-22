@@ -46,14 +46,16 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
 
             val context = holder.itemView.context
 
+
             val mDialogView =
                 LayoutInflater.from(context)
                     .inflate(R.layout.detail_declation_dialog, null)
             val mBuilder = AlertDialog.Builder(context, R.style.SelectDeclation)
                 .setView(mDialogView)
 
+
             val alertDialog = mBuilder.show()
-//            alertDialog.window?.setGravity(Gravity.BOTTOM)
+//            alertDialog.window?.setGravity(Gravity.END)
 
             alertDialog.findViewById<ImageView>(R.id.detail_declation_button_iv)
                 ?.setOnClickListener {
