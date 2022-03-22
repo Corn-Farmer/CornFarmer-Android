@@ -63,9 +63,6 @@
             android:name="com.corn.corn_farmer.src.join.TermAgreeActivity"
             android:exported="true" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.JoinProfileActivity"
-            android:exported="false" />
-        <activity
             android:name="com.corn.corn_farmer.src.kakao.LoginActivity"
             android:exported="false" />
         <activity
