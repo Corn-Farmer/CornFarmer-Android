@@ -41,9 +41,6 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         mOAuthLoginInstance = OAuthLogin.getInstance()
         mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
 
-
-
-
         val mOAuthLoginHandler: OAuthLoginHandler = @SuppressLint("HandlerLeak")
         object : OAuthLoginHandler() {
             override fun run(success: Boolean) {
@@ -59,10 +56,6 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
                     val naver = sendNaverAPI(accessToken.toString())
                     var service = NaverService(this@LoginActivity,naver)
                     service.tryPostToken()
-//                val refreshToken: String = mOAuthLoginModule.getRefreshToken(baseContext)
-//                val expiresAt: Long = mOAuthLoginModule.getExpiresAt(baseContext)
-//                val tokenType: String = mOAuthLoginModule.getTokenType(baseContext)
-//                var intent = Intent(this, )
                 } else {
                     val errorCode: String = mOAuthLoginInstance.getLastErrorCode(mContext).code
                     val errorDesc = mOAuthLoginInstance.getLastErrorDesc(mContext)
@@ -76,7 +69,6 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         }
 
         binding.loginNaverLoginBt.setOAuthLoginHandler(mOAuthLoginHandler)
-
 
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
@@ -121,7 +113,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             }
             else if (token != null) {
 
-                Log.d("LEE", token.accessToken.toString())
+                Log.d("kakaotoken", token.accessToken.toString())
 
                 val sharedPreferences = Application.tokenSharedPreferences
                 val editor = sharedPreferences.edit()
@@ -147,12 +139,15 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
-
-
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {
         Log.d("KAKAO-API", response.toString())
+
+        if(response.code == 4000){
+            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if(response.isSuccess == true && response.result!!.new_result){
             val sharedPreferences = Application.joinSharedPreferences
@@ -166,7 +161,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
-            editor.commit() // 나중에 지우기
+            editor.commit()
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
@@ -178,7 +173,6 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
     override fun onStart() {
         super.onStart()
 
-
         val sharedPreferences = Application.tokenSharedPreferences
         val naverToken = sharedPreferences.getString("navertoken", null)
         val kakaoToken = sharedPreferences.getString("kakaotoken", null)
@@ -189,7 +183,6 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         val kakao = sendKakaoAPI(kakaoToken.toString())
         var service = KakaoService(this,kakao)
         service.tryPostToken()
-
     }
 
     override fun onPause() {
@@ -199,6 +192,11 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
 
     override fun onPostNaverSuccess(response: getNaverAPI) {
         Log.d("NAVER-API", response.toString())
+
+        if(response.code == 4000){
+            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if(response.isSuccess == true && response.result!!.new_result){
             val sharedPreferences = Application.joinSharedPreferences

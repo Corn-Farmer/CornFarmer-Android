@@ -51,7 +51,6 @@ class CommentActivity() : AppCompatActivity(),
     }
 
     override fun onPostReviewFailure(message: String) {
-//        Toast.makeText(, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
         Toast.makeText(this,"네트워크 연결에 실패했습니다.",Toast.LENGTH_SHORT).show()
     }
 

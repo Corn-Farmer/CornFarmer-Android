@@ -227,6 +227,10 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
 
+        if(response.code == 4000){
+            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if (response.code == 3015) {
             binding.nicknameUsingNicknameIv.visibility = View.VISIBLE

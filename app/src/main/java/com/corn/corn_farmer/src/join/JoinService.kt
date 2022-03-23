@@ -17,13 +17,13 @@ class JoinService(var view: JoinView,var token: String, var file: MultipartBody.
             retrofitInterface.sendJoin(token, file, params).enqueue(object : Callback<getJoinAPI?>{
 
                 override fun onResponse(call: Call<getJoinAPI?>, response: Response<getJoinAPI?>) {
-                    Log.d("LEE", response.message())
+                    Log.d("JOIN", response.message())
                     response.body()?.let { view.onPostJoinSuccess(it) }
                 }
 
                 override fun onFailure(call: Call<getJoinAPI?>, t: Throwable) {
 
-                    Log.d("LEE", t.toString())
+                    Log.d("JOIN", t.toString())
                     view.onPostJoinFailure(t.message?:"통신오류")
                 }
 

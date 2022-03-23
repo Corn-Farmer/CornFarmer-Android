@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -125,6 +126,11 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
 
+        if(response.code == 4000){
+            Toast.makeText(this.activity, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val ott = response.result.ottList //서버에서 받아옴
         val profileRVAdapter = ProfileRVAdapter(ott)
         binding.profileRc1.layoutManager = GridLayoutManager(requireContext(), 5)
@@ -167,6 +173,8 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
     override fun onPutDeleteSuccess(response: DeleteResponse) {
 
+
+
         val getSharedPreferences3 = this.activity?.getSharedPreferences("token", Context.MODE_PRIVATE)
 
         val navertoken = getSharedPreferences3!!.getString("navertoken", null)
@@ -206,9 +214,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
             mOAuthLoginInstance.logoutAndDeleteToken(mContext)
 
-//            mOAuthLoginInstance!!.logout(mContext)
-
-
             Log.d("회원탈퇴","회원탈퇴 성공")
 
             val getSharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
@@ -219,8 +224,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
             editor1?.clear()
             editor2?.clear()
             editor3?.putString("navertoken",null)
-
-
 
             editor1?.commit()
             editor2?.commit()
@@ -236,11 +239,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
                 ?.commit()
 
         }
-
-
-
-
-
     }
 
     override fun onPutDeleteFailure(message: String) {
