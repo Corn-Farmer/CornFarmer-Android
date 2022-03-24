@@ -132,6 +132,7 @@
         <entry key="..\:/Users/jhje5/Desktop/test/CornFarmer-Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/jhje5/Documents/GitHub/CornFarmer-Android/app/src/main/res/layout/fragment_comment.xml" value="0.33" />
         <entry key="..\:/Users/jhje5/Documents/GitHub/CornFarmer-Android/app/src/main/res/layout/fragment_detail.xml" value="0.33" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable-v24/button_duplicate_check_bt.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_bottomside_round.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/drawable/button_leftside_rightside_round_white.xml" value="0.26979166666666665" />
@@ -159,7 +160,7 @@
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_auth_code_handler.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_declation.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_genre.xml" value="0.264" />
-        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.264" />
+        <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_nickname.xml" value="0.351878612716763" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_ott.xml" value="0.264" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_profile.xml" value="0.176" />
         <entry key="..\:/Users/joon_/Desktop/CornFarmer-Android/app/src/main/res/layout/activity_join_splash.xml" value="0.1646174863387978" />
