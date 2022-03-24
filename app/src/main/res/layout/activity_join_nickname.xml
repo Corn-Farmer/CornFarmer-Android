@@ -126,7 +126,7 @@
             android:layout_marginStart="256dp"
             android:visibility="gone"
             android:layout_marginTop="14dp"
-            android:background="@drawable/nickname_allow" />
+            android:background="@drawable/id_pass" />
 
     </RelativeLayout>
 
