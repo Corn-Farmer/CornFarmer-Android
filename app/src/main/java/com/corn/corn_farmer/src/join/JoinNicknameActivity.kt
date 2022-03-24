@@ -33,6 +33,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
@@ -62,6 +64,23 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         }
 
         binding.nicknameFinishColorIv.setOnClickListener {
+
+            var today: String = binding.loginBirthdayEt.text.toString() +
+                    "" + binding.loginBirthdayMonthEt.text.toString() +
+                    "" + binding.loginBirthdayDayEt.text.toString()
+
+            var currentTime: Long = System.currentTimeMillis()
+            val dataFormat1 = SimpleDateFormat("yyyyMMdd")
+            val dataFormat2 = SimpleDateFormat("yyyy")
+
+            if(today.toInt() > dataFormat1.format(currentTime).toInt()){
+                Toast.makeText(this, "오늘 날짜 보다 큽니다!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }else if( today.toInt() < dataFormat1.format(currentTime).toInt() - 1000000){
+                Toast.makeText(this, "${dataFormat2.format(currentTime).toInt() - 100}년 이상 기입해 주세요", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             signUp()
 
             val sharedPreferences = Application.joinSharedPreferences
@@ -201,6 +220,11 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     }
 
     private fun signUp() {
+
+
+
+
+
 
         var isMale: String
 
