@@ -74,7 +74,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             val genreList = sharedPreferences.getString("genrelist", null)
 
             val joinSharedPreferences = Application.joinSharedPreferences
-            joinSharedPreferences.edit().putString("check_camera","완료").commit()
+            joinSharedPreferences.edit().putString("check_camera", "완료").commit()
 
             val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
             val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex)
@@ -106,12 +106,12 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             Log.d("JOIN-genrelist", genreList.toString().replace("[", "").replace("]", ""))
 
 
-            if(photo == null){
+            if (photo == null) {
                 val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
                 val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
                 var service = JoinService(this, servertoken.toString(), body, requestMap)
                 service.tryPostJoin()
-            }else{
+            } else {
                 val file = File(photo.toString())
                 val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
                 val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
@@ -128,10 +128,9 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 joinCheck()
-                if(binding.nicknameNicknameEt.length()< 3){
+                if (binding.nicknameNicknameEt.length() < 3) {
                     binding.nicknamePassOk.visibility = View.GONE
-                }
-                else{
+                } else {
                     binding.nicknamePassOk.visibility = View.VISIBLE
                 }
 
@@ -185,9 +184,10 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             binding.loginBirthdayEt.length() < 4 ||
             binding.loginBirthdayMonthEt.length() < 2 ||
             binding.loginBirthdayDayEt.length() < 2 ||
-            binding.loginBirthdayEt.text.toString().toInt() > 2100 ||
+            binding.loginBirthdayEt.text.toString().toInt() > 2022 ||
             binding.loginBirthdayMonthEt.text.toString().toInt() > 12 ||
-            binding.loginBirthdayDayEt.text.toString().toInt() > 31
+            binding.loginBirthdayDayEt.text.toString().toInt() > 31 ||
+            binding.loginBirthdayEt.text.toString().toInt() < 1900
         ) {
             binding.nicknameFinishIv.visibility = View.VISIBLE
             binding.nicknameFinishColorIv.visibility = View.GONE
@@ -227,33 +227,41 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     override fun onPostJoinSuccess(response: getJoinAPI) {
         Log.d("JOIN-API", response.toString())
 
-        if(response.code == 4000){
-            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
-            return
-        }
 
-        if (response.code == 3015) {
-            binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
-            binding.nicknameUsingNicknameIv.text = response.message
-        }else if(response.code == 2022){
-            binding.nicknameNicknameNumIv.visibility = View.VISIBLE
-            binding.nicknameNicknameNumIv.text = response.message
-        }
-        else {
-            val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putInt("useridx", response.result!!.userIdx)
-            editor.commit()
 
-            val intent = Intent(this, SplashJoinActivity::class.java)
-            startActivity(intent)
-            finish()
+        when (response.code) {
+            2022 -> {
+                binding.nicknameNicknameNumIv.visibility = View.VISIBLE
+                binding.nicknameNicknameNumIv.text = response.message
+                return
+            }
+            3015 -> {
+                binding.nicknameUsingNicknameIv.visibility = View.VISIBLE
+                binding.nicknameUsingNicknameIv.text = response.message
+                return
+            }
+            4000 -> {
+                Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                return
+            }
+            else -> {
+                val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putInt("useridx", response.result!!.userIdx)
+                editor.commit()
+
+                val intent = Intent(this, SplashJoinActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
     }
 
     override fun onPostJoinFailure(message: String) {
+        Log.d("JoinFail", message)
     }
+
     private fun showDialog() {
         val mDialogView =
             LayoutInflater.from(this).inflate(R.layout.image_select_custom_dialog, null)
@@ -337,7 +345,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         }
     }
 
-    private fun newPngFileName() : String {
+    private fun newPngFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
         return "${filename}.png"
@@ -345,14 +353,14 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
     private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
         val path = File(filesDir, "image")
-        if(!path.exists()){
+        if (!path.exists()) {
             path.mkdirs()
         }
 
         val photoName = newPngFileName()
         val file = File(path, photoName)
         var imageFile: OutputStream? = null
-        try{
+        try {
             file.createNewFile()
             imageFile = FileOutputStream(file)
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageFile)
@@ -361,10 +369,10 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("photo", file.absolutePath.toString())
-            Log.d("Photo",file.absolutePath.toString())
+            Log.d("Photo", file.absolutePath.toString())
             editor.commit()
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             null
         }
     }
