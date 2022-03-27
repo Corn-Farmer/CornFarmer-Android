@@ -42,7 +42,6 @@
 
             <ImageView
                 android:id="@+id/recommend_news_btn_iv"
-                android:src="@drawable/bell"
                 android:layout_width="29dp"
                 android:layout_height="29dp"
                 app:layout_constraintBottom_toBottomOf="@id/recommend_heart_btn_iv"

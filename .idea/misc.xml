@@ -208,6 +208,38 @@
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_profile_ott.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/item_wishmovie.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/korea_1/AndroidStudioProjects/CornFarmer-Android/app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.303125" />
+        <entry key="app/src/main/res/layout/activity_comment.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_declation.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_join_genre.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_join_nickname.xml" value="0.2776489257812501" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.26856842041015627" />
+        <entry key="app/src/main/res/layout/activity_profile_modify.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_splash_join.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_terms_agree.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_wishlist.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/custom_dialog_loading.xml" value="0.2858901977539063" />
+        <entry key="app/src/main/res/layout/custom_dialog_user_delete.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/detail_declation_dialog.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.22687481384489125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_keyword.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_my_comment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_my_comment_modify.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_recommend.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/image_select_custom_dialog.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_comment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_keyword.xml" value="0.25384615384615383" />
+        <entry key="app/src/main/res/layout/item_my_comment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_ott_service.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_otts.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_profile_genre.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_profile_ott.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/item_wishmovie.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/ott_select_custom_dialog.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>

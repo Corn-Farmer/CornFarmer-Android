@@ -42,7 +42,7 @@ class CommentActivity() : AppCompatActivity(),
     override fun onPostReviewSuccess(response: getReviewAPI) {
 
         if(response.code == 2000){
-            Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "리뷰는 최소 5글자이상,별점 1점이상으로 작성해주세요!", Toast.LENGTH_SHORT).show()
         }else if(binding.commentRateCorn1ColorIv.visibility == View.VISIBLE){
             Log.d("comment", "${response}")
             Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()

@@ -11,12 +11,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/keyword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="# 혼자 있고 싶을 때"
         android:textSize="17sp"
         android:gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/roboto_bold"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
