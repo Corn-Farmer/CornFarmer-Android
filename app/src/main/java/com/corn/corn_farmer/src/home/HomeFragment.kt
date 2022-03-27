@@ -33,7 +33,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         loadingAnimDialog.show()
         Handler().postDelayed({
             loadingAnimDialog.dismiss()
-        },2500)
+        },1500)
     }
 
     override fun onCreateView(
