@@ -70,6 +70,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
     }
 
     override fun onGetMovieListSuccess(response: MovieResponse) {
+
         list = response!!.result!!
 
         Log.d("HomeFragment", "$list")
@@ -81,9 +82,8 @@ class HomeFragment : Fragment(), HomeFragmentView {
         binding.homeOttItemRecyclerview.adapter = todayMovieRVAdapter
         todayMovieRVAdapter.setMyItemClickListener(object : TodayMovieRVAdapter.MyItemClickListener {
             override fun onItemClick(MovieDto: MovieDto, position: Int) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(MovieDto.movieIdx!!, -1, ""))
-                    .commitAllowingStateLoss()
+                val mActivity = activity as MainActivity //메인 액티비티
+                mActivity.callFragment(DetailFragment(MovieDto.movieIdx!!, -1, ""))
             }
         })
     }

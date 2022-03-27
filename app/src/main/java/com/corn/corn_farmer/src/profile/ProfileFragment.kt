@@ -154,11 +154,10 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         }
         binding.profileBirthInfoTv.text = birth
 
+        val mActivity = activity as MainActivity //메인 액티비티
 
         binding.profileCommentIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, MyCommentFragment(nick))
-                .commitAllowingStateLoss()
+            mActivity.callFragment(MyCommentFragment(nick))
         }
 
         Glide.with(this)

@@ -78,16 +78,15 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
         )
         MyCommentRVAdapter.setMyItemClickLisetenr(object : MyCommentRVAdapter.MyItemClickListener {
             override fun onItemClick(getMyCommentResult: getMyCommentResult, position: Int) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(getMyCommentResult.movie.movieIdx, -1, ""))
-                    .commitAllowingStateLoss()
+                val mActivity = activity as MainActivity //메인 액티비티
+                mActivity.callFragment(DetailFragment(getMyCommentResult.movie.movieIdx, -1, ""))
             }
         })
         MyCommentRVAdapter.setMyModifyBtnClickListener(object : MyCommentRVAdapter.MyModifyBtnClickListener {
             override fun onModifyBtnClick(getMyCommentResult: getMyCommentResult, position: Int, reviewInfo : sendModifyComment) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, MyCommentModifyFragment(reviewInfo, getMyCommentResult.reviewIdx, nickname))
-                    .commitAllowingStateLoss()
+                val mActivity = activity as MainActivity //메인 액티비티
+                mActivity.callFragment(MyCommentModifyFragment(reviewInfo, getMyCommentResult.reviewIdx, nickname))
+
             }
         })
     }

@@ -48,15 +48,13 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
         service.tryGetMovieInfo()
 
         binding.recommendPreviousBtnIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, KeywordFragment())
-                .commitAllowingStateLoss()
+            val mActivity = activity as MainActivity //메인 액티비티
+            mActivity.callFragment(KeywordFragment())
         }
 
         binding.recommendSearchBtnIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, SearchFragment())
-                .commitAllowingStateLoss()
+            val mActivity = activity as MainActivity //메인 액티비티
+            mActivity.callFragment(SearchFragment())
         }
 
         return binding.root
@@ -74,9 +72,8 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
         binding.recommendMovieRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         ottRVAdapter.setMyItemClickListener(object : OttRVAdapter.MyItemClickListener {
             override fun onItemClick(movieInfo : movieInfo, position: Int) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(movieInfo.movieIdx, keywordIdx, ""))
-                    .commitAllowingStateLoss()
+                val mActivity = activity as MainActivity //메인 액티비티
+                mActivity.callFragment(DetailFragment(movieInfo.movieIdx, keywordIdx, ""))
                 Log.d("heart", "itemclick")
             }
         })

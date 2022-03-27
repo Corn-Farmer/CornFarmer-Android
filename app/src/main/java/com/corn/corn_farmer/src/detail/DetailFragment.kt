@@ -133,9 +133,6 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
     fun initialize() {
         // 후기 작성 버튼
         binding.detailPlusCommentIv.setOnClickListener {
-//            (context as MainActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frame, CommentFragment(movieIdx, keywordIdx, keyword))
-//                .commitAllowingStateLoss()
             val intent = Intent(requireContext(), CommentActivity()::class.java)
             intent.putExtra("movieIdx", movieIdx)
             intent.putExtra("keywordIdx", keywordIdx)
@@ -226,7 +223,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 movieInfo.movieGenreList?.joinToString(separator = ",")
             binding.detailMovieStoryTv.text = movieInfo.synopsis
             binding.detailNumberOfLikeTv.text = "${movieInfo?.likeCnt}명이 찜했어요."
-            likeCount = movieInfo?.likeCnt
+            likeCount = movieInfo!!.likeCnt
             movieGenre =
                 "#" + movieInfo.movieGenreList?.joinToString(separator = " #") //공유하기에 쓰이는 변수
             movieTitle = movieInfo!!.movieName

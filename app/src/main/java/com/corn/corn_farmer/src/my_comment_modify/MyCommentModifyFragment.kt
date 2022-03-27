@@ -38,9 +38,8 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         }
 
         binding.commentCancelBtnIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, MyCommentFragment(nickname))
-                .commitAllowingStateLoss()
+            val mActivity = activity as MainActivity //메인 액티비티
+            mActivity.callFragment(MyCommentFragment(nickname))
 
         }
 
@@ -52,9 +51,8 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
         if(response.code == 2000){
             Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
         }else{
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, MyCommentFragment(nickname))
-                .commitAllowingStateLoss()
+            val mActivity = activity as MainActivity //메인 액티비티
+            mActivity.callFragment(MyCommentFragment(nickname))
             Toast.makeText(context, "후기를 수정하였습니다.", Toast.LENGTH_SHORT).show()
 
         }

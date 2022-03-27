@@ -118,9 +118,8 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         binding.searchOttItemRecyclerview.adapter = searchResultRVAdapter
         searchResultRVAdapter.setMyItemClickListener(object : SearchResultRVAdapter.MyItemClickListener {
             override fun onItemClick(movieList: MovieDto, position: Int) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, DetailFragment(movieList.movieIdx!!, -2, keyword!!))
-                    .commitAllowingStateLoss()
+                val mActivity = activity as MainActivity //메인 액티비티
+                mActivity.callFragment(DetailFragment(movieList.movieIdx!!, -2, keyword!!))
             }
         })
     }

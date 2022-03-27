@@ -40,9 +40,8 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
         }
 
         binding.mainSearchIv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, SearchFragment())
-                .commitAllowingStateLoss()
+            val mActivity = activity as MainActivity //메인 액티비티
+            mActivity.callFragment(SearchFragment())
         }
 
         return binding.root
@@ -50,6 +49,7 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
 
 
     override fun onGetKeywordListSuccess(response: KeywordResponse) {
+        val mActivity = activity as MainActivity //메인 액티비티
         list = response!!.result!!
         Log.d("KeywordFragment", "$list")
         val keywordRVAdapter = KeywordRVAdapter(list)
@@ -57,9 +57,7 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
         binding.keywordKeywordRecyclerview.adapter = keywordRVAdapter
         keywordRVAdapter.setMyItemClickListener(object : KeywordRVAdapter.MyItemClickListener {
             override fun onItemClick(KeyworDto: KeywordDto, positon: Int) {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frame, RecommendFragment(response.result[positon].keywordIdx!!))
-                    .commitAllowingStateLoss()
+                mActivity.callFragment(RecommendFragment(response.result[positon].keywordIdx!!))
             }
         })
     }
