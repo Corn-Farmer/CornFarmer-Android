@@ -137,6 +137,7 @@
             android:text="중복확인"
             android:textSize="10sp"
             android:textColor="#1E005E"
+            android:visibility="gone"
             android:background="@drawable/button_duplicate_check_bt"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/nickname_nickname_rl"
