@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -34,7 +35,9 @@ import com.kakao.sdk.template.model.*
 
 class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String) : Fragment(),
     DetailFragmentView {
-    lateinit var binding: FragmentDetailBinding
+
+    private lateinit var binding: FragmentDetailBinding
+
     var likeCount = 0
     var likeCount_comment = 0
     var moviePhoto = ""
@@ -45,7 +48,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         var serverToken = sharedPreferences?.getString("servertoken", "")
@@ -201,6 +204,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
 
     override fun onGetDetailSuccess(response: getMovieDetailAPI) {
         Log.d("detailMovie", response.toString())
+        Log.d("LeeMovie", response.result!!.reviewList.toString())
         if (response!!.isSuccess) {
             // 영화 정보
             val movieInfo = response!!.result
@@ -242,7 +246,7 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
             // ott 정보 리사이클러뷰
             val ottList = movieInfo!!.ottList
 
-            val OttserviceRvAdapter = OttserviceRVAdapter(ottList!!)
+            val OttserviceRvAdapter = OttServiceRVAdapter(ottList!!)
             binding.detailOttServiceRv.adapter = OttserviceRvAdapter
             binding.detailOttServiceRv.layoutManager = LinearLayoutManager(
                 context,
@@ -367,6 +371,5 @@ class DetailFragment(val movieIdx: Int, val keywordIdx: Int, val keyword: String
                 }
             }
         }
-
     }
 }

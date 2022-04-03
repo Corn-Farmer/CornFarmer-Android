@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.corn.corn_farmer.MainActivity
@@ -19,7 +20,7 @@ import com.corn.cornfarmer_android.databinding.FragmentKeywordBinding
 
 class KeywordFragment : Fragment(),KeywordFragmentView {
 
-    lateinit var binding: FragmentKeywordBinding
+    private lateinit var binding: FragmentKeywordBinding
     var list: List<KeywordDto> = arrayListOf()
 
     override fun onCreateView(
@@ -27,7 +28,7 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentKeywordBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_keyword, container, false)
         var service = KeywordService(this)
         service.tryGetKeywordList()
 
@@ -65,5 +66,7 @@ class KeywordFragment : Fragment(),KeywordFragmentView {
     override fun onGetKeywordListFailure(message: String) {
         Log.d("KeywordFragment", "실패")
     }
+
+   
 }
 

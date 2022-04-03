@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.comment.model.sendReviewAPI
@@ -16,12 +17,11 @@ import com.corn.cornfarmer_android.databinding.ActivityDeclationBinding
 
 class DeclationActivity : AppCompatActivity(), DeclationView {
 
-    lateinit var binding: ActivityDeclationBinding
+    private lateinit var binding: ActivityDeclationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDeclationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_declation)
 
         binding.declationPreviousBtnIv.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -84,4 +84,5 @@ class DeclationActivity : AppCompatActivity(), DeclationView {
 
     override fun onPostDeclationFailure(message: String) {
     }
+
 }

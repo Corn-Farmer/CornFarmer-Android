@@ -14,6 +14,7 @@ import com.corn.corn_farmer.src.kakao.model.getNaverAPI
 import com.corn.corn_farmer.src.kakao.model.sendKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.sendNaverAPI
 import com.corn.cornfarmer_android.R
+import com.kakao.sdk.user.UserApiClient
 
 class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
 
@@ -21,8 +22,6 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-
 
 //        UserApiClient.instance.unlink { error -> //카카오 토큰 삭제 -->서버에서 강제 삭제했을 때 앱에서 데이터 지우는 용도
 //            if (error != null) {
@@ -62,8 +61,6 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
             Log.d("splashToken",serverToken!!)
 
             //맨 처음에 카카오랑 연동된 유저인지 아닌지 판단
-
-
             if (serverToken == "") {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
@@ -76,11 +73,7 @@ class SplashActivity : AppCompatActivity(), KakaoView, NaverView {
                 var service = NaverService(this, naver)
                 service.tryPostToken()
             }
-
-
-        }, 2000)
-
-
+        }, 3000)
     }
 
     override fun onPostTokenSuccess(response: getKakaoAPI) {

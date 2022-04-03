@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
@@ -29,7 +30,8 @@ import java.text.SimpleDateFormat
 
 class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
-    lateinit var binding: ActivityProfileModifyBinding
+    private lateinit var binding: ActivityProfileModifyBinding
+
     var ottList = mutableListOf<String>()
     var genreList = mutableListOf<String>()
 
@@ -38,8 +40,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityProfileModifyBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile_modify)
 
 
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)

@@ -3,14 +3,17 @@ package com.corn.corn_farmer.src.join
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityAgreeTwoBinding
 
 class AgreeTwoActivity :AppCompatActivity() {
-    lateinit var binding : ActivityAgreeTwoBinding
+
+    private lateinit var binding : ActivityAgreeTwoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAgreeTwoBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_agree_two)
 
         binding.agreeTwoCancelIv.setOnClickListener {
             finish()
@@ -21,4 +24,5 @@ class AgreeTwoActivity :AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

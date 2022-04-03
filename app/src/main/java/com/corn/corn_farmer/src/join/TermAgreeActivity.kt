@@ -5,18 +5,21 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityTermsAgreeBinding
 
 class TermAgreeActivity : AppCompatActivity() {
-    lateinit var binding: ActivityTermsAgreeBinding
+
+    private lateinit var binding: ActivityTermsAgreeBinding
+
     var isNextPossible = 0
     var isAgreeOne = 0
     var isAgreeTwo = 0
     var check_cnt = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTermsAgreeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_terms_agree)
         isAgreeOne = intent.getIntExtra("agreeone",0)
         isAgreeTwo = intent.getIntExtra("agreetwo",0)
         val sharedPreferences = getSharedPreferences("agree", MODE_PRIVATE)
@@ -93,5 +96,6 @@ class TermAgreeActivity : AppCompatActivity() {
             isNextPossible = 0
         }
     }
+
 }
 

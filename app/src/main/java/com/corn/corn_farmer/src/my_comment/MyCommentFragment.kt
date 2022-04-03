@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.corn.corn_farmer.MainActivity
@@ -22,14 +23,15 @@ import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.FragmentMyCommentBinding
 
 class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentView {
-    lateinit var binding : FragmentMyCommentBinding
+    private lateinit var binding : FragmentMyCommentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyCommentBinding.inflate(inflater, container, false)
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_comment, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val userIdx = sharedPreferences?.getInt("userIdx", -1000)
@@ -127,4 +129,7 @@ class MyCommentFragment(val nickname : String) : Fragment(), MyCommentFragmentVi
             service.tryGetMyComment()
         }
     }
+
+
+
 }

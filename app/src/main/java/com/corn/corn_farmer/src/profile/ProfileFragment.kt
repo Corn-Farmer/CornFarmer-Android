@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -27,12 +28,10 @@ import com.corn.cornfarmer_android.databinding.FragmentProfileBinding
 import com.kakao.sdk.user.UserApiClient
 import com.nhn.android.naverlogin.OAuthLogin
 
-
-
-
 class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
-    lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
+
     lateinit var mOAuthLoginInstance : OAuthLogin
     lateinit var mContext: Context
 
@@ -45,11 +44,8 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
         mContext = requireContext()
 
-
         mOAuthLoginInstance = OAuthLogin.getInstance()
         mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
-
-
 
         val loadingAnimDialog = CustomLoadingDialog(requireContext())
         loadingAnimDialog.setCancelable(false)
@@ -65,7 +61,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 =
@@ -243,5 +239,6 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
     override fun onPutDeleteFailure(message: String) {
         Log.d("회원탈퇴","회원탈퇴 실패")
     }
+
 
 }

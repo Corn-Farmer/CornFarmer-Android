@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.corn.corn_farmer.config.Application
@@ -20,14 +21,13 @@ import java.io.Serializable
 class MainActivity : AppCompatActivity() {
 
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding : ActivityMainBinding
     var waitTime = 0L
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         callFragment(HomeFragment())
 
 
@@ -90,6 +90,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
 }

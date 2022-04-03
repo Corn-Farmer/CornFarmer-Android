@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.corn.corn_farmer.MainActivity
@@ -22,7 +23,8 @@ import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.FragmentRecommendBinding
 
 class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentView {
-    lateinit var binding : FragmentRecommendBinding
+    private lateinit var binding : FragmentRecommendBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val loadingAnimDialog = CustomLoadingDialog(requireContext())
@@ -39,7 +41,7 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecommendBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_recommend, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         val servertoken = sharedPreferences?.getString("servertoken", "")
@@ -90,4 +92,6 @@ class RecommendFragment(var keywordIdx : Int) : Fragment(), RecommendFragmentVie
     override fun onPutMovieLikeFailure(message: String) {
         Toast.makeText(context, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
+
+
 }

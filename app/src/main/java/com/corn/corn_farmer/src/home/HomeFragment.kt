@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.corn.corn_farmer.MainActivity
@@ -22,7 +23,7 @@ import com.corn.cornfarmer_android.databinding.FragmentHomeBinding
 import java.util.*
 
 class HomeFragment : Fragment(), HomeFragmentView {
-    lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
 
     var list: List<MovieDto> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
 
         val sharedPreferences = this.activity?.getSharedPreferences("join",Context.MODE_PRIVATE)
         val serverToken = sharedPreferences?.getString("servertoken","")
@@ -91,6 +92,7 @@ class HomeFragment : Fragment(), HomeFragmentView {
     override fun onGetMovieListFailure(message: String) {
         Log.d("Fail", "작품 정보 가져오기 실패")
     }
+
 
 }//HomeFragment 끝
 

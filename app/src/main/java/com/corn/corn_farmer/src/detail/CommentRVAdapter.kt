@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.corn.corn_farmer.MainActivity
@@ -31,15 +32,17 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
         commentLikeBtnClickListener = heartClickListener
     }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val binding: ItemCommentBinding =
-                ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding: ItemCommentBinding =
+            ItemCommentBinding.inflate(LayoutInflater.from(parent.context) ,parent, false)
 
-            return ViewHolder(binding)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.bind(reviewList[position], position)
+
         var likeCnt = reviewList[position].likeCnt
 
         holder.binding.detailCommentDeclarationIv.setOnClickListener {
@@ -73,8 +76,8 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
         holder.binding.detailComentHeartOnIv.setOnClickListener {
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position, token)
             if (token != "") {
-                likeCnt = likeCnt - 1
-                holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
+                likeCnt -= 1
+                holder.binding.detailCommentLikecntTv.text = "$likeCnt"
                 holder.binding.detailComentHeartOnIv.visibility = View.GONE
                 holder.binding.detailComentHeartOffIv.visibility = View.VISIBLE
             }
@@ -82,8 +85,8 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
         holder.binding.detailComentHeartOffIv.setOnClickListener {
             commentLikeBtnClickListener.onHeartClick(reviewList[position], position, token)
             if (token != "") {
-                likeCnt = likeCnt + 1
-                holder.binding.detailCommentLikecntTv.text = "${likeCnt}"
+                likeCnt += 1
+                holder.binding.detailCommentLikecntTv.text = "$likeCnt"
                 holder.binding.detailComentHeartOnIv.visibility = View.VISIBLE
                 holder.binding.detailComentHeartOffIv.visibility = View.GONE
             }
@@ -98,14 +101,18 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(reviewList: getReviewList, position: Int) {
+
             var createAt = reviewList.createAt.substring(0, 10)
-            binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
             binding.detailCommentTextTv.text = reviewList.contents
             binding.detailCommentDateTv.text = createAt
-            binding.detailCommentLikecntTv.text = "${reviewList.likeCnt.toString()}"
+            binding.detailCommentLikecntTv.text = reviewList.likeCnt.toString()
+
+
+            binding.detailCommentUserNicknameTv.text = reviewList.writer.writerNickname
+
             Glide.with(itemView).load(reviewList.writer.writerPhoto)
                 .into(binding.detailCommentUserProfileIv)
-            Log.d("writerPhoto", reviewList.writer.writerPhoto)
+
             if (reviewList.liked) {
                 binding.detailComentHeartOnIv.visibility = View.VISIBLE
                 binding.detailComentHeartOffIv.visibility = View.GONE
@@ -113,7 +120,8 @@ class CommentRVAdapter(private val reviewList: ArrayList<getReviewList>, val tok
                 binding.detailComentHeartOnIv.visibility = View.GONE
                 binding.detailComentHeartOffIv.visibility = View.VISIBLE
             }
-            
+
+
         }
     }
 }

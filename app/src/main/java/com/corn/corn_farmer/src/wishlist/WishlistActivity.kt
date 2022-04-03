@@ -5,20 +5,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.src.wishlist.model.getWishMovie
 import com.corn.corn_farmer.src.wishlist.model.getWishMovieResult
+import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityWishlistBinding
 
-
 class WishlistActivity: AppCompatActivity(), WishlistView {
-    lateinit var binding : ActivityWishlistBinding
+
+    private lateinit var binding: ActivityWishlistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWishlistBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_wishlist)
 
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val servertoken = sharedPreferences?.getString("servertoken", "")
@@ -60,4 +61,6 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
     override fun onGetWishlistFailure(message: String) {
         Toast.makeText(this, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
     }
+
+
 }

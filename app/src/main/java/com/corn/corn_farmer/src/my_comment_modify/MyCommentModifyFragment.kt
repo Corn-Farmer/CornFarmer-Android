@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.src.my_comment.MyCommentFragment
@@ -15,14 +16,14 @@ import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.FragmentMyCommentModifyBinding
 
 class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx : Int, val nickname : String) : Fragment(), MyCommentModifyFragmentView {
-    lateinit var binding : FragmentMyCommentModifyBinding
+    private lateinit var binding : FragmentMyCommentModifyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyCommentModifyBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_comment_modify ,container, false)
 
         binding.commentEdittext.setText(reviewInfo.content)
 
@@ -317,4 +318,6 @@ class MyCommentModifyFragment(val reviewInfo : sendModifyComment, val reviewIdx 
             binding.commentRateSaveTv.text = (4.0).toString()
         }
     }
+
+
 }

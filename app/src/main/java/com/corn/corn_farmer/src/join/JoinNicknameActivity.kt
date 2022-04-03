@@ -22,6 +22,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.model.getJoinAPI
 import com.corn.cornfarmer_android.R
@@ -54,8 +55,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityJoinNicknameBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_join_nickname)
 
         checkPermissions(PERMISSIONS, PERMISSIONS_REQUEST)
 
@@ -220,11 +220,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     }
 
     private fun signUp() {
-
-
-
-
-
 
         var isMale: String
 
@@ -400,6 +395,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             null
         }
     }
+
 
 
 }

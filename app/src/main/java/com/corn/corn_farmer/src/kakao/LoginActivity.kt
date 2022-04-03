@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.TermAgreeActivity
@@ -14,6 +15,7 @@ import com.corn.corn_farmer.src.kakao.model.getKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.getNaverAPI
 import com.corn.corn_farmer.src.kakao.model.sendKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.sendNaverAPI
+import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityLoginBinding
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
@@ -23,14 +25,14 @@ import com.nhn.android.naverlogin.OAuthLoginHandler
 
 class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
 
-    lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
+
     lateinit var mOAuthLoginInstance : OAuthLogin
     lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         val naver_client_id = "NfLkiZ5opr9o5hdqRweQ"
         val naver_client_secret = "nkWklfMmjm"
@@ -219,5 +221,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
     override fun onPostNAverFailure(message: String) {
         Log.d("NAVER-API", message.toString())
     }
+
+
 
 }

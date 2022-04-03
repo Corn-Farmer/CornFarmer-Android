@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.config.Application
+import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityJoinGenreBinding
 import java.util.*
 
@@ -17,9 +19,7 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityJoinGenreBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_join_genre)
 
         binding.genreFinishColorIv.setOnClickListener {
             val sharedPreferences = Application.joinSharedPreferences
@@ -28,12 +28,8 @@ class JoinGenreActivity : AppCompatActivity(), View.OnClickListener{
             editor.commit()
             startActivity(Intent(this,JoinNicknameActivity::class.java))
             finish()
-
-
         }
-
         bindOtt()
-
     }
 
     private fun bindOtt() {

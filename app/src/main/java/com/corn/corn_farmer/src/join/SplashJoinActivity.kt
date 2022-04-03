@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.corn.cornfarmer_android.databinding.ActivitySplashJoinBinding
 import android.os.Handler
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
 import com.corn.cornfarmer_android.R
@@ -13,12 +14,12 @@ import com.corn.cornfarmer_android.R
 
 class SplashJoinActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivitySplashJoinBinding
+    private lateinit var binding: ActivitySplashJoinBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashJoinBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_join)
 
         val sharedPreferences = Application.joinSharedPreferences
         val nickname = sharedPreferences.getString("nickname", null)
@@ -47,6 +48,7 @@ class SplashJoinActivity : AppCompatActivity() {
         super.onPause()
         finish()
     }
+
 
 
 }

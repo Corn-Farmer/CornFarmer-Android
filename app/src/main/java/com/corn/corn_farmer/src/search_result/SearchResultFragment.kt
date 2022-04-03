@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.corn.corn_farmer.MainActivity
@@ -20,7 +21,8 @@ import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.FragmentSearchResultBinding
 
 class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragmentView {
-    lateinit var binding: FragmentSearchResultBinding
+
+    private lateinit var binding: FragmentSearchResultBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +40,9 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSearchResultBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_result,container,false)
+
+
 
         var getSharedPreferences = this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
         var serverToken = getSharedPreferences?.getString("servertoken","")
@@ -127,4 +131,7 @@ class SearchResultFragment(var keyword : String?) : Fragment(),SearchResultFragm
     override fun onGetSearchResultFailure(message: String) {
         Log.d("SearchResult", "검색결과 가져오기 실패")
     }
+
+
+
 }

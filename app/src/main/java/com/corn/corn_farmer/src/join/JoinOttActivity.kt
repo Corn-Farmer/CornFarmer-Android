@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.kakao.OttSelectCustomDialog
 import com.corn.cornfarmer_android.R
@@ -15,14 +16,14 @@ import com.corn.cornfarmer_android.databinding.ActivityJoinOttBinding
 class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityJoinOttBinding
+
     var ottNum = 0
     var ottList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityJoinOttBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_join_ott)
 
         binding.ottJumpIv.setOnClickListener {
             showDialog()
@@ -250,6 +251,5 @@ class JoinOttActivity : AppCompatActivity(), View.OnClickListener {
 
         ottList.sort()
     }
-
 
 }
