@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.corn.cornfarmer_android">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+    </queries>
+
+    <application
+        android:name="com.corn.corn_farmer.config.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_foreground"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CornFarmerAndroid"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.corn.corn_farmer.src.detail.DeclationActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.profile_modify.ProfileModifyActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.corn.corn_farmer.src.comment.CommentActivity"
+            android:exported="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.corn.cornfarmer_android.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity
+            android:name="com.corn.corn_farmer.src.join.SplashJoinActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.AgreeOneActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.AgreeTwoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.JoinGenreActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.JoinOttActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.JoinNicknameActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.join.TermAgreeActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.corn.corn_farmer.src.kakao.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.corn.corn_farmer.src.splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="kakaolink"
+                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.corn.corn_farmer.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.corn.corn_farmer.src.wishlist.WishlistActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

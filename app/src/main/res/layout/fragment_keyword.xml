@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <ImageView
+                android:id="@+id/main_search_iv"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/search"
+                app:layout_constraintBottom_toBottomOf="@id/main_like_iv"
+                app:layout_constraintEnd_toStartOf="@id/main_like_iv" />
+
+            <ImageView
+                android:id="@+id/main_like_iv"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/heartgray"
+                app:layout_constraintBottom_toBottomOf="@id/main_bell_iv"
+                app:layout_constraintEnd_toStartOf="@id/main_bell_iv" />
+
+            <ImageView
+                android:id="@+id/main_bell_iv"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/main_today_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="60dp"
+                android:text="지금 필요한건? 당신의 선택"
+                android:textColor="#1E005E"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_search_iv" />
+
+            <TextView
+                android:id="@+id/main_today_descript_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="직접 키워드를 선택해 당신만의 조합을 만들어 보세요.\n분석을 통해 컨텐츠를 엄선해 드릴게요."
+                app:layout_constraintStart_toStartOf="@id/main_today_tv"
+                app:layout_constraintTop_toBottomOf="@id/main_today_tv" />
+
+            <ImageView
+                android:id="@+id/keyword_refresh_iv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="43dp"
+                android:src="@drawable/refresh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_today_descript_tv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/keyword_keyword_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:overScrollMode="never"
+                android:paddingBottom="30dp"
+                app:layout_constraintTop_toBottomOf="@id/keyword_refresh_iv"
+                tools:listitem="@layout/item_keyword" />
+
+            <!--        <ImageView-->
+            <!--            android:id="@+id/keyword_complete_btn_iv"-->
+            <!--            android:layout_width="80dp"-->
+            <!--            android:layout_height="50dp"-->
+            <!--            android:src="@drawable/complete"-->
+            <!--            app:layout_constraintEnd_toEndOf="parent"-->
+            <!--            app:layout_constraintHorizontal_bias="0.498"-->
+            <!--            app:layout_constraintStart_toStartOf="parent"-->
+            <!--            app:layout_constraintTop_toBottomOf="@id/keyword_keyword_recyclerview" />-->
+
+            <TextView
+                android:id="@+id/keyword_position_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>
