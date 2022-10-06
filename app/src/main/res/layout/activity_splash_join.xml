@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.corn_farmer.src.join.SplashJoinActivity">
+    tools:context="com.corn.corn_farmer.src.join.SplashJoinActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/splash_join_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="193dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-    <RelativeLayout
-        android:id="@+id/splash_join_rl"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="193dp"
-        android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/splash_join_image_shadow"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/splash_join_image" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/splash_join_image_iv"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:background="@android:color/transparent" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/splash_join_image_shadow"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/splash_join_image"
-        />
+        </RelativeLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/splash_join_image_iv"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:background="@android:color/transparent" />
+        <TextView
+            android:id="@+id/splash_join_nickname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:fontFamily="@font/robotobold"
+            android:text="보라보라돌이"
+            android:textColor="#515151"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/splash_join_rl" />
 
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/splash_join_nickname_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:fontFamily="@font/robotobold"
-        android:text="보라보라돌이"
-        android:textColor="#515151"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/splash_join_rl" />
-
-    <ImageView
-        android:id="@+id/splash_join_welcome_iv"
-        android:layout_width="117dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="94dp"
-        android:src="@drawable/join_splash_welcome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/splash_join_welcome_iv"
+            android:layout_width="117dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="94dp"
+            android:src="@drawable/join_splash_welcome"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
