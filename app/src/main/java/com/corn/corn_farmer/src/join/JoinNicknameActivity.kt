@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
@@ -17,14 +16,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.join.model.getJoinAPI
+import com.corn.corn_farmer.util.ext.showToast
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityJoinNicknameBinding
 import okhttp3.MediaType
@@ -41,7 +41,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
     private lateinit var binding: ActivityJoinNicknameBinding
 
-
     val PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -51,9 +50,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
     private var photoUri: Uri? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_join_nickname)
 
@@ -64,20 +61,19 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         }
 
         binding.nicknameFinishColorIv.setOnClickListener {
-
             var today: String = binding.loginBirthdayEt.text.toString() +
-                    "" + binding.loginBirthdayMonthEt.text.toString() +
-                    "" + binding.loginBirthdayDayEt.text.toString()
+                "" + binding.loginBirthdayMonthEt.text.toString() +
+                "" + binding.loginBirthdayDayEt.text.toString()
 
             var currentTime: Long = System.currentTimeMillis()
             val dataFormat1 = SimpleDateFormat("yyyyMMdd")
             val dataFormat2 = SimpleDateFormat("yyyy")
 
-            if(today.toInt() > dataFormat1.format(currentTime).toInt()){
-                Toast.makeText(this, "오늘 날짜 보다 큽니다!", Toast.LENGTH_LONG).show()
+            if (today.toInt() > dataFormat1.format(currentTime).toInt()) {
+                showToast("오늘 날짜 보다 큽니다!")
                 return@setOnClickListener
-            }else if( today.toInt() < dataFormat1.format(currentTime).toInt() - 1000000){
-                Toast.makeText(this, "${dataFormat2.format(currentTime).toInt() - 100}년 이상 기입해 주세요", Toast.LENGTH_LONG).show()
+            } else if (today.toInt() < dataFormat1.format(currentTime).toInt() - 1000000) {
+                showToast("${dataFormat2.format(currentTime).toInt() - 100}년 이상 기입해 주세요")
                 return@setOnClickListener
             }
 
@@ -124,7 +120,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             Log.d("JOIN-ottlist", ottList.toString().replace("[", "").replace("]", ""))
             Log.d("JOIN-genrelist", genreList.toString().replace("[", "").replace("]", ""))
 
-
             if (photo == null) {
                 val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
                 val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
@@ -137,8 +132,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
                 var service = JoinService(this, servertoken.toString(), body, requestMap)
                 service.tryPostJoin()
             }
-
-
         }
 
         binding.nicknameNicknameEt.addTextChangedListener(object : TextWatcher {
@@ -152,7 +145,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
                 } else {
                     binding.nicknamePassOk.visibility = View.VISIBLE
                 }
-
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -194,8 +186,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             override fun afterTextChanged(s: Editable?) {
             }
         })
-
-
     }
 
     private fun joinCheck() {
@@ -210,17 +200,15 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         ) {
             binding.nicknameFinishIv.visibility = View.VISIBLE
             binding.nicknameFinishColorIv.visibility = View.GONE
-        } else if (binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1
-            && binding.loginBirthdayDayEt.length() > 1
+        } else if (binding.nicknameNicknameEt.length() > 2 && binding.loginBirthdayEt.length() > 3 && binding.loginBirthdayMonthEt.length() > 1 &&
+            binding.loginBirthdayDayEt.length() > 1
         ) {
             binding.nicknameFinishIv.visibility = View.GONE
             binding.nicknameFinishColorIv.visibility = View.VISIBLE
         }
-
     }
 
     private fun signUp() {
-
         var isMale: String
 
         val sharedPreferences = Application.joinSharedPreferences
@@ -236,9 +224,10 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
 
         editor.putString("nickname", binding.nicknameNicknameEt.text.toString())
         editor.putString(
-            "birthday", binding.loginBirthdayEt.text.toString() + "-" +
-                    binding.loginBirthdayMonthEt.text.toString() + "-" +
-                    binding.loginBirthdayDayEt.text.toString()
+            "birthday",
+            binding.loginBirthdayEt.text.toString() + "-" +
+                binding.loginBirthdayMonthEt.text.toString() + "-" +
+                binding.loginBirthdayDayEt.text.toString()
         )
         editor.commit()
     }
@@ -258,7 +247,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
                 return
             }
             4000 -> {
-                Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                showToast("데이터베이스 연결에 실패하였습니다.")
                 return
             }
             else -> {
@@ -272,7 +261,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
                 finish()
             }
         }
-
     }
 
     override fun onPostJoinFailure(message: String) {
@@ -304,7 +292,6 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         alertDialog.findViewById<ImageView>(R.id.select_cancel_bt)?.setOnClickListener {
             alertDialog.dismiss()
         }
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -312,21 +299,15 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == 200) {
-
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             saveBitmapAsPNGFile(bitmap)
             binding.profileImageIv.setImageBitmap(bitmap)
-
-
         } else if (resultCode == RESULT_OK && requestCode == 100) {
-
-
             val imageBitmap = data?.extras?.get("data") as Bitmap
             saveBitmapAsPNGFile(imageBitmap)
             binding.profileImageIv.setImageBitmap(imageBitmap)
         }
-
     }
 
     private fun checkPermissions(permissions: Array<String>, permissionsRequest: Int): Boolean {
@@ -356,7 +337,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         for (result in grantResults) {
             if (result != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "권한 승인 부탁드립니다.", Toast.LENGTH_SHORT).show()
+                showToast("권한 승인 부탁드립니다.")
                 finish()
             }
         }
@@ -365,7 +346,7 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
     private fun newPngFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
-        return "${filename}.png"
+        return "$filename.png"
     }
 
     private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
@@ -388,12 +369,8 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             editor.putString("photo", file.absolutePath.toString())
             Log.d("Photo", file.absolutePath.toString())
             editor.commit()
-
         } catch (e: Exception) {
             null
         }
     }
-
-
-
 }

@@ -10,14 +10,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
+import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.src.comment.model.getReviewAPI
 import com.corn.corn_farmer.src.comment.model.sendReviewAPI
-import com.corn.corn_farmer.MainActivity
+import com.corn.corn_farmer.util.ext.showToast
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityCommentBinding
 import retrofit2.*
 
-class CommentActivity() : AppCompatActivity(),
+class CommentActivity() :
+    AppCompatActivity(),
     CommentFragmentView {
 
     private lateinit var binding: ActivityCommentBinding
@@ -39,22 +41,20 @@ class CommentActivity() : AppCompatActivity(),
 
         getRate()
         initialize()
-
     }
 
     override fun onPostReviewSuccess(response: getReviewAPI) {
-
         if (response.code == 2000) {
-            Toast.makeText(this, "리뷰는 최소 5글자이상,별점 1점이상으로 작성해주세요!", Toast.LENGTH_SHORT).show()
+            showToast("리뷰는 최소 5글자이상,별점 1점이상으로 작성해주세요!")
         } else if (binding.commentRateCorn1ColorIv.visibility == View.VISIBLE) {
-            Log.d("comment", "${response}")
-            Toast.makeText(this, "리뷰가 저장되었습니다.", Toast.LENGTH_SHORT).show()
+            Log.d("comment", "$response")
+            showToast("리뷰가 저장되었습니다.")
             finish()
         }
     }
 
     override fun onPostReviewFailure(message: String) {
-        Toast.makeText(this, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+        showToast("네트워크 연결에 실패했습니다.")
     }
 
     fun initialize() {
@@ -69,13 +69,12 @@ class CommentActivity() : AppCompatActivity(),
                 getSharedPreferences("join", Context.MODE_PRIVATE)
             val servertoken = sharedPreferences.getString("servertoken", "")
             if (servertoken == "") {
-                Toast.makeText(this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
+                showToast("로그인이 필요한 서비스입니다.")
             } else {
                 var service = CommentService(this, review, servertoken!!)
                 service.tryPostReview()
             }
         }
-
 
         binding.commentCancelBtnIv.setOnClickListener {
             finish()
@@ -83,14 +82,12 @@ class CommentActivity() : AppCompatActivity(),
     }
 
     fun getRate() {
-
         binding.commentRateCorn1Iv.setOnClickListener {
             binding.commentRateCorn1ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn2ColorIv.visibility = View.GONE
             binding.commentRateCorn3ColorIv.visibility = View.GONE
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
-
 
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.VISIBLE
@@ -108,7 +105,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-
             binding.commentRateCorn1Iv.visibility = View.VISIBLE
             binding.commentRateCorn2Iv.visibility = View.VISIBLE
             binding.commentRateCorn3Iv.visibility = View.VISIBLE
@@ -124,7 +120,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn3ColorIv.visibility = View.GONE
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
-
 
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
@@ -142,7 +137,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.VISIBLE
             binding.commentRateCorn3Iv.visibility = View.VISIBLE
@@ -158,7 +152,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
-
 
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
@@ -176,7 +169,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
             binding.commentRateCorn3Iv.visibility = View.VISIBLE
@@ -192,7 +184,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
-
 
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
@@ -210,7 +201,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn4ColorIv.visibility = View.GONE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
             binding.commentRateCorn3Iv.visibility = View.GONE
@@ -226,7 +216,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn3ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn5ColorIv.visibility = View.VISIBLE
-
 
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
@@ -244,7 +233,6 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateCorn4ColorIv.visibility = View.VISIBLE
             binding.commentRateCorn5ColorIv.visibility = View.GONE
 
-
             binding.commentRateCorn1Iv.visibility = View.GONE
             binding.commentRateCorn2Iv.visibility = View.GONE
             binding.commentRateCorn3Iv.visibility = View.GONE
@@ -254,5 +242,4 @@ class CommentActivity() : AppCompatActivity(),
             binding.commentRateSaveTv.text = (4.0).toString()
         }
     }
-
 }
