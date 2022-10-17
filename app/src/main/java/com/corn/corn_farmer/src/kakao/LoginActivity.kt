@@ -3,10 +3,9 @@ package com.corn.corn_farmer.src.kakao
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
@@ -15,6 +14,7 @@ import com.corn.corn_farmer.src.kakao.model.getKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.getNaverAPI
 import com.corn.corn_farmer.src.kakao.model.sendKakaoAPI
 import com.corn.corn_farmer.src.kakao.model.sendNaverAPI
+import com.corn.corn_farmer.util.ext.showToast
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityLoginBinding
 import com.kakao.sdk.auth.model.OAuthToken
@@ -23,11 +23,11 @@ import com.kakao.sdk.user.UserApiClient
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 
-class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
+class LoginActivity : AppCompatActivity(), KakaoView, NaverView {
 
     private lateinit var binding: ActivityLoginBinding
 
-    lateinit var mOAuthLoginInstance : OAuthLogin
+    lateinit var mOAuthLoginInstance: OAuthLogin
     lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,16 +56,13 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
                     editor.commit()
 
                     val naver = sendNaverAPI(accessToken.toString())
-                    var service = NaverService(this@LoginActivity,naver)
+                    var service = NaverService(this@LoginActivity, naver)
                     service.tryPostToken()
                 } else {
                     val errorCode: String = mOAuthLoginInstance.getLastErrorCode(mContext).code
                     val errorDesc = mOAuthLoginInstance.getLastErrorDesc(mContext)
 
-                    Toast.makeText(
-                        baseContext, "errorCode:" + errorCode
-                                + ", errorDesc:" + errorDesc, Toast.LENGTH_SHORT
-                    ).show()
+                    showToast("errorCode:$errorCode, errorDesc:$errorDesc")
                 }
             }
         }
@@ -75,8 +72,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Log.d("accessToken", "토큰 정보 보기 실패")
-            }
-            else if (tokenInfo != null) {
+            } else if (tokenInfo != null) {
                 Log.d("accessToken", "토큰 정보 보기 성공")
             }
         }
@@ -85,36 +81,34 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             if (error != null) {
                 when {
                     error.toString() == AuthErrorCause.AccessDenied.toString() -> {
-                        Toast.makeText(this, "접근이 거부 됨(동의 취소)", Toast.LENGTH_SHORT).show()
+                        showToast("접근이 거부 됨(동의 취소)")
                     }
                     error.toString() == AuthErrorCause.InvalidClient.toString() -> {
-                        Toast.makeText(this, "유효하지 않은 앱", Toast.LENGTH_SHORT).show()
+                        showToast("유효하지 않은 앱")
                     }
                     error.toString() == AuthErrorCause.InvalidGrant.toString() -> {
-                        Toast.makeText(this, "인증 수단이 유효하지 않아 인증할 수 없는 상태", Toast.LENGTH_SHORT).show()
+                        showToast("인증 수단이 유효하지 않아 인증할 수 없는 상태")
                     }
                     error.toString() == AuthErrorCause.InvalidRequest.toString() -> {
-                        Toast.makeText(this, "요청 파라미터 오류", Toast.LENGTH_SHORT).show()
+                        showToast("요청 파라미터 오류")
                     }
                     error.toString() == AuthErrorCause.InvalidScope.toString() -> {
-                        Toast.makeText(this, "유효하지 않은 scope ID", Toast.LENGTH_SHORT).show()
+                        showToast("유효하지 않은 scope ID")
                     }
                     error.toString() == AuthErrorCause.Misconfigured.toString() -> {
-                        Toast.makeText(this, "설정이 올바르지 않음(android key hash)", Toast.LENGTH_SHORT).show()
+                        showToast("설정이 올바르지 않음(android key hash")
                     }
                     error.toString() == AuthErrorCause.ServerError.toString() -> {
-                        Toast.makeText(this, "서버 내부 에러", Toast.LENGTH_SHORT).show()
+                        showToast("서버 내부 에러")
                     }
                     error.toString() == AuthErrorCause.Unauthorized.toString() -> {
-                        Toast.makeText(this, "앱이 요청 권한이 없음", Toast.LENGTH_SHORT).show()
+                        showToast("앱이 요청 권한이 없음")
                     }
                     else -> { // Unknown
-                        Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+                        showToast("기타 에러")
                     }
                 }
-            }
-            else if (token != null) {
-
+            } else if (token != null) {
                 Log.d("kakaotoken", token.accessToken.toString())
 
                 val sharedPreferences = Application.tokenSharedPreferences
@@ -123,7 +117,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
                 editor.commit()
 
                 val kakao = sendKakaoAPI(token.accessToken.toString())
-                var service = KakaoService(this,kakao)
+                var service = KakaoService(this, kakao)
                 service.tryPostToken()
 
                 Log.d("kakaologin", "로그인에 성공하였습니다.")
@@ -134,10 +128,10 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-       binding.kakaoLoginButton.setOnClickListener {
-            if(UserApiClient.instance.isKakaoTalkLoginAvailable(this)){
+        binding.kakaoLoginButton.setOnClickListener {
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
-            }else{
+            } else {
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
@@ -146,19 +140,19 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
     override fun onPostTokenSuccess(response: getKakaoAPI) {
         Log.d("KAKAO-API", response.toString())
 
-        if(response.code == 4000){
-            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+        if (response.code == 4000) {
+            showToast("데이터베이스 연결에 실패하였습니다.")
             return
         }
 
-        if(response.isSuccess == true && response.result!!.new_result){
+        if (response.isSuccess == true && response.result!!.new_result) {
             val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
             startActivity(Intent(this, TermAgreeActivity::class.java))
-        }else if(response.isSuccess == true && !(response.result!!.new_result)){
+        } else if (response.isSuccess == true && !(response.result!!.new_result)) {
             val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
@@ -183,7 +177,7 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
         val service2 = NaverService(this, naver)
         service2.tryPostToken()
         val kakao = sendKakaoAPI(kakaoToken.toString())
-        var service = KakaoService(this,kakao)
+        var service = KakaoService(this, kakao)
         service.tryPostToken()
     }
 
@@ -195,19 +189,19 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
     override fun onPostNaverSuccess(response: getNaverAPI) {
         Log.d("NAVER-API", response.toString())
 
-        if(response.code == 4000){
-            Toast.makeText(this, "데이터베이스 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+        if (response.code == 4000) {
+            showToast("데이터베이스 연결에 실패하였습니다.")
             return
         }
 
-        if(response.isSuccess == true && response.result!!.new_result){
+        if (response.isSuccess == true && response.result!!.new_result) {
             val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
             editor.putInt("userIdx", response.result!!.userIdx)
             editor.commit()
             startActivity(Intent(this, TermAgreeActivity::class.java))
-        }else if(response.isSuccess == true && !(response.result!!.new_result)){
+        } else if (response.isSuccess == true && !(response.result!!.new_result)) {
             val sharedPreferences = Application.joinSharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("servertoken", response.result!!.token)
@@ -215,13 +209,9 @@ class LoginActivity : AppCompatActivity(), KakaoView ,NaverView{
             editor.commit() // 나중에 지우기
             startActivity(Intent(this, MainActivity::class.java))
         }
-
     }
 
     override fun onPostNAverFailure(message: String) {
         Log.d("NAVER-API", message.toString())
     }
-
-
-
 }

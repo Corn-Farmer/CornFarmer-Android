@@ -5,19 +5,19 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.config.Application
 import com.corn.corn_farmer.src.profile.model.ModifyResponse
 import com.corn.corn_farmer.src.profile_modify.model.ModifyProfileResponse
+import com.corn.corn_farmer.util.ext.showToast
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityProfileModifyBinding
 import okhttp3.MediaType
@@ -42,7 +42,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile_modify)
 
-
         val sharedPreferences = getSharedPreferences("join", Context.MODE_PRIVATE)
         val sharedPreferences2 = getSharedPreferences("userinfo", Context.MODE_PRIVATE)
         val userIdx: Int = sharedPreferences2.getInt("useridx", 0)
@@ -51,7 +50,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
         val service = ModifyProfileService(this, userIdx, serverToken)
         service.tryGetModifyProfile()
-
 
 //        val photo = sharedPreferences.getString("photo", null)
 //        binding.modifyImageIv.setImageURI(Uri.parse(photo))
@@ -63,10 +61,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             editor.commit()
 
             binding.modifyImageIv.setImageResource(R.drawable.cornfarmerprofile)
-
         }
-
-
 
         binding.profileImagePlusIv.setOnClickListener {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -79,14 +74,11 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             startActivityForResult(gallery, 200)
         }
 
-
-
-
         binding.modifyCancelIv.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
-        binding.modifyCompleteIv.setOnClickListener { //완료버튼 눌렀을 때
+        binding.modifyCompleteIv.setOnClickListener { // 완료버튼 눌렀을 때
             val photo = sharedPreferences.getString("photo", "noimage")
 
             var modifiedNickname: String = binding.modifyNicknameInfoEt.text.toString()
@@ -108,18 +100,16 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val servertoken = sharedPreferences.getString("servertoken", "")
             val requestMap: HashMap<String, RequestBody> = HashMap()
 
-
-
             requestMap.put("nickname", nicknameRequest)
             requestMap.put("ottList", ottListRequest)
             requestMap.put("genreList", genreRequest)
 
-            if(photo == "noimage"){
+            if (photo == "noimage") {
                 val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
                 val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
                 var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
                 service.tryPutModify()
-            }else{
+            } else {
                 val file = File(photo.toString())
                 val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
                 val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
@@ -134,9 +124,8 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 //            var service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
 //            service.tryPutModify()
 //
-
         }
-    }//onCreate
+    } // onCreate
 
     private fun genreVisibility(nowUserHasGenreList: List<String>) {
         if (nowUserHasGenreList.contains("1")) {
@@ -315,9 +304,7 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileWarTv.visibility = View.VISIBLE
         }
 
-
         binding.profileActionTv.setOnClickListener {
-
             genreList.add("1")
             binding.profileActionColorTv.visibility = View.VISIBLE
             binding.profileActionDeleteIv.visibility = View.VISIBLE
@@ -330,7 +317,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             genreList.remove("1")
         }
         binding.profileAnimeTv.setOnClickListener {
-
             genreList.add("2")
             binding.profileAnimeColorTv.visibility = View.VISIBLE
             binding.profileAnimeDeleteIv.visibility = View.VISIBLE
@@ -343,12 +329,10 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileAnimeTv.visibility = View.VISIBLE
         }
         binding.profileComedyTv.setOnClickListener {
-
             genreList.add("3")
             binding.profileComedyColorTv.visibility = View.VISIBLE
             binding.profileComedyDeleteIv.visibility = View.VISIBLE
             binding.profileComedyTv.visibility = View.GONE
-
         }
         binding.profileComedyDeleteIv.setOnClickListener {
             genreList.remove("3")
@@ -357,7 +341,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileComedyTv.visibility = View.VISIBLE
         }
         binding.profileCrimeTv.setOnClickListener {
-
             genreList.add("4")
             binding.profileCrimeColorTv.visibility = View.VISIBLE
             binding.profileCrimeDeleteIv.visibility = View.VISIBLE
@@ -370,7 +353,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileCrimeTv.visibility = View.VISIBLE
         }
         binding.profileDacuTv.setOnClickListener {
-
             genreList.add("5")
             binding.profileDacuColorTv.visibility = View.VISIBLE
             binding.profileDacuDeleteIv.visibility = View.VISIBLE
@@ -383,7 +365,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileDacuTv.visibility = View.VISIBLE
         }
         binding.profileDramaTv.setOnClickListener {
-
             genreList.add("6")
             binding.profileDramaColorTv.visibility = View.VISIBLE
             binding.profileDramaDeleteIv.visibility = View.VISIBLE
@@ -396,7 +377,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileDramaTv.visibility = View.VISIBLE
         }
         binding.profileFantasyTv.setOnClickListener {
-
             genreList.add("7")
             binding.profileFantasyColorTv.visibility = View.VISIBLE
             binding.profileFantasyDeleteIv.visibility = View.VISIBLE
@@ -409,7 +389,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileFantasyTv.visibility = View.VISIBLE
         }
         binding.profileHistoryTv.setOnClickListener {
-
             genreList.add("8")
             binding.profileHistoryColorTv.visibility = View.VISIBLE
             binding.profileHistoryDeleteIv.visibility = View.VISIBLE
@@ -422,7 +401,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileHistoryTv.visibility = View.VISIBLE
         }
         binding.profileHororTv.setOnClickListener {
-
             genreList.add("9")
             binding.profileHororColorTv.visibility = View.VISIBLE
             binding.profileHororDeleteIv.visibility = View.VISIBLE
@@ -435,7 +413,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileHororTv.visibility = View.VISIBLE
         }
         binding.profileFamilyTv.setOnClickListener {
-
             genreList.add("10")
             binding.profileFamilyColorTv.visibility = View.VISIBLE
             binding.profileFamilyDeleteIv.visibility = View.VISIBLE
@@ -448,7 +425,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileFamilyTv.visibility = View.VISIBLE
         }
         binding.profileMusicTv.setOnClickListener {
-
             genreList.add("11")
             binding.profileMusicColorTv.visibility = View.VISIBLE
             binding.profileMusicDeleteIv.visibility = View.VISIBLE
@@ -461,7 +437,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileMusicTv.visibility = View.VISIBLE
         }
         binding.profileThrillTv.setOnClickListener {
-
             genreList.add("12")
             binding.profileThrillColorTv.visibility = View.VISIBLE
             binding.profileThrillDeleteIv.visibility = View.VISIBLE
@@ -474,7 +449,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileThrillTv.visibility = View.VISIBLE
         }
         binding.profileRomanceTv.setOnClickListener {
-
             genreList.add("13")
             binding.profileRomanceColorTv.visibility = View.VISIBLE
             binding.profileRomanceDeleteIv.visibility = View.VISIBLE
@@ -487,7 +461,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.profileRomanceTv.visibility = View.VISIBLE
         }
         binding.profileSfTv.setOnClickListener {
-
             genreList.add("14")
             binding.profileSfColorTv.visibility = View.VISIBLE
             binding.profileSfDeleteIv.visibility = View.VISIBLE
@@ -557,7 +530,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.ottDisneyIv.visibility = View.GONE
             binding.ottDisneySelectIv.visibility = View.VISIBLE
             binding.ottDisneySelectCancelIv.visibility = View.GONE
-
         }
         if (nowUserHasOttList.contains("4")) {
             binding.ottCoupangIv.visibility = View.VISIBLE
@@ -568,7 +540,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.ottCoupangIv.visibility = View.GONE
             binding.ottCoupangSelectIv.visibility = View.VISIBLE
             binding.ottCoupangSelectCancelIv.visibility = View.GONE
-
         }
         if (nowUserHasOttList.contains("5")) {
             binding.ottWavveIv.visibility = View.VISIBLE
@@ -579,7 +550,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.ottWavveIv.visibility = View.GONE
             binding.ottWavveSelectIv.visibility = View.VISIBLE
             binding.ottWavveSelectCancelIv.visibility = View.GONE
-
         }
         if (nowUserHasOttList.contains("6")) {
             binding.ottTvingIv.visibility = View.VISIBLE
@@ -590,7 +560,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.ottTvingIv.visibility = View.GONE
             binding.ottTvingSelectIv.visibility = View.VISIBLE
             binding.ottTvingSelectCancelIv.visibility = View.GONE
-
         }
         if (nowUserHasOttList.contains("7")) {
             binding.ottNetflixIv.visibility = View.VISIBLE
@@ -612,7 +581,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             binding.ottWhatchaSelectIv.visibility = View.VISIBLE
             binding.ottWhatchaSelectCancelIv.visibility = View.GONE
         }
-
 
         binding.ottAppleTvSelectCancelIv.setOnClickListener {
             binding.ottAppleTvIv.visibility = View.GONE
@@ -722,27 +690,21 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == 200) {
-
             var dataUri = data?.data
             var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, dataUri)
             saveBitmapAsPNGFile(bitmap)
             binding.modifyImageIv.setImageBitmap(bitmap)
-
-
         } else if (resultCode == RESULT_OK && requestCode == 100) {
-
-
             val imageBitmap = data?.extras?.get("data") as Bitmap
             saveBitmapAsPNGFile(imageBitmap)
             binding.modifyImageIv.setImageBitmap(imageBitmap)
         }
-
     }
 
     private fun newPngFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
-        return "${filename}.png"
+        return "$filename.png"
     }
 
     private fun saveBitmapAsPNGFile(bitmap: Bitmap) {
@@ -767,7 +729,6 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             Log.d("Photo", file.absolutePath.toString())
             editor.putString("photoname", photoName)
             editor.commit()
-
         } catch (e: Exception) {
             null
         }
@@ -775,19 +736,18 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
 
     override fun onPutModifySuccess(response: ModifyResponse) {
         if (response.code == 3015) {
-            Toast.makeText(this, "중복된 닉네임 입니다.", Toast.LENGTH_SHORT).show()
+            showToast("중복된 닉네임 입니다.")
         } else {
             val sharedPreferences = getSharedPreferences("userinfo", MODE_PRIVATE)
             val sharedPreferences2 = Application.joinSharedPreferences
             val editor1 = sharedPreferences.edit()
             val editor2 = sharedPreferences2.edit()
-            editor2.putString("servertoken",response.result!!.token)
-            editor1.putInt("useridx",response.result!!.userIdx)
+            editor2.putString("servertoken", response.result!!.token)
+            editor1.putInt("useridx", response.result!!.userIdx)
             editor1.commit()
             editor2.commit()
             startActivity(Intent(this, MainActivity::class.java))
         }
-
     }
 
     override fun onPutModifyFailure(message: String) {
@@ -807,24 +767,17 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
         genreVisibility(nowUserHasGenreList)
         binding.modifyBirthInfoEt.text = UserInfo.birth
 
-
         Glide.with(this)
             .load(response.result.photo)
             .into(binding.modifyImageIv)
 
-
-        if(UserInfo.is_male==1){
+        if (UserInfo.is_male == 1) {
             binding.modifyGenderInfoEt.text = "남성"
-        }
-        else{
+        } else {
             binding.modifyGenderInfoEt.text = "여성"
         }
-
     }
 
     override fun onGetModifyProfileFailure(message: String) {
     }
-
-
-
 }

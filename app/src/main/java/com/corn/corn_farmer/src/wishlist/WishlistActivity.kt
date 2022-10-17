@@ -3,17 +3,17 @@ package com.corn.corn_farmer.src.wishlist
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.corn.corn_farmer.MainActivity
 import com.corn.corn_farmer.src.wishlist.model.getWishMovie
 import com.corn.corn_farmer.src.wishlist.model.getWishMovieResult
+import com.corn.corn_farmer.util.ext.showToast
 import com.corn.cornfarmer_android.R
 import com.corn.cornfarmer_android.databinding.ActivityWishlistBinding
 
-class WishlistActivity: AppCompatActivity(), WishlistView {
+class WishlistActivity : AppCompatActivity(), WishlistView {
 
     private lateinit var binding: ActivityWishlistBinding
 
@@ -25,17 +25,15 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
         val servertoken = sharedPreferences?.getString("servertoken", "")
         val userIdx = sharedPreferences?.getInt("userIdx", 0)
 
-        if(servertoken==""){
-            Toast.makeText(this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
-        }
-        else{
+        if (servertoken == "") {
+            showToast("로그인이 필요한 서비스입니다.")
+        } else {
             var service = WishlistService(this, userIdx!!, servertoken!!)
             service.tryGetWishlist()
         }
 
-
         binding.wishlistPreviousBtn1Iv.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -44,23 +42,20 @@ class WishlistActivity: AppCompatActivity(), WishlistView {
         val wishlistRVAdapter = WishlistRVAdapter(wishMovie)
         binding.wishlistRV.adapter = wishlistRVAdapter
         binding.wishlistRV.layoutManager = GridLayoutManager(
-            this, 3
+            this,
+            3
         )
-        wishlistRVAdapter.setMyItemClickListener(object : WishlistRVAdapter.MyItemClickListener{
+        wishlistRVAdapter.setMyItemClickListener(object : WishlistRVAdapter.MyItemClickListener {
             override fun onItemClick(wishMovie: getWishMovieResult, position: Int) {
                 val movieIdx = wishMovie.movieIdx
                 val intent = Intent(this@WishlistActivity, MainActivity::class.java)
                 intent.putExtra("movieIdx", movieIdx)
                 startActivity(intent)
             }
-
-
         })
     }
 
     override fun onGetWishlistFailure(message: String) {
-        Toast.makeText(this, "네트워크 연결에 실패했습니다.", Toast.LENGTH_SHORT).show()
+        showToast("네트워크 연결에 실패했습니다.")
     }
-
-
 }
