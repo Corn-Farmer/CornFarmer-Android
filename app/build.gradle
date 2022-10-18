@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.corn.cornfarmer_android"
+        applicationId "org.cornfarmer"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 7

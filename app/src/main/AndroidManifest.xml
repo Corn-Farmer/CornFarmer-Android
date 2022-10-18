@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,7 +11,7 @@
     </queries>
 
     <application
-        android:name="com.corn.corn_farmer.config.Application"
+        android:name="org.cornfarmer.di.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
         android:label="@string/app_name"
@@ -21,13 +20,13 @@
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.corn.corn_farmer.src.detail.DeclationActivity"
+            android:name="org.cornfarmer.persentation.detail.DeclationActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.profile_modify.ProfileModifyActivity"
+            android:name="org.cornfarmer.persentation.profilemodify.ProfileModifyActivity"
             android:exported="true" />
         <activity
-            android:name="com.corn.corn_farmer.src.comment.CommentActivity"
+            android:name="org.cornfarmer.persentation.comment.CommentActivity"
             android:exported="true" />
 
         <provider
@@ -41,34 +40,34 @@
         </provider>
 
         <activity
-            android:name="com.corn.corn_farmer.src.join.SplashJoinActivity"
+            android:name="org.cornfarmer.persentation.join.SplashJoinActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.AgreeOneActivity"
+            android:name="org.cornfarmer.persentation.agree.AgreeOneActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.AgreeTwoActivity"
+            android:name="org.cornfarmer.persentation.agree.AgreeTwoActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.JoinGenreActivity"
+            android:name="org.cornfarmer.persentation.join.JoinGenreActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.JoinOttActivity"
+            android:name="org.cornfarmer.persentation.join.JoinOttActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.JoinNicknameActivity"
+            android:name="org.cornfarmer.persentation.join.JoinNicknameActivity"
             android:exported="false" />
         <activity
-            android:name="com.corn.corn_farmer.src.join.TermAgreeActivity"
+            android:name="org.cornfarmer.persentation.agree.TermAgreeActivity"
             android:exported="true" />
         <activity
-            android:name="com.corn.corn_farmer.src.kakao.LoginActivity"
+            android:name="org.cornfarmer.persentation.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthCustomTabActivity"
             android:exported="true" />
         <activity
-            android:name="com.corn.corn_farmer.src.splash.SplashActivity"
+            android:name="org.cornfarmer.persentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -104,11 +103,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.corn.corn_farmer.MainActivity"
+            android:name="org.cornfarmer.persentation.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.corn.corn_farmer.src.wishlist.WishlistActivity"
+            android:name="org.cornfarmer.persentation.wishlist.WishlistActivity"
             android:exported="true" />
     </application>
-
 </manifest>
