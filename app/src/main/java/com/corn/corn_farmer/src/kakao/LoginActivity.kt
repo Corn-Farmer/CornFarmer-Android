@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity(), KakaoView, NaverView {
             }
         }
 
-        binding.loginNaverLoginBt.setOAuthLoginHandler(mOAuthLoginHandler)
+        binding.btNaverLogin.setOAuthLoginHandler(mOAuthLoginHandler)
 
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
@@ -124,11 +124,11 @@ class LoginActivity : AppCompatActivity(), KakaoView, NaverView {
             }
         }
 
-        binding.loginNoneLoginBt.setOnClickListener {
+        binding.btGuestLogin.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-        binding.kakaoLoginButton.setOnClickListener {
+        binding.btKakaoLogin.setOnClickListener {
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
             } else {

@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/login_logo_iv"
+            android:id="@+id/iv_logo"
             android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_marginTop="204dp"
@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/login_none_login_bt"
+            android:id="@+id/bt_guest_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="100dp"
@@ -29,11 +29,10 @@
             android:background="@drawable/no_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_logo_iv" />
-
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
         <ImageButton
-            android:id="@+id/kakao_login_button"
+            android:id="@+id/bt_kakao_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="100dp"
@@ -44,11 +43,10 @@
             android:src="@drawable/kakao_login_large_narrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_none_login_bt" />
-
+            app:layout_constraintTop_toBottomOf="@+id/bt_guest_login" />
 
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-            android:id="@+id/login_naver_login_bt"
+            android:id="@+id/bt_naver_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="100dp"
@@ -58,9 +56,7 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kakao_login_button" />
-
+            app:layout_constraintTop_toBottomOf="@+id/bt_kakao_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
