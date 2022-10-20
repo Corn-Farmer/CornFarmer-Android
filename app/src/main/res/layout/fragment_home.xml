@@ -47,7 +47,7 @@
                 android:layout_marginTop="60dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/home_title"
-                android:textColor="#1E005E"
+                android:textColor="@color/indigo_300"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
