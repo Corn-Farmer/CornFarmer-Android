@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="@dimen/size_spacing_15"
-            android:background="#D0CECE"
+            android:background="@color/grey_300"
             app:layout_constraintBottom_toTopOf="@id/layout_check_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -146,10 +146,10 @@
             android:id="@+id/tv_next"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="#D0CECE"
+            android:background="@color/grey_300"
             android:gravity="center"
             android:text="@string/terms_agree_next"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />

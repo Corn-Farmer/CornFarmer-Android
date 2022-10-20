@@ -61,10 +61,10 @@
             android:id="@+id/tv_next"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#FBD510"
+            android:background="@color/yellow_300"
             android:gravity="center"
             android:text="@string/agree_second_next"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />

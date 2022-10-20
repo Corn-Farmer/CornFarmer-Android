@@ -47,7 +47,7 @@
                 android:layout_marginStart="@dimen/size_spacing_32"
                 android:layout_marginTop="60dp"
                 android:text="@string/keyword_title"
-                android:textColor="#1E005E"
+                android:textColor="@color/indigo_300"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"

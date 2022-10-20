@@ -24,7 +24,7 @@
             android:background="@drawable/button_topside_round"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/dialog_image_select_camera"
-            android:textColor="#515151"
+            android:textColor="@color/grey_700"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -36,17 +36,17 @@
             <LinearLayout
                 android:layout_width="20dp"
                 android:layout_height="2dp"
-                android:background="#FEE36F" />
+                android:background="@color/yellow_100" />
 
             <LinearLayout
                 android:layout_width="271dp"
                 android:layout_height="2dp"
-                android:background="#7D7D7D" />
+                android:background="@color/grey_500" />
 
             <LinearLayout
                 android:layout_width="21dp"
                 android:layout_height="2dp"
-                android:background="#FEE36F" />
+                android:background="@color/yellow_100" />
         </LinearLayout>
 
         <Button
@@ -56,7 +56,7 @@
             android:background="@drawable/button_bottomside_round"
             android:fontFamily="@font/robotoregular"
             android:text="@string/dialog_image_select_album"
-            android:textColor="#515151"
+            android:textColor="@color/grey_700"
             android:textSize="15sp"
             android:textStyle="bold" />
 
