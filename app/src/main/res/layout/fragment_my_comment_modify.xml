@@ -2,23 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/comment_ask_score_tv"
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="34dp"
+                android:layout_marginStart="@dimen/size_spacing_34"
                 android:layout_marginTop="60dp"
-                android:text="후기를 잘못 작성하셨나요?"
+                android:text="@string/my_comment_modify_title"
                 android:textColor="#1E005D"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -26,175 +24,175 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn1_iv"
+                android:id="@+id/iv_first_corn"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/comment_corn"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn1_color_iv"
+                android:id="@+id/iv_first_corn_color"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/corn_rate_img"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn2_iv"
+                android:id="@+id/iv_second_corn"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="37dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/comment_corn"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn2_color_iv"
+                android:id="@+id/iv_second_corn_color"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="37dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/corn_rate_img"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn3_iv"
+                android:id="@+id/iv_third_corn"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="72dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/comment_corn"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn3_color_iv"
+                android:id="@+id/iv_third_corn_color"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="72dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/corn_rate_img"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn4_iv"
+                android:id="@+id/iv_fourth_corn"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="107dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/comment_corn"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn4_color_iv"
+                android:id="@+id/iv_fourth_corn_color"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="107dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/corn_rate_img"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn5_iv"
+                android:id="@+id/iv_fifth_corn"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="142dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/comment_corn"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <ImageView
-                android:id="@+id/comment_rate_corn5_color_iv"
+                android:id="@+id/iv_fifth_corn_color"
                 android:layout_width="32dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="142dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/size_spacing_3"
                 android:src="@drawable/corn_rate_img"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/comment_ask_score_tv"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <TextView
-                android:id="@+id/comment_ask_comment_tv"
+                android:id="@+id/iv_describe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
                 android:layout_marginTop="70dp"
-                android:text="후기를 수정해주세요."
+                android:text="@string/my_comment_modify_subtitle"
                 android:textColor="#1E005D"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_score_tv" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <EditText
-                android:id="@+id/comment_edittext"
+                android:id="@+id/et_content"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/size_spacing_20"
+                android:layout_marginTop="@dimen/size_spacing_12"
+                android:layout_marginEnd="@dimen/size_spacing_20"
                 android:background="@drawable/comment_edittext_background"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:paddingStart="20dp"
-                android:paddingTop="20dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="20dp"
+                android:paddingStart="@dimen/size_spacing_20"
+                android:paddingTop="@dimen/size_spacing_20"
+                android:paddingEnd="@dimen/size_spacing_20"
+                android:paddingBottom="@dimen/size_spacing_20"
                 android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/comment_ask_comment_tv" />
+                app:layout_constraintTop_toBottomOf="@id/iv_describe" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="@dimen/size_spacing_30"
+                android:layout_marginTop="@dimen/size_spacing_30"
+                android:layout_marginEnd="@dimen/size_spacing_30"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/comment_edittext">
+                app:layout_constraintTop_toBottomOf="@id/et_content">
 
                 <ImageView
-                    android:id="@+id/comment_cancel_btn_iv"
+                    android:id="@+id/iv_cancel"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="@dimen/size_spacing_5"
                     android:layout_weight="1"
                     android:src="@drawable/comment_modify_cancel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/modify_Ns" />
+                    app:layout_constraintTop_toBottomOf="@id/ns_modify" />
 
                 <ImageView
-                    android:id="@+id/comment_complete_btn_iv"
+                    android:id="@+id/iv_complete"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/size_spacing_5"
                     android:layout_weight="1"
                     android:src="@drawable/comment_modify_complete"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/modify_cancel_iv" />
+                    app:layout_constraintTop_toTopOf="@id/iv_cancel" />
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/comment_rate_save_tv"
+                android:id="@+id/tv_save"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="0.0"
@@ -202,9 +200,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </layout>

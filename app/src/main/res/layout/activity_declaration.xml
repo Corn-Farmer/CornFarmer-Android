@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.cornfarmer.presentation.detail.DeclarationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="25dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
+            android:layout_marginTop="@dimen/size_spacing_40"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/iv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_30"
+            android:layout_marginTop="@dimen/size_spacing_50"
+            android:text="@string/declaration_title"
+            android:textColor="#FFBD02"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_20"
+            android:layout_marginEnd="@dimen/size_spacing_20"
+            android:background="@drawable/declation_round"
+            android:gravity="top"
+            android:inputType="text"
+            android:maxLines="5"
+            android:padding="@dimen/size_spacing_20"
+            app:layout_constraintTop_toBottomOf="@id/iv_title" />
+
+        <CheckBox
+            android:id="@+id/cb_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_20"
+            android:text="@string/declaration_report"
+            android:textColor="#1E005D"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_content" />
+
+        <CheckBox
+            android:id="@+id/cb_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_20"
+            android:text="@string/declaration_block"
+            android:textColor="#1E005D"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_report" />
+
+        <Button
+            android:id="@+id/bt_finish"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_32"
+            android:layout_marginEnd="@dimen/size_spacing_20"
+            android:background="#31009A"
+            android:text="@string/declaration_finish"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_block" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

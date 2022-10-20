@@ -12,28 +12,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <androidx.core.widget.NestedScrollView
-                android:id="@+id/modify_Ns"
+                android:id="@+id/ns_modify"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
                 android:overScrollMode="never"
-                app:layout_constraintTop_toTopOf="parent"
-
-                >
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/modify_profile_cl"
+                    android:id="@+id/layout_modify"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/modify_profile_tv"
+                        android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/size_spacing_16"
                         android:fontFamily="@font/roboto_regular"
                         android:text="프로필"
                         android:textColor="#1E005E"
@@ -44,31 +41,30 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <RelativeLayout
-                        android:id="@+id/modify_rl"
+                        android:id="@+id/layout_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="@dimen/size_spacing_40"
+                        android:layout_marginTop="@dimen/size_spacing_10"
                         android:gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_profile_tv">
-
+                        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/modify_image_shadow"
+                            android:id="@+id/iv_shadow"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:src="@drawable/splash_join_image" />
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/modify_image_iv"
+                            android:id="@+id/iv_image"
                             android:layout_width="190dp"
                             android:layout_height="190dp"
                             android:background="@android:color/transparent" />
 
                         <ImageView
-                            android:id="@+id/profile_image_plus_iv"
+                            android:id="@+id/iv_camera"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="134dp"
@@ -77,7 +73,7 @@
                             android:src="@drawable/modify_img" />
 
                         <ImageView
-                            android:id="@+id/profile_image_delete_iv"
+                            android:id="@+id/iv_album"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="170dp"
@@ -86,7 +82,7 @@
                             android:src="@drawable/group_323" />
 
                         <ImageView
-                            android:id="@+id/profile_image_delete2_iv"
+                            android:id="@+id/iv_delete"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="206dp"
@@ -94,447 +90,436 @@
                             android:layout_marginEnd="34dp"
                             android:src="@drawable/group_323" />
 
-
                     </RelativeLayout>
 
                     <ImageView
-                        android:id="@+id/modify_bar_bold_iv"
+                        android:id="@+id/iv_first_line"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_30"
+                        android:layout_marginEnd="@dimen/size_spacing_30"
                         android:src="@drawable/profile_bar1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_rl" />
+                        app:layout_constraintTop_toBottomOf="@id/layout_image" />
 
                     <TextView
-                        android:id="@+id/modify_std_info_tv"
+                        android:id="@+id/tv_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_15"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="회원 정보"
+                        android:text="@string/profile_modify_sub_title"
                         android:textColor="#1E005E"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_bar_bold_iv" />
+                        app:layout_constraintTop_toBottomOf="@id/iv_first_line" />
 
                     <ImageView
-                        android:id="@+id/modify_bar_iv"
+                        android:id="@+id/iv_second_line"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_15"
+                        android:layout_marginEnd="@dimen/size_spacing_30"
                         android:src="@drawable/profile_bar2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_std_info_tv" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_profile" />
 
                     <TextView
-                        android:id="@+id/modify_nickname_tv"
+                        android:id="@+id/tv_nickname_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:text="닉네임"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_20"
+                        android:text="@string/profile_modify_nickname"
                         android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="@id/modify_std_info_tv"
-                        app:layout_constraintTop_toBottomOf="@id/modify_bar_iv" />
+                        app:layout_constraintStart_toStartOf="@id/tv_profile"
+                        app:layout_constraintTop_toBottomOf="@id/iv_second_line" />
 
                     <TextView
-                        android:id="@+id/modify_gender_tv"
+                        android:id="@+id/tv_sex_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="성별"
+                        android:layout_marginTop="@dimen/size_spacing_15"
+                        android:text="@string/profile_modify_sex"
                         android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="@id/modify_nickname_tv"
-                        app:layout_constraintTop_toBottomOf="@id/modify_nickname_tv" />
+                        app:layout_constraintStart_toStartOf="@id/tv_nickname_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_nickname_title" />
 
                     <TextView
                         android:id="@+id/modify_birth_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="생년월일"
+                        android:layout_marginTop="@dimen/size_spacing_15"
+                        android:text="@string/profile_modify_birthday"
                         android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="@id/modify_nickname_tv"
-                        app:layout_constraintTop_toBottomOf="@id/modify_gender_tv" />
-
+                        app:layout_constraintStart_toStartOf="@id/tv_nickname_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_sex_title" />
 
                     <EditText
-                        android:id="@+id/modify_nickname_info_et"
+                        android:id="@+id/et_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="@dimen/size_spacing_40"
                         android:textColor="#545454"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/modify_nickname_tv"
-                        app:layout_constraintStart_toEndOf="@id/modify_nickname_tv"
-                        app:layout_constraintTop_toTopOf="@id/modify_nickname_tv" />
-
-
-                    <TextView
-                        android:id="@+id/modify_gender_info_et"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="남성"
-                        android:textColor="#545454"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/modify_nickname_info_et"
-                        app:layout_constraintTop_toTopOf="@id/modify_gender_tv" />
+                        app:layout_constraintBottom_toBottomOf="@id/tv_nickname_title"
+                        app:layout_constraintStart_toEndOf="@id/tv_nickname_title"
+                        app:layout_constraintTop_toTopOf="@id/tv_nickname_title" />
 
                     <TextView
-                        android:id="@+id/modify_birth_info_et"
+                        android:id="@+id/et_sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1995년 04월 03일"
                         android:textColor="#545454"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/modify_gender_info_et"
+                        app:layout_constraintStart_toStartOf="@id/et_nickname"
+                        app:layout_constraintTop_toTopOf="@id/tv_sex_title" />
+
+                    <TextView
+                        android:id="@+id/et_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#545454"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/et_sex"
                         app:layout_constraintTop_toTopOf="@id/modify_birth_tv" />
 
                     <TextView
-                        android:id="@+id/modify_use_ott_tv"
+                        android:id="@+id/tv_ott"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="@dimen/size_spacing_20"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="사용중인 OTT"
+                        android:text="@string/profile_modify_ott"
                         android:textColor="#1E005E"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/modify_std_info_tv"
-                        app:layout_constraintTop_toBottomOf="@id/modify_birth_info_et" />
+                        app:layout_constraintStart_toStartOf="@id/tv_profile"
+                        app:layout_constraintTop_toBottomOf="@id/et_birthday" />
 
                     <ImageView
-                        android:id="@+id/modify_bar2_iv"
+                        android:id="@+id/iv_third"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_15"
+                        android:layout_marginEnd="@dimen/size_spacing_30"
                         android:src="@drawable/profile_bar2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_use_ott_tv" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_ott" />
 
                     <GridLayout
-                        android:id="@+id/modify_gr1"
+                        android:id="@+id/layout_ott"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="@dimen/size_spacing_20"
+                        android:layout_marginTop="@dimen/size_spacing_10"
+                        android:layout_marginEnd="@dimen/size_spacing_20"
                         android:columnCount="5"
                         android:orientation="horizontal"
                         android:rowCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_bar2_iv"
-
-                        >
-
+                        app:layout_constraintTop_toBottomOf="@id/iv_third">
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_apple_tv_iv"
+                                android:id="@+id/iv_apple"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_apple_tv" />
 
                             <ImageView
-                                android:id="@+id/ott_apple_tv_select_iv"
+                                android:id="@+id/iv_apple_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/apple_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_apple_tv_select_cancel_iv"
+                                android:id="@+id/iv_apple_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_apple_tv_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_apple_tv_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_apple"
+                                app:layout_constraintTop_toTopOf="@id/iv_apple" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_prime_video_iv"
+                                android:id="@+id/iv_prime_video"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_prime_video" />
 
                             <ImageView
-                                android:id="@+id/ott_prime_video_select_iv"
+                                android:id="@+id/iv_prime_video_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/prime_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_prime_video_select_cancel_iv"
+                                android:id="@+id/iv_prime_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_prime_video_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_prime_video_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_prime_video"
+                                app:layout_constraintTop_toTopOf="@id/iv_prime_video" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_disney_iv"
+                                android:id="@+id/iv_disney"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_disney" />
 
                             <ImageView
-                                android:id="@+id/ott_disney_select_iv"
+                                android:id="@+id/iv_disney_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/disney_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_disney_select_cancel_iv"
+                                android:id="@+id/iv_disney_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_disney_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_disney_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_disney"
+                                app:layout_constraintTop_toTopOf="@id/iv_disney" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_coupang_iv"
+                                android:id="@+id/iv_coupang"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_coupang" />
 
                             <ImageView
-                                android:id="@+id/ott_coupang_select_iv"
+                                android:id="@+id/iv_coupang_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/coupang_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_coupang_select_cancel_iv"
+                                android:id="@+id/iv_coupang_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_coupang_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_coupang_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_coupang"
+                                app:layout_constraintTop_toTopOf="@id/iv_coupang" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_wavve_iv"
+                                android:id="@+id/iv_wavve"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_wavve" />
 
                             <ImageView
-                                android:id="@+id/ott_wavve_select_iv"
+                                android:id="@+id/iv_wavve_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/wave_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_wavve_select_cancel_iv"
+                                android:id="@+id/iv_wavve_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_wavve_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_wavve_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_wavve"
+                                app:layout_constraintTop_toTopOf="@id/iv_wavve" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_tving_iv"
+                                android:id="@+id/iv_tving"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_tving"
                                 android:visibility="visible" />
 
                             <ImageView
-                                android:id="@+id/ott_tving_select_iv"
+                                android:id="@+id/iv_tving_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/tving_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_tving_select_cancel_iv"
+                                android:id="@+id/iv_tving_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_tving_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_tving_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_tving"
+                                app:layout_constraintTop_toTopOf="@id/iv_tving" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_netflix_iv"
+                                android:id="@+id/iv_netflix"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_netflix" />
 
                             <ImageView
-                                android:id="@+id/ott_netflix_select_iv"
+                                android:id="@+id/iv_netflix_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/netflix_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_netflix_select_cancel_iv"
+                                android:id="@+id/iv_nexflix_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_netflix_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_netflix_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_netflix"
+                                app:layout_constraintTop_toTopOf="@id/iv_netflix" />
 
                         </LinearLayout>
 
                         <LinearLayout>
 
                             <ImageView
-                                android:id="@+id/ott_whatcha_iv"
+                                android:id="@+id/iv_whatcha"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/ott_whatcha" />
 
                             <ImageView
-                                android:id="@+id/ott_whatcha_select_iv"
+                                android:id="@+id/iv_whatcha_color"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
                                 android:src="@drawable/watcha_plus"
                                 android:visibility="gone" />
 
                             <ImageView
-                                android:id="@+id/ott_whatcha_select_cancel_iv"
+                                android:id="@+id/iv_whatcha_cancel"
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_marginStart="-17.5dp"
                                 android:layout_marginTop="4dp"
                                 android:src="@drawable/ott_remove"
-                                app:layout_constraintStart_toEndOf="@id/ott_whatcha_iv"
-                                app:layout_constraintTop_toTopOf="@id/ott_whatcha_iv" />
+                                app:layout_constraintStart_toEndOf="@id/iv_whatcha"
+                                app:layout_constraintTop_toTopOf="@id/iv_whatcha" />
 
                         </LinearLayout>
-
 
                     </GridLayout>
 
                     <TextView
-                        android:id="@+id/modify_genre_tv"
+                        android:id="@+id/tv_genre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="@dimen/size_spacing_20"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="선호하는 장르"
+                        android:text="@string/profile_modify_genre"
                         android:textColor="#1E005E"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/modify_use_ott_tv"
-                        app:layout_constraintTop_toBottomOf="@id/modify_gr1" />
+                        app:layout_constraintStart_toStartOf="@id/tv_ott"
+                        app:layout_constraintTop_toBottomOf="@id/layout_ott" />
 
                     <ImageView
-                        android:id="@+id/modify_bar3_iv"
+                        android:id="@+id/iv_fourth_line"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="@dimen/size_spacing_30"
+                        android:layout_marginTop="@dimen/size_spacing_15"
+                        android:layout_marginEnd="@dimen/size_spacing_30"
                         android:src="@drawable/profile_bar2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_genre_tv" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_genre" />
 
                     <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="@dimen/size_spacing_24"
+                        android:layout_marginTop="@dimen/size_spacing_10"
+                        android:layout_marginEnd="@dimen/size_spacing_24"
                         android:columnCount="3"
                         android:orientation="horizontal"
                         android:rowCount="6"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/modify_bar3_iv">
+                        app:layout_constraintTop_toBottomOf="@id/iv_fourth_line">
 
-                        <LinearLayout android:layout_marginEnd="10dp">
-
+                        <LinearLayout android:layout_marginEnd="@dimen/size_spacing_10">
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
                                 <TextView
-                                    android:id="@+id/profile_action_color_tv"
+                                    android:id="@+id/iv_action_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="액션" />
+                                    android:text="@string/profile_modify_action" />
 
                                 <ImageView
-                                    android:id="@+id/profile_action_delete_iv"
+                                    android:id="@+id/iv_action_delete"
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
                                     android:layout_marginStart="90dp"
                                     android:src="@drawable/ott_remove" />
 
                                 <TextView
-                                    android:id="@+id/profile_action_tv"
+                                    android:id="@+id/iv_action"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="액션"
+                                    android:text="@string/profile_modify_action"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -544,31 +529,30 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
-                                    android:id="@+id/profile_anime_color_tv"
+                                    android:id="@+id/tv_anime_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="애니메이션" />
+                                    android:text="@string/profile_modify_anime" />
 
                                 <ImageView
-                                    android:id="@+id/profile_anime_delete_iv"
+                                    android:id="@+id/iv_anime_delete"
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
                                     android:layout_marginStart="90dp"
                                     android:src="@drawable/ott_remove" />
 
                                 <TextView
-                                    android:id="@+id/profile_anime_tv"
+                                    android:id="@+id/tv_anime"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="애니메이션"
+                                    android:text="@string/profile_modify_anime"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
@@ -589,7 +573,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="코미디" />
+                                    android:text="@string/profile_modify_comedy" />
 
                                 <ImageView
                                     android:id="@+id/profile_comedy_delete_iv"
@@ -605,7 +589,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="코미디"
+                                    android:text="@string/profile_modify_comedy"
                                     android:visibility="gone" />
 
 
@@ -626,7 +610,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="범죄" />
+                                    android:text="@string/profile_modify_crime" />
 
                                 <ImageView
                                     android:id="@+id/profile_crime_delete_iv"
@@ -642,12 +626,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="범죄"
+                                    android:text="@string/profile_modify_crime"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -665,7 +647,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="다큐멘터리" />
+                                    android:text="@string/profile_modify_dacu" />
 
                                 <ImageView
                                     android:id="@+id/profile_dacu_delete_iv"
@@ -681,9 +663,8 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="다큐멘터리"
+                                    android:text="@string/profile_modify_dacu"
                                     android:visibility="gone" />
-
 
                             </RelativeLayout>
 
@@ -695,7 +676,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
                                     android:id="@+id/profile_drama_color_tv"
                                     android:layout_width="wrap_content"
@@ -703,7 +683,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="드라마" />
+                                    android:text="@string/profile_modify_drama" />
 
                                 <ImageView
                                     android:id="@+id/profile_drama_delete_iv"
@@ -719,7 +699,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="드라마"
+                                    android:text="@string/profile_modify_drama"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
@@ -733,7 +713,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
                                     android:id="@+id/profile_fantasy_color_tv"
                                     android:layout_width="wrap_content"
@@ -741,7 +720,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="판타지" />
+                                    android:text="@string/profile_modify_fantasy" />
 
                                 <ImageView
                                     android:id="@+id/profile_fantasy_delete_iv"
@@ -757,12 +736,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="판타지"
+                                    android:text="@string/profile_modify_fantasy"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -772,7 +749,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
                                     android:id="@+id/profile_history_color_tv"
                                     android:layout_width="wrap_content"
@@ -780,7 +756,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="역사" />
+                                    android:text="@string/profile_modify_history" />
 
                                 <ImageView
                                     android:id="@+id/profile_history_delete_iv"
@@ -796,11 +772,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="역사"
+                                    android:text="@string/profile_modify_history"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -810,7 +785,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
                                     android:id="@+id/profile_horor_color_tv"
                                     android:layout_width="wrap_content"
@@ -818,7 +792,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="공포" />
+                                    android:text="@string/profile_modify_horror" />
 
                                 <ImageView
                                     android:id="@+id/profile_horor_delete_iv"
@@ -834,11 +808,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="공포"
+                                    android:text="@string/profile_modify_horror"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -855,7 +828,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="가족" />
+                                    android:text="@string/profile_modify_family" />
 
                                 <ImageView
                                     android:id="@+id/profile_family_delete_iv"
@@ -871,12 +844,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="가족"
+                                    android:text="@string/profile_modify_family"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -886,7 +857,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
                                     android:id="@+id/profile_music_color_tv"
                                     android:layout_width="wrap_content"
@@ -894,7 +864,7 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="음악" />
+                                    android:text="@string/profile_modify_music" />
 
                                 <ImageView
                                     android:id="@+id/profile_music_delete_iv"
@@ -910,89 +880,10 @@
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="음악"
+                                    android:text="@string/profile_modify_music"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-
-                                <TextView
-                                    android:id="@+id/profile_thrill_color_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/genre_background_color"
-                                    android:gravity="center"
-                                    android:text="스릴러" />
-
-                                <ImageView
-                                    android:id="@+id/profile_thrill_delete_iv"
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_marginStart="90dp"
-                                    android:src="@drawable/ott_remove" />
-
-                                <TextView
-                                    android:id="@+id/profile_thrill_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/genre_backround_no_color"
-                                    android:gravity="center"
-                                    android:text="스릴러"
-                                    android:visibility="gone" />
-
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-
-                        <LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:id="@+id/profile_romance_color_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/genre_background_color"
-                                    android:gravity="center"
-                                    android:text="로맨스" />
-
-                                <ImageView
-                                    android:id="@+id/profile_romance_delete_iv"
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_marginStart="90dp"
-                                    android:src="@drawable/ott_remove" />
-
-                                <TextView
-                                    android:id="@+id/profile_romance_tv"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/genre_backround_no_color"
-                                    android:gravity="center"
-                                    android:text="로맨스"
-                                    android:visibility="gone" />
-
-
-                            </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -1003,34 +894,32 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
-                                    android:id="@+id/profile_sf_color_tv"
+                                    android:id="@+id/tv_thrill_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="SF" />
+                                    android:text="@string/profile_modify_thrill" />
 
                                 <ImageView
-                                    android:id="@+id/profile_sf_delete_iv"
+                                    android:id="@+id/iv_thrill_delete"
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
                                     android:layout_marginStart="90dp"
                                     android:src="@drawable/ott_remove" />
 
                                 <TextView
-                                    android:id="@+id/profile_sf_tv"
+                                    android:id="@+id/tv_thrill"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="SF"
+                                    android:text="@string/profile_modify_thrill"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -1040,35 +929,33 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
-                                    android:id="@+id/profile_sport_color_tv"
+                                    android:id="@+id/tv_romance_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="스포츠" />
+                                    android:text="@string/profile_modify_romance" />
 
                                 <ImageView
-                                    android:id="@+id/profile_sport_delete_iv"
+                                    android:id="@+id/iv_romance_delete"
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
                                     android:layout_marginStart="90dp"
                                     android:src="@drawable/ott_remove" />
 
                                 <TextView
-                                    android:id="@+id/profile_sport_tv"
+                                    android:id="@+id/tv_romance"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="스포츠"
+                                    android:text="@string/profile_modify_romance"
                                     android:visibility="gone" />
 
                             </RelativeLayout>
-
 
                         </LinearLayout>
 
@@ -1078,39 +965,104 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <TextView
-                                    android:id="@+id/profile_war_color_tv"
+                                    android:id="@+id/tv_sf_color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
                                     android:background="@drawable/genre_background_color"
                                     android:gravity="center"
-                                    android:text="전쟁" />
+                                    android:text="@string/profile_modify_sf" />
 
                                 <ImageView
-                                    android:id="@+id/profile_war_delete_iv"
+                                    android:id="@+id/iv_sf_delete"
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
                                     android:layout_marginStart="90dp"
                                     android:src="@drawable/ott_remove" />
 
                                 <TextView
-                                    android:id="@+id/profile_war_tv"
+                                    android:id="@+id/tv_sf"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
                                     android:background="@drawable/genre_backround_no_color"
                                     android:gravity="center"
-                                    android:text="전쟁"
+                                    android:text="@string/profile_modify_sf"
                                     android:visibility="gone" />
 
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/iv_sport_color"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
+                                    android:background="@drawable/genre_background_color"
+                                    android:gravity="center"
+                                    android:text="@string/profile_modify_sport" />
+
+                                <ImageView
+                                    android:id="@+id/iv_sport_delete"
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginStart="90dp"
+                                    android:src="@drawable/ott_remove" />
+
+                                <TextView
+                                    android:id="@+id/tv_sport"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
+                                    android:background="@drawable/genre_backround_no_color"
+                                    android:gravity="center"
+                                    android:text="@string/profile_modify_sport"
+                                    android:visibility="gone" />
 
                             </RelativeLayout>
 
-
                         </LinearLayout>
 
+                        <LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_war_color"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
+                                    android:background="@drawable/genre_background_color"
+                                    android:gravity="center"
+                                    android:text="@string/profile_modify_war" />
+
+                                <ImageView
+                                    android:id="@+id/iv_war_delete"
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginStart="90dp"
+                                    android:src="@drawable/ott_remove" />
+
+                                <TextView
+                                    android:id="@+id/tv_war"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_spacing_10"
+                                    android:background="@drawable/genre_backround_no_color"
+                                    android:gravity="center"
+                                    android:text="@string/profile_modify_war"
+                                    android:visibility="gone" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
 
                     </GridLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1119,37 +1071,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="@dimen/size_spacing_30"
+                android:layout_marginTop="@dimen/size_spacing_30"
+                android:layout_marginEnd="@dimen/size_spacing_30"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/modify_Ns">
+                app:layout_constraintTop_toBottomOf="@id/ns_modify">
 
                 <ImageView
-                    android:id="@+id/modify_cancel_iv"
+                    android:id="@+id/iv_cancel"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="@dimen/size_spacing_5"
                     android:layout_weight="1"
                     android:src="@drawable/modify_cancel"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/modify_Ns" />
+                    app:layout_constraintTop_toBottomOf="@id/ns_modify" />
 
                 <ImageView
-                    android:id="@+id/modify_complete_iv"
+                    android:id="@+id/iv_complete"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/size_spacing_5"
                     android:layout_weight="1"
                     android:src="@drawable/modify_complete"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/modify_cancel_iv" />
+                    app:layout_constraintTop_toTopOf="@id/iv_cancel" />
 
             </LinearLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 </layout>

@@ -7,10 +7,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/detail_ott_service_iv"
+            android:id="@+id/iv_ott"
             android:layout_width="62dp"
             android:layout_height="62dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/size_spacing_10"
             android:src="@drawable/ott_sample"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

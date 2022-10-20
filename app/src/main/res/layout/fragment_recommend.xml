@@ -9,30 +9,30 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/recommend_previous_btn_iv"
+                android:id="@+id/iv_back"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="38dp"
+                android:layout_marginStart="@dimen/size_spacing_30"
+                android:layout_marginTop="@dimen/size_spacing_40"
                 android:src="@drawable/back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/recommend_search_btn_iv"
+                android:id="@+id/iv_search"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginEnd="15dp"
                 android:src="@drawable/search"
-                app:layout_constraintEnd_toStartOf="@id/recommend_heart_btn_iv"
+                app:layout_constraintEnd_toStartOf="@id/iv_like_no_color_second"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/recommend_heart_btn_iv"
+                android:id="@+id/iv_like_no_color_second"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="38dp"
@@ -46,61 +46,58 @@
                 android:layout_width="29dp"
                 android:layout_height="29dp"
                 android:layout_marginEnd="28dp"
-                app:layout_constraintBottom_toBottomOf="@id/recommend_heart_btn_iv"
+                app:layout_constraintBottom_toBottomOf="@id/iv_like_no_color_second"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-
             <TextView
-                android:id="@+id/recommend_title_keyword_tv"
+                android:id="@+id/tv_keyword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="# 따뜻한 연말"
+                android:layout_marginTop="@dimen/size_spacing_50"
                 android:textColor="#FFBD02"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recommend_search_btn_iv" />
+                app:layout_constraintTop_toBottomOf="@id/iv_search"
+                tools:text="# 따뜻한 연말" />
 
             <ImageView
-                android:id="@+id/recommend_character_iv"
+                android:id="@+id/iv_logo"
                 android:layout_width="85dp"
                 android:layout_height="55dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/size_spacing_20"
                 android:scaleType="fitXY"
                 android:src="@drawable/cornfarmer_character"
-                app:layout_constraintBottom_toBottomOf="@id/recommend_title_keyword_tv"
-                app:layout_constraintStart_toEndOf="@id/recommend_title_keyword_tv"
-                app:layout_constraintTop_toTopOf="@id/recommend_title_keyword_tv" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_keyword"
+                app:layout_constraintStart_toEndOf="@id/tv_keyword"
+                app:layout_constraintTop_toTopOf="@id/tv_keyword" />
 
             <TextView
-                android:id="@+id/recommend_subtitle_tv"
+                android:id="@+id/tv_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="@dimen/size_spacing_20"
+                android:layout_marginTop="@dimen/size_spacing_10"
+                android:layout_marginEnd="@dimen/size_spacing_20"
                 android:gravity="center"
-                android:text="컨파머가 추천하는 따뜻한 연말을 위한 컨텐츠"
                 android:textColor="#515151"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recommend_title_keyword_tv" />
+                app:layout_constraintTop_toBottomOf="@id/tv_keyword"
+                tools:text="컨파머가 추천하는 따뜻한 연말을 위한 컨텐츠" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recommend_movie_RV"
+                android:id="@+id/rv_recommend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:overScrollMode="never"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recommend_subtitle_tv"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subtitle"
                 tools:listitem="@layout/item_otts" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </layout>

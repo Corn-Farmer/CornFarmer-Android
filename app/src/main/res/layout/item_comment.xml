@@ -3,16 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/detail_comment_border_iv"
+            android:id="@+id/iv_boarder"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/size_spacing_10"
             android:background="@drawable/round_bg"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -21,113 +20,99 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/detail_comment_user_profile_iv"
+            android:id="@+id/iv_image"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_20"
             android:background="@drawable/img_yellow_cicle_empty"
-            app:layout_constraintStart_toStartOf="@id/detail_comment_border_iv"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_border_iv" />
-
+            app:layout_constraintStart_toStartOf="@id/iv_boarder"
+            app:layout_constraintTop_toTopOf="@id/iv_boarder" />
 
         <TextView
-            android:id="@+id/detail_comment_user_nickname_tv"
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="슈퍼소닉"
+            android:layout_marginStart="@dimen/size_spacing_8"
             android:textColor="#000000"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_profile_iv"
-            app:layout_constraintStart_toEndOf="@id/detail_comment_user_profile_iv"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_user_profile_iv" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_image"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="@id/iv_image"
+            tools:text="슈퍼소닉" />
 
         <TextView
-            android:id="@+id/detail_comment_date_tv"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginBottom="3dp"
-            android:text="2022-04-04"
+            android:layout_marginStart="@dimen/size_spacing_6"
+            android:layout_marginBottom="@dimen/size_spacing_3"
             android:textColor="#7D7D7D"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
-            app:layout_constraintStart_toEndOf="@id/detail_comment_user_nickname_tv" />
-
-        <!--    <ImageView-->
-        <!--        android:id="@+id/detail_comment_more_btn_iv"-->
-        <!--        android:layout_width="15dp"-->
-        <!--        android:layout_height="15dp"-->
-        <!--        android:src="@drawable/ic_more_btn"-->
-        <!--        android:scaleType="fitCenter"-->
-        <!--        app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv"-->
-        <!--        app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        android:layout_marginEnd="30dp"/>-->
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
+            app:layout_constraintStart_toEndOf="@id/tv_nickname"
+            tools:text="2022-04-04" />
 
         <ImageView
-            android:id="@+id/detail_coment_heart_on_iv"
+            android:id="@+id/iv_like_color"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/size_spacing_5"
             android:src="@drawable/heart_fill_big"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
-            app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
+            app:layout_constraintEnd_toStartOf="@id/tv_count"
+            app:layout_constraintTop_toTopOf="@id/tv_nickname" />
 
         <ImageView
-            android:id="@+id/detail_coment_heart_off_iv"
+            android:id="@+id/iv_like_no_color_second"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="@dimen/size_spacing_5"
+            android:layout_marginEnd="@dimen/size_spacing_5"
             android:src="@drawable/like_empty_big"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
-            app:layout_constraintEnd_toStartOf="@id/detail_comment_likecnt_tv"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv" />
-
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
+            app:layout_constraintEnd_toStartOf="@id/tv_count"
+            app:layout_constraintTop_toTopOf="@id/tv_nickname" />
 
         <TextView
-            android:id="@+id/detail_comment_likecnt_tv"
+            android:id="@+id/tv_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/size_spacing_5"
             android:layout_marginEnd="25dp"
-            android:text="12"
             android:textColor="#515151"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv" />
-
+            app:layout_constraintTop_toTopOf="@id/tv_nickname"
+            tools:text="12" />
 
         <ImageView
-            android:id="@+id/detail_comment_declaration_iv"
+            android:id="@+id/iv_setting"
             android:layout_width="13dp"
             android:layout_height="13dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="@dimen/size_spacing_5"
+            android:layout_marginEnd="@dimen/size_spacing_5"
             android:src="@drawable/declation_option"
-            app:layout_constraintBottom_toBottomOf="@id/detail_comment_user_nickname_tv"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/detail_comment_user_nickname_tv" />
-
+            app:layout_constraintTop_toTopOf="@id/tv_nickname" />
 
         <TextView
-            android:id="@+id/detail_comment_text_tv"
+            android:id="@+id/tv_content"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/size_spacing_6"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!"
             android:textColor="#515151"
             android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="@id/detail_comment_user_nickname_tv"
-            app:layout_constraintTop_toBottomOf="@id/detail_comment_user_nickname_tv" />
+            app:layout_constraintStart_toStartOf="@id/tv_nickname"
+            app:layout_constraintTop_toBottomOf="@id/tv_nickname"
+            tools:text="올라프 너무 귀엽구 감동적,,, 덕분에 따듯한 겨울 보낼 수 있을듯!" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

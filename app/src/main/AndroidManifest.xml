@@ -20,13 +20,13 @@
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="org.cornfarmer.persentation.detail.DeclationActivity"
+            android:name="org.cornfarmer.presentation.detail.DeclarationActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.profilemodify.ProfileModifyActivity"
+            android:name="org.cornfarmer.presentation.profilemodify.ProfileModifyActivity"
             android:exported="true" />
         <activity
-            android:name="org.cornfarmer.persentation.comment.CommentActivity"
+            android:name="org.cornfarmer.presentation.comment.CommentActivity"
             android:exported="true" />
 
         <provider
@@ -40,34 +40,34 @@
         </provider>
 
         <activity
-            android:name="org.cornfarmer.persentation.join.SplashJoinActivity"
+            android:name="org.cornfarmer.presentation.join.SplashJoinActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.agree.AgreeOneActivity"
+            android:name="org.cornfarmer.presentation.agree.AgreeOneActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.agree.AgreeTwoActivity"
+            android:name="org.cornfarmer.presentation.agree.AgreeTwoActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.join.JoinGenreActivity"
+            android:name="org.cornfarmer.presentation.join.JoinGenreActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.join.JoinOttActivity"
+            android:name="org.cornfarmer.presentation.join.JoinOttActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.join.JoinNicknameActivity"
+            android:name="org.cornfarmer.presentation.join.JoinNicknameActivity"
             android:exported="false" />
         <activity
-            android:name="org.cornfarmer.persentation.agree.TermAgreeActivity"
+            android:name="org.cornfarmer.presentation.agree.TermAgreeActivity"
             android:exported="true" />
         <activity
-            android:name="org.cornfarmer.persentation.login.LoginActivity"
+            android:name="org.cornfarmer.presentation.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthCustomTabActivity"
             android:exported="true" />
         <activity
-            android:name="org.cornfarmer.persentation.splash.SplashActivity"
+            android:name="org.cornfarmer.presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -103,10 +103,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.cornfarmer.persentation.main.MainActivity"
+            android:name="org.cornfarmer.presentation.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name="org.cornfarmer.persentation.wishlist.WishlistActivity"
+            android:name="org.cornfarmer.presentation.wishlist.WishlistActivity"
             android:exported="true" />
     </application>
 </manifest>

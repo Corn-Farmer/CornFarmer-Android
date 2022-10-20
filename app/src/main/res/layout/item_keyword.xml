@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <TextView
-            android:id="@+id/item_keyword_tv"
+            android:id="@+id/tv_keyword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="@dimen/size_spacing_15"
+            android:layout_marginTop="@dimen/size_spacing_10"
+            android:layout_marginEnd="@dimen/size_spacing_15"
             android:background="@drawable/keyword"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:text="# 혼자 있고 싶을 때"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="# 혼자 있고 싶을 때" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

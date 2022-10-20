@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.corn.cornfarmer.persentation.join.SplashJoinActivity">
+    tools:context="org.cornfarmer.presentation.join.SplashJoinActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/splash_join_rl"
+            android:id="@+id/layout_splash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="193dp"
@@ -18,37 +18,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/splash_join_image_shadow"
+                android:id="@+id/iv_shadow"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:src="@drawable/splash_join_image" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/splash_join_image_iv"
+                android:id="@+id/iv_image"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:background="@android:color/transparent" />
 
-
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/splash_join_nickname_tv"
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:fontFamily="@font/robotobold"
-            android:text="보라보라돌이"
             android:textColor="#515151"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/splash_join_rl" />
+            app:layout_constraintTop_toBottomOf="@id/layout_splash" />
 
         <ImageView
-            android:id="@+id/splash_join_welcome_iv"
+            android:id="@+id/iv_welcome"
             android:layout_width="117dp"
             android:layout_height="28dp"
             android:layout_marginBottom="94dp"
@@ -57,7 +54,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

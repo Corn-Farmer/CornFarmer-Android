@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Spacing -->
+    <dimen name="size_spacing_3">3dp</dimen>
+    <dimen name="size_spacing_5">5dp</dimen>
     <dimen name="size_spacing_6">6dp</dimen>
     <dimen name="size_spacing_8">8dp</dimen>
     <dimen name="size_spacing_10">10dp</dimen>
     <dimen name="size_spacing_12">12dp</dimen>
+    <dimen name="size_spacing_15">15dp</dimen>
+    <dimen name="size_spacing_16">16dp</dimen>
     <dimen name="size_spacing_18">18dp</dimen>
     <dimen name="size_spacing_20">20dp</dimen>
     <dimen name="size_spacing_24">24dp</dimen>
     <dimen name="size_spacing_30">30dp</dimen>
+    <dimen name="size_spacing_32">32dp</dimen>
+    <dimen name="size_spacing_34">34dp</dimen>
+    <dimen name="size_spacing_36">36dp</dimen>
+    <dimen name="size_spacing_40">40dp</dimen>
+    <dimen name="size_spacing_50">50dp</dimen>
+    <dimen name="size_spacing_72">72dp</dimen>
 </resources>
