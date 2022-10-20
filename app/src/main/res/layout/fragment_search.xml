@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -7,27 +6,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
-            android:id="@+id/search_search_iv"
+            android:id="@+id/iv_search"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="@dimen/size_spacing_12"
             android:src="@drawable/search"
-            app:layout_constraintBottom_toBottomOf="@id/search_like_iv"
-            app:layout_constraintEnd_toStartOf="@id/search_like_iv" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_like"
+            app:layout_constraintEnd_toStartOf="@id/iv_like" />
 
         <ImageView
-            android:id="@+id/search_like_iv"
+            android:id="@+id/iv_like"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="@dimen/size_spacing_12"
             android:src="@drawable/heartgray"
-            app:layout_constraintBottom_toBottomOf="@id/search_bell_iv"
-            app:layout_constraintEnd_toStartOf="@id/search_bell_iv" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_bell"
+            app:layout_constraintEnd_toStartOf="@id/iv_bell" />
 
         <ImageView
-            android:id="@+id/search_bell_iv"
+            android:id="@+id/iv_bell"
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_marginTop="36dp"
@@ -36,66 +34,65 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/search_text2_tv"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="지금 바로"
+            android:text="@string/search_title"
             android:textColor="#1E005E"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/search_text_tv"
-            app:layout_constraintStart_toStartOf="@id/search_text_tv"
-            app:layout_constraintTop_toBottomOf="@id/search_search_iv" />
+            app:layout_constraintEnd_toEndOf="@id/tv_subtitle"
+            app:layout_constraintStart_toStartOf="@id/tv_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/iv_search" />
 
         <TextView
-            android:id="@+id/search_text_tv"
+            android:id="@+id/tv_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="궁금한 작품을 찾아보세요!"
+            android:text="@string/search_subtitle"
             android:textColor="#1E005E"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_text2_tv" />
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <ImageView
-            android:id="@+id/search_input_background_iv"
+            android:id="@+id/iv_background"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
+            android:layout_marginTop="@dimen/size_spacing_30"
+            android:layout_marginEnd="@dimen/size_spacing_30"
             android:scaleType="fitXY"
             android:src="@drawable/searchbackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_text_tv" />
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
         <EditText
-            android:id="@+id/search_search_input_et"
+            android:id="@+id/et_search"
             android:layout_width="260dp"
             android:layout_height="70dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_30"
             android:background="#00ff0000"
-            android:hint="나 홀로 집에"
+            android:hint="@string/search_hint"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/search_search_button_iv"
-            app:layout_constraintTop_toBottomOf="@id/search_text_tv" />
+            app:layout_constraintStart_toEndOf="@id/iv_search_button"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
         <ImageView
-            android:id="@+id/search_search_button_iv"
+            android:id="@+id/iv_search_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
             android:src="@drawable/searchblue"
-            app:layout_constraintBottom_toBottomOf="@id/search_input_background_iv"
-            app:layout_constraintStart_toStartOf="@id/search_input_background_iv"
-            app:layout_constraintTop_toTopOf="@id/search_input_background_iv" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_background"
+            app:layout_constraintStart_toStartOf="@id/iv_background"
+            app:layout_constraintTop_toTopOf="@id/iv_background" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/select_item_ll"
+        android:id="@+id/layout_item"
         android:layout_width="312dp"
         android:layout_height="120dp"
+        android:layout_marginStart="@dimen/size_spacing_24"
+        android:layout_marginEnd="@dimen/size_spacing_24"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="vertical">
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/select_camera_bt"
+            android:id="@+id/bt_camera"
             android:layout_width="312dp"
-            android:textSize="15sp"
-            android:textColor="#515151"
-            android:fontFamily="@font/roboto_bold"
             android:layout_height="59dp"
-            android:textStyle="bold"
             android:background="@drawable/button_topside_round"
-            android:text="사진 찍기" />
-
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/dialog_image_select_camera"
+            android:textColor="#515151"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="312dp"
@@ -50,47 +47,40 @@
                 android:layout_width="21dp"
                 android:layout_height="2dp"
                 android:background="#FEE36F" />
-
         </LinearLayout>
 
-
         <Button
-            android:id="@+id/select_album_bt"
+            android:id="@+id/bt_album"
             android:layout_width="312dp"
             android:layout_height="59dp"
-            android:textSize="15sp"
-            android:textColor="#515151"
-            android:fontFamily="@font/robotoregular"
-            android:layout_below="@+id/select_camera_bt"
-            android:textStyle="bold"
             android:background="@drawable/button_bottomside_round"
-            android:text="앨범에서 선택" />
-
+            android:fontFamily="@font/robotoregular"
+            android:text="@string/dialog_image_select_album"
+            android:textColor="#515151"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-
     <ImageView
-        app:layout_constraintTop_toBottomOf="@+id/select_item_ll"
-        android:id="@+id/select_cancel_bt"
+        android:id="@+id/bt_cancel"
         android:layout_width="303dp"
         android:layout_height="64dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="29dp"
-        android:layout_marginEnd="28dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
         android:background="@drawable/img_select_dialog_cancel"
-         />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item" />
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/select_cancel_bt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="303dp"
-        android:layout_marginEnd="28dp"
+        android:layout_height="41dp"
         android:layout_marginStart="29dp"
-        android:layout_height="41dp"/>
-
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

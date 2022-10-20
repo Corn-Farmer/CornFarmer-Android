@@ -7,12 +7,12 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/logo_iv"
+            android:id="@+id/iv_logo"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
             android:layout_marginTop="80dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="@dimen/size_spacing_30"
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,28 +22,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="환영합니다!"
+            android:text="@string/terms_agree_welcome"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/logo_iv"
-            app:layout_constraintStart_toStartOf="@id/logo_iv"
-            app:layout_constraintTop_toBottomOf="@id/logo_iv" />
+            app:layout_constraintEnd_toEndOf="@id/iv_logo"
+            app:layout_constraintStart_toStartOf="@id/iv_logo"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
         <LinearLayout
-            android:id="@+id/agree_check_all_linearlayout"
+            android:id="@+id/layout_check_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
+            android:layout_marginEnd="@dimen/size_spacing_30"
+            android:layout_marginBottom="@dimen/size_spacing_15"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/line"
+            app:layout_constraintBottom_toTopOf="@id/vi_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <CheckBox
-                android:id="@+id/agree_check_all_checkbox"
+                android:id="@+id/cb_check_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/selector_custom_check" />
@@ -51,35 +51,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="약관 전체동의"
+                android:layout_marginStart="@dimen/size_spacing_10"
+                android:text="@string/terms_agree_all"
                 android:textColor="@color/black" />
         </LinearLayout>
 
         <View
-            android:id="@+id/line"
+            android:id="@+id/vi_first"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="@dimen/size_spacing_15"
             android:background="#D0CECE"
-            app:layout_constraintBottom_toTopOf="@id/agree_check_one_linearlayout"
+            app:layout_constraintBottom_toTopOf="@id/layout_check_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
-            android:id="@+id/agree_check_one_linearlayout"
+            android:id="@+id/layout_check_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="@dimen/size_spacing_30"
+            android:layout_marginEnd="@dimen/size_spacing_30"
+            android:layout_marginBottom="@dimen/size_spacing_20"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/agree_check_two_linearlayout"
+            app:layout_constraintBottom_toTopOf="@id/layout_check_two"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <CheckBox
-                android:id="@+id/agree_check_one_checkbox"
+                android:id="@+id/cb_check_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/selector_custom_check" />
@@ -87,8 +87,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="이용약관 동의(필수)"
+                android:layout_marginStart="@dimen/size_spacing_10"
+                android:text="@string/terms_agree_essential"
                 android:textColor="@color/black" />
 
             <View
@@ -100,24 +100,24 @@
                 android:id="@+id/agree_check_one_info_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_gravity="center|right"
+                android:layout_gravity="center|end"
                 android:src="@drawable/next_btn" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/agree_check_two_linearlayout"
+            android:id="@+id/layout_check_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/agree_next_tv"
+            app:layout_constraintBottom_toTopOf="@id/tv_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <CheckBox
-                android:id="@+id/agree_check_two_checkbox"
+                android:id="@+id/cb_check_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/selector_custom_check" />
@@ -125,8 +125,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="개인정보 수집 및 이용 동의(필수)"
+                android:layout_marginStart="@dimen/size_spacing_10"
+                android:text="@string/terms_agree_personal"
                 android:textColor="@color/black" />
 
             <View
@@ -135,25 +135,24 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/agree_check_two_info_iv"
+                android:id="@+id/iv_check_two"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_gravity="center|right"
+                android:layout_gravity="center|end"
                 android:src="@drawable/next_btn" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/agree_next_tv"
+            android:id="@+id/tv_next"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="#D0CECE"
             android:gravity="center"
-            android:text="다음"
+            android:text="@string/terms_agree_next"
             android:textColor="#FFFFFF"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

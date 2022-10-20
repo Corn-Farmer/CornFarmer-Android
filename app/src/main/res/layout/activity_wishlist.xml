@@ -3,68 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:overScrollMode="never">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
-        <ImageView
-            android:id="@+id/wishlist_previous_btn1_iv"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="38dp"
-            android:src="@drawable/back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-        <TextView
-            android:id="@+id/wishlist_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="60dp"
-            android:text="내가 찜한 작품 모아보기"
-            android:textColor="#1E005D"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wishlist_previous_btn1_iv" />
-        <TextView
-            android:id="@+id/wishlist_descript1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/wishlist_title_tv"
-            app:layout_constraintStart_toStartOf="@id/wishlist_title_tv"
-            android:layout_marginTop="10dp"
-            android:textSize="14sp"
-            android:text="좋아요 남겨주신 작품들을 모아봤어요!\n컨파머가 당신의 즐거운 시간을 책임질게요."
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/wishlist_RV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/wishlist_descript1"
-            app:layout_constraintVertical_bias="1.0"
-            tools:listitem="@layout/item_wishmovie" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="@dimen/size_spacing_30"
+                android:layout_marginTop="@dimen/size_spacing_40"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_spacing_32"
+                android:layout_marginTop="60dp"
+                android:text="@string/wishlist_title"
+                android:textColor="#1E005D"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_spacing_10"
+                android:text="@string/wishlist_description"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_wishlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_spacing_10"
+                android:layout_marginTop="@dimen/size_spacing_30"
+                android:layout_marginEnd="@dimen/size_spacing_10"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_description"
+                app:layout_constraintVertical_bias="1.0"
+                tools:listitem="@layout/item_wishmovie" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

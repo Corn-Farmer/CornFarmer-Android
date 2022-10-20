@@ -2,31 +2,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.corn.cornfarmer.persentation.join.JoinGenreActivity">
+    tools:context="org.cornfarmer.presentation.join.JoinGenreActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <LinearLayout
-            android:id="@+id/genre_finish_ll"
+            android:id="@+id/layout_finish"
             android:layout_width="32dp"
             android:layout_height="20dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="41dp"
+            android:layout_marginTop="@dimen/size_spacing_50"
+            android:layout_marginEnd="@dimen/size_spacing_40"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/genre_finish_iv"
+                android:id="@+id/iv_finish"
                 android:layout_width="32dp"
                 android:layout_height="20dp"
                 android:src="@drawable/genre_finish" />
 
-
             <ImageView
-                android:id="@+id/genre_finish_color_iv"
+                android:id="@+id/iv_finish_color"
                 android:layout_width="32dp"
                 android:layout_height="20dp"
                 android:src="@drawable/genre_finish_color"
@@ -35,45 +33,45 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/genre_detail_iv"
+            android:id="@+id/iv_title"
             android:layout_width="268dp"
             android:layout_height="26dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginStart="@dimen/size_spacing_24"
+            android:layout_marginTop="@dimen/size_spacing_72"
             android:src="@drawable/gerne_explain"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genre_finish_ll" />
+            app:layout_constraintTop_toBottomOf="@id/layout_finish" />
 
 
         <ImageView
-            android:id="@+id/genre_detail_iv2"
+            android:id="@+id/iv_sub_title"
             android:layout_width="146dp"
             android:layout_height="13dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/size_spacing_24"
+            android:layout_marginTop="@dimen/size_spacing_20"
             android:src="@drawable/genre_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genre_detail_iv" />
+            app:layout_constraintTop_toBottomOf="@id/iv_title" />
 
         <GridLayout
-            android:id="@+id/genre_grid_01"
+            android:id="@+id/layout_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_34"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genre_detail_iv2">
+            app:layout_constraintTop_toBottomOf="@+id/iv_sub_title">
 
             <LinearLayout>
 
                 <ImageView
-                    android:id="@+id/genre_dacu_iv"
+                    android:id="@+id/iv_dacu"
                     android:layout_width="127dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_dacy" />
 
                 <ImageView
-                    android:id="@+id/genre_dacu_color_iv"
+                    android:id="@+id/iv_dacu_color"
                     android:layout_width="127dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_dacu_color"
@@ -81,16 +79,16 @@
 
             </LinearLayout>
 
-            <LinearLayout android:layout_marginStart="8dp">
+            <LinearLayout android:layout_marginStart="@dimen/size_spacing_8">
 
                 <ImageView
-                    android:id="@+id/genre_anime_iv"
+                    android:id="@+id/iv_anime"
                     android:layout_width="127dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_anime" />
 
                 <ImageView
-                    android:id="@+id/genre_anime_color_iv"
+                    android:id="@+id/iv_anime_color"
                     android:layout_width="127dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_anime_color"
@@ -101,24 +99,24 @@
         </GridLayout>
 
         <GridLayout
-            android:id="@+id/genre_grid_02"
+            android:id="@+id/layout_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genre_grid_01">
+            app:layout_constraintTop_toBottomOf="@+id/layout_first">
 
             <LinearLayout>
 
                 <ImageView
-                    android:id="@+id/genre_fantasy_iv"
+                    android:id="@+id/iv_fantasy"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_fantasy" />
 
                 <ImageView
-                    android:id="@+id/genre_fantasy_color_iv"
+                    android:id="@+id/iv_fantasy_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_fantasy_color"
@@ -126,16 +124,16 @@
 
             </LinearLayout>
 
-            <LinearLayout android:layout_marginStart="8dp">
+            <LinearLayout android:layout_marginStart="@dimen/size_spacing_8">
 
                 <ImageView
-                    android:id="@+id/genre_thrill_iv"
+                    android:id="@+id/iv_thrill"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/gerne_thrill" />
 
                 <ImageView
-                    android:id="@+id/genre_thrill_color_iv"
+                    android:id="@+id/iv_thrill_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_thrill_color"
@@ -143,16 +141,16 @@
 
             </LinearLayout>
 
-            <LinearLayout android:layout_marginStart="8dp">
+            <LinearLayout android:layout_marginStart="@dimen/size_spacing_8">
 
                 <ImageView
-                    android:id="@+id/genre_sport_iv"
+                    android:id="@+id/iv_sport"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_sprots" />
 
                 <ImageView
-                    android:id="@+id/genre_sport_color_iv"
+                    android:id="@+id/iv_sport_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_sport_color"
@@ -163,16 +161,16 @@
             <LinearLayout
                 android:layout_row="1"
                 android:layout_column="0"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_romance_iv"
+                    android:id="@+id/iv_romance"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/gerne_romance" />
 
                 <ImageView
-                    android:id="@+id/genre_romance_color_iv"
+                    android:id="@+id/iv_romance_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_romnace_color"
@@ -181,17 +179,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginStart="@dimen/size_spacing_8"
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_drama_iv"
+                    android:id="@+id/iv_drama"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_drama" />
 
                 <ImageView
-                    android:id="@+id/genre_drama_color_iv"
+                    android:id="@+id/iv_drama_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_drama_color"
@@ -200,17 +198,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginStart="@dimen/size_spacing_8"
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_comedy_iv"
+                    android:id="@+id/iv_comedy"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_comedy" />
 
                 <ImageView
-                    android:id="@+id/genre_comedy_color_iv"
+                    android:id="@+id/iv_comedy_color"
                     android:layout_width="101dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_comedy_color"
@@ -221,24 +219,24 @@
         </GridLayout>
 
         <GridLayout
-            android:id="@+id/genre_grid_03"
+            android:id="@+id/layout_third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/size_spacing_20"
+            android:layout_marginTop="@dimen/size_spacing_16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genre_grid_02">
+            app:layout_constraintTop_toBottomOf="@+id/layout_second">
 
             <LinearLayout>
 
                 <ImageView
-                    android:id="@+id/genre_family_iv"
+                    android:id="@+id/iv_family"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_family" />
 
                 <ImageView
-                    android:id="@+id/genre_family_color_iv"
+                    android:id="@+id/iv_family_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_family_color"
@@ -246,16 +244,16 @@
 
             </LinearLayout>
 
-            <LinearLayout android:layout_marginStart="8dp">
+            <LinearLayout android:layout_marginStart="@dimen/size_spacing_8">
 
                 <ImageView
-                    android:id="@+id/genre_music_iv"
+                    android:id="@+id/iv_music"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_music" />
 
                 <ImageView
-                    android:id="@+id/genre_music_color_iv"
+                    android:id="@+id/iv_music_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_music_color"
@@ -263,16 +261,16 @@
 
             </LinearLayout>
 
-            <LinearLayout android:layout_marginStart="8dp">
+            <LinearLayout android:layout_marginStart="@dimen/size_spacing_8">
 
                 <ImageView
-                    android:id="@+id/genre_sf_iv"
+                    android:id="@+id/iv_sf"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_sf" />
 
                 <ImageView
-                    android:id="@+id/genre_sf_color_iv"
+                    android:id="@+id/iv_sf_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_sf_color"
@@ -283,16 +281,16 @@
             <LinearLayout
                 android:layout_row="1"
                 android:layout_column="0"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_action_iv"
+                    android:id="@+id/iv_action"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_action" />
 
                 <ImageView
-                    android:id="@+id/genre_action_color_iv"
+                    android:id="@+id/iv_action_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_action_color"
@@ -301,17 +299,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginStart="@dimen/size_spacing_8"
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_history_iv"
+                    android:id="@+id/iv_history"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_history" />
 
                 <ImageView
-                    android:id="@+id/genre_history_color_iv"
+                    android:id="@+id/iv_history_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_history_color"
@@ -320,17 +318,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginStart="@dimen/size_spacing_8"
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_horor_iv"
+                    android:id="@+id/iv_horor"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_horor" />
 
                 <ImageView
-                    android:id="@+id/genre_horor_color_iv"
+                    android:id="@+id/iv_horor_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_horor_color"
@@ -341,16 +339,16 @@
             <LinearLayout
                 android:layout_row="2"
                 android:layout_column="0"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_crime_iv"
+                    android:id="@+id/iv_crime"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_crime" />
 
                 <ImageView
-                    android:id="@+id/genre_crime_color_iv"
+                    android:id="@+id/iv_crime_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_crime_color"
@@ -359,27 +357,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginStart="@dimen/size_spacing_8"
+                android:layout_marginTop="@dimen/size_spacing_16">
 
                 <ImageView
-                    android:id="@+id/genre_war_iv"
+                    android:id="@+id/iv_war"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_war" />
 
                 <ImageView
-                    android:id="@+id/genre_war_color_iv"
+                    android:id="@+id/iv_war_color"
                     android:layout_width="88dp"
                     android:layout_height="40dp"
                     android:src="@drawable/genre_war_color"
                     android:visibility="gone" />
 
             </LinearLayout>
-
         </GridLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

@@ -2,13 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/item_profile_ott_iv"
+            android:id="@+id/iv_ott"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
@@ -25,8 +24,8 @@
             android:layout_marginTop="4dp"
             android:src="@drawable/ott_remove"
             android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@id/item_profile_ott_iv"
-            app:layout_constraintTop_toTopOf="@id/item_profile_ott_iv" />
+            app:layout_constraintStart_toEndOf="@id/iv_ott"
+            app:layout_constraintTop_toTopOf="@id/iv_ott" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

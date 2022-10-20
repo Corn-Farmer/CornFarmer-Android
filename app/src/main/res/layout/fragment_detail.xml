@@ -20,99 +20,87 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/detail_previous_btn_iv"
+                    android:id="@+id/iv_back"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginStart="29dp"
-                    android:layout_marginTop="38dp"
+                    android:layout_marginStart="@dimen/size_spacing_30"
+                    android:layout_marginTop="@dimen/size_spacing_40"
                     android:src="@drawable/back"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/detail_search_btn_iv"
+                    android:id="@+id/iv_search"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="@dimen/size_spacing_12"
                     android:src="@drawable/search"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_heart_btn_iv"
-                    app:layout_constraintEnd_toStartOf="@id/detail_heart_btn_iv" />
+                    app:layout_constraintBottom_toBottomOf="@id/iv_like_no_color_second"
+                    app:layout_constraintEnd_toStartOf="@id/iv_like_no_color_second" />
 
                 <ImageView
-                    android:id="@+id/detail_heart_btn_iv"
+                    android:id="@+id/iv_like_no_color"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="@dimen/size_spacing_12"
                     android:src="@drawable/heartgray"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_news_btn_iv"
-                    app:layout_constraintEnd_toStartOf="@id/detail_news_btn_iv" />
+                    app:layout_constraintBottom_toBottomOf="@id/iv_news"
+                    app:layout_constraintEnd_toStartOf="@id/iv_news" />
 
                 <ImageView
-                    android:id="@+id/detail_news_btn_iv"
+                    android:id="@+id/iv_news"
                     android:layout_width="29dp"
                     android:layout_height="29dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="@dimen/size_spacing_36"
                     android:layout_marginEnd="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/detail_movie_cv"
+                    android:id="@+id/cv_movie"
                     android:layout_width="match_parent"
                     android:layout_height="480dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="49dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_50"
+                    android:layout_marginEnd="@dimen/size_spacing_20"
                     android:background="@drawable/shadow_bg"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="@dimen/size_spacing_20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_news_btn_iv">
+                    app:layout_constraintTop_toBottomOf="@id/iv_news">
 
                     <ImageView
-                        android:id="@+id/detail_movie_image_iv"
+                        android:id="@+id/iv_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="fitXY"
+                        android:scaleType="fitXY" />
 
-
-                        />
                 </androidx.cardview.widget.CardView>
 
                 <ImageView
-                    android:id="@+id/detail_movie_like_off_btn_iv"
+                    android:id="@+id/iv_like_no_color_second"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="17dp"
                     android:src="@drawable/like_empty_big"
-                    app:layout_constraintStart_toStartOf="@+id/detail_movie_cv"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_movie_cv" />
+                    app:layout_constraintStart_toStartOf="@+id/cv_movie"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_movie" />
 
                 <ImageView
-                    android:id="@+id/detail_movie_like_on_btn_iv"
+                    android:id="@+id/iv_like_color"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="17dp"
                     android:src="@drawable/heart_fill_big"
                     android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="@id/detail_movie_cv"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_cv" />
-
-                <!--            <ImageView-->
-                <!--                android:id="@+id/detail_heart_image_iv"-->
-                <!--                android:layout_width="20dp"-->
-                <!--                android:layout_height="20dp"-->
-                <!--                android:layout_marginStart="34dp"-->
-                <!--                android:layout_marginTop="17dp"-->
-                <!--                android:src="@drawable/ic_heart_on"-->
-                <!--                app:layout_constraintStart_toStartOf="parent"-->
-                <!--                app:layout_constraintTop_toBottomOf="@id/detail_movie_image_iv" />-->
+                    app:layout_constraintStart_toStartOf="@id/cv_movie"
+                    app:layout_constraintTop_toBottomOf="@id/cv_movie" />
 
                 <TextView
-                    android:id="@+id/detail_number_of_like_tv"
+                    android:id="@+id/tv_like_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
@@ -120,288 +108,278 @@
                     android:text="1,004명이 찜했어요"
                     android:textColor="#515151"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@id/detail_movie_cv"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_cv"
-
-                    />
+                    app:layout_constraintStart_toStartOf="@id/cv_movie"
+                    app:layout_constraintTop_toBottomOf="@id/cv_movie" />
 
                 <TextView
-                    android:id="@+id/detail_movie_title_tv"
+                    android:id="@+id/tv_movie_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_10"
                     android:layout_marginEnd="70dp"
                     android:maxLines="2"
-                    android:text="영화 제목아아아아아아아아아"
+                    tools:text="영화 제목아아아아아아아아아"
                     android:textColor="#1E005D"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_number_of_like_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_like_total" />
 
                 <ImageView
-                    android:id="@+id/detail_movie_share_img"
+                    android:id="@+id/iv_share"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="43dp"
                     android:src="@drawable/share_btn"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_movie_title_tv"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_movie_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/detail_movie_title_tv" />
+                    app:layout_constraintTop_toTopOf="@id/tv_movie_title" />
 
                 <TextView
-                    android:id="@+id/detail_movie_release_tv"
+                    android:id="@+id/tv_movie_release"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="7dp"
-                    android:text="(2021)"
+                    tools:text="(2021)"
                     android:textColor="#7D7D7D"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_number_of_like_tv"
-                    app:layout_constraintEnd_toEndOf="@id/detail_movie_cv"
-                    app:layout_constraintTop_toTopOf="@id/detail_number_of_like_tv"
-
-                    />
+                    app:layout_constraintBottom_toBottomOf="@id/tv_like_total"
+                    app:layout_constraintEnd_toEndOf="@id/cv_movie"
+                    app:layout_constraintTop_toTopOf="@id/tv_like_total" />
 
                 <TextView
-                    android:id="@+id/detail_movie_genre_tv"
+                    android:id="@+id/tv_genre_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:layout_marginTop="6dp"
-                    android:text="장르"
+                    android:text="@string/detail_genre"
                     android:textColor="#515151"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_title_tv" />
-
+                    app:layout_constraintStart_toStartOf="@id/tv_movie_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_movie_title" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/detail_ott_service_rv"
+                    android:id="@+id/rcv_ott"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_20"
+                    android:layout_marginEnd="@dimen/size_spacing_20"
+                    android:layout_marginBottom="@dimen/size_spacing_20"
                     android:orientation="horizontal"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toTopOf="@id/detail_horizontal_line_iv"
+                    app:layout_constraintBottom_toTopOf="@id/iv_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_genre_tv"
+                    app:layout_constraintTop_toBottomOf="@id/tv_genre_title"
                     tools:listitem="@layout/item_ott_service" />
 
                 <ImageView
-                    android:id="@+id/detail_horizontal_line_iv"
+                    android:id="@+id/iv_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_20"
+                    android:layout_marginEnd="@dimen/size_spacing_20"
                     android:scaleType="centerCrop"
                     android:src="@drawable/horizontal_line"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_ott_service_rv" />
+                    app:layout_constraintTop_toBottomOf="@id/rcv_ott" />
 
                 <TextView
-                    android:id="@+id/detail_movie_story_tv"
+                    android:id="@+id/tv_story"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_16"
+                    android:layout_marginEnd="@dimen/size_spacing_20"
                     android:ellipsize="end"
                     android:maxLines="5"
-                    android:text="줄거리"
+                    android:text="@string/detail_story"
                     android:textColor="#000000"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_horizontal_line_iv" />
+                    app:layout_constraintTop_toBottomOf="@id/iv_line" />
 
                 <TextView
-                    android:id="@+id/view_more"
+                    android:id="@+id/tv_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_spacing_34"
+                    android:text="@string/detail_more"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_story" />
+
+                <TextView
+                    android:id="@+id/tv_loss"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="34dp"
-                    android:text="더보기"
+                    android:text="@string/detail_loss"
                     android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_story" />
 
                 <TextView
-                    android:id="@+id/view_loss"
+                    android:id="@+id/tv_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="34dp"
-                    android:text="줄이기"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
-
-                <TextView
-                    android:id="@+id/detail_detail_information_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
                     android:layout_marginTop="25dp"
-                    android:text="상세 정보"
+                    android:text="@string/detail_detail"
                     android:textColor="#000000"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_movie_story_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_story" />
 
                 <TextView
-                    android:id="@+id/detail_director_tv"
+                    android:id="@+id/tv_director"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:text="감독:"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_16"
+                    android:text="@string/detail_director"
                     android:textColor="#515151"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_detail_information_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_detail" />
 
                 <TextView
-                    android:id="@+id/detail_director_name_tv"
+                    android:id="@+id/tv_director_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:text="감독 이름"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_16"
+                    android:text="@string/detail_director_name"
                     android:textColor="#515151"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_director_tv" />
-
+                    app:layout_constraintTop_toBottomOf="@id/tv_director" />
 
                 <TextView
-                    android:id="@+id/detail_appear_tv"
+                    android:id="@+id/tv_appear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:text="출연:"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_16"
+                    android:text="@string/detail_appear"
                     android:textColor="#000000"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_director_name_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_director_name" />
 
                 <TextView
-                    android:id="@+id/detail_appear_name_tv"
+                    android:id="@+id/tv_appear_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:text="배우 이름"
+                    android:layout_marginStart="@dimen/size_spacing_20"
+                    android:layout_marginTop="@dimen/size_spacing_16"
+                    android:text="@string/detail_appear_name"
                     android:textColor="#515151"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_appear_tv" />
-
+                    app:layout_constraintTop_toBottomOf="@id/tv_appear" />
 
                 <TextView
-                    android:id="@+id/detail_comment_title_tv"
+                    android:id="@+id/tv_comment_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:text="후기"
+                    android:layout_marginTop="@dimen/size_spacing_36"
+                    android:text="@string/detail_comment"
                     android:textColor="#1E005D"
                     android:textSize="23sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/detail_movie_title_tv"
-                    app:layout_constraintTop_toBottomOf="@id/detail_appear_name_tv" />
-
+                    app:layout_constraintStart_toStartOf="@id/tv_movie_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_appear_name" />
 
                 <ImageView
-                    android:id="@+id/detail_plus_comment_iv"
+                    android:id="@+id/iv_write_comment"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="@dimen/size_spacing_30"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img_yellow_cicle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_appear_name_tv" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_appear_name" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/small_horizontal"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintEnd_toEndOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
+                    app:layout_constraintBottom_toBottomOf="@id/iv_write_comment"
+                    app:layout_constraintEnd_toEndOf="@id/iv_write_comment"
+                    app:layout_constraintStart_toStartOf="@id/iv_write_comment"
+                    app:layout_constraintTop_toTopOf="@id/iv_write_comment" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/small_vertical"
-                    app:layout_constraintBottom_toBottomOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintEnd_toEndOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintStart_toStartOf="@id/detail_plus_comment_iv"
-                    app:layout_constraintTop_toTopOf="@id/detail_plus_comment_iv" />
+                    app:layout_constraintBottom_toBottomOf="@id/iv_write_comment"
+                    app:layout_constraintEnd_toEndOf="@id/iv_write_comment"
+                    app:layout_constraintStart_toStartOf="@id/iv_write_comment"
+                    app:layout_constraintTop_toTopOf="@id/iv_write_comment" />
 
                 <TextView
-                    android:id="@+id/detail_review_sort_recent_tv"
+                    android:id="@+id/tv_recent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="20dp"
-                    android:text="최신순"
+                    android:text="@string/detail_sort_recent"
                     android:textColor="#C4C4C4"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
-                    app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator_tv" />
+                    app:layout_constraintBottom_toTopOf="@id/rcv_comment"
+                    app:layout_constraintEnd_toStartOf="@id/tv_divide" />
 
                 <TextView
-                    android:id="@+id/detail_review_sort_separator_tv"
+                    android:id="@+id/tv_divide"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="20dp"
-                    android:text="|"
+                    android:text="@string/detail_divide"
                     android:textColor="#C4C4C4"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
-                    app:layout_constraintEnd_toStartOf="@id/detail_review_sort_like_tv" />
+                    app:layout_constraintBottom_toTopOf="@id/rcv_comment"
+                    app:layout_constraintEnd_toStartOf="@id/tv_sort_like" />
 
                 <TextView
-                    android:id="@+id/detail_review_sort_like_tv"
+                    android:id="@+id/tv_sort_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="좋아요순"
+                    android:layout_marginEnd="@dimen/size_spacing_30"
+                    android:layout_marginBottom="@dimen/size_spacing_20"
+                    android:text="@string/detail_sort_like"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toTopOf="@id/detail_comment_RV"
+                    app:layout_constraintBottom_toTopOf="@id/rcv_comment"
                     app:layout_constraintEnd_toEndOf="parent" />
 
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/detail_comment_RV"
+                    android:id="@+id/rcv_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/size_spacing_20"
                     android:layout_marginTop="60dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="@dimen/size_spacing_20"
                     android:orientation="vertical"
                     android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detail_comment_title_tv"
+                    app:layout_constraintTop_toBottomOf="@id/tv_comment_title"
                     tools:listitem="@layout/item_comment" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

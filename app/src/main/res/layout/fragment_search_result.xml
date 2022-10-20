@@ -3,157 +3,150 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.corn.cornfarmer.persentation.main.MainActivity">
-
-
-    <ImageView
-        android:id="@+id/search_back_iv"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="38dp"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/search_search_iv"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/search"
-        app:layout_constraintBottom_toBottomOf="@id/search_like_iv"
-        app:layout_constraintEnd_toStartOf="@id/search_like_iv" />
-
-    <ImageView
-        android:id="@+id/search_like_iv"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/heartgray"
-        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
-        app:layout_constraintEnd_toStartOf="@id/search_bell_iv" />
-
-    <ImageView
-        android:id="@+id/search_bell_iv"
-        android:layout_width="29dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toBottomOf="@id/search_back_iv"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/search_today_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:text="찾으시는 작품이 맞나요?"
-        android:textColor="#1E005E"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_back_iv" />
-
-    <TextView
-        android:id="@+id/search_result_movie_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나홀로 집에"
-        android:textColor="#FFC102"
-        app:layout_constraintStart_toStartOf="@id/search_today_tv"
-        app:layout_constraintTop_toBottomOf="@id/search_today_tv" />
-
-    <TextView
-        android:id="@+id/search_descript_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="키워드로 검색한 결과입니다."
-        app:layout_constraintStart_toEndOf="@id/search_result_movie_title_tv"
-        app:layout_constraintTop_toTopOf="@id/search_result_movie_title_tv" />
-
-    <TextView
-        android:id="@+id/search_review_sort_recent_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="최신순"
-        android:textColor="#C4C4C4"
-        android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintBottom_toBottomOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator1_tv"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/detail_review_sort_separator1_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="|"
-        android:textColor="#C4C4C4"
-        android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintBottom_toBottomOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintEnd_toStartOf="@id/search_review_sort_like_tv"
-        />
-
-    <TextView
-        android:id="@+id/search_review_sort_like_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="좋아요순"
-        android:textColor="#C4C4C4"
-        android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintBottom_toBottomOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintEnd_toStartOf="@id/detail_review_sort_separator2_tv"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/detail_review_sort_separator2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="|"
-        android:textColor="#C4C4C4"
-        android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintBottom_toBottomOf="@id/search_review_sort_rate_tv"
-        app:layout_constraintEnd_toStartOf="@id/search_review_sort_rate_tv"
-        />
-
-    <TextView
-        android:id="@+id/search_review_sort_rate_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:text="후기많은순"
-        android:textColor="#C4C4C4"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_descript_tv"
-        android:textStyle="bold"
-
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_ott_item_recyclerview"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:overScrollMode="never"
-        android:paddingBottom="200dp"
-        app:layout_constraintTop_toBottomOf="@id/search_review_sort_rate_tv"
-        tools:listitem="@layout/item_otts" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context="com.corn.cornfarmer.persentation.main.MainActivity">
 
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="38dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/search"
+            app:layout_constraintBottom_toBottomOf="@id/iv_like_no_color_second"
+            app:layout_constraintEnd_toStartOf="@id/iv_like_no_color_second" />
+
+        <ImageView
+            android:id="@+id/iv_like_no_color_second"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/heartgray"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toStartOf="@id/iv_bell" />
+
+        <ImageView
+            android:id="@+id/iv_bell"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/search_result_title"
+            android:textColor="#1E005E"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+        <TextView
+            android:id="@+id/tv_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFC102"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="나홀로 집에" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_result_subtitle"
+            app:layout_constraintStart_toEndOf="@id/tv_keyword"
+            app:layout_constraintTop_toTopOf="@id/tv_keyword" />
+
+        <TextView
+            android:id="@+id/tv_recent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/search_result_recent"
+            android:textColor="#C4C4C4"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sort_rate"
+            app:layout_constraintEnd_toStartOf="@id/tv_line_one"
+            app:layout_constraintTop_toTopOf="@id/tv_sort_rate" />
+
+        <TextView
+            android:id="@+id/tv_line_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/search_result_divide"
+            android:textColor="#C4C4C4"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sort_rate"
+            app:layout_constraintEnd_toStartOf="@id/tv_sort_like"
+            app:layout_constraintTop_toTopOf="@id/tv_sort_rate" />
+
+        <TextView
+            android:id="@+id/tv_sort_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/search_result_like"
+            android:textColor="#C4C4C4"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sort_rate"
+            app:layout_constraintEnd_toStartOf="@id/tv_line_two"
+            app:layout_constraintTop_toTopOf="@id/tv_sort_rate" />
+
+        <TextView
+            android:id="@+id/tv_line_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/search_result_divide"
+            android:textColor="#C4C4C4"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sort_rate"
+            app:layout_constraintEnd_toStartOf="@id/tv_sort_rate"
+            app:layout_constraintTop_toTopOf="@id/tv_sort_rate" />
+
+        <TextView
+            android:id="@+id/tv_sort_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_spacing_30"
+            android:layout_marginEnd="@dimen/size_spacing_40"
+            android:layout_marginBottom="@dimen/size_spacing_20"
+            android:text="@string/search_result_review"
+            android:textColor="#C4C4C4"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_search"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_spacing_10"
+            android:overScrollMode="never"
+            android:paddingBottom="200dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_sort_rate"
+            tools:listitem="@layout/item_otts" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
