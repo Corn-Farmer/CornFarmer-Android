@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityAgreeTwoBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityAgreeTwoBinding
 
 class AgreeTwoActivity : AppCompatActivity() {
 

@@ -6,12 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityWishlistBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ResponseWishMovie
 import org.cornfarmer.data.model.response.WishMovieResult
 import org.cornfarmer.data.repository.WishlistService
 import org.cornfarmer.data.view.WishlistView
+import org.cornfarmer.databinding.ActivityWishlistBinding
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.presentation.wishlist.adapter.WishlistRVAdapter
 import org.cornfarmer.util.ext.showToast

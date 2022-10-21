@@ -3,10 +3,10 @@ package org.cornfarmer.presentation.splash
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivitySplashBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivitySplashBinding
 import org.cornfarmer.presentation.login.LoginActivity
 import org.cornfarmer.util.binding.BindingActivity
 

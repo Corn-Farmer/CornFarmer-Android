@@ -7,8 +7,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.CustomDialogLoadingBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.CustomDialogLoadingBinding
 
 class CustomLoadingDialog(context: Context) : Dialog(context) {
 

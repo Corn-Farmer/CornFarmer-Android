@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.databinding.ItemMyCommentBinding
 import org.cornfarmer.data.model.response.MyCommentResult
+import org.cornfarmer.databinding.ItemMyCommentBinding
 
 class MyCommentRVAdapter(private val reviewList: ArrayList<MyCommentResult>) :
     RecyclerView.Adapter<MyCommentRVAdapter.ViewHolder>() {

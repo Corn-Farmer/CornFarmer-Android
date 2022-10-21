@@ -3,7 +3,7 @@ package org.cornfarmer.presentation.profile.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import com.corn.cornfarmer_android.databinding.CustomDialogUserDeleteBinding
+import org.cornfarmer.databinding.CustomDialogUserDeleteBinding
 
 class CustomUserDeleteDialog(context: Context) : Dialog(context) {
     private lateinit var binding: CustomDialogUserDeleteBinding

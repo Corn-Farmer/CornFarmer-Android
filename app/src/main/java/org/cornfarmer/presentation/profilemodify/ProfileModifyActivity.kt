@@ -12,16 +12,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityProfileModifyBinding
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ModifyProfileResponse
 import org.cornfarmer.data.model.response.ModifyResponse
 import org.cornfarmer.data.repository.ModifyProfileService
 import org.cornfarmer.data.repository.ModifyService
 import org.cornfarmer.data.view.ModifyView
+import org.cornfarmer.databinding.ActivityProfileModifyBinding
 import org.cornfarmer.di.Application
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.util.ext.showToast
@@ -81,16 +81,16 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             val modifiedNickname: String = binding.etNickname.text.toString()
 
             val nicknameRequest =
-                RequestBody.create(MediaType.parse("text/plain"), modifiedNickname)
+                RequestBody.create("text/plain".toMediaTypeOrNull(), modifiedNickname)
 
             val ottListRequest =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
+                    "text/plain".toMediaTypeOrNull(),
                     ottList.toString().replace("[", "").replace("]", "")
                 )
             val genreRequest =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
+                    "text/plain".toMediaTypeOrNull(),
                     genreList.toString().replace("[", "").replace("]", "")
                 )
 
@@ -102,13 +102,13 @@ class ProfileModifyActivity : AppCompatActivity(), ModifyView {
             requestMap.put("genreList", genreRequest)
 
             if (photo == "noimage") {
-                val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
+                val requestFile = RequestBody.create("image/png".toMediaTypeOrNull(), "noimage")
                 val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
                 val service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
                 service.tryPutModify()
             } else {
                 val file = File(photo.toString())
-                val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+                val requestFile = RequestBody.create("image/png".toMediaTypeOrNull(), file)
                 val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
                 val service = ModifyService(this, servertoken.toString(), body, requestMap, userIdx)
                 service.tryPutModify()

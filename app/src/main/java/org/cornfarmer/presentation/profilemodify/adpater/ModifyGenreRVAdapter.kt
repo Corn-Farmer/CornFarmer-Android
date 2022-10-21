@@ -3,8 +3,8 @@ package org.cornfarmer.presentation.profilemodify.adpater
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.corn.cornfarmer_android.databinding.ItemProfileGenreBinding
 import org.cornfarmer.data.model.response.ProfileGenre
+import org.cornfarmer.databinding.ItemProfileGenreBinding
 
 class ModifyGenreRVAdapter(private val genreList: List<ProfileGenre>) :
     RecyclerView.Adapter<ModifyGenreRVAdapter.Viewholder>() {

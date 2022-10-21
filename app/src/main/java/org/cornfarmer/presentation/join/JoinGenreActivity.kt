@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityJoinGenreBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityJoinGenreBinding
 import org.cornfarmer.di.Application
 
 class JoinGenreActivity : AppCompatActivity(), View.OnClickListener {

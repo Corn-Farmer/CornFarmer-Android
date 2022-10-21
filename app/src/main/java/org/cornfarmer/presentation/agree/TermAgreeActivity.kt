@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityTermsAgreeBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityTermsAgreeBinding
 import org.cornfarmer.presentation.join.JoinOttActivity
 
 class TermAgreeActivity : AppCompatActivity() {

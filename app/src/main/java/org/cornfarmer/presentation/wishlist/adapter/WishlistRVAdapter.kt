@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.databinding.ItemWishmovieBinding
 import org.cornfarmer.data.model.response.WishMovieResult
+import org.cornfarmer.databinding.ItemWishmovieBinding
 
 class WishlistRVAdapter(private val wishList: ArrayList<WishMovieResult>) :
     RecyclerView.Adapter<WishlistRVAdapter.ViewHolder>() {

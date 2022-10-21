@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.databinding.ItemProfileOttBinding
 import org.cornfarmer.data.model.response.ProfileOtt
+import org.cornfarmer.databinding.ItemProfileOttBinding
 
 class ModifyOttRVAdapter(private val ottList: List<ProfileOtt>) :
     RecyclerView.Adapter<ModifyOttRVAdapter.Viewholder>() {
