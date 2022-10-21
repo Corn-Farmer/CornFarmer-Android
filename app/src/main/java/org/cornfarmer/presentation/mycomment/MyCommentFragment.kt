@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentMyCommentBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.MyCommentResult
 import org.cornfarmer.data.model.response.ResponseMyComment
 import org.cornfarmer.data.repository.MyCommentService
 import org.cornfarmer.data.view.MyCommentFragmentView
+import org.cornfarmer.databinding.FragmentMyCommentBinding
 import org.cornfarmer.presentation.commentmodify.MyCommentModifyFragment
 import org.cornfarmer.presentation.detail.DetailFragment
 import org.cornfarmer.presentation.loading.CustomLoadingDialog

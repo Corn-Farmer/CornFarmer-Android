@@ -11,12 +11,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentHomeBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.MovieDto
 import org.cornfarmer.data.model.response.MovieResponse
 import org.cornfarmer.data.repository.HomeService
 import org.cornfarmer.data.view.HomeFragmentView
+import org.cornfarmer.databinding.FragmentHomeBinding
 import org.cornfarmer.presentation.detail.DetailFragment
 import org.cornfarmer.presentation.home.adapter.TodayMovieRVAdapter
 import org.cornfarmer.presentation.loading.CustomLoadingDialog

@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivitySplashJoinBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivitySplashJoinBinding
 import org.cornfarmer.di.Application
 import org.cornfarmer.presentation.main.MainActivity
 

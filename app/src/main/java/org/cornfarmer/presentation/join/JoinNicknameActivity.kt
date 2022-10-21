@@ -21,14 +21,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityJoinNicknameBinding
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ResponseJoin
 import org.cornfarmer.data.repository.JoinService
 import org.cornfarmer.data.view.JoinView
+import org.cornfarmer.databinding.ActivityJoinNicknameBinding
 import org.cornfarmer.di.Application
 import org.cornfarmer.util.ext.showToast
 import java.io.File
@@ -89,17 +89,17 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             val joinSharedPreferences = Application.joinSharedPreferences
             joinSharedPreferences.edit().putString("check_camera", "완료").apply()
 
-            val nicknameRequest = RequestBody.create(MediaType.parse("text/plain"), nickname!!)
-            val sexRequest = RequestBody.create(MediaType.parse("text/plain"), sex!!)
-            val birthdayRequest = RequestBody.create(MediaType.parse("text/plain"), birthday!!)
+            val nicknameRequest = RequestBody.create("text/plain".toMediaTypeOrNull(), nickname!!)
+            val sexRequest = RequestBody.create("text/plain".toMediaTypeOrNull(), sex!!)
+            val birthdayRequest = RequestBody.create("text/plain".toMediaTypeOrNull(), birthday!!)
             val ottListRequest =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
+                    "text/plain".toMediaTypeOrNull(),
                     ottList!!.replace("[", "").replace("]", "")
                 )
             val genreRequest =
                 RequestBody.create(
-                    MediaType.parse("text/plain"),
+                    "text/plain".toMediaTypeOrNull(),
                     genreList!!.replace("[", "").replace("]", "")
                 )
 
@@ -112,13 +112,13 @@ class JoinNicknameActivity : AppCompatActivity(), JoinView {
             requestMap["genreList"] = genreRequest
 
             if (photo == null) {
-                val requestFile = RequestBody.create(MediaType.parse("image/png"), "noimage")
+                val requestFile = RequestBody.create("image/png".toMediaTypeOrNull(), "noimage")
                 val body = MultipartBody.Part.createFormData("photo", "noimage", requestFile)
                 val service = JoinService(this, servertoken.toString(), body, requestMap)
                 service.tryPostJoin()
             } else {
                 val file = File(photo.toString())
-                val requestFile = RequestBody.create(MediaType.parse("image/png"), file)
+                val requestFile = RequestBody.create("image/png".toMediaTypeOrNull(), file)
                 val body = MultipartBody.Part.createFormData("photo", file.name, requestFile)
                 val service = JoinService(this, servertoken.toString(), body, requestMap)
                 service.tryPostJoin()

@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentMyCommentModifyBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.request.RequestModifyComment
 import org.cornfarmer.data.model.response.ResponseCommentModify
 import org.cornfarmer.data.repository.MyCommentModifyService
 import org.cornfarmer.data.view.MyCommentModifyFragmentView
+import org.cornfarmer.databinding.FragmentMyCommentModifyBinding
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.presentation.mycomment.MyCommentFragment
 import org.cornfarmer.util.ext.showToast

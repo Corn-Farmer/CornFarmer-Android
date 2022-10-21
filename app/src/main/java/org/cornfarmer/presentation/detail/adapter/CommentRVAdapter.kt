@@ -8,9 +8,9 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ItemCommentBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ReviewList
+import org.cornfarmer.databinding.ItemCommentBinding
 import org.cornfarmer.presentation.detail.DeclarationActivity
 
 class CommentRVAdapter(private val reviewList: ArrayList<ReviewList>, val token: String) :

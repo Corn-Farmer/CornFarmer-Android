@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityMainBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityMainBinding
 import org.cornfarmer.di.Application
 import org.cornfarmer.presentation.detail.DetailFragment
 import org.cornfarmer.presentation.home.HomeFragment

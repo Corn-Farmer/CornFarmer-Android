@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentKeywordBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.KeywordDto
 import org.cornfarmer.data.model.response.KeywordResponse
 import org.cornfarmer.data.repository.KeywordService
 import org.cornfarmer.data.view.KeywordFragmentView
+import org.cornfarmer.databinding.FragmentKeywordBinding
 import org.cornfarmer.presentation.keyword.adapter.KeywordRVAdapter
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.presentation.recommend.RecommendFragment

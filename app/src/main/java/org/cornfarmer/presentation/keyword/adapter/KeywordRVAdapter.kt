@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.Dimension
 import androidx.recyclerview.widget.RecyclerView
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ItemKeywordBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.KeywordDto
+import org.cornfarmer.databinding.ItemKeywordBinding
 
 class KeywordRVAdapter(private val keywordList: List<KeywordDto>) :
     RecyclerView.Adapter<KeywordRVAdapter.Viewholder>() {
