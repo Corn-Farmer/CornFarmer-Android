@@ -10,13 +10,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentRecommendBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.request.RequestMovieLike
 import org.cornfarmer.data.model.response.MovieInfo
 import org.cornfarmer.data.model.response.ResponseRecommend
 import org.cornfarmer.data.repository.RecommendService
 import org.cornfarmer.data.view.RecommendFragmentView
+import org.cornfarmer.databinding.FragmentRecommendBinding
 import org.cornfarmer.presentation.detail.DetailFragment
 import org.cornfarmer.presentation.keyword.KeywordFragment
 import org.cornfarmer.presentation.loading.CustomLoadingDialog

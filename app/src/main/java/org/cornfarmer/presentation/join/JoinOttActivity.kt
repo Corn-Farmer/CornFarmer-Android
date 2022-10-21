@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityJoinOttBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityJoinOttBinding
 import org.cornfarmer.di.Application
 
 class JoinOttActivity : AppCompatActivity(), View.OnClickListener {

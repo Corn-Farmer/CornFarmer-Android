@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.databinding.ItemOttsBinding
 import org.cornfarmer.data.model.response.MovieInfo
+import org.cornfarmer.databinding.ItemOttsBinding
 
 class OttRVAdapter(private val movieInfoList: ArrayList<MovieInfo>) :
     RecyclerView.Adapter<OttRVAdapter.Viewholder>() {

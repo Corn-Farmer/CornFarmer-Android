@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityAgreeOneBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.ActivityAgreeOneBinding
 
 class AgreeOneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAgreeOneBinding

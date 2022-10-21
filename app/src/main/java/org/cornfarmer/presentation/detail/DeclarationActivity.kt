@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityDeclarationBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ResponseDeclaration
 import org.cornfarmer.data.repository.DeclationService
 import org.cornfarmer.data.view.DeclarationView
+import org.cornfarmer.databinding.ActivityDeclarationBinding
 import org.cornfarmer.di.Application
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.util.ext.showToast

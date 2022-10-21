@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ItemOttServiceBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.OttList
+import org.cornfarmer.databinding.ItemOttServiceBinding
 
 class OttServiceRVAdapter(private val imageList: ArrayList<OttList>) :
     RecyclerView.Adapter<OttServiceRVAdapter.ViewHolder>() {

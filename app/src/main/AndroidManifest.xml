@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornFarmerAndroid"
         android:usesCleartextTraffic="true">
+
+        <!-- leakcanary 안드로이드 12 부터 버전충돌 문제 해결 -->
+        <activity-alias
+            android:name="leakcanary.internal.activity.LeakLauncherActivity"
+            android:exported="false"
+            android:targetActivity="leakcanary.internal.activity.LeakActivity" />
+
         <activity
             android:name="org.cornfarmer.presentation.detail.DeclarationActivity"
             android:exported="false" />
@@ -64,20 +71,13 @@
             android:name="org.cornfarmer.presentation.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.nhn.android.naverlogin.ui.OAuthCustomTabActivity"
-            android:exported="true" />
-        <activity
             android:name="org.cornfarmer.presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
 
             <intent-filter>
@@ -85,20 +85,6 @@
 
                 <data
                     android:host="kakaolink"
-                    android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="oauth"
                     android:scheme="kakaoe355d004b5a2901c09d0626d9f643ad9" />
             </intent-filter>
         </activity>

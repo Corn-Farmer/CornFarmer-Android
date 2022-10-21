@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentSearchBinding
+import org.cornfarmer.R
+import org.cornfarmer.databinding.FragmentSearchBinding
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.presentation.wishlist.WishlistActivity
 

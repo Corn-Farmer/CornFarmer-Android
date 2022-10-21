@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.databinding.ItemOttsBinding
 import org.cornfarmer.data.model.response.MovieDto
+import org.cornfarmer.databinding.ItemOttsBinding
 
 class SearchResultRVAdapter(private val movieList: List<MovieDto>) :
     RecyclerView.Adapter<SearchResultRVAdapter.Viewholder>() {

@@ -13,17 +13,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.FragmentProfileBinding
-import com.kakao.sdk.user.UserApiClient
-import com.nhn.android.naverlogin.OAuthLogin
+import org.cornfarmer.R
 import org.cornfarmer.data.model.response.ResponseProfile
 import org.cornfarmer.data.repository.DeleteService
 import org.cornfarmer.data.repository.ProfileService
 import org.cornfarmer.data.view.DeleteView
 import org.cornfarmer.data.view.ProfileFragmentView
+import org.cornfarmer.databinding.FragmentProfileBinding
 import org.cornfarmer.presentation.loading.CustomLoadingDialog
-import org.cornfarmer.presentation.login.LoginActivity
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.presentation.mycomment.MyCommentFragment
 import org.cornfarmer.presentation.profile.adapter.ProfileGenreRVAdapter
@@ -38,7 +35,7 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
     private lateinit var binding: FragmentProfileBinding
 
-    lateinit var mOAuthLoginInstance: OAuthLogin
+//    lateinit var mOAuthLoginInstance: OAuthLogin
     lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +47,8 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
 
         mContext = requireContext()
 
-        mOAuthLoginInstance = OAuthLogin.getInstance()
-        mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
+//        mOAuthLoginInstance = OAuthLogin.getInstance()
+//        mOAuthLoginInstance.init(mContext, naver_client_id, naver_client_secret, naver_client_name)
 
         val loadingAnimDialog = CustomLoadingDialog(requireContext())
         loadingAnimDialog.setCancelable(false)
@@ -171,67 +168,67 @@ class ProfileFragment : Fragment(), ProfileFragmentView, DeleteView {
         val navertoken = getSharedPreferences3!!.getString("navertoken", null)
         val kakaotoken = getSharedPreferences3.getString("kakaotoken", null)
 
-        if (navertoken == null) {
-            UserApiClient.instance.unlink { error ->
-                if (error != null) {
-                    Log.e("카카오토큰 삭제 실패", "연결 끊기 실패", error)
-                } else {
-                    Log.i("토큰 삭제 성공", "연결 끊기 성공. SDK에서 토큰 삭제 됨")
-                }
-            }
-            Log.d("회원탈퇴", "회원탈퇴 성공")
-            val getSharedPreferences =
-                this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val getSharedPreferences2 =
-                this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
-            val editor1 = getSharedPreferences?.edit()
-            val editor2 = getSharedPreferences2?.edit()
-            val editor3 = getSharedPreferences3.edit()
-            editor1?.clear()
-            editor2?.clear()
-            editor3?.putString("kakaotoken", null)
-
-            editor1?.apply()
-            editor2?.apply()
-            editor3?.apply()
-
-            editor1?.putString("servertoken", "")
-            editor1?.apply()
-
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(this)
-                ?.commit()
-        } else if (kakaotoken == null) {
-            mOAuthLoginInstance.logoutAndDeleteToken(mContext)
-
-            Log.d("회원탈퇴", "회원탈퇴 성공")
-
-            val getSharedPreferences =
-                this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
-            val getSharedPreferences2 =
-                this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
-            val editor1 = getSharedPreferences?.edit()
-            val editor2 = getSharedPreferences2?.edit()
-            val editor3 = getSharedPreferences3.edit()
-            editor1?.clear()
-            editor2?.clear()
-            editor3?.putString("navertoken", null)
-
-            editor1?.apply()
-            editor2?.apply()
-            editor3?.apply()
-
-            editor1?.putString("servertoken", "")
-            editor1?.apply()
-
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(this)
-                ?.commit()
-        }
+//        if (navertoken == null) {
+//            UserApiClient.instance.unlink { error ->
+//                if (error != null) {
+//                    Log.e("카카오토큰 삭제 실패", "연결 끊기 실패", error)
+//                } else {
+//                    Log.i("토큰 삭제 성공", "연결 끊기 성공. SDK에서 토큰 삭제 됨")
+//                }
+//            }
+//            Log.d("회원탈퇴", "회원탈퇴 성공")
+//            val getSharedPreferences =
+//                this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+//            val getSharedPreferences2 =
+//                this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+//            val editor1 = getSharedPreferences?.edit()
+//            val editor2 = getSharedPreferences2?.edit()
+//            val editor3 = getSharedPreferences3.edit()
+//            editor1?.clear()
+//            editor2?.clear()
+//            editor3?.putString("kakaotoken", null)
+//
+//            editor1?.apply()
+//            editor2?.apply()
+//            editor3?.apply()
+//
+//            editor1?.putString("servertoken", "")
+//            editor1?.apply()
+//
+//            startActivity(Intent(activity, LoginActivity::class.java))
+//            activity?.supportFragmentManager
+//                ?.beginTransaction()
+//                ?.remove(this)
+//                ?.commit()
+//        } else if (kakaotoken == null) {
+//            mOAuthLoginInstance.logoutAndDeleteToken(mContext)
+//
+//            Log.d("회원탈퇴", "회원탈퇴 성공")
+//
+//            val getSharedPreferences =
+//                this.activity?.getSharedPreferences("join", Context.MODE_PRIVATE)
+//            val getSharedPreferences2 =
+//                this.activity?.getSharedPreferences("userinfo", Context.MODE_PRIVATE)
+//            val editor1 = getSharedPreferences?.edit()
+//            val editor2 = getSharedPreferences2?.edit()
+//            val editor3 = getSharedPreferences3.edit()
+//            editor1?.clear()
+//            editor2?.clear()
+//            editor3?.putString("navertoken", null)
+//
+//            editor1?.apply()
+//            editor2?.apply()
+//            editor3?.apply()
+//
+//            editor1?.putString("servertoken", "")
+//            editor1?.apply()
+//
+//            startActivity(Intent(activity, LoginActivity::class.java))
+//            activity?.supportFragmentManager
+//                ?.beginTransaction()
+//                ?.remove(this)
+//                ?.commit()
+//        }
     }
 
     override fun onPutDeleteFailure(message: String) {

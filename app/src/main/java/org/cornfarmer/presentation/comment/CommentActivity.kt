@@ -9,12 +9,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.corn.cornfarmer_android.R
-import com.corn.cornfarmer_android.databinding.ActivityCommentBinding
+import org.cornfarmer.R
 import org.cornfarmer.data.model.request.RequestReview
 import org.cornfarmer.data.model.response.ResponseReview
 import org.cornfarmer.data.repository.CommentService
 import org.cornfarmer.data.view.CommentFragmentView
+import org.cornfarmer.databinding.ActivityCommentBinding
 import org.cornfarmer.presentation.main.MainActivity
 import org.cornfarmer.util.ext.showToast
 
